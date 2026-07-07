@@ -76,8 +76,8 @@
 
   --primary-100: #fff6d1;
 
-  --text-highlight: #97B900;
-  --text-highlight-two: #CEFA0A
+  --highlight-text: #97B900;
+  --highlight-text-two: #CEFA0A
     /* toggle */
     --toggle-active-color: #FFD23F;
   --toggle-switch-shadow: 0 0 0 1px rgba(0, 0, 0, 0.04),
@@ -126,7 +126,7 @@
   --surface-deep: #191818;
   --popover: #212020;
   --popover-foreground: #e6e6e6;
-  --primary: #58bd91;
+  --primary: #FFD23F;
   --primary-foreground: #07331f;
   --secondary: #1e2d1f;
   --secondary-foreground: #e6e6e6;
@@ -157,9 +157,10 @@
   --flash-white: #58bd91;
   --pale-red: #fff2ee;
   --ash-gray: #aeaeae;
-
-  /* toggle switch shadow */
-  --toggle-active-color: #58bd91;
+  --highlight-text: #97B900;
+  --highlight-text-two: #CEFA0A
+    /* toggle switch shadow */
+    --toggle-active-color: #58bd91;
   --toggle-switch-shadow: 0 0 0 1px rgba(0, 0, 0, 0.04),
     0 3px 8px 0 rgba(0, 0, 0, 0.15), 0 3px 1px 0 rgba(0, 0, 0, 0.06);
 
@@ -283,6 +284,9 @@
   --shadow-lg: var(--shadow-lg);
   --shadow-xl: var(--shadow-xl);
   --shadow-2xl: var(--shadow-2xl);
+  --highlighter: var(--highlight-text);
+  --highlighter-two: var(--highlight-text-two);
+
   --shadow-toggle-switch-shadow: var(--toggle-switch-shadow);
 
   --shadow-md-soft: 0px 4px 6px -1px rgba(0, 0, 0, 0.1),
