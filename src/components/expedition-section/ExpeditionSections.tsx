@@ -24,73 +24,86 @@ export default function ExpeditionSection() {
                 </div>
 
                 {/* Feature Grid */}
-                <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                    <div className="border rounded-lg p-6">
-                        <div className="border w-fit p-1 rounded-lg bg-gray-300 text-black lg:mb-12">
-                            <Cloud className="w-8 h-8" />
+                <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-16">
+                    {/* Weather */}
+                    <div className="col-span-6 rounded-lg p-6 bg-card hover:bg-card-foreground group transition-colors hover:cursor-pointer delay-200">
+                        <div className="w-fit p-1 rounded-lg bg-icon-bg group-hover:bg-icon-bg-hover lg:mb-12">
+                            <Cloud className="w-8 h-8 group-hover:text-card" />
                         </div>
-                        <h3 className="lg:text-2xl mb-3">Weather Analysis</h3>
-                        <p>
+                        <h3 className="lg:text-2xl mb-3 group-hover:text-card">
+                            Weather Analysis
+                        </h3>
+                        <p className="group-hover:text-card">
                             Live forecasts from OpenWeather & Tomorrow.io layered across your full
                             route and each waypoint.
                         </p>
                     </div>
 
                     {/* Safety */}
-                    <div className="border rounded-lg p-6">
-                        <div className="border w-fit p-1 rounded-lg bg-gray-300 text-black lg:mb-12">
-                            <AlertTriangle className="w-8 h-8" />
+                    <div className="col-span-5 rounded-lg p-6 bg-card hover:bg-card-foreground group transition-colors hover:cursor-pointer delay-200">
+                        <div className="w-fit p-1 rounded-lg bg-icon-bg group-hover:bg-icon-bg-hover lg:mb-12">
+                            <AlertTriangle className="w-8 h-8 group-hover:text-card" />
                         </div>
-                        <h3 className="lg:text-2xl mb-3">Safety & Emergency</h3>
-                        <p>
-                            Nearest hospitals, ranger stations, wildlife advisories, Emergency Action
-                            Plans, and evacuation routes.
+                        <h3 className="lg:text-2xl mb-3 group-hover:text-card">
+                            Safety & Emergency
+                        </h3>
+                        <p className="group-hover:text-card">
+                            Nearest hospitals, ranger stations, wildlife advisories, Emergency
+                            Action Plans, and evacuation routes.
                         </p>
                     </div>
 
                     {/* Navigation */}
-                    <div className="border rounded-lg p-6">
-                        <div className="border w-fit p-1 rounded-lg bg-gray-300 text-black lg:mb-12">
-                            <MapPin className="w-8 h-8" />
+                    <div className="col-span-5 rounded-lg p-6 bg-card hover:bg-card-foreground group transition-colors hover:cursor-pointer delay-200">
+                        <div className="w-fit p-1 rounded-lg bg-icon-bg group-hover:bg-icon-bg-hover lg:mb-12">
+                            <MapPin className="w-8 h-8 group-hover:text-card" />
                         </div>
-                        <h3 className="lg:text-2xl mb-3">Navigation & Mapping</h3>
-                        <p>
+                        <h3 className="lg:text-2xl mb-3 group-hover:text-card">
+                            Navigation & Mapping
+                        </h3>
+                        <p className="group-hover:text-card">
                             Annotated GPX files, elevation profiles, terrain difficulty, backup
                             routing, and offline maps.
                         </p>
                     </div>
 
                     {/* Campsite */}
-                    <div className="border rounded-lg p-6">
-                        <div className="border w-fit p-1 rounded-lg bg-gray-300 text-black lg:mb-12">
-                            <Tent className="w-8 h-8" />
+                    <div className="col-span-5 rounded-lg p-6 bg-card hover:bg-card-foreground group transition-colors hover:cursor-pointer delay-200">
+                        <div className="w-fit p-1 rounded-lg bg-icon-bg group-hover:bg-icon-bg-hover lg:mb-12">
+                            <Tent className="w-8 h-8 group-hover:text-card" />
                         </div>
-                        <h3 className="lg:text-2xl mb-3">Campsite & Lodging</h3>
-                        <p>
+                        <h3 className="lg:text-2xl mb-3 group-hover:text-card">
+                            Campsite & Lodging
+                        </h3>
+                        <p className="group-hover:text-card">
                             Vetted stays with precision, satellite imaging, credit card hacks, and
                             reservation guidance.
                         </p>
                     </div>
 
                     {/* Photography */}
-                    <div className="border rounded-lg p-6">
-                        <div className="border w-fit p-1 rounded-lg bg-gray-300 text-black lg:mb-12">
-                            <Camera className="w-8 h-8" />
+                    <div className="col-span-5 rounded-lg p-6 bg-card hover:bg-card-foreground group transition-colors hover:cursor-pointer delay-200">
+                        <div className="w-fit p-1 rounded-lg bg-icon-bg group-hover:bg-icon-bg-hover lg:mb-12">
+                            <Camera className="w-8 h-8 group-hover:text-card" />
                         </div>
-                        <h3 className="lg:text-2xl mb-3">Photography & Drone</h3>
-                        <p>
+                        <h3 className="lg:text-2xl mb-3 group-hover:text-card">
+                            Photography & Drone
+                        </h3>
+                        <p className="group-hover:text-card">
                             Golden hour schedules, drone zone maps, astrophotography windows, and
                             vintage coordinates.
                         </p>
                     </div>
 
                     {/* Group */}
-                    <div className="border rounded-lg p-6">
-                        <div className="border w-fit p-1 rounded-lg bg-gray-300 text-black lg:mb-12">
-                            <Users className="w-8 h-8" />
+                    <div className="col-span-6 rounded-lg p-6 bg-card hover:bg-card-foreground group transition-colors hover:cursor-pointer delay-200">
+                        <div className="w-fit p-1 rounded-lg bg-icon-bg group-hover:bg-icon-bg-hover lg:mb-12">
+                            <Users className="w-8 h-8 group-hover:text-card" />
                         </div>
-                        <h3 className="lg:text-2xl mb-3">Group Expedition</h3>
-                        <p>
+                        <h3 className="lg:text-2xl mb-3 group-hover:text-card">
+                            Group Expedition
+                        </h3>
+                        <p className="group-hover:text-card">
                             Certified adventure experts verify facts, add local knowledge, apply
                             safety judgment, and give your dossier to the public.
                         </p>

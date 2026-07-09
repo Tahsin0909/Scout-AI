@@ -6,11 +6,11 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: #fbfbfb;
+  --background: #F6F6F6;
   --foreground: #1a1a1a;
 
   --card: #ffffff;
-  --card-foreground: #1a1a1a;
+  --card-foreground: #1A1A1A;
 
   --surface-deep: #191818;
   --surface-dark: #191919;
@@ -43,7 +43,8 @@
   --ring: #FFD23F;
 
   /* custom colors (yellow based) */
-
+  --icon-bg: #F0F0F0;
+  --icon-bg-hover: #242424;
   --light-yellow: #fffbeb;
   --almond-yellow: #e6c65c;
   --mustard-yellow: #FFD23F;
@@ -120,8 +121,8 @@
 
 .dark {
   --background: #141313;
-  --foreground: #e6e6e6;
-  --card: #212020;
+  --foreground: #F6F6F6;
+  --card: #1A1A1A;
   --card-foreground: #e6e6e6;
   --surface-deep: #191818;
   --popover: #212020;
@@ -139,6 +140,8 @@
   --destructive-foreground: #fafafa;
 
   /* custom colors  */
+  --icon-bg: #242424;
+  --icon-bg-hover: #F0F0F0;
   --light-yellow: #fffbeb;
   --almond-yellow: #c7a21d;
   --light-muted: #908f90;
@@ -223,7 +226,8 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-
+  --color-icon-bg: var(--icon-bg);
+  --color-icon-bg-hover: var(--icon-bg-hover);
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);
