@@ -26,7 +26,7 @@ export default function ExpeditionSection() {
                 {/* Feature Grid */}
                 <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-16">
                     {/* Weather */}
-                    <div className="col-span-6 rounded-lg p-6 bg-card hover:bg-card-foreground group transition-colors hover:cursor-pointer delay-200">
+                    <div className="lg:col-span-6 rounded-lg p-6 bg-card hover:bg-card-foreground group transition-colors hover:cursor-pointer delay-200">
                         <div className="w-fit p-1 rounded-lg bg-icon-bg group-hover:bg-icon-bg-hover lg:mb-12">
                             <Cloud className="w-8 h-8 group-hover:text-card" />
                         </div>
@@ -40,7 +40,7 @@ export default function ExpeditionSection() {
                     </div>
 
                     {/* Safety */}
-                    <div className="col-span-5 rounded-lg p-6 bg-card hover:bg-card-foreground group transition-colors hover:cursor-pointer delay-200">
+                    <div className="lg:col-span-5 rounded-lg p-6 bg-card hover:bg-card-foreground group transition-colors hover:cursor-pointer delay-200">
                         <div className="w-fit p-1 rounded-lg bg-icon-bg group-hover:bg-icon-bg-hover lg:mb-12">
                             <AlertTriangle className="w-8 h-8 group-hover:text-card" />
                         </div>
@@ -54,7 +54,7 @@ export default function ExpeditionSection() {
                     </div>
 
                     {/* Navigation */}
-                    <div className="col-span-5 rounded-lg p-6 bg-card hover:bg-card-foreground group transition-colors hover:cursor-pointer delay-200">
+                    <div className="lg:col-span-5 rounded-lg p-6 bg-card hover:bg-card-foreground group transition-colors hover:cursor-pointer delay-200">
                         <div className="w-fit p-1 rounded-lg bg-icon-bg group-hover:bg-icon-bg-hover lg:mb-12">
                             <MapPin className="w-8 h-8 group-hover:text-card" />
                         </div>
@@ -68,7 +68,7 @@ export default function ExpeditionSection() {
                     </div>
 
                     {/* Campsite */}
-                    <div className="col-span-5 rounded-lg p-6 bg-card hover:bg-card-foreground group transition-colors hover:cursor-pointer delay-200">
+                    <div className="lg:col-span-5 rounded-lg p-6 bg-card hover:bg-card-foreground group transition-colors hover:cursor-pointer delay-200">
                         <div className="w-fit p-1 rounded-lg bg-icon-bg group-hover:bg-icon-bg-hover lg:mb-12">
                             <Tent className="w-8 h-8 group-hover:text-card" />
                         </div>
@@ -82,7 +82,7 @@ export default function ExpeditionSection() {
                     </div>
 
                     {/* Photography */}
-                    <div className="col-span-5 rounded-lg p-6 bg-card hover:bg-card-foreground group transition-colors hover:cursor-pointer delay-200">
+                    <div className="lg:col-span-5 rounded-lg p-6 bg-card hover:bg-card-foreground group transition-colors hover:cursor-pointer delay-200">
                         <div className="w-fit p-1 rounded-lg bg-icon-bg group-hover:bg-icon-bg-hover lg:mb-12">
                             <Camera className="w-8 h-8 group-hover:text-card" />
                         </div>
@@ -96,7 +96,7 @@ export default function ExpeditionSection() {
                     </div>
 
                     {/* Group */}
-                    <div className="col-span-6 rounded-lg p-6 bg-card hover:bg-card-foreground group transition-colors hover:cursor-pointer delay-200">
+                    <div className="lg:col-span-6 rounded-lg p-6 bg-card hover:bg-card-foreground group transition-colors hover:cursor-pointer delay-200">
                         <div className="w-fit p-1 rounded-lg bg-icon-bg group-hover:bg-icon-bg-hover lg:mb-12">
                             <Users className="w-8 h-8 group-hover:text-card" />
                         </div>
