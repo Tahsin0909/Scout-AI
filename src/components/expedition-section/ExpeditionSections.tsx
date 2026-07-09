@@ -1,9 +1,12 @@
 'use client'
 
-import { Cloud, AlertTriangle, MapPin, Tent, Camera, Users } from 'lucide-react'
-import Link from 'next/link'
-
-
+import { MapPin } from 'lucide-react';
+import Link from 'next/link';
+import { AiOutlineAim } from "react-icons/ai";
+import { FaCloudSunRain } from 'react-icons/fa';
+import { FaCamera } from "react-icons/fa6";
+import { SiAdguard } from "react-icons/si";
+import { TiGroup } from "react-icons/ti";
 
 export default function ExpeditionSection() {
     return (
@@ -28,7 +31,7 @@ export default function ExpeditionSection() {
                     {/* Weather */}
                     <div className="lg:col-span-6 rounded-lg p-6 bg-card hover:bg-card-foreground group transition-colors hover:cursor-pointer delay-200">
                         <div className="w-fit p-1 rounded-lg bg-icon-bg group-hover:bg-icon-bg-hover lg:mb-12">
-                            <Cloud className="w-8 h-8 group-hover:text-card" />
+                            <FaCloudSunRain className="w-8 h-8 group-hover:text-card" />
                         </div>
                         <h3 className="lg:text-2xl mb-3 group-hover:text-card">
                             Weather Analysis
@@ -42,7 +45,7 @@ export default function ExpeditionSection() {
                     {/* Safety */}
                     <div className="lg:col-span-5 rounded-lg p-6 bg-card hover:bg-card-foreground group transition-colors hover:cursor-pointer delay-200">
                         <div className="w-fit p-1 rounded-lg bg-icon-bg group-hover:bg-icon-bg-hover lg:mb-12">
-                            <AlertTriangle className="w-8 h-8 group-hover:text-card" />
+                            <SiAdguard className="w-8 h-8 group-hover:text-card" />
                         </div>
                         <h3 className="lg:text-2xl mb-3 group-hover:text-card">
                             Safety & Emergency
@@ -56,7 +59,7 @@ export default function ExpeditionSection() {
                     {/* Navigation */}
                     <div className="lg:col-span-5 rounded-lg p-6 bg-card hover:bg-card-foreground group transition-colors hover:cursor-pointer delay-200">
                         <div className="w-fit p-1 rounded-lg bg-icon-bg group-hover:bg-icon-bg-hover lg:mb-12">
-                            <MapPin className="w-8 h-8 group-hover:text-card" />
+                            <AiOutlineAim className="w-8 h-8 group-hover:text-card" />
                         </div>
                         <h3 className="lg:text-2xl mb-3 group-hover:text-card">
                             Navigation & Mapping
@@ -70,7 +73,7 @@ export default function ExpeditionSection() {
                     {/* Campsite */}
                     <div className="lg:col-span-5 rounded-lg p-6 bg-card hover:bg-card-foreground group transition-colors hover:cursor-pointer delay-200">
                         <div className="w-fit p-1 rounded-lg bg-icon-bg group-hover:bg-icon-bg-hover lg:mb-12">
-                            <Tent className="w-8 h-8 group-hover:text-card" />
+                            <MapPin className="w-8 h-8 group-hover:text-card" />
                         </div>
                         <h3 className="lg:text-2xl mb-3 group-hover:text-card">
                             Campsite & Lodging
@@ -84,7 +87,7 @@ export default function ExpeditionSection() {
                     {/* Photography */}
                     <div className="lg:col-span-5 rounded-lg p-6 bg-card hover:bg-card-foreground group transition-colors hover:cursor-pointer delay-200">
                         <div className="w-fit p-1 rounded-lg bg-icon-bg group-hover:bg-icon-bg-hover lg:mb-12">
-                            <Camera className="w-8 h-8 group-hover:text-card" />
+                            <FaCamera className="w-8 h-8 group-hover:text-card" />
                         </div>
                         <h3 className="lg:text-2xl mb-3 group-hover:text-card">
                             Photography & Drone
@@ -98,7 +101,7 @@ export default function ExpeditionSection() {
                     {/* Group */}
                     <div className="lg:col-span-6 rounded-lg p-6 bg-card hover:bg-card-foreground group transition-colors hover:cursor-pointer delay-200">
                         <div className="w-fit p-1 rounded-lg bg-icon-bg group-hover:bg-icon-bg-hover lg:mb-12">
-                            <Users className="w-8 h-8 group-hover:text-card" />
+                            <TiGroup className="w-8 h-8 group-hover:text-card" />
                         </div>
                         <h3 className="lg:text-2xl mb-3 group-hover:text-card">
                             Group Expedition
