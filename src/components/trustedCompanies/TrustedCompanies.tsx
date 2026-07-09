@@ -30,7 +30,7 @@ export default function TrustedCompanies() {
     ];
 
     // Duplicate for seamless loop
-    const marqueeItems = [...partners, ...partners, ...partners];
+    const marqueeItems = [...partners, ...partners, ...partners, ...partners];
 
     return (
         <section className=" ">
@@ -39,10 +39,10 @@ export default function TrustedCompanies() {
                     Trusted by Leading Companies Worldwide
                 </h2>
 
-                <div className="relative">
+                <div className="relative h-20 flex justify-center">
                     {/* Gradient masks for fade effect */}
-                    <div className="absolute -left-5 top-0 bottom-0 w-20  bg-gradient-to-r  from-white to-transparent dark:from-background  z-10" />
-                    <div className="absolute -right-5 top-0 bottom-0 w-20  bg-gradient-to-l from-white to-transparent dark:from-background z-10" />
+                    <div className="absolute -left-6 top-0 bottom-0 w-25  bg-gradient-to-r  from-background to-transparent  z-10" />
+                    <div className="absolute -right-6 top-0 bottom-0 w-25  bg-gradient-to-l from-background to-transparent z-10" />
 
                     <div className="flex animate-marquee">
                         {marqueeItems.map((partner, index) => (
