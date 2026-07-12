@@ -12,6 +12,10 @@ export const ALL_NAVBAR_MENU_ITEMS: Record<string, IMenu> = {
     label: "Services Plan",
     href: "/service-plan",
   },
+  explore: {
+    label: "Explore",
+    href: "/explore",
+  },
   articles: {
     label: "Articles",
     href: "/articles",
@@ -62,10 +66,10 @@ export const COMMON_NAVBAR_ROUTES = [
 ];
 
 // Public menu items (accessible without authentication)
-export const PUBLIC_NAVBAR_ITEMS: string[] = ["home", "servicePlan", "articles", "about", "contact"]
+export const PUBLIC_NAVBAR_ITEMS: string[] = ["home", "servicePlan", "articles", "about", "contact", "explore"]
 
 // Role-based menu configuration
 export const ROLE_NAVBAR_MENU_CONFIG: Record<IRole, string[]> = {
-  [IRole.ADMIN]: ["home", "servicePlan", "articles", "about", "contact"],
-  [IRole.USER]: ["home", "servicePlan", "articles", "about", "contact"],
+  [IRole.ADMIN]: ["home", "servicePlan", "articles", "about", "contact", "explore"],
+  [IRole.USER]: ["home", "servicePlan", "articles", "about", "contact", "explore"],
 };

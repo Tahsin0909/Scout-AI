@@ -5,9 +5,9 @@ export const SignUpButton = () => {
     return (
         <Link
             href="/register"
-            className="flex items-center justify-center md:text-lg text-sm  text-black font-work-sans font-medium transition-colors duration-300 md:gap-2 gap-1 outline-none border-2 border-primary bg-primary rounded-xl md:px-4 px-2 md:py-2 py-1.5"
+            className="flex items-center justify-center md:text-lg text-sm text-black font-work-sans font-medium md:gap-2 gap-1 outline-none border-2 border-primary bg-primary rounded-xl md:px-4 px-2 md:py-2 py-1.5 transition-all duration-300 hover:bg-transparent hover:text-primary hover:scale-105 active:scale-95"
         >
-            <LogIn />
+            <LogIn className="transition-transform duration-300 group-hover:translate-x-1" />
             <span>Sign up</span>
         </Link>
     );

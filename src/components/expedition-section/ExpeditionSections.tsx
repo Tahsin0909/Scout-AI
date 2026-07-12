@@ -7,11 +7,12 @@ import { FaCloudSunRain } from 'react-icons/fa';
 import { FaCamera } from "react-icons/fa6";
 import { SiAdguard } from "react-icons/si";
 import { TiGroup } from "react-icons/ti";
+import { Button } from '../ui/button';
 
 export default function ExpeditionSection() {
     return (
         <section className="w-full bg-background py-16 md:py-24 lg:py-32">
-            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 ">
+            <div className="container px-4 sm:px-6 lg:px-8 ">
                 {/* Header */}
                 <div className="mb-12 text-center md:mb-16 max-w-3xl mx-auto">
                     <p className="mb-4 text-sm font-medium text-muted-foreground uppercase tracking-wide">
@@ -19,7 +20,7 @@ export default function ExpeditionSection() {
                     </p>
                     <h2 className="mb-4 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
                         Not Just A Trip Planner An Expedition{' '}
-                        <span className="text-[#97B900]">Engine</span>
+                        <span className="text-[#97B900] italic">Engine</span>
                     </h2>
                     <p className="mx-auto max-w-2xl text-base text-muted-foreground sm:text-lg">
                         You give us the details. Our AI builds the first draft. A human expert reviews and delivers. Adventure, Down To A Science.
@@ -115,12 +116,13 @@ export default function ExpeditionSection() {
 
                 {/* CTA Button */}
                 <div className="mt-12 text-center md:mt-16 w-fit mx-auto">
-                    <Link
-                        href="/register"
-                        className="flex items-center justify-center md:text-lg text-sm  font-work-sans font-medium transition-colors duration-300 md:gap-2 gap-1 outline-none border-2 border-primary bg-primary rounded-xl md:px-4 px-2 md:py-2 py-1.5"
-                    >
-                        <span>View Packaging</span>
-                    </Link>
+                    <Button size={"lg"}>
+                        <Link
+                            href="/register"
+                        >
+                            <span>View Packaging</span>
+                        </Link>
+                    </Button>
                 </div>
             </div>
         </section>
