@@ -4,6 +4,7 @@ import { getDefaultMetadata } from "@/utils/seo";
 import type { Metadata } from "next";
 import { Space_Grotesk, Work_Sans } from "next/font/google";
 import "./globals.css";
+import { SmoothScroll } from "@/providers/SmoothSroll";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
@@ -27,6 +28,7 @@ export default function RootLayout({
       <body
         className={`${workSans.variable} ${spaceGrotesk.variable} antialiased`}
       >
+        <SmoothScroll />
         <ThemeProvider>
           <ReduxProvider>{children}</ReduxProvider>
         </ThemeProvider>

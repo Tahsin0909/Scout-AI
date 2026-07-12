@@ -1,6 +1,8 @@
-import Link from 'next/link'
+"use client"
 import { Button } from '@/components/ui/button'
-
+import { cardImageVariants, travelCardVariants } from '@/lib/animation'
+import { motion } from 'framer-motion'
+import Link from 'next/link'
 const travelModes = [
     {
         title: 'Hiking Adventures',
@@ -42,7 +44,9 @@ const travelModes = [
 
 export default function TravelModesSection() {
     return (
-        <section className="px-4 py-20 sm:px-6 sm:py-24 lg:px-8 lg:py-[110px]">
+        <section
+            className="overflow-hidden px-4 py-20 sm:px-6 sm:py-24 lg:px-8 lg:py-[110px]"
+        >
             <div className="container">
                 {/* Header */}
                 <div className="mx-auto mb-12 max-w-[620px] text-center md:mb-14">
@@ -67,22 +71,26 @@ export default function TravelModesSection() {
                 {/* Cards */}
                 <div className="grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-[18px]">
                     {travelModes.map((mode, index) => (
-                        <article
+                        <motion.article
                             key={mode.title}
+                            variants={travelCardVariants}
+                            whileHover="hover"
+                            whileTap="tap"
                             className="
-                                group relative isolate min-h-[390px]
-                                overflow-hidden rounded-[6px] bg-neutral-900
-                                sm:min-h-[420px] lg:min-h-[430px]
-                            "
+        group relative isolate min-h-[390px]
+        overflow-hidden rounded-[6px] bg-neutral-900
+        shadow-[0_8px_30px_rgba(0,0,0,0.08)]
+        sm:min-h-[420px] lg:min-h-[430px]
+    "
                         >
                             {/* Image */}
-                            <div
+                            <motion.div
                                 aria-hidden="true"
+                                variants={cardImageVariants}
                                 className="
-                                    absolute inset-0 -z-30 bg-cover bg-center
-                                    transition-transform duration-700
-                                    ease-out group-hover:scale-[1.04]
-                                "
+            pointer-events-none absolute inset-0 -z-30
+            bg-cover bg-center will-change-transform
+        "
                                 style={{
                                     backgroundImage: `url("${mode.image}")`,
                                 }}
@@ -118,14 +126,8 @@ export default function TravelModesSection() {
 
                                     <Button
                                         asChild
-                                        className={`
-                                            mt-4 h-[40px] w-full rounded-[5px]
-                                            border px-5 text-[13px] font-medium
-                                            shadow-none transition-all
-                                            duration-300 hover:scale-[1.01]
-                                            active:scale-[0.99]
-                                            ${mode.buttonClassName}
-                                        `}
+                                        variant={"white"}
+                                        fullWidth
                                     >
                                         <Link href={`/travel-modes/${index + 1}`}>
                                             Start Planning
@@ -133,7 +135,7 @@ export default function TravelModesSection() {
                                     </Button>
                                 </div>
                             </div>
-                        </article>
+                        </motion.article>
                     ))}
                 </div>
             </div>

@@ -9,6 +9,7 @@ import { Button } from '@/components/ui/button'
 
 import { faqs } from './data'
 import { accordionContentVariants, accordionVariants, chevronVariants, transitions } from '@/lib/animation'
+import Link from 'next/link'
 
 export default function FAQSection() {
     const [openIndex, setOpenIndex] = useState<number | null>(0)
@@ -102,8 +103,13 @@ export default function FAQSection() {
             <div className="mb-14 text-center">
                 <p className="mb-4">Still have questions?</p>
 
-                <Button variant="default" size="lg">
-                    Contact our team
+                <Button
+                    asChild
+                    className="h-[42px] lg:h-[50px] w-full rounded-[6px] border-0 bg-[#FFD239] px-8 text-[14px] font-medium text-black shadow-none hover:bg-[#ffd957] sm:w-[157px]"
+                >
+                    <Link href="/contact">
+                        Contact our team
+                    </Link>
                 </Button>
             </div>
 
@@ -144,18 +150,21 @@ export default function FAQSection() {
 
                     <div className="flex w-full flex-col justify-center gap-[13px] sm:flex-row">
                         <Button
-                            variant="default"
-                            size={"lg"}
+                            asChild
+                            className="h-[42px] w-full rounded-[6px] border-0 bg-[#FFD239] px-8 text-[14px] font-medium text-black shadow-none hover:bg-[#ffd957] sm:w-[157px]"
                         >
-
-                            Plan Your Trip
+                            <Link href="/plan">
+                                Plan Your Trip
+                            </Link>
                         </Button>
-
                         <Button
+                            asChild
                             variant="outline"
-                            size={"lg"}
+                            className="h-[42px] w-full rounded-[6px] border border-white/5 bg-[#222222] px-8 text-[14px] font-medium text-white shadow-none hover:bg-[#2c2c2c] hover:text-white sm:w-[151px]"
                         >
-                            Services Plan
+                            <Link href="/how-it-works">
+                                Services Plan
+                            </Link>
                         </Button>
                     </div>
                 </div>

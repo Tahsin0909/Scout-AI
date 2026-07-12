@@ -174,7 +174,7 @@ export default function TestimonialsSection() {
     ]
 
     return (
-        <section className="overflow-hidden bg-background py-20 sm:py-24 lg:py-[110px]">
+        <section className="overflow-hidden bg-background py-20 sm:py-24 lg:py-[110px] relative">
             {/* Header */}
             <div className="mb-12 text-center md:mb-16 max-w-3xl mx-auto">
                 <p className="mb-4 text-sm font-medium text-muted-foreground uppercase tracking-wide border w-fit mx-auto px-3 py-1 rounded-full bg-white/5 ">
@@ -190,8 +190,10 @@ export default function TestimonialsSection() {
                 </p>
             </div>
 
+            <div className="absolute -left-6 top-0 bottom-0 w-25 lg:w-60  bg-gradient-to-r  from-background to-transparent z-10 " />
+            <div className="absolute -right-6 top-0 bottom-0 w-25 lg:w-60  bg-gradient-to-l from-background to-transparent z-10 " />
             {/* Moving testimonial rows */}
-            <div className="space-y-5 lg:space-y-6">
+            <div className="space-y-5 lg:space-y-6 ">
                 <MarqueeRow
                     items={firstRow}
                     direction="left"

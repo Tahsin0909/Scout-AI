@@ -78,9 +78,9 @@
   --primary-100: #fff6d1;
 
   --highlight-text: #97B900;
-  --highlight-text-two: #CEFA0A
-    /* toggle */
-    --toggle-active-color: #FFD23F;
+  --highlight-text-two: #CEFA0A;
+  /* toggle */
+  --toggle-active-color: #FFD23F;
   --toggle-switch-shadow: 0 0 0 1px rgba(0, 0, 0, 0.04),
     0 3px 8px rgba(0, 0, 0, 0.15),
     0 3px 1px rgba(0, 0, 0, 0.06);
