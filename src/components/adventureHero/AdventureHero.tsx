@@ -18,7 +18,7 @@ export default function AdventureHero() {
             className="relative isolate min-h-[90vh] w-full overflow-hidden bg-neutral-950 sm:bg-cover bg-center"
             style={{ backgroundImage: `url("${backgroundImage}")` }}
         >
-            <div className="mx-auto flex min-h-[90vh] w-full max-w-[1440px] flex-col px-5 py-8 sm:px-8 lg:px-10">
+            <div className="mx-auto flex min-h-[90vh] w-full container flex-col px-5 py-8 sm:px-8 lg:px-10">
                 {/* Main content */}
                 <div className="flex flex-1 items-center pt-10 lg:pt-20">
                     <div className="w-full max-w-[670px]">
@@ -76,11 +76,11 @@ export default function AdventureHero() {
                                 className="flex min-h-[88px] items-center justify-center rounded-[6px] border border-black/10 bg-white px-3 py-4 text-center text-black shadow-sm sm:h-[88px] lg:h-[140px] sm:w-[107px] lg:w-[140px]"
                             >
                                 <div>
-                                    <p className="text-[30px] font-semibold leading-none tracking-[-0.02em] sm:text-[31px]">
+                                    <p className="text-[30px] font-semibold leading-none tracking-[-0.02em] sm:text-[31px] lg:text-[40px]">
                                         {stat.value}
                                     </p>
 
-                                    <p className="mt-3 whitespace-nowrap text-[10px] font-medium leading-none text-black/65">
+                                    <p className="mt-3 whitespace-nowrap text-[10px] lg:text-[14px] font-medium leading-none text-black/65">
                                         {stat.label}
                                     </p>
                                 </div>
