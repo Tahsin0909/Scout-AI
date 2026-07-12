@@ -13,7 +13,7 @@ export const Navbar = () => {
   const { isAuthenticated, token } = useAuth();
 
   return (
-    <header className="lg:py-5 py-4 bg-dark-primary text-white sticky top-0 left-0 right-0 border-b border-b-border z-50">
+    <header className="lg:py-5 py-4 bg-dark-primary text-white sticky top-0 left-0 right-0  z-50">
       <div className="container">
         <div className="flex items-center justify-between gap-2">
           <div>
