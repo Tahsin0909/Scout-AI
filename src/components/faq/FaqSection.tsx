@@ -22,7 +22,7 @@ export default function FAQSection() {
     return (
         <section className="container px-4 py-16 md:px-8 lg:px-12">
             <div className="mx-auto mb-12 max-w-3xl text-center md:mb-16">
-                <p className="mb-4 text-sm font-medium uppercase tracking-wide text-muted-foreground">
+                <p className="mb-4 text-sm font-medium text-muted-foreground uppercase tracking-wide border w-fit mx-auto px-3 py-1 rounded-full bg-white/5 ">
                     Common Questions
                 </p>
 

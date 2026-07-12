@@ -83,7 +83,7 @@ export default function HowItWorksSection() {
             <div className="mx-auto w-full container">
                 {/* Header */}
                 <div className="mb-12 text-center md:mb-16 max-w-3xl mx-auto">
-                    <div className="mb-[20px] inline-flex h-[20px] items-center justify-center rounded-full border border-white/10 bg-white/20 px-[11px] text-[12px] font-medium leading-none text-white backdrop-blur-md">
+                    <div className="mb-4 text-sm font-medium text-muted-foreground uppercase tracking-wide  w-fit mx-auto px-3 py-1 rounded-full bg-white/8 backdrop-blur-md">
                         How It Works
                     </div>
                     <h2 className="mb-4 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl text-white">

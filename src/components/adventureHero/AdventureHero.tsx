@@ -22,7 +22,7 @@ export default function AdventureHero() {
                 {/* Main content */}
                 <div className="flex flex-1 items-center pt-10 lg:pt-20">
                     <div className="w-full max-w-[670px]">
-                        <div className="mb-7 inline-flex h-[30px] items-center rounded-full border border-white/10 bg-white/[0.08] px-4 text-[11px] font-medium text-white backdrop-blur-md">
+                        <div className="mb-4 text-sm font-medium text-muted-foreground uppercase tracking-wide w-fit px-3 py-1 rounded-full bg-white/8 backdrop-blur-md">
                             Adventure, Down To A Science
                         </div>
 

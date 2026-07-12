@@ -42,22 +42,22 @@ const travelModes = [
 
 export default function TravelModesSection() {
     return (
-        <section className="bg-white px-4 py-20 sm:px-6 sm:py-24 lg:px-8 lg:py-[110px]">
-            <div className="mx-auto w-full max-w-[1120px]">
+        <section className="px-4 py-20 sm:px-6 sm:py-24 lg:px-8 lg:py-[110px]">
+            <div className="container">
                 {/* Header */}
                 <div className="mx-auto mb-12 max-w-[620px] text-center md:mb-14">
-                    <div className="mb-5 inline-flex h-7 items-center justify-center rounded-full bg-[#F4F4F4] px-4 text-[11px] font-medium text-[#252525]">
+                    <p className="mb-4 text-sm font-medium text-muted-foreground uppercase tracking-wide border w-fit mx-auto px-3 py-1 rounded-full bg-white/5 ">
                         Travel Modes
-                    </div>
+                    </p>
 
-                    <h2 className="text-[32px] font-bold leading-[1.15] tracking-[-0.035em] text-[#252525] sm:text-[40px] lg:text-[46px]">
+                    <h2 className="text-[32px] font-bold leading-[1.15] tracking-[-0.035em] sm:text-[40px] lg:text-[46px]">
                         How Will You{' '}
                         <span className="italic text-[#8EB600]">
                             Go?
                         </span>
                     </h2>
 
-                    <p className="mx-auto mt-4 max-w-[550px] text-[13px] leading-[1.45] text-[#484848] sm:text-sm">
+                    <p className="mx-auto max-w-2xl text-base text-muted-foreground sm:text-lg">
                         Every mode unlocks a tailored module set, routing
                         logic, gear list, and dossier structure built for that
                         exact type of travel.
