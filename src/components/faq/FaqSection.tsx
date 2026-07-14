@@ -105,7 +105,6 @@ export default function FAQSection() {
 
                 <Button
                     asChild
-                    className="h-[42px] lg:h-[50px] w-full rounded-[6px] border-0 bg-[#FFD239] px-8 text-[14px] font-medium text-black shadow-none hover:bg-[#ffd957] sm:w-[157px]"
                 >
                     <Link href="/contact">
                         Contact our team
@@ -151,7 +150,6 @@ export default function FAQSection() {
                     <div className="flex w-full flex-col justify-center gap-[13px] sm:flex-row">
                         <Button
                             asChild
-                            className="h-[42px] w-full rounded-[6px] border-0 bg-[#FFD239] px-8 text-[14px] font-medium text-black shadow-none hover:bg-[#ffd957] sm:w-[157px]"
                         >
                             <Link href="/plan">
                                 Plan Your Trip
@@ -160,7 +158,7 @@ export default function FAQSection() {
                         <Button
                             asChild
                             variant="outline"
-                            className="h-[42px] w-full rounded-[6px] border border-white/5 bg-[#222222] px-8 text-[14px] font-medium text-white shadow-none hover:bg-[#2c2c2c] hover:text-white sm:w-[151px]"
+                            className="h-[42px] sm:w-[151px]"
                         >
                             <Link href="/how-it-works">
                                 Services Plan

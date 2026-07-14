@@ -58,11 +58,10 @@ const buttonVariants = cva(
         secondary: secondaryStyles,
 
         outline: [
-          "border border-border",
-          "bg-transparent text-foreground",
+          "border border-transparent",
+          "bg-[#222222] hover:bg-[#2c2c2c]",
           "hover:border-primary/50",
-          "hover:bg-accent/10",
-          "hover:text-foreground",
+          "font-medium text-white hover:text-white",
         ].join(" "),
 
         white: [

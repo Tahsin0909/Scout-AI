@@ -49,7 +49,6 @@ export default function AdventureHero() {
                         <div className="mt-7 flex flex-col gap-3 sm:flex-row">
                             <Button
                                 asChild
-                                className="h-[42px] w-full rounded-[6px] border-0 bg-[#FFD239] px-8 text-[14px] font-medium text-black shadow-none hover:bg-[#ffd957] sm:w-[157px]"
                             >
                                 <Link href="/plan">Plan Your Trip</Link>
                             </Button>
@@ -57,7 +56,7 @@ export default function AdventureHero() {
                             <Button
                                 asChild
                                 variant="outline"
-                                className="h-[42px] w-full rounded-[6px] border border-white/5 bg-[#222222] px-8 text-[14px] font-medium text-white shadow-none hover:bg-[#2c2c2c] hover:text-white sm:w-[151px]"
+                                className="h-[42px] w-full  sm:w-[151px]"
                             >
                                 <Link href="/how-it-works">
                                     How It Works

@@ -30,93 +30,327 @@ export default function ExpeditionSection() {
                 {/* Feature Grid */}
                 <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-16">
                     {/* Weather */}
-                    <div className="lg:col-span-6 rounded-lg p-6 bg-card hover:bg-card-foreground group transition-colors hover:cursor-pointer delay-200">
-                        <div className="w-fit p-1 rounded-lg bg-icon-bg group-hover:bg-icon-bg-hover lg:mb-12">
-                            <FaCloudSunRain className="w-8 h-8 group-hover:text-card" />
+                    <div
+                        className="
+            group cursor-pointer rounded-lg border border-transparent
+            bg-card p-6 lg:col-span-6
+            transition-[background-color,border-color,box-shadow,transform]
+            duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]
+            
+            hover:border-white/10
+            hover:bg-card-foreground
+            hover:shadow-[0_18px_45px_-20px_rgba(0,0,0,0.35)]
+        "
+                    >
+                        <div
+                            className="
+                mb-6 w-fit rounded-lg bg-icon-bg p-2 lg:mb-12
+                transition-[background-color,transform]
+                duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]
+                group-hover:scale-105
+                group-hover:bg-icon-bg-hover
+            "
+                        >
+                            <FaCloudSunRain
+                                className="
+                    size-8 text-card-foreground
+                    transition-colors duration-300 ease-out
+                    group-hover:text-card
+                "
+                            />
                         </div>
-                        <h3 className="lg:text-2xl mb-3 group-hover:text-card">
+
+                        <h3
+                            className="
+                mb-3 text-card-foreground lg:text-2xl
+                transition-colors duration-300 ease-out
+                group-hover:text-card
+            "
+                        >
                             Weather Analysis
                         </h3>
-                        <p className="group-hover:text-card">
-                            Live forecasts from OpenWeather & Tomorrow.io layered across your full
-                            route and each waypoint.
+
+                        <p
+                            className="
+                text-muted-foreground
+                transition-colors duration-300 ease-out
+                group-hover:text-card/80
+            "
+                        >
+                            Live forecasts from OpenWeather &amp; Tomorrow.io layered across
+                            your full route and each waypoint.
                         </p>
                     </div>
 
                     {/* Safety */}
-                    <div className="lg:col-span-5 rounded-lg p-6 bg-card hover:bg-card-foreground group transition-colors hover:cursor-pointer delay-200">
-                        <div className="w-fit p-1 rounded-lg bg-icon-bg group-hover:bg-icon-bg-hover lg:mb-12">
-                            <SiAdguard className="w-8 h-8 group-hover:text-card" />
+                    <div
+                        className="
+            group cursor-pointer rounded-lg border border-transparent
+            bg-card p-6 lg:col-span-5
+            transition-[background-color,border-color,box-shadow,transform]
+            duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]
+            
+            hover:border-white/10
+            hover:bg-card-foreground
+            hover:shadow-[0_18px_45px_-20px_rgba(0,0,0,0.35)]
+        "
+                    >
+                        <div
+                            className="
+                mb-6 w-fit rounded-lg bg-icon-bg p-2 lg:mb-12
+                transition-[background-color,transform]
+                duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]
+                group-hover:scale-105
+                group-hover:bg-icon-bg-hover
+            "
+                        >
+                            <SiAdguard
+                                className="
+                    size-8 text-card-foreground
+                    transition-colors duration-300 ease-out
+                    group-hover:text-card
+                "
+                            />
                         </div>
-                        <h3 className="lg:text-2xl mb-3 group-hover:text-card">
-                            Safety & Emergency
+
+                        <h3
+                            className="
+                mb-3 text-card-foreground lg:text-2xl
+                transition-colors duration-300 ease-out
+                group-hover:text-card
+            "
+                        >
+                            Safety &amp; Emergency
                         </h3>
-                        <p className="group-hover:text-card">
+
+                        <p
+                            className="
+                text-muted-foreground
+                transition-colors duration-300 ease-out
+                group-hover:text-card/80
+            "
+                        >
                             Nearest hospitals, ranger stations, wildlife advisories, Emergency
                             Action Plans, and evacuation routes.
                         </p>
                     </div>
 
                     {/* Navigation */}
-                    <div className="lg:col-span-5 rounded-lg p-6 bg-card hover:bg-card-foreground group transition-colors hover:cursor-pointer delay-200">
-                        <div className="w-fit p-1 rounded-lg bg-icon-bg group-hover:bg-icon-bg-hover lg:mb-12">
-                            <AiOutlineAim className="w-8 h-8 group-hover:text-card" />
+                    <div
+                        className="
+            group cursor-pointer rounded-lg border border-transparent
+            bg-card p-6 lg:col-span-5
+            transition-[background-color,border-color,box-shadow,transform]
+            duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]
+            
+            hover:border-white/10
+            hover:bg-card-foreground
+            hover:shadow-[0_18px_45px_-20px_rgba(0,0,0,0.35)]
+        "
+                    >
+                        <div
+                            className="
+                mb-6 w-fit rounded-lg bg-icon-bg p-2 lg:mb-12
+                transition-[background-color,transform]
+                duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]
+                group-hover:scale-105
+                group-hover:bg-icon-bg-hover
+            "
+                        >
+                            <AiOutlineAim
+                                className="
+                    size-8 text-card-foreground
+                    transition-colors duration-300 ease-out
+                    group-hover:text-card
+                "
+                            />
                         </div>
-                        <h3 className="lg:text-2xl mb-3 group-hover:text-card">
-                            Navigation & Mapping
+
+                        <h3
+                            className="
+                mb-3 text-card-foreground lg:text-2xl
+                transition-colors duration-300 ease-out
+                group-hover:text-card
+            "
+                        >
+                            Navigation &amp; Mapping
                         </h3>
-                        <p className="group-hover:text-card">
+
+                        <p
+                            className="
+                text-muted-foreground
+                transition-colors duration-300 ease-out
+                group-hover:text-card/80
+            "
+                        >
                             Annotated GPX files, elevation profiles, terrain difficulty, backup
                             routing, and offline maps.
                         </p>
                     </div>
 
                     {/* Campsite */}
-                    <div className="lg:col-span-5 rounded-lg p-6 bg-card hover:bg-card-foreground group transition-colors hover:cursor-pointer delay-200">
-                        <div className="w-fit p-1 rounded-lg bg-icon-bg group-hover:bg-icon-bg-hover lg:mb-12">
-                            <MapPin className="w-8 h-8 group-hover:text-card" />
+                    <div
+                        className="
+            group cursor-pointer rounded-lg border border-transparent
+            bg-card p-6 lg:col-span-5
+            transition-[background-color,border-color,box-shadow,transform]
+            duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]
+            
+            hover:border-white/10
+            hover:bg-card-foreground
+            hover:shadow-[0_18px_45px_-20px_rgba(0,0,0,0.35)]
+        "
+                    >
+                        <div
+                            className="
+                mb-6 w-fit rounded-lg bg-icon-bg p-2 lg:mb-12
+                transition-[background-color,transform]
+                duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]
+                group-hover:scale-105
+                group-hover:bg-icon-bg-hover
+            "
+                        >
+                            <MapPin
+                                className="
+                    size-8 text-card-foreground
+                    transition-colors duration-300 ease-out
+                    group-hover:text-card
+                "
+                            />
                         </div>
-                        <h3 className="lg:text-2xl mb-3 group-hover:text-card">
-                            Campsite & Lodging
+
+                        <h3
+                            className="
+                mb-3 text-card-foreground lg:text-2xl
+                transition-colors duration-300 ease-out
+                group-hover:text-card
+            "
+                        >
+                            Campsite &amp; Lodging
                         </h3>
-                        <p className="group-hover:text-card">
-                            Vetted stays with precision, satellite imaging, credit card hacks, and
-                            reservation guidance.
+
+                        <p
+                            className="
+                text-muted-foreground
+                transition-colors duration-300 ease-out
+                group-hover:text-card/80
+            "
+                        >
+                            Vetted stays with precision, satellite imaging, credit card hacks,
+                            and reservation guidance.
                         </p>
                     </div>
 
                     {/* Photography */}
-                    <div className="lg:col-span-5 rounded-lg p-6 bg-card hover:bg-card-foreground group transition-colors hover:cursor-pointer delay-200">
-                        <div className="w-fit p-1 rounded-lg bg-icon-bg group-hover:bg-icon-bg-hover lg:mb-12">
-                            <FaCamera className="w-8 h-8 group-hover:text-card" />
+                    <div
+                        className="
+            group cursor-pointer rounded-lg border border-transparent
+            bg-card p-6 lg:col-span-5
+            transition-[background-color,border-color,box-shadow,transform]
+            duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]
+            
+            hover:border-white/10
+            hover:bg-card-foreground
+            hover:shadow-[0_18px_45px_-20px_rgba(0,0,0,0.35)]
+        "
+                    >
+                        <div
+                            className="
+                mb-6 w-fit rounded-lg bg-icon-bg p-2 lg:mb-12
+                transition-[background-color,transform]
+                duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]
+                group-hover:scale-105
+                group-hover:bg-icon-bg-hover
+            "
+                        >
+                            <FaCamera
+                                className="
+                    size-8 text-card-foreground
+                    transition-colors duration-300 ease-out
+                    group-hover:text-card
+                "
+                            />
                         </div>
-                        <h3 className="lg:text-2xl mb-3 group-hover:text-card">
-                            Photography & Drone
+
+                        <h3
+                            className="
+                mb-3 text-card-foreground lg:text-2xl
+                transition-colors duration-300 ease-out
+                group-hover:text-card
+            "
+                        >
+                            Photography &amp; Drone
                         </h3>
-                        <p className="group-hover:text-card">
-                            Golden hour schedules, drone zone maps, astrophotography windows, and
-                            vintage coordinates.
+
+                        <p
+                            className="
+                text-muted-foreground
+                transition-colors duration-300 ease-out
+                group-hover:text-card/80
+            "
+                        >
+                            Golden hour schedules, drone zone maps, astrophotography windows,
+                            and vintage coordinates.
                         </p>
                     </div>
 
                     {/* Group */}
-                    <div className="lg:col-span-6 rounded-lg p-6 bg-card hover:bg-card-foreground group transition-colors hover:cursor-pointer delay-200">
-                        <div className="w-fit p-1 rounded-lg bg-icon-bg group-hover:bg-icon-bg-hover lg:mb-12">
-                            <TiGroup className="w-8 h-8 group-hover:text-card" />
+                    <div
+                        className="
+            group cursor-pointer rounded-lg border border-transparent
+            bg-card p-6 lg:col-span-6
+            transition-[background-color,border-color,box-shadow,transform]
+            duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]
+            
+            hover:border-white/10
+            hover:bg-card-foreground
+            hover:shadow-[0_18px_45px_-20px_rgba(0,0,0,0.35)]
+        "
+                    >
+                        <div
+                            className="
+                mb-6 w-fit rounded-lg bg-icon-bg p-2 lg:mb-12
+                transition-[background-color,transform]
+                duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]
+                group-hover:scale-105
+                group-hover:bg-icon-bg-hover
+            "
+                        >
+                            <TiGroup
+                                className="
+                    size-8 text-card-foreground
+                    transition-colors duration-300 ease-out
+                    group-hover:text-card
+                "
+                            />
                         </div>
-                        <h3 className="lg:text-2xl mb-3 group-hover:text-card">
+
+                        <h3
+                            className="
+                mb-3 text-card-foreground lg:text-2xl
+                transition-colors duration-300 ease-out
+                group-hover:text-card
+            "
+                        >
                             Group Expedition
                         </h3>
-                        <p className="group-hover:text-card">
-                            Certified adventure experts verify facts, add local knowledge, apply
-                            safety judgment, and give your dossier to the public.
+
+                        <p
+                            className="
+                text-muted-foreground
+                transition-colors duration-300 ease-out
+                group-hover:text-card/80
+            "
+                        >
+                            Certified adventure experts verify facts, add local knowledge,
+                            apply safety judgment, and give your dossier to the public.
                         </p>
                     </div>
                 </div>
 
                 {/* CTA Button */}
                 <div className="mt-12 text-center md:mt-16 w-fit mx-auto">
-                    <Button size={"lg"}>
+                    <Button variant={"primary"}>
                         <Link
                             href="/register"
                         >
