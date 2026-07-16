@@ -1,5 +1,6 @@
 import { Footer } from "@/components/footer/components/Footer";
 import { Navbar } from "@/components/navbar/components/Navbar";
+import PlanCta from "@/components/planCta/PlanCta";
 import { getDefaultMetadata } from "@/utils/seo";
 
 
@@ -14,6 +15,7 @@ export default function Layout({
         <div>
             <Navbar />
             {children}
+            <PlanCta />
             <Footer />
         </div>
     );
