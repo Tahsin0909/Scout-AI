@@ -1,5 +1,15 @@
-import PricingPage from "@/components/pricing/PricingPage";
+import FAQSection from '@/components/faq/FaqSection';
+import MembershipComparisonSection from '@/components/pricing/MembershipComparisonSection';
+import PricingPage from '@/components/pricing/PricingPage';
 
-export default function Page() {
-    return <PricingPage />;
-}
+const page = () => {
+    return (
+        <div>
+            <PricingPage />
+            <MembershipComparisonSection />
+            <FAQSection />
+        </div>
+    );
+};
+
+export default page;
