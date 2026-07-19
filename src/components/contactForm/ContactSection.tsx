@@ -162,7 +162,7 @@ export default function ContactSection() {
                         aria-hidden="true"
                         className="
                             pointer-events-none absolute inset-0
-                            bg-[linear-gradient(145deg,rgba(255,255,255,0.7),rgba(246,246,246,0.88))]
+                            bg-card
                         "
                     />
 
@@ -187,7 +187,7 @@ export default function ContactSection() {
                                 autoComplete="name"
                                 className="
                                     h-12 w-full rounded-xl
-                                    border border-border bg-white
+                                    border border-border 
                                     px-4 text-sm text-foreground
                                     outline-none
                                     transition-[border-color,box-shadow]
@@ -219,7 +219,7 @@ export default function ContactSection() {
                                 autoComplete="email"
                                 className="
                                     h-12 w-full rounded-xl
-                                    border border-border bg-white
+                                    border border-border 
                                     px-4 text-sm text-foreground
                                     outline-none
                                     transition-[border-color,box-shadow]
@@ -251,7 +251,7 @@ export default function ContactSection() {
                                 className="
                                     min-h-[122px] w-full resize-none
                                     rounded-xl border border-border
-                                    bg-white px-4 py-3
+                                     px-4 py-3
                                     text-sm text-foreground
                                     outline-none
                                     transition-[border-color,box-shadow]

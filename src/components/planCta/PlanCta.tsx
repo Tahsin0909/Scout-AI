@@ -48,7 +48,7 @@ const PlanCta = () => {
                     </Button>
                     <Button
                         asChild
-                        variant="outline"
+                        variant="ghost"
                         className="h-[42px] sm:w-[151px]"
                     >
                         <Link href="/how-it-works">

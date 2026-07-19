@@ -57,10 +57,9 @@ const buttonVariants = cva(
 
         secondary: secondaryStyles,
 
-        outline: [
+        ghost: [
           "border border-transparent",
           "bg-[#222222] hover:bg-[#2c2c2c]",
-          "hover:border-primary/50",
           "font-medium text-white hover:text-white",
         ].join(" "),
 
@@ -80,11 +79,12 @@ const buttonVariants = cva(
           "focus-visible:ring-destructive/30",
         ].join(" "),
 
-        ghost: [
-          "border border-transparent",
-          "bg-transparent text-foreground",
-          "hover:bg-accent",
-          "hover:text-accent-foreground",
+        outline: [
+          "border",
+          "bg-[#222222] hover:bg-[#2c2c2c]",
+          "border-primary/50",
+          "font-medium text-white hover:text-white",
+          ""
         ].join(" "),
 
         link: [
