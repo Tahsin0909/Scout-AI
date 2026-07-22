@@ -1,6 +1,7 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { userReducer } from "@/features/user/store/user.slice";
 import { baseApi } from "@/redux/api/baseApi";
+import { articlesReducer } from "@/features/articles/store/articles.slice";
 import { authReducer } from "@/features/auth/store/auth.slice";
 
 import {
@@ -23,6 +24,7 @@ const persistConfig = {
 };
 
 const rootReducer = combineReducers({
+  articles: articlesReducer,
   user: userReducer,
   auth: authReducer,
   [baseApi.reducerPath]: baseApi.reducer,
