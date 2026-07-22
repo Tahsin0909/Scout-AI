@@ -1,18 +1,16 @@
 "use client";
 
-/* eslint-disable @next/next/no-img-element */
-
-import { ArrowRight } from "lucide-react";
-import Link from "next/link";
 import { useMemo, useState } from "react";
 
+import EmptyState from "@/components/others-state/EmptayState";
 import { Pagination } from "@/components/pagination/Pagination";
+import { ArticlesIcon } from "@/utils/icons";
+
+import ArticleCard from "./ArticleCard";
 import {
   articles,
   type ArticleCategory,
 } from "./articles-data";
-import EmptyState from "@/components/others-state/EmptayState";
-import { ArticlesIcon } from "@/utils/icons";
 
 type CategoryFilter = "All" | ArticleCategory;
 type SortOption = "newest" | "oldest" | "title";
@@ -27,14 +25,6 @@ const categories: CategoryFilter[] = [
 ];
 
 const ARTICLES_PER_PAGE = 10;
-
-function formatDate(date: string) {
-  return new Intl.DateTimeFormat("en-US", {
-    month: "short",
-    day: "2-digit",
-    year: "numeric",
-  }).format(new Date(date));
-}
 
 export const Articles = () => {
   const [activeCategory, setActiveCategory] =
@@ -102,8 +92,27 @@ export const Articles = () => {
     setCurrentPage(1);
   };
 
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+
+    document
+      .getElementById("articles-section")
+      ?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+  };
+
   return (
-    <section className="bg-background px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+    <section
+      id="articles-section"
+      className="
+        scroll-mt-20 bg-background
+        px-4 py-16
+        sm:px-6 sm:py-20
+        lg:px-8 lg:py-24
+      "
+    >
       <div className="container">
         {/* Header */}
         <div className="mb-9 max-w-3xl">
@@ -119,13 +128,19 @@ export const Articles = () => {
         </div>
 
         {/* Filters */}
-        <div className="mb-9 flex flex-col gap-5 pb-5 sm:flex-row sm:items-center sm:justify-between">
+        <div
+          className="
+            mb-9 flex flex-col gap-5 pb-5
+            sm:flex-row sm:items-center
+            sm:justify-between
+          "
+        >
           <div
             role="tablist"
             aria-label="Article categories"
             className="
-              flex max-w-full gap-2 overflow-x-auto
-              pb-1 [scrollbar-width:none]
+              flex max-w-full gap-2 overflow-x-auto pb-1
+              [scrollbar-width:none]
               [&::-webkit-scrollbar]:hidden
             "
           >
@@ -177,7 +192,9 @@ export const Articles = () => {
               className="
                 h-9 rounded-lg border border-border
                 bg-card px-3 text-xs text-foreground
-                outline-none transition-colors
+                outline-none
+                transition-[border-color,box-shadow]
+                duration-200
                 focus:border-primary
                 focus:ring-2 focus:ring-primary/15
               "
@@ -193,104 +210,26 @@ export const Articles = () => {
         {visibleArticles.length > 0 ? (
           <div
             className="
-              grid grid-cols-1 gap-x-5 gap-y-10
+              grid grid-cols-1
+              gap-x-5 gap-y-10
               sm:grid-cols-2
               lg:grid-cols-3
             "
           >
             {visibleArticles.map(article => (
-              <article
+              <ArticleCard
                 key={article.id}
-                className="group min-w-0"
-              >
-                <Link
-                  href={`/articles/${article.id}`}
-                  className="block"
-                >
-                  {/* Image */}
-                  <div className="relative aspect-[16/9] overflow-hidden rounded-lg bg-muted">
-                    <img
-                      src={article.image}
-                      alt={article.title}
-                      className="
-                        size-full object-cover
-                        transition-transform duration-700
-                        ease-[cubic-bezier(0.45,0,0.55,1)]
-                        group-hover:scale-[1.035]
-                      "
-                    />
-
-                    <span
-                      className="
-                        absolute left-3 top-3
-                        rounded-full border border-white/15
-                        bg-black/55 px-2.5 py-1
-                        text-[9px] font-medium uppercase
-                        tracking-wide text-white
-                        backdrop-blur-sm
-                      "
-                    >
-                      {article.category}
-                    </span>
-                  </div>
-
-                  {/* Content */}
-                  <div className="pt-4">
-                    <p className="text-[11px] text-muted-foreground">
-                      {formatDate(article.publishedAt)}
-                      {" · "}
-                      {article.readTime} min read
-                    </p>
-
-                    <h3
-                      className="
-                        mt-2 line-clamp-2
-                        text-base font-semibold leading-snug
-                        tracking-[-0.02em]
-                        transition-colors duration-200
-                        group-hover:text-[#97B900]
-                        sm:text-lg
-                      "
-                    >
-                      {article.title}
-                    </h3>
-
-                    <p
-                      className="
-                        mt-2 line-clamp-2
-                        text-xs leading-relaxed
-                        text-muted-foreground
-                        sm:text-sm
-                      "
-                    >
-                      {article.excerpt}
-                    </p>
-
-                    <span
-                      className="
-                        mt-4 inline-flex items-center gap-2
-                        text-xs font-medium text-foreground
-                        transition-colors duration-200
-                        group-hover:text-[#97B900]
-                      "
-                    >
-                      Read More
-
-                      <ArrowRight
-                        className="
-                          size-3.5
-                          transition-transform duration-200
-                          group-hover:translate-x-1
-                        "
-                      />
-                    </span>
-                  </div>
-                </Link>
-              </article>
+                article={article}
+              />
             ))}
           </div>
-        ) : <EmptyState title="No articles found" description="Try selecting a different category." icon={<ArticlesIcon />} />
-        }
+        ) : (
+          <EmptyState
+            title="No articles found"
+            description="Try selecting a different category."
+            icon={<ArticlesIcon />}
+          />
+        )}
 
         {/* Pagination */}
         {filteredArticles.length >
@@ -299,9 +238,7 @@ export const Articles = () => {
               <Pagination
                 currentPage={currentPage}
                 totalPages={totalPages}
-                onPageChange={page => {
-                  setCurrentPage(page);
-                }}
+                onPageChange={handlePageChange}
               />
             </div>
           )}
@@ -309,4 +246,3 @@ export const Articles = () => {
     </section>
   );
 };
-

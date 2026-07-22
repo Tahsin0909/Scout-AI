@@ -1,11 +1,13 @@
 import EmptyState from '@/components/others-state/EmptayState'
-import ArticleAdvertisements from './ArticleAdvertisements'
+import { Button } from '@/components/ui/button'
+import ArticleAffiliation from '@/features/affiliation/components/ArticleAffiliation'
+import { ArticlesIcon } from '@/utils/icons'
+import Link from 'next/link'
 import ArticleContent from './ArticleContent'
 import { articlesData } from './data/articlesData'
 import SingleArticlesHeader from './SingleArticlesHeader'
-import { ArticlesIcon } from '@/utils/icons'
-import { Button } from '@/components/ui/button'
-import Link from 'next/link'
+import { advertisements } from '@/features/affiliation/components/data/articles-add'
+import SimilarArticles from './SimilarArticles'
 
 type SingleArticlesProps = {
     id: string
@@ -40,7 +42,6 @@ const SingleArticles = ({
         views,
         backgroundImage,
         content,
-        advertisements,
     } = article
 
     return (
@@ -65,11 +66,12 @@ const SingleArticles = ({
                 >
                     <ArticleContent content={content} />
 
-                    <ArticleAdvertisements
+                    <ArticleAffiliation
                         advertisements={advertisements}
                     />
                 </div>
             </section>
+            <SimilarArticles currentArticleId={id} />
         </main>
     )
 }

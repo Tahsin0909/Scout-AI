@@ -1,12 +1,3 @@
-export type ArticleAdvertisement = {
-    id: number
-    label: string
-    title: string
-    description: string
-    image: string
-    href: string
-}
-
 export type Article = {
     id: number
     title: string
@@ -16,7 +7,6 @@ export type Article = {
     views: string
     backgroundImage: string
     content: string
-    advertisements: ArticleAdvertisement[]
 }
 
 export const articlesData: Article[] = [
@@ -106,36 +96,6 @@ export const articlesData: Article[] = [
                     items that address the environmental risks of your destination.
                 </p>
             </section>
-        `,
-
-        advertisements: [
-            {
-                id: 1,
-                label: 'Apex Choice',
-                title: 'Summit Series 65L',
-                description:
-                    'Lightweight, ergonomic load distribution.',
-                image: '/images/backpack.jpg',
-                href: '/products/summit-series-65l',
-            },
-            {
-                id: 2,
-                label: 'Recommended Gear',
-                title: 'Expedition Sleep System',
-                description:
-                    'A lightweight sleep system designed for colder environments.',
-                image: '/images/sleeping-bag.jpg',
-                href: '/products/expedition-sleep-system',
-            },
-            {
-                id: 3,
-                label: 'Field Tested',
-                title: 'Adventure Cooking Kit',
-                description:
-                    'Compact cookware created for long-distance travel.',
-                image: '/images/cooking-kit.jpg',
-                href: '/products/adventure-cooking-kit',
-            },
-        ],
+        `
     },
 ]
