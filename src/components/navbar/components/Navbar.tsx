@@ -1,13 +1,14 @@
 "use client";
 
+import { Logo } from "@/components/logo/Logo";
 import Switcher from "@/components/switcher/Switcher";
 import { useAuth } from "@/features/auth/hooks/useAuth";
 import Link from "next/link";
 import { Account } from "./Account";
 import { DesktopMenu } from "./DesktopMenu";
 import { MobileMenu } from "./MobileMenu";
-import { SignUpButton } from "./SignUpButton";
-import { Logo } from "@/components/logo/Logo";
+import { SignInButton } from "./SignInButton";
+import { GetStarted } from "./GetStarted";
 
 export const Navbar = () => {
   const { isAuthenticated, token } = useAuth();
@@ -29,7 +30,8 @@ export const Navbar = () => {
             <MobileMenu />
             <div className="xl:block hidden">
               {isAuthenticated && token ? <Account /> : <div className="flex justify-center items-center gap-2">
-                <SignUpButton />
+                <SignInButton />
+                <GetStarted />
               </div>}
             </div>
           </div>

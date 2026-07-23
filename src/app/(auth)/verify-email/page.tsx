@@ -34,7 +34,7 @@ export default async function VerifyEmailPage({
 
     return (
         <AuthPageLayout
-            sidebarImage="/otpSidebar.png"
+            sidebarImage="/otpSidebar.jpg"
             sidebarHeading="Plan. Track. Go."
             sidebarDescription="Every plan is powered by advanced AI research and reviewed by a human adventure specialist."
             sidebarQuote="The Most Comprehensive AI-Powered Adventure Planning Platform We’ve Tested."
