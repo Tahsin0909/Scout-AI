@@ -1,7 +1,22 @@
 import { Logo } from "@/components/logo/Logo";
 
-export default function AuthSidebar() {
-    const backgroundImage = '/authSidebar.png'
+type AuthSidebarProps = {
+    backgroundImage: string;
+    heading?: string;
+    description?: string;
+    quote?: string;
+    quoteAuthor?: string;
+    backgroundPosition?: string;
+};
+
+export default function AuthSidebar({
+    backgroundImage,
+    heading = "Plan. Track. Go.",
+    description = "Every plan is powered by advanced AI research and reviewed by a human adventure specialist, ensuring every detail is expedition-ready.",
+    quote = "The Most Comprehensive AI-Powered Adventure Planning Platform We’ve Tested.",
+    quoteAuthor = "Outside Magazine",
+    backgroundPosition = "center",
+}: AuthSidebarProps) {
     return (
         <aside
             className="
@@ -15,10 +30,11 @@ export default function AuthSidebar() {
                 aria-hidden="true"
                 className="
           absolute inset-0 -z-30
-          bg-cover bg-center bg-no-repeat
+          bg-cover bg-no-repeat
         "
                 style={{
                     backgroundImage: `url("${backgroundImage}")`,
+                    backgroundPosition,
                 }}
             />
 
@@ -42,24 +58,24 @@ export default function AuthSidebar() {
 
             <div
                 className="
-          flex h-full min-h-screen flex-col
+          flex min-h-screen flex-col
           px-10 pb-10 pt-10
           xl:px-14 xl:pb-14 xl:pt-12
         "
             >
-                {/* Brand */}
-                <div className="">
+                {/* Brand content */}
+                <div>
                     <Logo />
 
-                    <h1
+                    <h2
                         className="
               mt-6 text-[36px] font-semibold
               leading-none tracking-[-0.035em]
               xl:text-[42px]
             "
                     >
-                        Plan. Track. Go.
-                    </h1>
+                        {heading}
+                    </h2>
 
                     <p
                         className="
@@ -68,9 +84,7 @@ export default function AuthSidebar() {
               xl:text-base
             "
                     >
-                        Every plan is powered by advanced AI research and
-                        reviewed by a human adventure specialist, ensuring
-                        every detail is expedition-ready.
+                        {description}
                     </p>
                 </div>
 
@@ -89,12 +103,11 @@ export default function AuthSidebar() {
               xl:text-xl
             "
                     >
-                        “The Most Comprehensive AI-Powered Adventure
-                        Planning Platform We&apos;ve Tested.”
+                        “{quote}”
                     </p>
 
                     <footer className="mt-3 text-sm text-white/55">
-                        — Outside Magazine
+                        — {quoteAuthor}
                     </footer>
                 </blockquote>
             </div>

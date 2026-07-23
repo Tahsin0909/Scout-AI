@@ -11,9 +11,10 @@ import {
     useState,
 } from "react";
 
+import { Logo } from "@/components/logo/Logo";
 import { Button } from "@/components/ui/button";
 
-export default function SignInForm() {
+export default function RegisterForm() {
     const [showPassword, setShowPassword] =
         useState(false);
 
@@ -25,21 +26,22 @@ export default function SignInForm() {
     ) => {
         event.preventDefault();
 
+        const form = event.currentTarget;
+
         try {
             setIsSubmitting(true);
 
-            const formData = new FormData(
-                event.currentTarget,
-            );
+            const formData = new FormData(form);
 
             const values = {
+                fullName: formData.get("fullName"),
                 email: formData.get("email"),
                 password: formData.get("password"),
             };
 
             console.log(values);
 
-            // Add your login request here.
+            // Add your registration API request here.
         } finally {
             setIsSubmitting(false);
         }
@@ -47,18 +49,23 @@ export default function SignInForm() {
 
     return (
         <div className="w-full">
-            {/* Back link */}
+            {/* Mobile logo */}
+            <div className="mb-9 lg:hidden">
+                <Logo />
+            </div>
+
+            {/* Back */}
             <Link
                 href="/"
                 className="
           group inline-flex items-center gap-2
-          text-sm font-medium
-          text-muted-foreground
+          text-sm font-medium text-muted-foreground
           transition-colors duration-200
           hover:text-foreground
         "
             >
                 <ArrowLeft
+                    aria-hidden="true"
                     className="
             size-4 transition-transform duration-200
             group-hover:-translate-x-0.5
@@ -68,43 +75,40 @@ export default function SignInForm() {
                 Back
             </Link>
 
-            <div className="mt-16 sm:mt-20 lg:mt-24">
+            <div className="mt-12 sm:mt-16 lg:mt-20">
                 {/* Heading */}
-                <div>
+                <header>
                     <h1
                         className="
               text-3xl font-semibold
-              tracking-[-0.035em]
-              text-foreground
+              tracking-[-0.035em] text-foreground
               sm:text-4xl
             "
                     >
-                        Welcome Back
+                        Create Account
                     </h1>
 
                     <p
                         className="
-              mt-2 text-sm
-              text-muted-foreground
-              sm:text-base
+              mt-2 text-sm leading-relaxed
+              text-muted-foreground sm:text-base
             "
                     >
-                        Sign in to continue your adventure
+                        Join free and start planning your next expedition today.
                     </p>
-                </div>
+                </header>
 
-                {/* Google login */}
+                {/* Google registration */}
                 <Button
                     type="button"
                     variant="outline"
                     size="lg"
                     fullWidth
                     className="
-            mt-9 h-12 rounded-lg
+            mt-8 h-12 rounded-lg
             border-border bg-background
-            text-sm font-medium
-            text-foreground shadow-none
-            hover:bg-muted/50
+            text-sm font-medium text-foreground
+            shadow-none hover:bg-muted/50
           "
                 >
                     <GoogleIcon />
@@ -113,33 +117,56 @@ export default function SignInForm() {
                 </Button>
 
                 {/* Divider */}
-                <div className="my-8 flex items-center gap-4">
+                <div className="my-4 flex items-center gap-4">
                     <div className="h-px flex-1 bg-border" />
 
-                    <span
-                        className="
-              shrink-0 text-xs
-              text-muted-foreground
-            "
-                    >
+                    <span className="shrink-0 text-xs text-muted-foreground">
                         Or continue with email
                     </span>
 
                     <div className="h-px flex-1 bg-border" />
                 </div>
 
-                {/* Email form */}
+                {/* Registration form */}
                 <form
                     onSubmit={handleSubmit}
-                    className="space-y-5"
+                    className="space-y-4"
                 >
+                    {/* Full name */}
+                    <div className="space-y-2">
+                        <label
+                            htmlFor="fullName"
+                            className="block text-sm font-medium text-foreground"
+                        >
+                            Full name
+                        </label>
+
+                        <input
+                            id="fullName"
+                            name="fullName"
+                            type="text"
+                            required
+                            autoComplete="name"
+                            placeholder="Alex Johnson"
+                            className="
+                h-12 w-full rounded-lg
+                border border-border bg-background
+                px-4 text-sm text-foreground
+                outline-none
+                transition-[border-color,box-shadow]
+                duration-200
+                placeholder:text-muted-foreground/65
+                focus:border-primary
+                focus:ring-4 focus:ring-primary/10
+              "
+                        />
+                    </div>
+
+                    {/* Email */}
                     <div className="space-y-2">
                         <label
                             htmlFor="email"
-                            className="
-                block text-sm font-medium
-                text-foreground
-              "
+                            className="block text-sm font-medium text-foreground"
                         >
                             Email address
                         </label>
@@ -148,68 +175,44 @@ export default function SignInForm() {
                             id="email"
                             name="email"
                             type="email"
-                            autoComplete="email"
                             required
+                            autoComplete="email"
                             placeholder="you@example.com"
                             className="
                 h-12 w-full rounded-lg
-                border border-border
-                bg-background px-4
-                text-sm text-foreground
+                border border-border bg-background
+                px-4 text-sm text-foreground
                 outline-none
                 transition-[border-color,box-shadow]
                 duration-200
                 placeholder:text-muted-foreground/65
                 focus:border-primary
-                focus:ring-4
-                focus:ring-primary/10
+                focus:ring-4 focus:ring-primary/10
               "
                         />
                     </div>
 
+                    {/* Password */}
                     <div className="space-y-2">
-                        <div className="flex items-center justify-between gap-4">
-                            <label
-                                htmlFor="password"
-                                className="
-                  text-sm font-medium
-                  text-foreground
-                "
-                            >
-                                Password
-                            </label>
-
-                            <Link
-                                href="/forgot-password"
-                                className="
-                  text-xs font-medium
-                  text-muted-foreground
-                  underline underline-offset-2
-                  transition-colors duration-200
-                  hover:text-primary
-                  sm:text-sm
-                "
-                            >
-                                Forgot password?
-                            </Link>
-                        </div>
+                        <label
+                            htmlFor="password"
+                            className="block text-sm font-medium text-foreground"
+                        >
+                            Password
+                        </label>
 
                         <div className="relative">
                             <input
                                 id="password"
                                 name="password"
-                                type={
-                                    showPassword
-                                        ? "text"
-                                        : "password"
-                                }
-                                autoComplete="current-password"
+                                type={showPassword ? "text" : "password"}
                                 required
-                                placeholder="Enter your password"
+                                minLength={8}
+                                autoComplete="new-password"
+                                placeholder="Create a secure password"
                                 className="
                   h-12 w-full rounded-lg
-                  border border-border
-                  bg-background
+                  border border-border bg-background
                   py-2.5 pl-4 pr-12
                   text-sm text-foreground
                   outline-none
@@ -217,17 +220,14 @@ export default function SignInForm() {
                   duration-200
                   placeholder:text-muted-foreground/65
                   focus:border-primary
-                  focus:ring-4
-                  focus:ring-primary/10
+                  focus:ring-4 focus:ring-primary/10
                 "
                             />
 
                             <button
                                 type="button"
                                 onClick={() =>
-                                    setShowPassword(
-                                        current => !current,
-                                    )
+                                    setShowPassword(current => !current)
                                 }
                                 aria-label={
                                     showPassword
@@ -241,8 +241,7 @@ export default function SignInForm() {
                   items-center justify-center
                   rounded-md text-muted-foreground
                   transition-colors duration-200
-                  hover:bg-muted
-                  hover:text-foreground
+                  hover:bg-muted hover:text-foreground
                   focus-visible:outline-none
                   focus-visible:ring-2
                   focus-visible:ring-primary/40
@@ -250,11 +249,13 @@ export default function SignInForm() {
                             >
                                 {showPassword ? (
                                     <EyeOff
+                                        aria-hidden="true"
                                         className="size-[18px]"
                                         strokeWidth={1.8}
                                     />
                                 ) : (
                                     <Eye
+                                        aria-hidden="true"
                                         className="size-[18px]"
                                         strokeWidth={1.8}
                                     />
@@ -270,38 +271,65 @@ export default function SignInForm() {
                         fullWidth
                         disabled={isSubmitting}
                         className="
-              h-12 rounded-lg
+              mt-2 h-12 rounded-lg
               text-base font-semibold
               shadow-[0_10px_24px_-14px_rgba(255,210,63,0.85)]
             "
                     >
                         {isSubmitting
-                            ? "Signing in..."
-                            : "Log in"}
+                            ? "Creating account..."
+                            : "Sign up"}
                     </Button>
                 </form>
-            </div>
 
-            {/* Register */}
-            <p
-                className="
-          mt-16 text-center text-sm
-          text-muted-foreground
-          sm:mt-20
-        "
-            >
-                New to TripTrax?{" "}
-                <Link
-                    href="/register"
+                {/* Terms */}
+                <p
                     className="
-            font-medium text-primary
-            transition-colors duration-200
-            hover:text-primary/80
+            mx-auto mt-5 max-w-[430px]
+            text-center text-xs leading-relaxed
+            text-muted-foreground
           "
                 >
-                    Create an account
-                </Link>
-            </p>
+                    By creating an account, you agree to our{" "}
+                    <Link
+                        href="/terms"
+                        className="
+              font-medium text-foreground
+              underline underline-offset-2
+              transition-colors hover:text-primary
+            "
+                    >
+                        Terms &amp; Conditions
+                    </Link>{" "}
+                    and{" "}
+                    <Link
+                        href="/privacy"
+                        className="
+              font-medium text-foreground
+              underline underline-offset-2
+              transition-colors hover:text-primary
+            "
+                    >
+                        Privacy Policy
+                    </Link>
+                    .
+                </p>
+
+                {/* Login */}
+                <p className="mt-8 text-center text-sm text-muted-foreground">
+                    Already have an account?{" "}
+                    <Link
+                        href="/signin"
+                        className="
+              font-medium text-primary
+              transition-colors duration-200
+              hover:text-primary/80
+            "
+                    >
+                        Log in
+                    </Link>
+                </p>
+            </div>
         </div>
     );
 }
