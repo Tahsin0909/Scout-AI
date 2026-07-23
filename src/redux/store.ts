@@ -1,6 +1,7 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { userReducer } from "@/features/user/store/user.slice";
 import { baseApi } from "@/redux/api/baseApi";
+import { paymentReducer } from "@/features/payment/store/payment.slice";
 import { exploreMapReducer } from "@/features/explore-map/store/explore-map.slice";
 import { affiliationReducer } from "@/features/affiliation/store/affiliation.slice";
 import { articlesReducer } from "@/features/articles/store/articles.slice";
@@ -26,6 +27,7 @@ const persistConfig = {
 };
 
 const rootReducer = combineReducers({
+  payment: paymentReducer,
   exploreMap: exploreMapReducer,
   affiliation: affiliationReducer,
   articles: articlesReducer,

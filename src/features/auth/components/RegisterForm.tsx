@@ -14,8 +14,17 @@ import {
 import { Logo } from "@/components/logo/Logo";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
+import { BillingType, PlanId } from "@/lib/plan-query";
 
-export default function RegisterForm() {
+type RegisterFormProps = {
+    plan: PlanId;
+    billing: BillingType;
+};
+
+export default function RegisterForm({
+    plan,
+    billing,
+}: RegisterFormProps) {
     const router = useRouter()
     const [showPassword, setShowPassword] =
         useState(false);
@@ -36,14 +45,43 @@ export default function RegisterForm() {
             const formData = new FormData(form);
 
             const values = {
-                fullName: formData.get("fullName"),
-                email: formData.get("email"),
-                password: formData.get("password"),
+                fullName: String(
+                    formData.get("fullName") ?? "",
+                ),
+                email: String(
+                    formData.get("email") ?? "",
+                ),
+                password: String(
+                    formData.get("password") ?? "",
+                ),
             };
-            router.push("/verify-email")
-            console.log(values);
 
-            // Add your registration API request here.
+            console.log("Registration data:", values);
+
+            /*
+             * Register the user first.
+             *
+             * const response = await registerUser(values);
+             *
+             * if (!response.success) {
+             *   throw new Error(response.message);
+             * }
+             */
+
+            const verificationParams =
+                new URLSearchParams({
+                    plan,
+                    billing,
+                });
+
+            router.push(
+                `/verify-email?${verificationParams.toString()}`,
+            );
+        } catch (error) {
+            console.error(
+                "Registration failed:",
+                error,
+            );
         } finally {
             setIsSubmitting(false);
         }

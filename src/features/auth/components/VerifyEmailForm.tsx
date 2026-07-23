@@ -18,17 +18,26 @@ import {
 import { Logo } from "@/components/logo/Logo";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { useRouter } from "next/navigation";
 
 const OTP_LENGTH = 6;
 const RESEND_TIME = 30;
 
 type VerifyEmailFormProps = {
     email: string;
+    plan: string;
+    billing: string;
 };
 
 export default function VerifyEmailForm({
     email,
+    plan,
+    billing,
 }: VerifyEmailFormProps) {
+
+    const router = useRouter();
+
+
     const [otp, setOtp] = useState<string[]>(
         Array(OTP_LENGTH).fill(""),
     );
@@ -176,23 +185,30 @@ export default function VerifyEmailForm({
         try {
             setIsSubmitting(true);
 
-            console.log({
+            const verificationData = {
                 email,
                 otp: otpValue,
-            });
+            };
 
-            // Replace with your verification API request:
-            //
-            // await verifyEmail({
-            //   email,
-            //   otp: otpValue,
-            // });
+            console.log("Verification data:", verificationData);
+
+            // Verify OTP using your API.
+            // await verifyEmail(verificationData);
 
             await new Promise(resolve =>
                 window.setTimeout(resolve, 800),
             );
 
-            setIsVerified(true);
+            const checkoutParams = new URLSearchParams({
+                plan,
+                billing,
+            });
+
+            router.replace(
+                `/checkout?${checkoutParams.toString()}`,
+            );
+        } catch (error) {
+            console.error("OTP verification failed:", error);
         } finally {
             setIsSubmitting(false);
         }
@@ -446,8 +462,8 @@ export default function VerifyEmailForm({
                         fullWidth
                         className="mt-8 h-12 rounded-lg"
                     >
-                        <Link href="/signin">
-                            Continue to sign in
+                        <Link href="/checkout">
+                            Continue to Payment
                         </Link>
                     </Button>
                 )}

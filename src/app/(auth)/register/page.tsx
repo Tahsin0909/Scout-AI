@@ -1,15 +1,34 @@
-import AuthPageLayout from "@/features/auth/components/AuthPageLayout";
-import RegisterForm from "@/features/auth/components/RegisterForm";
 import type { Metadata } from "next";
 
 
+import {
+    resolveBilling,
+    resolvePlan,
+} from "@/lib/plan-query";
+import AuthPageLayout from "@/features/auth/components/AuthPageLayout";
+import RegisterForm from "@/features/auth/components/RegisterForm";
 
 export const metadata: Metadata = {
     title: "Create Account | TripTrax",
-    description: "Create your TripTrax account and start planning.",
+    description:
+        "Create your TripTrax account and start planning.",
 };
 
-export default function RegisterPage() {
+type RegisterPageProps = {
+    searchParams: Promise<{
+        plan?: string | string[];
+        billing?: string | string[];
+    }>;
+};
+
+export default async function RegisterPage({
+    searchParams,
+}: RegisterPageProps) {
+    const params = await searchParams;
+
+    const plan = resolvePlan(params.plan);
+    const billing = resolveBilling(params.billing);
+
     return (
         <AuthPageLayout
             sidebarImage="/registerSidebar.png"
@@ -19,7 +38,10 @@ export default function RegisterPage() {
             sidebarQuoteAuthor="Outside Magazine"
             sidebarImagePosition="center"
         >
-            <RegisterForm />
+            <RegisterForm
+                plan={plan}
+                billing={billing}
+            />
         </AuthPageLayout>
     );
 }
