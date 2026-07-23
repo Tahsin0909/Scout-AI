@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export const Logo = ({ className }: { className?: string }) => {
   return (
-    <div>
+    <div className="">
       <Image
         src="/apexLogo.png"
         width={180}
