@@ -6,7 +6,7 @@ import {
     ChevronLeft,
     ChevronRight,
 } from 'lucide-react'
-import { ArticleAdvertisement } from './data/articlesData'
+import { ArticleAdvertisement } from '@/features/affiliation/components/data/articles-add'
 
 
 
