@@ -13,8 +13,10 @@ import {
 
 import { Logo } from "@/components/logo/Logo";
 import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
 
 export default function RegisterForm() {
+    const router = useRouter()
     const [showPassword, setShowPassword] =
         useState(false);
 
@@ -38,7 +40,7 @@ export default function RegisterForm() {
                 email: formData.get("email"),
                 password: formData.get("password"),
             };
-
+            router.push("/verify-email")
             console.log(values);
 
             // Add your registration API request here.
