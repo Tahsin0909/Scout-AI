@@ -200,6 +200,7 @@ export default function VerifyEmailForm({
                 window.setTimeout(resolve, 800),
             );
 
+            //Todo: Stored token for payment 
             if (plan && billing) {
                 const verificationParams =
                     new URLSearchParams({
@@ -212,7 +213,7 @@ export default function VerifyEmailForm({
             }
             else {
                 router.push(
-                    `/memberships`,
+                    `/memberships?next_page=checkout`,
                 );
             }
         } catch (error) {

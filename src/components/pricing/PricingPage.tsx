@@ -5,7 +5,7 @@ import { useMemo, useState } from "react";
 import { PricingCard } from "./PricingCard";
 import { PlanCategory, pricingPlansApiResponse } from "./data/pricing";
 
-export default function PricingPage() {
+export default function PricingPage({ nextPage }: { nextPage: string | undefined }) {
     const [category, setCategory] =
         useState<PlanCategory>("basic");
 
@@ -25,6 +25,7 @@ export default function PricingPage() {
             );
     }, [category]);
 
+    console.log(nextPage)
     return (
         <main
             className="
@@ -47,7 +48,6 @@ export default function PricingPage() {
                     >
                         Choose Your Adventure
                     </h1>
-
                     <p
                         className="
                             mx-auto mt-4 max-w-2xl
@@ -176,6 +176,7 @@ export default function PricingPage() {
                 >
                     {visiblePlans.map((plan) => (
                         <PricingCard
+                            nextPage={nextPage ?? "register"}
                             key={plan.id}
                             plan={plan}
                             annual={annual}

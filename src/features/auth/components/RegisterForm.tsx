@@ -73,6 +73,7 @@ export default function RegisterForm({
                     new URLSearchParams({
                         plan,
                         billing,
+                        email: values.email,
                     });
                 router.push(
                     `/verify-email?${verificationParams.toString()}`,
@@ -80,7 +81,7 @@ export default function RegisterForm({
             }
             else {
                 router.push(
-                    `/verify-email`,
+                    `/verify-email?email=${values.email}`,
                 );
             }
         } catch (error) {

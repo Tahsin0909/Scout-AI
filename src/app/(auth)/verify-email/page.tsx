@@ -13,6 +13,7 @@ type VerifyEmailPageProps = {
     searchParams: Promise<{
         plan?: string | string[];
         billing?: string | string[];
+        email?: string;
     }>;
 };
 
@@ -22,6 +23,7 @@ export default async function VerifyEmailPage({
 }: VerifyEmailPageProps) {
     const params = await searchParams;
 
+    const email = params.email;
     const plan = resolvePlan(params.plan);
     const billing = resolveBilling(params.billing);
 
@@ -34,7 +36,7 @@ export default async function VerifyEmailPage({
             sidebarQuoteAuthor="Outside Magazine"
         >
             <VerifyEmailForm
-                email="you@example.com"
+                email={email ?? "your mail"}
                 plan={plan}
                 billing={billing}
             />

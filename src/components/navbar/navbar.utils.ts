@@ -6,7 +6,7 @@ import {
   PUBLIC_NAVBAR_ITEMS,
   ROLE_NAVBAR_MENU_CONFIG,
   UNAUTHENTICATED_ITEMS,
-} from "./navbar.constants";
+} from "../../constants/navbar.constants";
 import { IMenu } from "./navbar.interface";
 
 export const getNavbarMenu = (

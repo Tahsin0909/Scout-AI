@@ -1,6 +1,6 @@
 // navbar.constants.ts
 import { IRole } from "@/features/user/user.interface";
-import { IMenu } from "./navbar.interface";
+import { IMenu } from "../components/navbar/navbar.interface";
 
 // All available menu items (similar to sidebar structure)
 export const ALL_NAVBAR_MENU_ITEMS: Record<string, IMenu> = {

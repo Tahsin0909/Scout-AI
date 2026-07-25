@@ -11,6 +11,7 @@ import { BillingType, PricingPlan } from "./data/pricing";
 type PricingCardProps = {
     plan: PricingPlan;
     annual: boolean;
+    nextPage: string
 };
 
 function formatCurrency(
@@ -28,6 +29,7 @@ function formatCurrency(
 export function PricingCard({
     plan,
     annual,
+    nextPage
 }: PricingCardProps) {
     const billing: BillingType = annual
         ? "annual"
@@ -185,7 +187,7 @@ export function PricingCard({
                 className="mt-5 rounded-md"
             >
                 <Link
-                    href={`/register?${registrationParams.toString()}`}
+                    href={`/${nextPage}?${registrationParams.toString()}`}
                 >
                     Get Started
                 </Link>
