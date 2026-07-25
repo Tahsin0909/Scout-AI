@@ -1,5 +1,6 @@
 import AuthPageLayout from "@/features/auth/components/AuthPageLayout";
 import VerifyEmailForm from "@/features/auth/components/VerifyEmailForm";
+import { resolveBilling, resolvePlan } from "@/lib/plan-query";
 import type { Metadata } from "next";
 
 
@@ -15,22 +16,14 @@ type VerifyEmailPageProps = {
     }>;
 };
 
-function getSearchParam(
-    value: string | string[] | undefined,
-) {
-    return Array.isArray(value) ? value[0] : value;
-}
 
 export default async function VerifyEmailPage({
     searchParams,
 }: VerifyEmailPageProps) {
     const params = await searchParams;
 
-    const plan =
-        getSearchParam(params.plan) ?? "trailhead";
-
-    const billing =
-        getSearchParam(params.billing) ?? "standard";
+    const plan = resolvePlan(params.plan);
+    const billing = resolveBilling(params.billing);
 
     return (
         <AuthPageLayout

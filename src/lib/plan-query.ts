@@ -10,8 +10,11 @@ export const BILLING_TYPES = [
     "annual",
 ] as const;
 
-export type PlanId = (typeof PLAN_IDS)[number];
-export type BillingType = (typeof BILLING_TYPES)[number];
+export type PlanId =
+    (typeof PLAN_IDS)[number];
+
+export type BillingType =
+    (typeof BILLING_TYPES)[number];
 
 type SearchParamValue =
     | string
@@ -21,27 +24,40 @@ type SearchParamValue =
 function getFirstValue(
     value: SearchParamValue,
 ): string | undefined {
-    return Array.isArray(value) ? value[0] : value;
+    return Array.isArray(value)
+        ? value[0]
+        : value;
 }
 
 export function resolvePlan(
     value: SearchParamValue,
-): PlanId {
+): PlanId | undefined {
     const plan = getFirstValue(value);
 
-    return PLAN_IDS.includes(plan as PlanId)
-        ? (plan as PlanId)
-        : "trailhead";
+    if (
+        !plan ||
+        !PLAN_IDS.includes(plan as PlanId)
+    ) {
+        return undefined;
+    }
+
+    return plan as PlanId;
 }
 
 export function resolveBilling(
     value: SearchParamValue,
-): BillingType {
-    const billing = getFirstValue(value);
+): BillingType | undefined {
+    const billing =
+        getFirstValue(value);
 
-    return BILLING_TYPES.includes(
-        billing as BillingType,
-    )
-        ? (billing as BillingType)
-        : "standard";
+    if (
+        !billing ||
+        !BILLING_TYPES.includes(
+            billing as BillingType,
+        )
+    ) {
+        return undefined;
+    }
+
+    return billing as BillingType;
 }

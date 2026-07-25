@@ -19,14 +19,15 @@ import { Logo } from "@/components/logo/Logo";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { useRouter } from "next/navigation";
+import { BillingType, PlanId } from "@/lib/plan-query";
 
 const OTP_LENGTH = 6;
 const RESEND_TIME = 30;
 
 type VerifyEmailFormProps = {
     email: string;
-    plan: string;
-    billing: string;
+    plan: PlanId | undefined;
+    billing: BillingType | undefined;
 };
 
 export default function VerifyEmailForm({
@@ -199,14 +200,21 @@ export default function VerifyEmailForm({
                 window.setTimeout(resolve, 800),
             );
 
-            const checkoutParams = new URLSearchParams({
-                plan,
-                billing,
-            });
-
-            router.replace(
-                `/checkout?${checkoutParams.toString()}`,
-            );
+            if (plan && billing) {
+                const verificationParams =
+                    new URLSearchParams({
+                        plan,
+                        billing,
+                    });
+                router.push(
+                    `/checkout?${verificationParams.toString()}`,
+                );
+            }
+            else {
+                router.push(
+                    `/memberships`,
+                );
+            }
         } catch (error) {
             console.error("OTP verification failed:", error);
         } finally {

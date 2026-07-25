@@ -17,8 +17,8 @@ import { useRouter } from "next/navigation";
 import { BillingType, PlanId } from "@/lib/plan-query";
 
 type RegisterFormProps = {
-    plan: PlanId;
-    billing: BillingType;
+    plan: PlanId | undefined;
+    billing: BillingType | undefined;
 };
 
 export default function RegisterForm({
@@ -68,15 +68,21 @@ export default function RegisterForm({
              * }
              */
 
-            const verificationParams =
-                new URLSearchParams({
-                    plan,
-                    billing,
-                });
-
-            router.push(
-                `/verify-email?${verificationParams.toString()}`,
-            );
+            if (plan && billing) {
+                const verificationParams =
+                    new URLSearchParams({
+                        plan,
+                        billing,
+                    });
+                router.push(
+                    `/verify-email?${verificationParams.toString()}`,
+                );
+            }
+            else {
+                router.push(
+                    `/verify-email`,
+                );
+            }
         } catch (error) {
             console.error(
                 "Registration failed:",
