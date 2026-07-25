@@ -72,7 +72,7 @@ export const pricingPlansApiResponse: PricingPlansApiResponse = {
             prices: {
                 standard: {
                     stripePriceId:
-                        "price_trailhead_monthly_replace_me",
+                        "price_1Tx14j2OsvEUQIN2GwmU8rXU",
                     monthlyEquivalent: 15,
                     amount: 15,
                     currency: "USD",
@@ -81,7 +81,7 @@ export const pricingPlansApiResponse: PricingPlansApiResponse = {
 
                 annual: {
                     stripePriceId:
-                        "price_trailhead_annual_replace_me",
+                        "price_1Tx1DZ2OsvEUQIN2J53V8yAC",
                     monthlyEquivalent: 12,
                     amount: 144,
                     currency: "USD",
@@ -116,7 +116,7 @@ export const pricingPlansApiResponse: PricingPlansApiResponse = {
             prices: {
                 standard: {
                     stripePriceId:
-                        "price_basecamp_monthly_replace_me",
+                        "price_1Tx17Y2OsvEUQIN2Z66WWfRn",
                     monthlyEquivalent: 20,
                     amount: 20,
                     currency: "USD",
@@ -125,7 +125,7 @@ export const pricingPlansApiResponse: PricingPlansApiResponse = {
 
                 annual: {
                     stripePriceId:
-                        "price_basecamp_annual_replace_me",
+                        "price_1Tx1EU2OsvEUQIN2lNDoGNoY",
                     monthlyEquivalent: 17,
                     amount: 204,
                     currency: "USD",
@@ -164,7 +164,7 @@ export const pricingPlansApiResponse: PricingPlansApiResponse = {
             prices: {
                 standard: {
                     stripePriceId:
-                        "price_summit_monthly_replace_me",
+                        "price_1Tx18k2OsvEUQIN29GARuQJU",
                     monthlyEquivalent: 30,
                     amount: 30,
                     currency: "USD",
@@ -173,7 +173,7 @@ export const pricingPlansApiResponse: PricingPlansApiResponse = {
 
                 annual: {
                     stripePriceId:
-                        "price_summit_annual_replace_me",
+                        "price_1Tx1Fw2OsvEUQIN2bbm9GaiX",
                     monthlyEquivalent: 25,
                     amount: 300,
                     currency: "USD",
@@ -252,3 +252,17 @@ export const pricingPlansApiResponse: PricingPlansApiResponse = {
     ],
 };
 
+
+export function getPlanById(
+    planId: string | undefined,
+): PricingPlan | undefined {
+    if (!planId) {
+        return undefined;
+    }
+
+    return pricingPlansApiResponse.data.find(
+        plan =>
+            plan.id === planId &&
+            plan.isActive,
+    );
+}
