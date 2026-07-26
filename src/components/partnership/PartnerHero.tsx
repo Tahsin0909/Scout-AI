@@ -27,39 +27,42 @@ export default function PartnerHero() {
                         </div>
 
                         <h1 className="text-[38px] font-bold leading-[1.28] tracking-[-0.025em] text-white sm:text-[48px] lg:text-[56px]">
-                            Choose Your Adventure
+                            Become
+
                             <br />
 
                             <span className="sm:whitespace-nowrap">
-                                Leave The{' '}
+                                a TripTrax{' '}
                                 <span className="italic text-[#C8F500]">
-                                    Science To Us
+                                    Partner
                                 </span>
                             </span>
                         </h1>
 
                         <p className="mt-4 max-w-[610px] text-[14px] leading-[1.45] text-white/90 sm:text-[15px]">
-                            The world&apos;s first AI-powered,
-                            human-in-the-loop adventure planning platform.
+                            Join a community of outdoor creators, adventurers, and explorers
                             <br className="hidden sm:block" />
-                            One tailored dossier — every detail of your
-                            expedition, built to a science.
+                            helping inspire others while earning rewards, exclusive benefits,
+                            and referral commissions.
                         </p>
 
                         <div className="mt-7 flex flex-col gap-3 sm:flex-row">
                             <Button
                                 asChild
+                                variant="primary"
+                                size={"lg"}
                             >
-                                <Link href="/plan">Plan Your Trip</Link>
+                                <Link href="/partnerShip-apply">Apply Now</Link>
                             </Button>
 
                             <Button
                                 asChild
                                 variant="ghost"
-                                className="h-[42px] w-full  sm:w-[151px]"
+                                size={"lg"}
+                                className=""
                             >
-                                <Link href="/how-it-works">
-                                    How It Works
+                                <Link href="/partnerShip-agreement">
+                                    Read Partner Agreement
                                 </Link>
                             </Button>
                         </div>

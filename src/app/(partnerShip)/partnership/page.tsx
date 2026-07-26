@@ -1,10 +1,13 @@
+import PartnerExpedition from '@/components/partnership/PartnerExpedition';
 import PartnerHero from '@/components/partnership/PartnerHero';
-import React from 'react';
+import TrustedCompanies from '@/components/trustedCompanies/TrustedCompanies';
 
 const page = () => {
     return (
         <div>
             <PartnerHero />
+            <TrustedCompanies />
+            <PartnerExpedition />
         </div>
     );
 };
