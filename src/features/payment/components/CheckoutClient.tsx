@@ -1162,7 +1162,7 @@ function CheckoutError({
         <main
             className="
                 flex min-h-screen items-center
-                justify-center bg-[#f6f7f4]
+                justify-center 
                 px-4
             "
         >
@@ -1170,7 +1170,7 @@ function CheckoutError({
                 className="
                     w-full max-w-md rounded-2xl
                     border border-black/[0.07]
-                    bg-white p-8 text-center
+                     p-8 text-center
                     shadow-xl shadow-black/5
                 "
             >
@@ -1178,7 +1178,7 @@ function CheckoutError({
                     className="
                         mx-auto flex size-14
                         items-center justify-center
-                        rounded-2xl bg-red-50
+                        rounded-2xl
                         text-red-500
                     "
                 >

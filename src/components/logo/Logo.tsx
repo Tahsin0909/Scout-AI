@@ -8,6 +8,7 @@ export const Logo = ({ className }: { className?: string }) => {
         src="/apexLogo.png"
         width={180}
         height={40}
+        loading="eager"
         className={cn(
           "xl:w-[170px] xs:w-[140px] w-[130px] h-auto lg:h-[55px] object-contain dark:hidden",
           className
@@ -18,6 +19,7 @@ export const Logo = ({ className }: { className?: string }) => {
         src="/apexLogo.png"
         width={180}
         height={40}
+        loading="eager"
         className={cn(
           "xl:w-[170px] xs:w-[140px] w-[130px] h-auto lg:h-[55px] object-contain not-dark:hidden",
           className

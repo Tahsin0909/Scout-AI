@@ -4,10 +4,6 @@ import { IMenu } from "../components/navbar/navbar.interface";
 
 // All available menu items (similar to sidebar structure)
 export const ALL_NAVBAR_MENU_ITEMS: Record<string, IMenu> = {
-  home: {
-    label: "Home",
-    href: "/",
-  },
   memberships: {
     label: "Memberships",
     href: "/memberships",
@@ -27,6 +23,10 @@ export const ALL_NAVBAR_MENU_ITEMS: Record<string, IMenu> = {
   contact: {
     label: "Contact",
     href: "/contact",
+  },
+  partnership: {
+    label: "Partnership",
+    href: "/partnership",
   },
 };
 
@@ -66,10 +66,11 @@ export const COMMON_NAVBAR_ROUTES = [
 ];
 
 // Public menu items (accessible without authentication)
-export const PUBLIC_NAVBAR_ITEMS: string[] = ["home", "memberships", "articles", "about", "contact", "explore"]
+export const PUBLIC_NAVBAR_ITEMS: string[] = ["memberships", "explore", "articles", "about", "partnership", "contact"]
 
 // Role-based menu configuration
 export const ROLE_NAVBAR_MENU_CONFIG: Record<IRole, string[]> = {
-  [IRole.ADMIN]: ["home", "memberships", "articles", "about", "contact", "explore"],
-  [IRole.USER]: ["home", "memberships", "articles", "about", "contact", "explore"],
+  [IRole.ADMIN]: ["memberships", "articles", "about", "contact", "explore"],
+  [IRole.USER]: ["memberships", "articles", "about", "contact", "explore"],
+  [IRole.PARTNER]: ["memberships", "articles", "about", "contact", "explore", "partnership"],
 };
