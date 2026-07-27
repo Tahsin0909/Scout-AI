@@ -82,4 +82,5 @@ export const ROLE_MENU_CONFIG: Record<IRole, string[]> = {
     "payments",
     "users",
   ],
+  [IRole.PARTNER]: []
 };
