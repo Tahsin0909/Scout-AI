@@ -1,3 +1,5 @@
+import { BadgeCheck, CircleDollarSign, FileCheck2, FileText, LucideIcon } from "lucide-react";
+
 export const partnerFaqs = [
     {
         question: "Who can apply?",
@@ -23,5 +25,102 @@ export const partnerFaqs = [
         question: "What happens after approval?",
         answer:
             "Once approved, you will receive access to your partner dashboard, unique referral link, promotional resources, and commission details. You can then begin sharing your link and tracking your results.",
+    },
+];
+
+
+export type PartnershipStep = {
+    number: number;
+    title: string;
+    description: string;
+    icon: LucideIcon;
+};
+
+export type PartnerTier = {
+    name: string;
+    subtitle: string;
+    features: string[];
+    buttonLabel: string;
+    featured?: boolean;
+};
+
+export const partnershipSteps: PartnershipStep[] = [
+    {
+        number: 1,
+        title: "Apply",
+        description:
+            "Fill out our simple application form with your details.",
+        icon: FileText,
+    },
+    {
+        number: 2,
+        title: "Review",
+        description:
+            "Our team reviews your content and audience alignment.",
+        icon: FileCheck2,
+    },
+    {
+        number: 3,
+        title: "Get Approved",
+        description:
+            "Receive your acceptance and digital partner kit.",
+        icon: BadgeCheck,
+    },
+    {
+        number: 4,
+        title: "Start Earning",
+        description:
+            "Share your links and watch your commissions grow.",
+        icon: CircleDollarSign,
+    },
+];
+
+export const partnerTiers: PartnerTier[] = [
+    {
+        name: "Member",
+        subtitle: "Entry Level",
+        features: [
+            "3k+ Followers",
+            "2 Trip Packages Per Month",
+            "Free Elite Membership",
+            "Early Access To New Features",
+            "Co-Branding Authorization",
+            "Gear Partnership Opportunities",
+            "Dedicated Support",
+        ],
+        buttonLabel: "Select Tier",
+    },
+    {
+        name: "Ambassador",
+        subtitle: "Ultimate Impact",
+        featured: true,
+        features: [
+            "10k+ Followers",
+            "Ambassador Badge",
+            "10 Trip Packages Per Month",
+            "Free Elite Membership",
+            "Referral Income Eligibility",
+            "Monthly Referral Bonus",
+            "Early Access To New Features",
+            "Co-Branding Authorization",
+            "Priority Brand Promotion And Gear Partnerships",
+            "Featured Placement On TripTrax's Platforms",
+            "Priority Support",
+        ],
+        buttonLabel: "Apply for Ambassador",
+    },
+    {
+        name: "Advocate",
+        subtitle: "Rising Star",
+        features: [
+            "5k+ Followers",
+            "6 Trip Packages Per Month",
+            "Free Elite Membership",
+            "Referral Income Eligibility",
+            "Early Access To New Features",
+            "Brand Promotion And Gear Partnerships",
+            "Dedicated Support",
+        ],
+        buttonLabel: "Select Tier",
     },
 ];

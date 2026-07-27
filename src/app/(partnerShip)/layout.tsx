@@ -1,6 +1,5 @@
 import { Footer } from "@/components/footer/components/Footer";
 import { Navbar } from "@/components/navbar/components/Navbar";
-import PartnerCTA from "@/components/partnership/PartnerCTA";
 import { getDefaultMetadata } from "@/utils/seo";
 
 
@@ -15,7 +14,6 @@ export default function Layout({
         <div>
             <Navbar />
             {children}
-            <PartnerCTA />
             <Footer />
         </div>
     );
