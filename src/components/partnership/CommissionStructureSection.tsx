@@ -2,7 +2,7 @@
 
 const CommissionStructureSection = () => {
     return (
-        <section className="py-16 bg-gray-50">
+        <section className="py-16 ">
             <div className="container">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                     {/* Left Content */}
@@ -16,7 +16,7 @@ const CommissionStructureSection = () => {
                             </p>
                         </div>
 
-                        <div className="bg-gray-50 p-5 rounded-lg border-l-4 border-primary">
+                        <div className="bg-gray-50 dark:bg-gray-600 p-5 rounded-lg border-l-4 border-primary">
                             <p className=" italic">
                                 "Partner payouts are processed monthly through Stripe Connect, ensuring fast and secure transfers directly to your account."
                             </p>

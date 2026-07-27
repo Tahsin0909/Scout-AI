@@ -1,3 +1,5 @@
+import { CalendarDays } from "lucide-react";
+
 /* eslint-disable react/no-unescaped-entities */
 const policyNavigation = [
     { id: "eligibility", label: "Eligibility" },
@@ -73,9 +75,23 @@ export default function RefundPolicyPage() {
                             content, or services provided by TripTrax.
                         </p>
 
-                        <p className="mt-4 text-sm text-white/45 sm:text-base">
-                            Last updated: July 22, 2026
-                        </p>
+                        <div
+                            className="
+                                mt-6 flex items-center gap-2
+                                text-sm text-white/55
+                                sm:text-base
+                            "
+                        >
+                            <CalendarDays
+                                aria-hidden="true"
+                                className="size-5"
+                                strokeWidth={1.7}
+                            />
+
+                            <span>
+                                Last Updated: 19 JULY 2026
+                            </span>
+                        </div>
                     </div>
                 </div>
             </section>

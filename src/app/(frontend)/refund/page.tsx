@@ -1,3 +1,5 @@
+import { CalendarDays } from "lucide-react";
+
 const policyNavigation = [
     { id: "general-policy", label: "General Policy" },
     { id: "monthly-subscriptions", label: "Monthly Subscriptions" },
@@ -66,10 +68,23 @@ export default function RefundPolicyPage() {
                             before purchasing a membership, service, digital product, or
                             merchandise.
                         </p>
+                        <div
+                            className="
+                                mt-6 flex items-center gap-2
+                                text-sm text-white/55
+                                sm:text-base
+                            "
+                        >
+                            <CalendarDays
+                                aria-hidden="true"
+                                className="size-5"
+                                strokeWidth={1.7}
+                            />
 
-                        <p className="mt-4 text-sm text-white/45 sm:text-base">
-                            Last updated: July 22, 2026
-                        </p>
+                            <span>
+                                Last Updated: 19 JULY 2026
+                            </span>
+                        </div>
                     </div>
                 </div>
             </section>
