@@ -1,7 +1,7 @@
 "use client";
 
 import { useAuth } from "@/features/auth/hooks/useAuth";
-import { FilePenLine, UserRoundPlus } from "lucide-react";
+import { DollarSign, FilePenLine, UserCheck, UserRoundPlus, Users } from "lucide-react";
 import { referralData } from "../../data/dashboard";
 import { ProgressCard } from "./ProgressCard";
 import ReferralTable from "./ReferralTable";
@@ -62,16 +62,19 @@ const PartnerDashboard = () => {
                 {/* Summary cards */}
                 <section className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
                     <SummaryCard
+                        icon={<Users className="h-5 w-5" />}
                         label="Total Referrals"
                         value={dashboardSummary.totalReferrals.toString()}
                     />
 
                     <SummaryCard
+                        icon={<UserCheck className="h-5 w-5" />}
                         label="Active Referrals"
                         value={dashboardSummary.activeReferrals.toString()}
                     />
 
                     <SummaryCard
+                        icon={<DollarSign className="h-5 w-5 " />}
                         label="Referrals Revenue"
                         value={`$${dashboardSummary.referralRevenue}`}
                         className="sm:col-span-2 lg:col-span-1"

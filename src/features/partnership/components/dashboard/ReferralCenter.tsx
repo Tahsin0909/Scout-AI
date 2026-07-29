@@ -3,9 +3,12 @@
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/features/auth/hooks/useAuth";
 import {
+    BadgeDollarSign,
     Check,
     Copy,
-    Link2
+    Link2,
+    MousePointerClick,
+    UserRoundPlus
 } from "lucide-react";
 import { useState } from "react";
 import { referralData } from "../../data/dashboard";
@@ -87,16 +90,19 @@ const ReferralCenter = () => {
                 {/* Summary cards */}
                 <section className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
                     <SummaryCard
+                        icon={<MousePointerClick className="h-4 w-4" />}
                         label="Total Click"
                         value={referralSummary.totalClicks.toLocaleString("en-US")}
                     />
 
                     <SummaryCard
+                        icon={<UserRoundPlus className="h-4 w-4" />}
                         label="Total Signups"
                         value={referralSummary.totalSignups.toLocaleString("en-US")}
                     />
 
                     <SummaryCard
+                        icon={<BadgeDollarSign className="h-4 w-4" />}
                         label="Referrals Revenue"
                         value={`$${referralSummary.referralRevenue}`}
                         className="sm:col-span-2 lg:col-span-1"
