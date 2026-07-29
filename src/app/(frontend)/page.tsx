@@ -5,9 +5,9 @@ import HowItWorksSection from '@/components/howItWorksSection/HowItWorksSection'
 import TestimonialsSection from '@/components/testimonials/TestimonialsSection';
 import TravelModesSection from '@/components/travelModesSection/TravelModesSection';
 import TrustedCompanies from '@/components/trustedCompanies/TrustedCompanies';
-import React from 'react';
 
 const page = () => {
+
     return (
         <div>
             <AdventureHero />

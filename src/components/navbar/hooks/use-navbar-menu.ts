@@ -2,7 +2,7 @@
 
 import { useAuth } from "@/features/auth/hooks/useAuth";
 import { useMemo } from "react";
-import { getNavbarMenu } from "../navbar.utils";
+import { getNavbarAccountMenu, getNavbarMenu } from "../navbar.utils";
 
 export const useNavbarMenu = () => {
   const { getUserRole, isAuthenticated } = useAuth();
@@ -14,3 +14,15 @@ export const useNavbarMenu = () => {
 
   return navbarMenu;
 };
+
+export const useAccountMenu = () => {
+  const { getUserRole } = useAuth();
+  const role = getUserRole();
+
+  const navbarMenu = useMemo(() => {
+    return getNavbarAccountMenu(role);
+  }, [role]);
+
+  return navbarMenu;
+};
+

@@ -1,6 +1,7 @@
 // utils/navbar.ts
 import { IRole } from "@/features/user/user.interface";
 import {
+  ACCOUNT_MENU_CONFIG,
   ALL_NAVBAR_MENU_ITEMS,
   AUTHENTICATED_MOBILE_ITEMS,
   PUBLIC_NAVBAR_ITEMS,
@@ -18,8 +19,7 @@ export const getNavbarMenu = (
 } => {
   // Get menu items based on role or public items
   // Use optional chaining and nullish coalescing to handle missing role configs
-  const menuKeys =
-    (role && ROLE_NAVBAR_MENU_CONFIG[role]) ?? PUBLIC_NAVBAR_ITEMS;
+  const menuKeys = (role && ROLE_NAVBAR_MENU_CONFIG[role]) ?? PUBLIC_NAVBAR_ITEMS;
 
   const menuItems = menuKeys.map((key) => ALL_NAVBAR_MENU_ITEMS[key]);
 
@@ -44,5 +44,24 @@ export const getNavbarMenu = (
   return {
     desktopMenu,
     mobileMenu,
+  };
+};
+
+
+export const getNavbarAccountMenu = (
+  role: IRole | null,
+): {
+  accountMenu: IMenu[];
+} => {
+  // Get menu items based on role or public items
+  // Use optional chaining and nullish coalescing to handle missing role configs
+  const menuKeys = (role && ACCOUNT_MENU_CONFIG[role]) ?? [];
+
+  const menuItems = menuKeys.map((key) => ALL_NAVBAR_MENU_ITEMS[key]);
+
+  // Desktop menu - only show the base navigation items
+  const accountMenu = menuItems;
+  return {
+    accountMenu,
   };
 };

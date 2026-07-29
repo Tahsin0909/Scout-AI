@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
 import { IRole, IUser } from "@/features/user/user.interface";
@@ -25,10 +26,14 @@ import {
   useVerifyOtpMutation,
 } from "../auth.api";
 import { reset, setEmail, setToken, setUser } from "../store/auth.slice";
+import { currentToken, currentUser } from "@/features/user/data/data";
 
 export const useAuth = (): UseAuthReturn => {
   const dispatch = useDispatch();
   const router = useRouter();
+
+
+  //ToDO: Remove development mode dummy data
 
   const { user, token, email } = useAppSelector((state) => state.auth);
 
@@ -47,7 +52,7 @@ export const useAuth = (): UseAuthReturn => {
     }
   );
 
-  const profile = profileData?.data || null;
+  const profile = profileData?.data || currentUser || null;
 
   const isLoading =
     sendOtpLoading ||
@@ -215,12 +220,12 @@ export const useAuth = (): UseAuthReturn => {
   const isUser = useCallback((): boolean => hasRole([IRole.USER]), [hasRole]);
 
   return {
-    user,
-    token,
-    email,
+    user: currentUser,
+    token: currentToken,
+    email: currentUser?.email || "",
     profile,
     isLoading,
-    isAuthenticated: Boolean(token),
+    isAuthenticated: Boolean(currentToken),
     handleSendOtp,
     handleRegister,
     handleLogin,

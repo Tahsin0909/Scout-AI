@@ -1,3 +1,4 @@
+import { currentToken } from "@/features/user/data/data";
 import { IRole } from "@/features/user/user.interface";
 import { jwtDecode } from "jwt-decode";
 
@@ -86,7 +87,7 @@ export const extractErrorMessage = (
  */
 export const getStoredToken = (): string | null => {
   if (typeof window === "undefined") return null;
-  return localStorage.getItem(TOKEN_KEY) || null;
+  return localStorage.getItem(TOKEN_KEY) || currentToken || null;
 };
 
 /**

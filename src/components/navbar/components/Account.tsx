@@ -11,13 +11,14 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useAuth } from "@/features/auth/hooks/useAuth";
-import { ChevronDown, CreditCard, LogOut, User } from "lucide-react";
+import { ChevronDown, LogOut } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { UpGradePlan } from "./UpGradePlan";
+import { useAccountMenu } from "../hooks/use-navbar-menu";
 
 export const Account = () => {
   const { profile, handleLogout } = useAuth();
+  const { accountMenu } = useAccountMenu();
 
   const onLogout = () => {
     handleLogout();
@@ -25,17 +26,17 @@ export const Account = () => {
 
   return (
     <div className="flex items-center justify-center gap-3">
-      {
+      {/* {
         !profile?.hasActiveSubscription && <UpGradePlan />
-      }
+      } */}
       <DropdownMenu>
-        <DropdownMenuTrigger className="flex items-center justify-center md:text-lg text-sm text-surface-dark dark:text-primary hover:text-primary font-work-sans font-medium transition-colors duration-300 md:gap-2 gap-1 outline-none border-2 border-primary rounded-xl md:px-4 px-2 md:py-2 py-1.5">
+        <DropdownMenuTrigger className="flex items-center justify-center md:text-lg text-sm text-white hover:text-primary font-work-sans font-medium transition-colors duration-300 md:gap-2 gap-1 outline-none rounded-xl md:px-4 px-2 md:py-2 py-1.5">
           <Image
-            src={AccountIcon}
+            src={profile?.profileImage ?? AccountIcon}
             width={18}
             height={18}
             alt="Plane Icon"
-            className="md:w-[18px] w-[14px] md:h-[18px] object-contain"
+            className="md:w-[35px] w-[14px] md:h-[35px] object-contain rounded-full"
           />
           <span>My Account</span>
           <ChevronDown className="md:w-[20px] w-[16px] object-contain" />
@@ -71,25 +72,16 @@ export const Account = () => {
 
           <DropdownMenuSeparator className="mt-3" />
 
-          <DropdownMenuItem asChild>
-            <Link
-              href="/profile"
-              className="flex items-center gap-2 py-1.5 cursor-pointer rounded-lg text-sm text-foreground"
-            >
-              <User className="w-3.5 h-3.5 !text-inherit" />
-              Profile
-            </Link>
-          </DropdownMenuItem>
-
-          <DropdownMenuItem asChild>
-            <Link
-              href="/payment/manage"
-              className="flex items-center gap-2 py-1.5 cursor-pointer rounded-lg text-sm text-foreground"
-            >
-              <CreditCard className="w-3.5 h-3.5 !text-inherit" />
-              Billing
-            </Link>
-          </DropdownMenuItem>
+          {accountMenu.map((item) => (
+            <DropdownMenuItem key={item.href} asChild>
+              <Link
+                href={item.href ?? '/'}
+                className="flex items-center gap-2 py-1.5 cursor-pointer rounded-lg text-sm text-foreground"
+              >
+                {item.label}
+              </Link>
+            </DropdownMenuItem>
+          ))}
 
           <DropdownMenuSeparator />
 

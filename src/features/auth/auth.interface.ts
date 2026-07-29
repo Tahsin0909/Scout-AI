@@ -3,8 +3,6 @@ import { ApiResponse } from "@/types/api";
 
 export interface AuthState {
   email: string;
-  currentStep: number;
-  totalSteps: number;
   token: string;
   user: Partial<IUser> | null;
 }

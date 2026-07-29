@@ -4,6 +4,10 @@ import { IMenu } from "../components/navbar/navbar.interface";
 
 // All available menu items (similar to sidebar structure)
 export const ALL_NAVBAR_MENU_ITEMS: Record<string, IMenu> = {
+  Home: {
+    label: "Home",
+    href: "/",
+  },
   memberships: {
     label: "Memberships",
     href: "/memberships",
@@ -27,6 +31,30 @@ export const ALL_NAVBAR_MENU_ITEMS: Record<string, IMenu> = {
   partnership: {
     label: "Partnership",
     href: "/partnership",
+  },
+  partnerDashboard: {
+    label: "Dashboard",
+    href: "/partner-dashboard",
+  },
+  partnerReferral: {
+    label: "Referral Center",
+    href: "/partner-referral",
+  },
+  partnerEarnings: {
+    label: "Earnings",
+    href: "/partner-earning",
+  },
+  partnerContent: {
+    label: "Content",
+    href: "/partner-content",
+  },
+  partnerAccount: {
+    label: "Profile",
+    href: "/partners-account",
+  },
+  userAccount: {
+    label: "Profile",
+    href: "/my-profile",
   },
 };
 
@@ -71,6 +99,12 @@ export const PUBLIC_NAVBAR_ITEMS: string[] = ["memberships", "explore", "article
 // Role-based menu configuration
 export const ROLE_NAVBAR_MENU_CONFIG: Record<IRole, string[]> = {
   [IRole.ADMIN]: ["memberships", "articles", "about", "contact", "explore"],
-  [IRole.USER]: ["memberships", "articles", "about", "contact", "explore"],
-  [IRole.PARTNER]: ["memberships", "articles", "about", "contact", "explore", "partnership"],
+  [IRole.PARTNER]: ["Home", "partnership", "partnerDashboard", "partnerReferral", "partnerEarnings", "partnerContent"],
+  [IRole.USER]: ["memberships", "articles", "about", "contact", "explore", "partnership"],
+};
+
+export const ACCOUNT_MENU_CONFIG: Record<IRole, string[]> = {
+  [IRole.ADMIN]: [],
+  [IRole.PARTNER]: ["partnerAccount"],
+  [IRole.USER]: ["userAccount"],
 };
