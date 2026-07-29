@@ -1,14 +1,10 @@
 "use client";
 
-import { DataTable } from "@/components/data-table/DataTable";
-import { Badge } from "@/components/ui/badge";
 import { useAuth } from "@/features/auth/hooks/useAuth";
-import { ColumnDef } from "@tanstack/react-table";
-import { Calendar, CreditCard, FilePenLine, UserRoundPlus } from "lucide-react";
-import Link from "next/link";
+import { FilePenLine, UserRoundPlus } from "lucide-react";
 import { referralData } from "../../data/dashboard";
-import { IReferral } from "../../partnership.interface";
 import { ProgressCard } from "./ProgressCard";
+import ReferralTable from "./ReferralTable";
 import { SummaryCard } from "./SummaryCard";
 
 const dashboardSummary = {
@@ -35,8 +31,6 @@ const PartnerDashboard = () => {
         [profile?.firstName, profile?.lastName].filter(Boolean).join(" ") ||
         "Marshal White";
 
-    const recentReferrals = referralData;
-
     const remainingReferrals = Math.max(
         dashboardSummary.tierTarget -
         dashboardSummary.currentTierProgress,
@@ -49,61 +43,6 @@ const PartnerDashboard = () => {
         100,
         100,
     );
-
-    const columns: ColumnDef<IReferral>[] = [
-        {
-            accessorKey: "date",
-            header: "Date",
-            cell: ({ row }) => (
-                <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <Calendar className="h-3.5 w-3.5" />
-                    {new Date(row.original.date).toLocaleDateString()}
-                </div>
-            ),
-        },
-        {
-            accessorKey: "name",
-            header: "Referred User",
-            cell: ({ row }) => (
-                <div className="flex items-center gap-2">
-                    <div className="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center text-primary font-medium text-xs">
-                        {row.original.firstName[0]}{row.original.lastName[0]}
-                    </div>
-                    <div className="flex flex-col">
-                        <span className="text-sm font-medium">
-                            {row.original.firstName} {row.original.lastName}
-                        </span>
-                        <span className="text-xs text-muted-foreground">ID: {row.original.id}</span>
-                    </div>
-                </div>
-            ),
-        },
-        {
-            accessorKey: "membership",
-            header: "Membership",
-            cell: ({ row }) => {
-                const variant =
-                    row.original.membership === "Enterprise" ? "default" :
-                        row.original.membership === "Premium" ? "secondary" : "outline";
-
-                return (
-                    <Badge variant={variant} className="capitalize">
-                        {row.original.membership}
-                    </Badge>
-                );
-            },
-        },
-        {
-            accessorKey: "commission",
-            header: "Commission",
-            cell: ({ row }) => (
-                <div className="flex items-center gap-1.5 font-medium text-green-600 dark:text-green-400">
-                    <CreditCard className="h-3.5 w-3.5" />
-                    ${row.original.commission.toFixed(2)}
-                </div>
-            ),
-        }
-    ];
 
     return (
         <main className="container">
@@ -187,54 +126,10 @@ const PartnerDashboard = () => {
                 </section>
 
                 {/* Existing DataTable */}
-                <section className="mt-5 rounded-md bg-card p-3 sm:p-4">
-                    <div className="mb-3 flex items-center justify-between gap-4">
-                        <h2 className="text-base font-medium sm:text-lg">
-                            Recent Referrals
-                        </h2>
-
-                        <Link
-                            href="/partner/referrals"
-                            className="shrink-0 text-xs font-medium text-yellow-400 transition-colors hover:text-yellow-300 sm:text-sm"
-                        >
-                            View All
-                        </Link>
-                    </div>
-
-                    <div
-                        className="
-              overflow-x-auto
-              rounded-md
-              [&_table]:border-collapse
-              [&_thead_tr]:border-none
-              [&_th]:h-10
-              [&_th]:px-4
-              [&_th]:text-md
-              [&_th]:font-normal
-              sm:[&_th]:px-5
-              [&_tbody_tr]:border-white/[0.06]
-              [&_tbody_tr]:transition-colors
-              [&_td]:px-4
-              [&_td]:py-3.5
-              sm:[&_td]:px-5
-            "
-                    >
-                        <DataTable
-                            data={recentReferrals}
-                            columns={columns}
-                            paginationMode="client"
-                            searchMode="client"
-                            total={recentReferrals.length}
-                        />
-                    </div>
-                </section>
+                <ReferralTable referralData={referralData.slice(0, 5)} />
             </div>
         </main>
     );
 };
-
-
-
-
 
 export default PartnerDashboard;

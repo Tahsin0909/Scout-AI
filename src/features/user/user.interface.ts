@@ -26,6 +26,8 @@ export interface IUser {
   stripeCustomerId: string;
   createdAt: string;
   updatedAt: string;
+  referralLink?: string;
+  referralCode?: string;
 }
 
 export type TCreateUser = {
