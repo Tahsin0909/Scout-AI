@@ -58,3 +58,12 @@ export type PartnerApplicationState = {
 export type IPartnership = {
   id: string
 };
+
+export interface IReferral {
+  id: string;
+  date: string;
+  firstName: string;
+  lastName: string;
+  membership: string;
+  commission: number;
+}

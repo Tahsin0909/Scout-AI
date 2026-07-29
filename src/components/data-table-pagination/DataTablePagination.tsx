@@ -28,7 +28,7 @@ export function DataTablePagination<TData>({
           to{" "}
           {Math.min(
             (table.getState().pagination.pageIndex + 1) *
-              table.getState().pagination.pageSize,
+            table.getState().pagination.pageSize,
             table.getFilteredRowModel().rows.length
           )}{" "}
           of {table.getFilteredRowModel().rows.length} results
@@ -58,6 +58,7 @@ export function DataTablePagination<TData>({
         <div className="flex items-center gap-2">
           <Button
             variant="outline"
+            className="h-fit p-1"
             size="icon"
             onClick={() => table.previousPage()}
             disabled={!table.getCanPreviousPage()}
@@ -72,6 +73,7 @@ export function DataTablePagination<TData>({
           <Button
             variant="outline"
             size="icon"
+            className="h-fit p-1"
             onClick={() => table.nextPage()}
             disabled={!table.getCanNextPage()}
           >

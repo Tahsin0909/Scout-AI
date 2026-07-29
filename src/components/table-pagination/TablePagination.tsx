@@ -58,6 +58,7 @@ export const TablePagination = ({
         <div className="flex items-center gap-2">
           <Button
             variant="outline"
+            className="h-fit p-1"
             size="icon"
             onClick={() => onPageChange(page - 1)}
             disabled={page <= 1}
@@ -69,6 +70,7 @@ export const TablePagination = ({
           </div>
           <Button
             variant="outline"
+            className="h-fit p-1"
             size="icon"
             onClick={() => onPageChange(page + 1)}
             disabled={page >= totalPages}
