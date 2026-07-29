@@ -10,16 +10,8 @@ export interface IUser {
   lastName: string;
   email: string;
   profileImage: string | null;
-  companyName: string;
-  jobTitle: string;
-  jobFunction: string;
-  country: string;
-  jobLevel: string;
-  companyIndustry: string;
-  companySize: string;
-  postalCode: string;
-  phone: string;
-  isEmailVerified: boolean;
+  location: string;
+  phoneNumber: string;
   role: IRole;
   isActive: boolean;
   hasActiveSubscription: boolean;
@@ -46,3 +38,32 @@ export type TCreateUser = {
 }
 
 
+export interface UserProfileCardProps {
+  user: IUser;
+  onProfileUpdate?: (data: {
+    fullName: string;
+    email: string;
+    phoneNumber: string;
+    location: string;
+    photo?: File | null;
+  }) => void | Promise<void>;
+  onPasswordUpdate?: (data: {
+    currentPassword: string;
+    newPassword: string;
+    confirmPassword: string;
+  }) => void | Promise<void>;
+  onDeleteAccount?: () => void | Promise<void>;
+}
+
+export interface ProfileFormData {
+  fullName: string;
+  email: string;
+  phoneNumber: string;
+  location: string;
+}
+
+export interface PasswordFormData {
+  currentPassword: string;
+  newPassword: string;
+  confirmPassword: string;
+}
