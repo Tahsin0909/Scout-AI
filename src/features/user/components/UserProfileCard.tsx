@@ -16,15 +16,15 @@ import { IUser, PasswordFormData, ProfileFormData, UserProfileCardProps } from "
 
 
 const getMemberSince = (user: IUser) => {
-  if (user.createdAt) {
-    return user.createdAt;
+  if (user?.createdAt) {
+    return user?.createdAt;
   }
 
-  if (!user.createdAt) {
+  if (!user?.createdAt) {
     return "June 2026";
   }
 
-  const parsedDate = new Date(user.createdAt);
+  const parsedDate = new Date(user?.createdAt);
 
   if (Number.isNaN(parsedDate.getTime())) {
     return "June 2026";
@@ -46,24 +46,24 @@ export const UserProfileCard = ({
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const initialFullName =
-    profile.firstName ||
-    [profile.firstName, profile.lastName]
+    profile?.firstName ||
+    [profile?.firstName, profile?.lastName]
       .filter(Boolean)
       .join(" ") ||
     "Alex Johnson";
 
   const initialImage =
-    profile.profileImage ||
+    profile?.profileImage ||
     "";
 
   const [profileForm, setProfileForm] =
     useState<ProfileFormData>({
       fullName: initialFullName,
-      email: profile.email || "",
+      email: profile?.email || "",
       phoneNumber:
-        profile.phoneNumber || profile.phoneNumber || "",
+        profile?.phoneNumber || profile?.phoneNumber || "",
       location:
-        profile.location || ""
+        profile?.location || ""
     });
 
   const [passwordForm, setPasswordForm] =
@@ -88,26 +88,26 @@ export const UserProfileCard = ({
 
   useEffect(() => {
     const updatedName =
-      profile.firstName ||
-      [profile.firstName, profile.lastName]
+      profile?.firstName ||
+      [profile?.firstName, profile?.lastName]
         .filter(Boolean)
         .join(" ") ||
       "Alex Johnson";
 
     setProfileForm({
       fullName: updatedName,
-      email: profile.email || "",
+      email: profile?.email || "",
       phoneNumber:
-        profile.phoneNumber || profile.phoneNumber || "",
+        profile?.phoneNumber || profile?.phoneNumber || "",
       location:
-        profile.location || ""
+        profile?.location || ""
     });
 
     setPhotoPreview(
-      profile.profileImage ||
+      profile?.profileImage ||
       "",
     );
-  }, [profile.email, profile.firstName, profile.lastName, profile.location, profile.phoneNumber, profile.profileImage, user]);
+  }, [profile?.email, profile?.firstName, profile?.lastName, profile?.location, profile?.phoneNumber, profile?.profileImage, user]);
 
   const handleProfileChange = (
     event: ChangeEvent<HTMLInputElement>,

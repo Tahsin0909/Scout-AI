@@ -39,7 +39,7 @@ export type TCreateUser = {
 
 
 export interface UserProfileCardProps {
-  user: IUser;
+  user: IUser | null;
   onProfileUpdate?: (data: {
     fullName: string;
     email: string;
