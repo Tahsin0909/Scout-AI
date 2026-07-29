@@ -40,14 +40,14 @@ const AllInclusivePartnerTools = () => {
                         return (
                             <div
                                 key={index}
-                                className="bg-white rounded-xl p-6 flex flex-col items-center justify-center text-center border border-gray-100 hover:shadow-md transition-shadow duration-300"
+                                className="bg-card rounded-xl p-6 flex flex-col items-center justify-center text-center hover:shadow-md transition-shadow duration-300"
                             >
                                 {/* Icon Container */}
                                 <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center mb-3">
                                     <Icon className="w-6 h-6 text-gray-800" strokeWidth={2.5} />
                                 </div>
                                 {/* Label */}
-                                <span className="text-sm font-medium text-gray-700">
+                                <span className="text-sm font-medium ">
                                     {tool.label}
                                 </span>
                             </div>

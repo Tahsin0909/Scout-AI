@@ -76,7 +76,7 @@ export default function PartnerShipPath() {
 
                                 {/* Icon */}
                                 <div
-                                    className="mb-2 w-fit rounded-lg text-white p-2 bg-icon-bg-hover"
+                                    className="mb-2 w-fit rounded-lg text-white p-2 bg-icon-bg-hover dark:bg-gray-800"
                                 >
                                     <Icon
                                         className="size-[17px]"
@@ -119,8 +119,8 @@ export default function PartnerShipPath() {
                             className={`
                                 relative flex min-h-[500px]
                                 flex-col overflow-hidden
-                                rounded-xl border
-                                bg-white p-5 text-[#252525]
+                                rounded-xl
+                                bg-white dark:bg-white/70 dark:backdrop-blur-xl  p-5 text-[#252525]
                                 shadow-[0_18px_45px_rgba(0,0,0,0.18)]
                                 transition-transform
                                 duration-300
@@ -140,7 +140,7 @@ export default function PartnerShipPath() {
                                         <p
                                             className="
                                                 mt-1 text-sm md:text-base
-                                                text-neutral-400
+                                                text-neutral-400 dark:text-black
                                             "
                                         >
                                             {tier.subtitle}
