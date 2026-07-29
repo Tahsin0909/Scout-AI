@@ -56,6 +56,10 @@ export const ALL_NAVBAR_MENU_ITEMS: Record<string, IMenu> = {
     label: "Profile",
     href: "/my-profile",
   },
+  adminDashboard: {
+    label: "Profile",
+    href: "/my-profile",
+  },
 };
 
 export const UNAUTHENTICATED_ITEMS: Record<string, IMenu> = {
@@ -104,7 +108,7 @@ export const ROLE_NAVBAR_MENU_CONFIG: Record<IRole, string[]> = {
 };
 
 export const ACCOUNT_MENU_CONFIG: Record<IRole, string[]> = {
-  [IRole.ADMIN]: [],
+  [IRole.ADMIN]: ["adminDashboard"],
   [IRole.PARTNER]: ["partnerAccount"],
   [IRole.USER]: ["userAccount"],
 };
