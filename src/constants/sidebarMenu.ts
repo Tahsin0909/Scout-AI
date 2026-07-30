@@ -1,60 +1,76 @@
 import { IRole } from "@/features/user/user.interface";
 import { SidebarMenuItem } from "@/types/sidebar";
 import {
-  CalendarClock,
-  CircleDollarSign,
+  BadgeDollarSign,
+  BookOpenText,
+  Handshake,
   LayoutDashboard,
-  LayoutList,
-  ListTodo,
-  Users,
+  Lightbulb,
+  Map,
+  ReceiptText,
+  UserCog,
+  WalletCards
 } from "lucide-react";
 
 export const ALL_MENU_ITEMS: Record<string, SidebarMenuItem> = {
-  dashboard: {
-    title: "Dashboard",
+  adminOverview: {
+    title: "Overview",
     icon: LayoutDashboard,
-    url: "/",
+    url: "/admin-overview",
   },
-  articles: {
-    title: "Articles",
-    icon: LayoutList,
-    url: "#",
-    items: [
-      { title: "All Articles", url: "/articles" },
-      { title: "All Categories", url: "/articles/categories" },
-      { title: "Add New", url: "/articles/create" },
-    ],
+
+  adminTripPackages: {
+    title: "Trip Packages",
+    icon: Map,
+    url: "/admin/trip-packages",
   },
-  polls: {
-    title: "Polls",
-    icon: ListTodo,
-    url: "#",
-    items: [
-      { title: "All Polls", url: "/polls" },
-      { title: "All Categories", url: "/polls/categories" },
-      { title: "Add New", url: "/polls/create" },
-    ],
+
+  adminUserManagement: {
+    title: "User Management",
+    icon: UserCog,
+    url: "/admin/users",
   },
-  subscriptions: {
+
+  adminSubscription: {
     title: "Subscriptions",
-    icon: CalendarClock,
-    url: "#",
-    items: [
-      { title: "All Subscriptions", url: "/subscriptions" },
-      { title: "Add New", url: "/subscriptions/create" },
-    ],
+    icon: BadgeDollarSign,
+    url: "/admin/subscriptions",
   },
-  payments: {
+
+  adminPayment: {
     title: "Payments",
-    icon: CircleDollarSign,
-    url: "#",
-    items: [{ title: "All Payments", url: "/payments" }],
+    icon: ReceiptText,
+    url: "/admin/payments",
   },
-  users: {
-    title: "Users",
-    icon: Users,
-    url: "#",
-    items: [{ title: "All Users", url: "/users" }],
+
+  adminContentManagement: {
+    title: "Content Management",
+    icon: BookOpenText,
+    url: "/admin/content",
+  },
+
+  adminPartnerShip: {
+    title: "Partnerships",
+    icon: Handshake,
+    url: "/admin/partnerships",
+  },
+
+  userOverview: {
+    title: "Overview",
+    icon: LayoutDashboard,
+    url: "/dashboard",
+  },
+
+  userTips: {
+    title: "Travel Tips",
+    icon: Lightbulb,
+    url: "/dashboard/tips",
+  },
+
+  userMembership: {
+    title: "Membership",
+    icon: WalletCards,
+    url: "/dashboard/membership",
   },
 };
 
@@ -67,20 +83,17 @@ export const COMMON_ROUTES = [
 
 export const ROLE_MENU_CONFIG: Record<IRole, string[]> = {
   [IRole.ADMIN]: [
-    "dashboard",
-    "articles",
-    "polls",
-    "subscriptions",
-    "payments",
-    "users",
+    "adminOverview",
+    "adminTripPackages",
+    "adminUserManagement",
+    "adminSubscription",
+    "adminPayment",
+    "adminContentManagement",
+    "adminPartnerShip",
+
   ],
   [IRole.USER]: [
-    "dashboard",
-    "articles",
-    "polls",
-    "subscriptions",
-    "payments",
-    "users",
+    "userOverview", "userTips", "userMembership"
   ],
   [IRole.PARTNER]: []
 };

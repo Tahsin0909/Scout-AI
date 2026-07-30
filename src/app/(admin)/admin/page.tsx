@@ -1,11 +1,7 @@
-import React from 'react';
+import { redirect } from "next/navigation";
 
-const page = () => {
-    return (
-        <div>
-            fcf
-        </div>
-    );
+const Page = () => {
+    redirect("/admin-overview");
 };
 
-export default page;
+export default Page;
