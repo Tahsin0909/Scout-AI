@@ -57,8 +57,8 @@ export const ALL_NAVBAR_MENU_ITEMS: Record<string, IMenu> = {
     href: "/my-profile",
   },
   adminDashboard: {
-    label: "Profile",
-    href: "/my-profile",
+    label: "Dashboard",
+    href: "/admin",
   },
 };
 

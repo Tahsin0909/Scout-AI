@@ -23,10 +23,10 @@ import {
 import { useSidebarMenu } from "@/hooks/useSidebarMenu";
 import { cn } from "@/lib/utils"; // <- shadcn utility
 import { ChevronDown, ChevronRight } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { Logo } from "../logo/Logo";
 
 export const AppSidebar = () => {
   const [openItems, setOpenItems] = useState<string[]>(["Analytics"]);
@@ -45,15 +45,7 @@ export const AppSidebar = () => {
     <Sidebar className="shadow-[0_10px_30px_0_rgba(38,3,71,0.06)] !border-0">
       {/* Logo */}
       <SidebarHeader className="py-4 md:px-5 px-1">
-        <Link href="/" className="flex items-center justify-center">
-          <Image
-            src="/logo.svg"
-            width={150}
-            height={50}
-            className="md:w-[150px] md:h-[50px] w-[150px] h-auto object-contain"
-            alt={`${process.env.NEXT_PUBLIC_APP_NAME}`}
-          />
-        </Link>
+        <Logo />
       </SidebarHeader>
 
       {/* Sidebar Menu */}
