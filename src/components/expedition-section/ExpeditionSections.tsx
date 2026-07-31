@@ -343,8 +343,6 @@ export default function ExpeditionSection() {
                 group-hover:text-card/80
             "
                         >
-                            {/* Certified adventure experts verify facts, add local knowledge,
-                            apply safety judgment, and give your dossier to the public. */}
                             Certified adventure experts verify facts, add local knowledge, apply safety judgment, and give your dossier its final polish.
                         </p>
                     </div>
