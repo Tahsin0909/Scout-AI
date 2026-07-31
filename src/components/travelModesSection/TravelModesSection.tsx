@@ -50,9 +50,9 @@ export default function TravelModesSection() {
             <div className="container">
                 {/* Header */}
                 <div className="mx-auto mb-12 max-w-[620px] text-center md:mb-14">
-                    <p className="mb-4 text-sm font-medium text-muted-foreground uppercase tracking-wide border w-fit mx-auto px-3 py-1 rounded-full bg-white/5 ">
+                    {/* <p className="mb-4 text-sm font-medium text-muted-foreground uppercase tracking-wide border w-fit mx-auto px-3 py-1 rounded-full bg-white/5 ">
                         Travel Modes
-                    </p>
+                    </p> */}
 
                     <h2 className="text-[32px] font-bold leading-[1.15] tracking-[-0.035em] sm:text-[40px] lg:text-[46px]">
                         How Will You{' '}

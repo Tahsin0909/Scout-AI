@@ -15,9 +15,9 @@ export default function ExpeditionSection() {
             <div className="container px-4 sm:px-6 lg:px-8 ">
                 {/* Header */}
                 <div className="mb-12 text-center md:mb-16 max-w-3xl mx-auto">
-                    <p className="mb-4 text-sm font-medium text-muted-foreground uppercase tracking-wide border w-fit mx-auto px-3 py-1 rounded-full bg-white/5 ">
+                    {/* <p className="mb-4 text-sm font-medium text-muted-foreground uppercase tracking-wide border w-fit mx-auto px-3 py-1 rounded-full bg-white/5 ">
                         The Platform
-                    </p>
+                    </p> */}
                     <h2 className="mb-4 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
                         Not Just A Trip Planner An Expedition{' '}
                         <span className="text-[#97B900] italic">Engine</span>
