@@ -1,10 +1,9 @@
 import React from 'react';
+import Overview from "@/components/dashboard/overview/Overview";
 
 const page = () => {
     return (
-        <div>
-            fdf
-        </div>
+        <Overview />
     );
 };
 
