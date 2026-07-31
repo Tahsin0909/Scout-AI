@@ -25,7 +25,8 @@ const PlanCta = () => {
                 tracking-[-0.02em] md:text-[40px]
             "
                 >
-                    Your next expedition starts here.
+                    {/* Your next expedition starts here. */}
+                    Choose Your Adventure
                 </h3>
 
                 <p
@@ -34,8 +35,9 @@ const PlanCta = () => {
                 text-[#a8a8a8]
             "
                 >
-                    Scout AI is ready. Give us the details and we&apos;ll build your
-                    dossier — adventure, down to a science.
+                    {/* Scout AI is ready. Give us the details and we&apos;ll build your
+                    dossier — adventure, down to a science. */}
+                    Join today - Scout AI is ready. Tell us the goal, we build the trip.
                 </p>
 
                 <div className="flex w-full flex-col justify-center gap-[13px] sm:flex-row">
@@ -43,7 +45,8 @@ const PlanCta = () => {
                         asChild
                     >
                         <Link href="/plan">
-                            Plan Your Trip
+                            {/* Plan Your Trip */}
+                            Explore
                         </Link>
                     </Button>
                     <Button
@@ -52,7 +55,8 @@ const PlanCta = () => {
                         className="h-[42px] sm:w-[151px]"
                     >
                         <Link href="/how-it-works">
-                            Services Plan
+                            {/* Services Plan */}
+                            Memberships
                         </Link>
                     </Button>
                 </div>
