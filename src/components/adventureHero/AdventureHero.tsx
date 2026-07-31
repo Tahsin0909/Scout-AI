@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button'
 
 const stats = [
     { value: '4', label: 'Travel Modes' },
-    { value: '6+', label: 'AI Modules' },
+    { value: '8+', label: 'AI Modules' },
     { value: '48h', label: 'Avg. Delivery' },
     { value: '100%', label: 'Human-Reviewed' },
 ]
@@ -22,11 +22,11 @@ export default function AdventureHero() {
                 {/* Main content */}
                 <div className="flex flex-1 items-center pt-10 lg:pt-20">
                     <div className="w-full max-w-[670px]">
-                        <div className="mb-4 text-sm font-medium text-muted-foreground uppercase tracking-wide w-fit px-3 py-1 rounded-full bg-white/8 backdrop-blur-md">
+                        {/* <div className="mb-4 text-sm font-medium text-muted-foreground uppercase tracking-wide w-fit px-3 py-1 rounded-full bg-white/8 backdrop-blur-md">
                             Adventure, Down To A Science
-                        </div>
+                        </div> */}
 
-                        <h1 className="text-[38px] font-bold leading-[1.28] tracking-[-0.025em] text-white sm:text-[48px] lg:text-[56px]">
+                        {/* <h1 className="text-[38px] font-bold leading-[1.28] tracking-[-0.025em] text-white sm:text-[48px] lg:text-[56px]">
                             Choose Your Adventure
                             <br />
 
@@ -36,14 +36,27 @@ export default function AdventureHero() {
                                     Science To Us
                                 </span>
                             </span>
+                        </h1> */}
+                        <h1 className="text-[38px] font-bold leading-[1.28] tracking-[-0.025em] text-white sm:text-[48px] lg:text-[56px]">
+                            Plan.
+                            <br className="sm:hidden" />
+                            {" "}
+                            <span className="italic text-[#C8F500]">
+                                Track. Go.
+                            </span>
                         </h1>
 
-                        <p className="mt-4 max-w-[610px] text-[14px] leading-[1.45] text-white/90 sm:text-[15px]">
+                        {/* <p className="mt-4 max-w-[610px] text-[14px] leading-[1.45] text-white/90 sm:text-[15px]">
                             The world&apos;s first AI-powered,
                             human-in-the-loop adventure planning platform.
                             <br className="hidden sm:block" />
                             One tailored dossier — every detail of your
                             expedition, built to a science.
+                        </p> */}
+                        <p className="mt-4 max-w-[610px] text-[14px] leading-[1.45] text-white/90 sm:text-[15px]">
+                            The world's first AI-powered, human-in-the-loop adventure planning platform.
+                            <br className="hidden sm:block" />
+                            One tailored trip package - every detail of your expedition, built with precision.
                         </p>
 
                         <div className="mt-7 flex flex-col gap-3 sm:flex-row">
