@@ -160,6 +160,58 @@ export default function ExplorePage() {
     [[-70, 76], [-60, 83], [-10, 81], [-40, 60], [-70, 76]]
   ], []);
 
+  // Map Labels representing countries, oceans and cities as shown in the screenshot
+  const mapLabels = useMemo(() => [
+    // Oceans (italic, blue-grey styling)
+    { text: "North Pacific Ocean", lat: 35, lng: -155, type: "ocean" },
+    { text: "North Atlantic Ocean", lat: 32, lng: -40, type: "ocean" },
+    { text: "South Atlantic Ocean", lat: -20, lng: -15, type: "ocean" },
+    { text: "South Pacific Ocean", lat: -25, lng: -120, type: "ocean" },
+    { text: "Indian Ocean", lat: -15, lng: 75, type: "ocean" },
+    { text: "Bering Sea", lat: 58, lng: -175, type: "ocean" },
+    
+    // Countries / Large regions
+    { text: "Canada", lat: 58, lng: -101, type: "country" },
+    { text: "United States", lat: 38, lng: -97, type: "country" },
+    { text: "Mexico", lat: 23, lng: -102, type: "country" },
+    { text: "Greenland", lat: 72, lng: -40, type: "country" },
+    { text: "Iceland", lat: 64, lng: -18, type: "country" },
+    { text: "Sweden", lat: 62, lng: 18, type: "country" },
+    { text: "Lithuania", lat: 55, lng: 24, type: "country" },
+    { text: "Spain", lat: 40, lng: -3.7, type: "country" },
+    { text: "Portugal", lat: 39, lng: -8, type: "country" },
+    { text: "Morocco", lat: 31, lng: -7, type: "country" },
+    { text: "Mauritania", lat: 21, lng: -10, type: "country" },
+    { text: "Svalbard", lat: 78, lng: 16, type: "country" },
+    { text: "Cuba", lat: 21.5, lng: -77.7, type: "country" },
+    { text: "Bahamas", lat: 24, lng: -76, type: "country" },
+    
+    // Cities / Key Locations (with small dots)
+    { text: "Chicago", lat: 41.8, lng: -87.6, type: "city" },
+    { text: "Houston", lat: 29.7, lng: -95.3, type: "city" },
+    { text: "New York", lat: 40.7, lng: -74.0, type: "city" },
+    { text: "Boston", lat: 42.3, lng: -71.0, type: "city" },
+    { text: "Toronto", lat: 43.6, lng: -79.3, type: "city" },
+    { text: "Guatemala", lat: 14.6, lng: -90.5, type: "city" },
+    { text: "Bogota", lat: 4.7, lng: -74.0, type: "city" },
+    { text: "Caracas", lat: 10.5, lng: -66.9, type: "city" },
+    { text: "Medellin", lat: 6.2, lng: -75.6, type: "city" },
+    { text: "Cali", lat: 3.4, lng: -76.5, type: "city" },
+    { text: "Quito", lat: -0.2, lng: -78.5, type: "city" },
+    { text: "Lima", lat: -12.0, lng: -77.0, type: "city" },
+    { text: "Venezuela", lat: 6.4, lng: -66.5, type: "country" },
+    { text: "Guyana", lat: 4.8, lng: -58.9, type: "country" },
+    { text: "Colombia", lat: 4.5, lng: -72.9, type: "country" },
+    { text: "Ecuador", lat: -1.8, lng: -78.1, type: "country" },
+    { text: "Peru", lat: -9.1, lng: -75.0, type: "country" },
+    { text: "Brazil", lat: -14.2, lng: -51.9, type: "country" },
+    { text: "Bolivia", lat: -16.2, lng: -63.5, type: "country" },
+    { text: "Uruguay", lat: -32.5, lng: -55.7, type: "country" },
+    { text: "Chile", lat: -35.6, lng: -71.5, type: "country" },
+    { text: "Argentina", lat: -38.4, lng: -63.6, type: "country" },
+    { text: "South America", lat: -21.0, lng: -59.0, type: "continent_label" },
+  ], []);
+
   // Filtered Trails based on search
   const filteredTrails = useMemo(() => {
     return trails.filter(trail => 
@@ -353,6 +405,39 @@ export default function ExplorePage() {
         ctx.stroke();
       });
 
+      // 4.5 Draw Map Labels (Countries, Oceans, Cities)
+      mapLabels.forEach((label) => {
+        const pt = projectPoint(label.lat, label.lng);
+        if (pt.z > 0) { // Front side of the globe
+          const x = cx + pt.x;
+          const y = cy + pt.y;
+
+          if (label.type === "ocean") {
+            ctx.font = "italic 9px sans-serif";
+            ctx.fillStyle = "rgba(100, 150, 200, 0.4)";
+            ctx.textAlign = "center";
+            ctx.fillText(label.text, x, y);
+          } else if (label.type === "country" || label.type === "continent" || label.type === "continent_label") {
+            ctx.font = "bold 9.5px sans-serif";
+            ctx.fillStyle = label.type === "continent_label" ? "rgba(255, 255, 255, 0.4)" : "rgba(255, 255, 255, 0.55)";
+            ctx.textAlign = "center";
+            ctx.fillText(label.text, x, y);
+          } else if (label.type === "city") {
+            // Draw a tiny dot for city position
+            ctx.fillStyle = "rgba(255, 255, 255, 0.35)";
+            ctx.beginPath();
+            ctx.arc(x, y, 1.5, 0, 2 * Math.PI);
+            ctx.fill();
+
+            // Draw city text offset slightly
+            ctx.font = "400 8.5px sans-serif";
+            ctx.fillStyle = "rgba(255, 255, 255, 0.45)";
+            ctx.textAlign = "left";
+            ctx.fillText(label.text, x + 4, y + 2.5);
+          }
+        }
+      });
+
       // 5. Draw Trail Pins/Markers
       filteredTrails.forEach((trail, idx) => {
         const pt = projectPoint(trail.lat, trail.lng);
@@ -427,7 +512,7 @@ export default function ExplorePage() {
       cancelAnimationFrame(animationFrameId);
       window.removeEventListener("resize", resizeCanvas);
     };
-  }, [globeRadius, autoRotate, pitch, filteredTrails, continents]);
+  }, [globeRadius, autoRotate, pitch, filteredTrails, continents, mapLabels]);
 
   // Drag and Rotate Handlers
   const handleMouseDown = (e: React.MouseEvent<HTMLCanvasElement>) => {
@@ -507,7 +592,7 @@ export default function ExplorePage() {
       {/* Left Explore Trails Sidebar Panel */}
       <div 
         className={`relative md:absolute z-10 w-full md:w-[340px] flex flex-col p-4 md:p-0 md:top-4 md:bottom-4 md:left-4 transition-all duration-300 shrink-0 ${
-          isSidebarCollapsed ? "h-[86px] md:h-[54px] overflow-hidden" : "h-[450px] md:h-[calc(100%-32px)]"
+          isSidebarCollapsed ? "h-auto overflow-hidden" : "h-[450px] md:h-[calc(100%-32px)]"
         }`}
       >
         <Card className="bg-[#111111]/95 backdrop-blur-md border border-[#262626] rounded-2xl flex flex-col h-full overflow-hidden shadow-2xl">
