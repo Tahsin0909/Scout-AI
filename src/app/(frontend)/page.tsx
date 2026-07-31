@@ -1,0 +1,24 @@
+import AdventureHero from '@/components/adventureHero/AdventureHero';
+import ExpeditionSection from '@/components/expedition-section/ExpeditionSections';
+import FAQSection from '@/components/faq/FaqSection';
+import HowItWorksSection from '@/components/howItWorksSection/HowItWorksSection';
+import TestimonialsSection from '@/components/testimonials/TestimonialsSection';
+import TravelModesSection from '@/components/travelModesSection/TravelModesSection';
+import TrustedCompanies from '@/components/trustedCompanies/TrustedCompanies';
+
+const page = () => {
+
+    return (
+        <div>
+            <AdventureHero />
+            <TrustedCompanies />
+            <ExpeditionSection />
+            <HowItWorksSection />
+            <TravelModesSection />
+            <TestimonialsSection />
+            <FAQSection />
+        </div>
+    );
+};
+
+export default page;
