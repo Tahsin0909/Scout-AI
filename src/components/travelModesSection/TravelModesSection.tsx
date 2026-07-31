@@ -16,7 +16,7 @@ const travelModes = [
     {
         title: 'Road Trips',
         description:
-            'Curated scenic routes focusing on architectural stays and hidden gastronomic landmarks across continents.',
+            'Curated Points of Interest, landmark information, staple stays, and recommended restaurants along your route.',
         image:
             'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=1400&q=90',
         buttonClassName:
@@ -37,7 +37,7 @@ const travelModes = [
             'The pinnacle of planning. Remote wilderness navigation, satellite communication protocols, and emergency medical mapping.',
         image:
             'https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=1400&q=90',
-        buttonClassName:
+        buttonClassName: 
             'border-white bg-white text-black hover:bg-white/90',
     },
 ]
@@ -62,9 +62,7 @@ export default function TravelModesSection() {
                     </h2>
 
                     <p className="mx-auto max-w-2xl text-base text-muted-foreground sm:text-lg">
-                        Every mode unlocks a tailored module set, routing
-                        logic, gear list, and dossier structure built for that
-                        exact type of travel.
+                        Each mode unlocks a tailored module set, routing logic, gear list, and trip package structure built for how you go.
                     </p>
                 </div>
 
