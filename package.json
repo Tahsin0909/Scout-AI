@@ -70,6 +70,7 @@
     "react-redux": "^9.2.0",
     "redux-persist": "^6.0.0",
     "rsuite": "^5.83.3",
+    "simplebar-react": "^3.3.2",
     "sonner": "^2.0.7",
     "stripe": "^22.3.2",
     "swiper": "^14.0.1",
