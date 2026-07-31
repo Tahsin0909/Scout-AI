@@ -125,10 +125,10 @@ export default function Subscriptions() {
       {/* Page Header */}
       <div className="space-y-2">
         <h1 className="text-3xl md:text-4xl font-semibold tracking-tight text-white">
-          User Management
+          Subscriptions Management
         </h1>
         <p className="text-zinc-400 text-sm md:text-base max-w-2xl font-light">
-          Manage all registered members and their subscription tiers.
+          View and manage all subscription plans.
         </p>
       </div>
 
