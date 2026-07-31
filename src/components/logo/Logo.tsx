@@ -10,7 +10,7 @@ export const Logo = ({ className }: { className?: string }) => {
         height={40}
         loading="eager"
         className={cn(
-          "xl:w-[170px] xs:w-[140px] w-[130px] h-auto lg:h-[55px] object-contain dark:hidden",
+          "xl:w-[170px] md:w-[140px] xs:w-[120px] w-[100px] h-auto lg:h-[55px] object-contain dark:hidden",
           className
         )}
         alt={`${process.env.NEXT_PUBLIC_APP_NAME}`}
@@ -21,7 +21,7 @@ export const Logo = ({ className }: { className?: string }) => {
         height={40}
         loading="eager"
         className={cn(
-          "xl:w-[170px] xs:w-[140px] w-[130px] h-auto lg:h-[55px] object-contain not-dark:hidden",
+          "xl:w-[170px] md:w-[140px] xs:w-[120px] w-[100px] h-auto lg:h-[55px] object-contain not-dark:hidden",
           className
         )}
         alt={`${process.env.NEXT_PUBLIC_APP_NAME}`}

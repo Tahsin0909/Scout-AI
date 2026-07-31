@@ -85,7 +85,7 @@ const Header = () => {
                 className="h-4 mr-4 ml-2 data-[orientation=vertical]:self-center max-lg:hidden"
               />
 
-              <div className="flex items-center">
+              <div className="sm:flex hidden items-center">
                 <span className="text-base font-semibold text-foreground tracking-wide">
                   {pageTitle}
                 </span>
