@@ -23,7 +23,8 @@ export default function ExpeditionSection() {
                         <span className="text-[#97B900] italic">Engine</span>
                     </h2>
                     <p className="mx-auto max-w-2xl text-base text-muted-foreground sm:text-lg">
-                        You give us the details. Our AI builds the first draft. A human expert reviews and delivers. Adventure, Down To A Science.
+                        {/* You give us the details. Our AI builds the first draft. A human expert reviews and delivers. Adventure, Down To A Science. */}
+                        You give us the details. Scout AI builds the first draft. A route Analyst reviews and delivers.
                     </p>
                 </div>
 
@@ -342,8 +343,9 @@ export default function ExpeditionSection() {
                 group-hover:text-card/80
             "
                         >
-                            Certified adventure experts verify facts, add local knowledge,
-                            apply safety judgment, and give your dossier to the public.
+                            {/* Certified adventure experts verify facts, add local knowledge,
+                            apply safety judgment, and give your dossier to the public. */}
+                            Certified adventure experts verify facts, add local knowledge, apply safety judgment, and give your dossier its final polish.
                         </p>
                     </div>
                 </div>
@@ -354,7 +356,7 @@ export default function ExpeditionSection() {
                         <Link
                             href="/register"
                         >
-                            <span>View Packaging</span>
+                            <span>View Memberships</span>
                         </Link>
                     </Button>
                 </div>
