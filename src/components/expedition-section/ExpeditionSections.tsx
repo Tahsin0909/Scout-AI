@@ -23,7 +23,6 @@ export default function ExpeditionSection() {
                         <span className="text-[#97B900] italic">Engine</span>
                     </h2>
                     <p className="mx-auto max-w-2xl text-base text-muted-foreground sm:text-lg">
-                        {/* You give us the details. Our AI builds the first draft. A human expert reviews and delivers. Adventure, Down To A Science. */}
                         You give us the details. Scout AI builds the first draft. A route Analyst reviews and delivers.
                     </p>
                 </div>
