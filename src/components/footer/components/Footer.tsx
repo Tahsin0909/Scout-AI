@@ -6,18 +6,20 @@ export const Footer = () => {
   // Define sections based on the image
   const footerSections = [
     {
-      title: "APEX",
+      // title: "APEX",
+      title: "Company",
       links: [
         { label: "Home", href: "/" },
-        { label: "Packages", href: "/packages" },
+        // { label: "Packages", href: "/packages" },
         { label: "About", href: "/about" },
         { label: "Articles", href: "/articles" },
       ],
     },
     {
-      title: "Company",
+      // title: "Company",
+      title: "Services",
       links: [
-        { label: "Services", href: "/services" },
+        { label: "Services", href: "/" },
         { label: "Contact us", href: "/contact" },
         { label: "Memberships", href: "/memberships" },
       ],

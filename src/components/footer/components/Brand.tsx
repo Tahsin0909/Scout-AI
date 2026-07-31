@@ -10,8 +10,9 @@ export const Brand = () => {
         <Logo />
       </Link>
       <p className="mt-6 mb-12 text-white text-sm max-w-[308px]">
-        Stay informed with trusted news and expert insight, delivered daily, for
-        free.
+        {/* Stay informed with trusted news and expert insight, delivered daily, for
+        free. */}
+        Streamline your planning process so that you can focus on what really matters — spending more time outside.
       </p>
       <div className="flex items-center gap-5">
         {social.map((item, id) => (
