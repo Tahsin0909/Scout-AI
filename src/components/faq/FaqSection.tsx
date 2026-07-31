@@ -23,9 +23,9 @@ export default function FAQSection() {
     return (
         <section className="container px-4 py-16 md:px-8 lg:px-12">
             <div className="mx-auto mb-12 max-w-3xl text-center md:mb-16">
-                <p className="mb-4 text-sm font-medium text-muted-foreground uppercase tracking-wide border w-fit mx-auto px-3 py-1 rounded-full bg-white/5 ">
+                {/* <p className="mb-4 text-sm font-medium text-muted-foreground uppercase tracking-wide border w-fit mx-auto px-3 py-1 rounded-full bg-white/5 ">
                     Common Questions
-                </p>
+                </p> */}
 
                 <h2 className="mb-4 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
                     Frequently{' '}
@@ -35,7 +35,8 @@ export default function FAQSection() {
                 </h2>
 
                 <p className="mx-auto max-w-2xl text-base text-muted-foreground sm:text-lg">
-                    Everything you need to know before your first package
+                    {/* Everything you need to know before your first package */}
+                    Everything you need to know before taking your first trip.
                 </p>
             </div>
 
@@ -107,7 +108,8 @@ export default function FAQSection() {
                     asChild
                 >
                     <Link href="/contact">
-                        Contact our team
+                        {/* Contact our team */}
+                        Contact Us
                     </Link>
                 </Button>
             </div>
