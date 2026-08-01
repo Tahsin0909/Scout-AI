@@ -46,7 +46,7 @@ const persistConfig = {
   storage,
 };
 
-const rootReducer = combineReducers({
+const appReducer = combineReducers({
   partnerApplication: partnershipReducer,
   payment: paymentReducer,
   exploreMap: exploreMapReducer,
@@ -56,6 +56,27 @@ const rootReducer = combineReducers({
   auth: authReducer,
   [baseApi.reducerPath]: baseApi.reducer,
 });
+
+const rootReducer: typeof appReducer = (state, action) => {
+  if (state) {
+    const validKeys = new Set([
+      ...Object.keys(appReducer(undefined, { type: "@@INIT" })),
+      "_persist",
+    ]);
+    const stateKeys = Object.keys(state);
+    const hasUnexpectedKeys = stateKeys.some((key) => !validKeys.has(key));
+    if (hasUnexpectedKeys) {
+      const sanitizedState: Record<string, any> = { ...state };
+      stateKeys.forEach((key) => {
+        if (!validKeys.has(key)) {
+          delete sanitizedState[key];
+        }
+      });
+      return appReducer(sanitizedState as any, action);
+    }
+  }
+  return appReducer(state, action);
+};
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
