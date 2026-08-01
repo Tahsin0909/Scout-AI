@@ -6,9 +6,7 @@ import { Logo } from "@/components/logo/Logo";
 export const Brand = () => {
   return (
     <div className="sm:col-span-1 col-span-2">
-      <Link href="/">
-        <Logo />
-      </Link>
+      <Logo />
       <p className="mt-6 mb-12 text-white text-sm max-w-[308px]">
         {/* Stay informed with trusted news and expert insight, delivered daily, for
         free. */}
