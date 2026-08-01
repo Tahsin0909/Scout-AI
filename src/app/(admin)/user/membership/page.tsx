@@ -1,8 +1,8 @@
 import React from "react";
-import Subscriptions from "@/components/dashboard/subscriptions/Subscriptions";
+import UserMembership from "@/components/dashboard/membership/UserMembership";
 
 const UserMembershipPage = () => {
-  return <Subscriptions />;
+  return <UserMembership />;
 };
 
 export default UserMembershipPage;
