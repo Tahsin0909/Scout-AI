@@ -21,6 +21,8 @@ import {
   SidebarMenuSubItem,
 } from "@/components/ui/sidebar";
 import { useSidebarMenu } from "@/hooks/useSidebarMenu";
+import { useAuth } from "@/features/auth/hooks/useAuth";
+import { IRole } from "@/features/user/user.interface";
 import { cn } from "@/lib/utils"; // <- shadcn utility
 import { ChevronDown, ChevronRight } from "lucide-react";
 import Link from "next/link";
@@ -32,6 +34,8 @@ export const AppSidebar = () => {
   const [openItems, setOpenItems] = useState<string[]>(["Analytics"]);
   const pathname = usePathname();
   const sidebarMenu = useSidebarMenu();
+  const { getUserRole } = useAuth();
+  const role = getUserRole() || IRole.USER;
 
   const toggleItem = (title: string) => {
     setOpenItems((prev) =>
@@ -49,7 +53,7 @@ export const AppSidebar = () => {
       </SidebarHeader>
 
       {/* Sidebar Menu */}
-      <SidebarContent className="md:px-5 px-2">
+      <SidebarContent className="md:px-5 px-2 flex flex-col justify-between h-full">
         <SidebarGroup className="p-0">
           <SidebarGroupContent>
             <SidebarMenu>
@@ -142,6 +146,37 @@ export const AppSidebar = () => {
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
+
+        {/* Plus - Go Further Membership Card (Only shown when role is USER) */}
+        {role === IRole.USER && (
+          <div className="mt-auto pt-6 px-1 group-data-[collapsible=icon]:hidden">
+            <div className="p-4 rounded-xl bg-[#1E1E22] border border-neutral-800/80 shadow-md relative overflow-hidden">
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-sm font-semibold text-white">Plus &ndash; Go Further</span>
+                <span className="text-[10px] font-bold uppercase px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+                  Active
+                </span>
+              </div>
+              <div className="flex items-center justify-between text-xs text-neutral-400 mb-1.5 font-medium">
+                <span>1/2 Credits</span>
+                <span>50%</span>
+              </div>
+              {/* Progress Bar */}
+              <div className="w-full bg-neutral-800 h-2 rounded-full overflow-hidden mb-3">
+                <div
+                  className="bg-[#FACC15] h-full rounded-full transition-all duration-500"
+                  style={{ width: "50%" }}
+                />
+              </div>
+              <Link
+                href="/user/membership"
+                className="w-full bg-[#FACC15] hover:bg-[#eab308] text-black font-semibold text-xs py-2.5 px-3 rounded-lg text-center transition-colors block shadow-sm"
+              >
+                Manage Membership
+              </Link>
+            </div>
+          </div>
+        )}
       </SidebarContent>
 
       {/* User */}

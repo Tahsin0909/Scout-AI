@@ -17,6 +17,7 @@ const Header = () => {
   const getPageTitle = (path: string) => {
     const routeTitles: Record<string, string> = {
       "/admin-overview": "Overview",
+      "/user-overview": "Overview",
       "/dashboard": "Overview",
       "/admin/trip-packages": "Trip Packages",
       "/admin/users": "User Management",
@@ -24,6 +25,8 @@ const Header = () => {
       "/admin/payments": "Payments",
       "/admin/content": "Content Management",
       "/admin/partnerships": "Partnership Management",
+      "/user/travel-trips": "Travel Trips",
+      "/user/membership": "Membership",
       "/dashboard/tips": "Travel Tips",
       "/dashboard/membership": "Membership",
       "/partner-dashboard": "Partner Dashboard",

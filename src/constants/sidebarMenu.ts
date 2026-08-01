@@ -58,19 +58,19 @@ export const ALL_MENU_ITEMS: Record<string, SidebarMenuItem> = {
   userOverview: {
     title: "Overview",
     icon: LayoutDashboard,
-    url: "/dashboard",
+    url: "/user-overview",
   },
 
   userTips: {
-    title: "Travel Tips",
+    title: "Travel Trips",
     icon: Lightbulb,
-    url: "/dashboard/tips",
+    url: "/user/travel-trips",
   },
 
   userMembership: {
     title: "Membership",
     icon: WalletCards,
-    url: "/dashboard/membership",
+    url: "/user/membership",
   },
 };
 
