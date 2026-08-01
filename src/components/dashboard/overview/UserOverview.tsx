@@ -92,7 +92,7 @@ export default function UserOverview() {
   ];
 
   return (
-    <div className="w-full bg-[#111113] text-zinc-100 min-h-screen p-6 md:p-8 space-y-8 font-sans">
+    <div className="w-full bg-[#1E1E21] text-zinc-100 min-h-screen p-6 md:p-8 space-y-8 font-sans">
       {/* Welcome Header */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div className="space-y-1.5">
@@ -103,7 +103,7 @@ export default function UserOverview() {
             Ready for your next adventure? Scout AI is standing by to help you build your next journey
           </p>
         </div>
-        <button className="bg-[#FACC15] hover:bg-[#eab308] text-black font-semibold text-sm px-5 py-2.5 rounded-xl flex items-center gap-2 shadow-sm transition-all self-start md:self-auto cursor-pointer">
+        <button className="bg-[#F7C948] hover:bg-[#eab308] text-black font-semibold text-xs md:text-sm px-5 py-2.5 rounded-xl flex items-center gap-2 shadow-sm transition-all self-start md:self-auto cursor-pointer">
           <Plus className="w-4 h-4 stroke-[2.5]" />
           <span>Create new trip plan</span>
         </button>
@@ -112,11 +112,11 @@ export default function UserOverview() {
       {/* Stats Cards Row */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {stats.map((stat, idx) => (
-          <Card key={idx} className="bg-[#1B1B1E] border-neutral-800/80 rounded-xl overflow-hidden shadow-md">
+          <Card key={idx} className="bg-[#28282C] border-[#36363B] rounded-xl overflow-hidden shadow-md">
             <CardContent className="p-5 flex flex-col justify-between h-full space-y-4">
               <div className="flex items-center justify-between">
-                <div className="w-9 h-9 rounded-lg bg-neutral-800 flex items-center justify-center">
-                  <stat.icon className="w-4 h-4 text-zinc-400" />
+                <div className="w-9 h-9 rounded-lg bg-[#333339] flex items-center justify-center">
+                  <stat.icon className="w-4 h-4 text-zinc-300" />
                 </div>
               </div>
               <div>
@@ -124,8 +124,8 @@ export default function UserOverview() {
                   {stat.value}
                 </div>
                 <div className="flex items-center justify-between mt-1">
-                  <span className="text-zinc-400 text-sm font-medium">{stat.title}</span>
-                  <span className="bg-emerald-500/15 text-emerald-400 text-xs font-semibold px-2 py-0.5 rounded-full border border-emerald-500/20">
+                  <span className="text-zinc-400 text-xs md:text-sm font-medium">{stat.title}</span>
+                  <span className="bg-[#05402E] text-[#10B981] text-xs font-semibold px-2 py-0.5 rounded-full border border-[#065F46]">
                     {stat.change}
                   </span>
                 </div>
@@ -139,7 +139,7 @@ export default function UserOverview() {
       <div className="space-y-4">
         <div className="flex items-center justify-between">
           <h2 className="text-xl font-bold text-white tracking-tight">Recent Trips</h2>
-          <Link href="#" className="text-[#FACC15] hover:underline text-sm font-medium">
+          <Link href="/user/travel-trips" className="text-[#F7C948] hover:underline text-sm font-medium">
             View all
           </Link>
         </div>
@@ -148,7 +148,7 @@ export default function UserOverview() {
           {recentTrips.map((trip) => (
             <div
               key={trip.id}
-              className="bg-[#1B1B1E] border border-neutral-800/80 rounded-2xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 transition-all hover:border-neutral-700"
+              className="bg-[#28282C] border border-[#36363C] rounded-2xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 transition-all hover:border-[#4F4F56]"
             >
               <div className="flex items-center gap-4">
                 <div className="relative w-16 h-16 rounded-xl overflow-hidden flex-shrink-0 bg-neutral-800">
@@ -156,6 +156,7 @@ export default function UserOverview() {
                     src={trip.image}
                     alt={trip.title}
                     fill
+                    sizes="64px"
                     className="object-cover"
                   />
                 </div>
@@ -163,17 +164,17 @@ export default function UserOverview() {
                   <div className="flex items-center gap-2.5">
                     <h3 className="text-base font-semibold text-white">{trip.title}</h3>
                     {trip.statusVariant === "in-progress" && (
-                      <span className="text-[11px] font-medium px-2.5 py-0.5 rounded-md bg-rose-500/20 text-rose-400 border border-rose-500/30">
+                      <span className="text-[11px] font-semibold px-2.5 py-0.5 rounded bg-[#7F1D1D]/70 text-[#F87171] border border-[#991B1B]/60">
                         {trip.status}
                       </span>
                     )}
                     {trip.statusVariant === "ready" && (
-                      <span className="text-[11px] font-medium px-2.5 py-0.5 rounded-md bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+                      <span className="text-[11px] font-semibold px-2.5 py-0.5 rounded bg-[#064E3B]/70 text-[#34D399] border border-[#047857]/60">
                         {trip.status}
                       </span>
                     )}
                     {trip.statusVariant === "completed" && (
-                      <span className="text-[11px] font-medium px-2.5 py-0.5 rounded-md bg-neutral-700/60 text-zinc-300 border border-neutral-600/40">
+                      <span className="text-[11px] font-semibold px-2.5 py-0.5 rounded bg-[#3F3F46]/80 text-zinc-200 border border-[#52525B]/60">
                         {trip.status}
                       </span>
                     )}
@@ -186,12 +187,12 @@ export default function UserOverview() {
                 {trip.actionDisabled ? (
                   <button
                     disabled
-                    className="w-full sm:w-auto text-xs font-semibold px-4 py-2.5 rounded-xl bg-neutral-800/80 text-zinc-500 cursor-not-allowed border border-neutral-700/40"
+                    className="w-full sm:w-auto text-xs font-medium px-4 py-2.5 rounded-xl bg-[#212125] text-zinc-500 cursor-not-allowed border border-[#313136]"
                   >
                     {trip.actionText}
                   </button>
                 ) : (
-                  <button className="w-full sm:w-auto text-xs font-semibold px-4 py-2.5 rounded-xl bg-neutral-800 hover:bg-neutral-700 text-white transition-colors border border-neutral-700 cursor-pointer">
+                  <button className="w-full sm:w-auto text-xs font-semibold px-4 py-2.5 rounded-xl bg-[#232328] hover:bg-[#2F2F35] text-[#F7C948] transition-colors border border-[#3F3F46] cursor-pointer">
                     {trip.actionText}
                   </button>
                 )}

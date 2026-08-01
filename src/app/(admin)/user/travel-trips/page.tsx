@@ -1,8 +1,8 @@
 import React from "react";
-import TripPackages from "@/components/dashboard/trips/TripPackages";
+import UserTrips from "@/components/dashboard/trips/UserTrips";
 
 const UserTravelTripsPage = () => {
-  return <TripPackages />;
+  return <UserTrips />;
 };
 
 export default UserTravelTripsPage;
