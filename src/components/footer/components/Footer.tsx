@@ -158,7 +158,7 @@ export const Footer = () => {
   const servicesLinks = [
     { label: "How It Works", href: "/how-it-works" },
     { label: "Memberships", href: "/memberships" },
-    { label: "Partnerships", href: "/partnerships" },
+    { label: "Partnerships", href: "/partnership" },
   ];
 
   const socialLinks = [
