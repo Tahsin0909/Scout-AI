@@ -26,7 +26,7 @@ const plans = [
     {
         key: "prime",
         name: "Prime",
-        subtitle: "Elevate Your Adventure",
+        subtitle: "Level Up",
     },
     {
         key: "elite",
@@ -38,17 +38,17 @@ const plans = [
 const comparisonRows: ComparisonRow[] = [
     {
         feature: "Pricing (Monthly)",
-        core: "$15.99/mo",
+        core: "$9.99/mo",
         plus: "$19.99/mo",
         prime: "$29.99/mo",
         elite: "$49.99/mo",
     },
     {
         feature: "Pricing (Yearly)",
-        core: "$179/yr",
-        plus: "$199/yr",
-        prime: "$299/yr",
-        elite: "$499/yr",
+        core: "$99.99/yr",
+        plus: "$199.99/yr",
+        prime: "$299.99/yr",
+        elite: "$499.99/yr",
     },
     {
         feature: "Access to Scout AI",
@@ -66,15 +66,22 @@ const comparisonRows: ComparisonRow[] = [
     },
     {
         feature: "Additional package cost",
-        core: "$7.00 each",
-        plus: "$6.00 each",
+        core: "$5.00 each",
+        plus: "$5.00 each",
         prime: "$5.00 each",
         elite: "$5.00 each",
     },
     {
-        feature: "Includes all basic modules",
+        feature: "Basic modules",
         core: true,
         plus: true,
+        prime: null,
+        elite: null,
+    },
+    {
+        feature: "Basic modules",
+        core: null,
+        plus: null,
         prime: true,
         elite: true,
     },
@@ -89,8 +96,8 @@ const comparisonRows: ComparisonRow[] = [
         feature: "Analysis & Support",
         core: "Basic Analyst oversight and quality control included.",
         plus: "Enhanced Analyst oversight, quality control, and guidance included.",
-        prime: "In-depth analysis of each trip with available personalization.",
-        elite: "In-depth analysis of each trip with available personalization.",
+        prime: "In-depth analysis of each trip with personalized adjustments.",
+        elite: "In-depth analysis of each trip with personalized adjustments.",
     },
     {
         feature: "Personalized Recommendations",
@@ -107,7 +114,7 @@ const comparisonRows: ComparisonRow[] = [
         elite: "20 Questions",
     },
     {
-        feature: "Handcrafted Trips (Annual)",
+        feature: "Handcrafted Trips (Yearly)",
         core: null,
         plus: null,
         prime: "2",
@@ -128,7 +135,7 @@ const comparisonRows: ComparisonRow[] = [
         elite: "20%",
     },
     {
-        feature: "Member-only content",
+        feature: "Members-only content",
         core: true,
         plus: true,
         prime: true,
@@ -140,13 +147,6 @@ const comparisonRows: ComparisonRow[] = [
         plus: "Tier III",
         prime: "Tier II",
         elite: "Tier I",
-    },
-    {
-        feature: "Membership badge",
-        core: "Core account badge.",
-        plus: "Plus account badge.",
-        prime: "Prime account badge.",
-        elite: "Elite account badge.",
     },
 ];
 
@@ -185,12 +185,12 @@ export default function MembershipComparisonSection() {
                 {/* Header */}
                 <div className="mx-auto mb-10 max-w-3xl text-center sm:mb-12">
                     <h2 className="text-3xl font-bold tracking-[-0.035em] sm:text-4xl lg:text-[42px]">
-                        Compare Basic Memberships
+                        Compare Memberships
                     </h2>
 
                     <p className="mx-auto mt-3 max-w-[620px] text-sm leading-relaxed text-muted-foreground sm:text-base">
                         Choose the membership that best matches your adventure
-                        style. Compare features, package limits, priority, and
+                        style. Compare features, package limits, pricing, and
                         benefits to find the right starting point.
                     </p>
                 </div>

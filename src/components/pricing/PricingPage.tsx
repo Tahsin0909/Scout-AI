@@ -6,43 +6,36 @@ import { PricingCard } from "./PricingCard";
 import { PlanCategory, pricingPlansApiResponse } from "./data/pricing";
 
 export default function PricingPage({ nextPage }: { nextPage: string | undefined }) {
-    const [category, setCategory] =
-        useState<PlanCategory>("basic");
+    const [category, setCategory] = useState<PlanCategory | "all">("all");
 
     const [annual, setAnnual] = useState(false);
 
     const visiblePlans = useMemo(() => {
         return pricingPlansApiResponse.data
-            .filter(
-                (plan) =>
-                    plan.isActive &&
-                    plan.category === category,
-            )
-            .sort(
-                (firstPlan, secondPlan) =>
-                    firstPlan.sortOrder -
-                    secondPlan.sortOrder,
-            );
+            .filter((plan) => {
+                if (!plan.isActive) return false;
+                if (category === "all") return true;
+                return plan.category === category;
+            })
+            .sort((firstPlan, secondPlan) => firstPlan.sortOrder - secondPlan.sortOrder);
     }, [category]);
 
-    console.log(nextPage)
     return (
         <main
             className="
-                min-h-screen bg-[#f6f6f6]
-                px-4 py-16 text-foreground
+                min-h-screen bg-[#121316]
+                px-4 py-16 text-white
                 transition-colors duration-300
-                dark:bg-[#181818]
                 sm:px-6 sm:py-20
                 lg:px-8 lg:py-24
             "
         >
-            <section className="container">
+            <section className="container mx-auto max-w-6xl">
                 {/* Header */}
                 <div className="mx-auto max-w-3xl text-center">
                     <h1
                         className="
-                            text-3xl font-bold tracking-tight
+                            text-3xl font-extrabold tracking-tight text-white
                             sm:text-4xl lg:text-5xl
                         "
                     >
@@ -52,13 +45,12 @@ export default function PricingPage({ nextPage }: { nextPage: string | undefined
                         className="
                             mx-auto mt-4 max-w-2xl
                             text-sm leading-relaxed
-                            text-muted-foreground
+                            text-gray-300/85
                             sm:text-base
                         "
                     >
-                        From weekend explorers to expedition leaders, every
-                        membership unlocks Scout AI and expertly crafted
-                        adventure planning.
+                        From weekend explorers to expedition leaders, every membership
+                        unlocks Scout AI and expertly crafted adventure planning.
                     </p>
                 </div>
 
@@ -66,7 +58,7 @@ export default function PricingPage({ nextPage }: { nextPage: string | undefined
                 <div
                     className="
                         mx-auto mt-10 flex flex-col
-                        items-center justify-center gap-4
+                        items-center justify-center gap-5
                         sm:flex-row
                     "
                 >
@@ -76,24 +68,24 @@ export default function PricingPage({ nextPage }: { nextPage: string | undefined
                         aria-label="Pricing category"
                         className="
                             inline-flex rounded-full
-                            border border-black/5
-                            bg-black/[0.04] p-1
-                            dark:border-white/5
-                            dark:bg-white/[0.06]
+                            border border-white/10
+                            bg-[#24262d] p-1
                         "
                     >
                         <button
                             type="button"
                             role="tab"
                             aria-selected={category === "basic"}
-                            onClick={() => setCategory("basic")}
+                            onClick={() =>
+                                setCategory((prev) => (prev === "basic" ? "all" : "basic"))
+                            }
                             className={`
-                                rounded-full px-4 py-2
-                                text-xs font-medium
-                                transition-colors duration-200
+                                rounded-full px-5 py-1.5
+                                text-xs font-semibold
+                                transition-all duration-200
                                 ${category === "basic"
-                                    ? "bg-primary text-primary-foreground shadow-sm"
-                                    : "text-muted-foreground hover:text-foreground"
+                                    ? "bg-[#FACC15] text-black shadow-md"
+                                    : "text-gray-300 hover:text-white"
                                 }
                             `}
                         >
@@ -104,14 +96,16 @@ export default function PricingPage({ nextPage }: { nextPage: string | undefined
                             type="button"
                             role="tab"
                             aria-selected={category === "premium"}
-                            onClick={() => setCategory("premium")}
+                            onClick={() =>
+                                setCategory((prev) => (prev === "premium" ? "all" : "premium"))
+                            }
                             className={`
-                                rounded-full px-4 py-2
-                                text-xs font-medium
-                                transition-colors duration-200
+                                rounded-full px-5 py-1.5
+                                text-xs font-semibold
+                                transition-all duration-200
                                 ${category === "premium"
-                                    ? "bg-primary text-primary-foreground shadow-sm"
-                                    : "text-muted-foreground hover:text-foreground"
+                                    ? "bg-[#FACC15] text-black shadow-md"
+                                    : "text-gray-300 hover:text-white"
                                 }
                             `}
                         >
@@ -126,19 +120,13 @@ export default function PricingPage({ nextPage }: { nextPage: string | undefined
                             role="switch"
                             aria-checked={annual}
                             aria-label="Enable annual pricing"
-                            onClick={() =>
-                                setAnnual((current) => !current)
-                            }
+                            onClick={() => setAnnual((current) => !current)}
                             className={`
                                 relative h-7 w-12 rounded-full
                                 border transition-colors duration-300
                                 ${annual
-                                    ? "border-primary bg-primary"
-                                    : `
-                                            border-black/10 bg-black/20
-                                            dark:border-white/10
-                                            dark:bg-white/20
-                                        `
+                                    ? "border-[#FACC15] bg-[#FACC15]"
+                                    : "border-white/20 bg-white/10"
                                 }
                             `}
                         >
@@ -156,18 +144,17 @@ export default function PricingPage({ nextPage }: { nextPage: string | undefined
                             />
                         </button>
 
-                        <span className="text-xs font-medium sm:text-sm">
+                        <span className="text-xs font-semibold text-gray-300 sm:text-sm">
                             Annual{" "}
-                            <span className="text-[#97B900]">
+                            <span className="text-[#a3e635] font-bold">
                                 (Save 17%)
                             </span>
                         </span>
                     </div>
                 </div>
 
-                {/* Pricing cards */}
+                {/* Pricing cards grid */}
                 <div
-                    key={category}
                     className="
                         mx-auto mt-12 grid max-w-5xl
                         grid-cols-1 items-stretch gap-6

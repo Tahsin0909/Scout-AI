@@ -26,7 +26,7 @@ const PlanCta = () => {
             "
                 >
                     {/* Your next expedition starts here. */}
-                    Choose Your Adventure
+                    Choose Your Adventure 
                 </h3>
 
                 <p

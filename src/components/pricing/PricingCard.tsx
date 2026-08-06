@@ -50,79 +50,60 @@ export function PricingCard({
             billing,
         });
 
+    const isSolidButton = plan.buttonVariant === "solid" || plan.featured;
+
     return (
         <article
             className={cn(
                 `
-                    relative isolate flex h-full min-h-[510px]
-                    flex-col overflow-visible rounded-xl border
-                    bg-white p-4 text-foreground
-                    transition-[border-color,box-shadow,transform]
-                    duration-300 ease-out
-                    dark:bg-[#202020] dark:text-white
-                    sm:p-5
+                    relative isolate flex h-full min-h-[540px]
+                    flex-col justify-between overflow-hidden rounded-2xl border
+                    bg-[#1c1d22] p-6 text-white shadow-xl
+                    transition-all duration-300 ease-out
                 `,
                 plan.featured
                     ? `
-                        border-primary/60
-                        shadow-[0_20px_60px_-34px_rgba(255,210,63,0.65)]
-                        dark:border-primary/45
+                        border-[#eab308]/60
+                        bg-gradient-to-b from-[#eab308]/20 via-[#1c1d22] to-[#1c1d22]
+                        shadow-[0_10px_40px_-15px_rgba(234,179,8,0.3)]
                     `
                     : `
-                        border-black/10
-                        dark:border-white/10
+                        border-[#2e323b]
                     `,
             )}
         >
             <PricingPattern featured={plan.featured} />
 
-            {/* Badge */}
-            {plan.badge && (
-                <span
-                    className="
-                        absolute right-3 top-0 z-20
-                        -translate-y-1/2 rounded-full
-                        border border-black/10 bg-white
-                        px-3 py-1 text-[10px] font-semibold
-                        text-black shadow-sm
-                        sm:text-xs
-                    "
-                >
-                    {plan.badge}
-                </span>
-            )}
-
             {/* Header */}
-            <header>
-                <h3 className="text-lg font-semibold sm:text-xl">
+            <div>
+                <h3 className="text-xl font-bold tracking-tight text-white sm:text-2xl">
                     {plan.name}
                 </h3>
 
-                <div className="mt-2 flex items-end gap-1">
-                    <span
-                        className="
-                            text-4xl font-bold leading-none
-                            tracking-[-0.045em]
-                            sm:text-[42px]
-                        "
-                    >
+                <div className="mt-2 flex items-baseline gap-1">
+                    <span className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl">
                         {formatCurrency(
                             displayedPrice,
                             selectedPrice.currency,
                         )}
                     </span>
-
-                    <span className="mb-1 text-sm text-muted-foreground dark:text-white/55">
-                        /month
+                    <span className="text-sm font-medium text-gray-400">
+                        /mo
                     </span>
                 </div>
 
-                <p className="mt-3 text-xs text-muted-foreground dark:text-white/50">
+                <p className="mt-2 text-xs font-semibold tracking-wide text-gray-400">
                     {plan.tagline}
                 </p>
 
+                {plan.description && (
+                    <p className="mt-3 text-xs leading-relaxed text-gray-300/85">
+                        {plan.description}
+                    </p>
+                )}
+
                 {annual && (
-                    <p className="mt-2 text-xs font-medium text-[#86a900]">
+                    <p className="mt-2 text-xs font-medium text-[#97B900]">
                         {formatCurrency(
                             selectedPrice.amount,
                             selectedPrice.currency,
@@ -130,68 +111,65 @@ export function PricingCard({
                         billed annually
                     </p>
                 )}
-            </header>
 
-            {/* Included features */}
-            <div
-                className="
-                    mt-5 flex-1 border border-black/[0.06]
-                    bg-black/[0.025] p-4
-                    backdrop-blur-[2px]
-                    dark:border-white/[0.04]
-                    dark:bg-white/[0.045]
-                "
-            >
-                <h4 className="text-sm font-semibold sm:text-base">
-                    Included features
-                </h4>
+                {/* Included features box */}
+                <div
+                    className="
+                        mt-5 rounded-xl border border-white/5
+                        bg-[#131418]/80 p-5
+                        backdrop-blur-sm
+                    "
+                >
+                    <h4 className="text-sm font-semibold text-gray-200">
+                        Included features
+                    </h4>
 
-                <ul className="mt-4 space-y-3">
-                    {plan.features.map((feature) => (
-                        <li
-                            key={feature}
-                            className="
-                                flex items-start gap-2.5
-                                text-xs leading-[1.45]
-                                text-muted-foreground
-                                dark:text-white/60
-                                sm:text-[13px]
-                            "
-                        >
-                            <CheckCircle2
-                                aria-hidden="true"
+                    <ul className="mt-4 space-y-3">
+                        {plan.features.map((feature) => (
+                            <li
+                                key={feature}
                                 className="
-                                    mt-0.5 size-4 shrink-0
-                                    text-foreground/65
-                                    dark:text-white/65
+                                    flex items-start gap-2.5
+                                    text-xs leading-relaxed
+                                    text-gray-300
                                 "
-                                strokeWidth={1.7}
-                            />
+                            >
+                                <CheckCircle2
+                                    aria-hidden="true"
+                                    className="
+                                        mt-0.5 size-4 shrink-0
+                                        text-gray-400
+                                    "
+                                    strokeWidth={1.8}
+                                />
 
-                            <span>{feature}</span>
-                        </li>
-                    ))}
-                </ul>
+                                <span>{feature}</span>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
             </div>
 
-            {/* CTA */}
-            <Button
-                asChild
-                variant={
-                    plan.featured
-                        ? "primary"
-                        : "outline"
-                }
-                size="lg"
-                fullWidth
-                className="mt-5 rounded-md"
-            >
-                <Link
-                    href={`/${nextPage}?${registrationParams.toString()}`}
+            {/* CTA Button */}
+            <div className="mt-6">
+                <Button
+                    asChild
+                    size="lg"
+                    fullWidth
+                    className={cn(
+                        "w-full rounded-lg py-3 text-sm font-semibold transition-all duration-200",
+                        isSolidButton
+                            ? "bg-[#FACC15] text-black hover:bg-[#EAB308] border-0 shadow-md font-bold"
+                            : "bg-transparent text-white border border-[#EAB308]/60 hover:bg-white/10"
+                    )}
                 >
-                    Get Started
-                </Link>
-            </Button>
+                    <Link
+                        href={`/${nextPage}?${registrationParams.toString()}`}
+                    >
+                        Get Started
+                    </Link>
+                </Button>
+            </div>
         </article>
     );
 }

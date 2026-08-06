@@ -31,8 +31,10 @@ export type PricingPlan = {
 
     name: string;
     tagline: string;
+    description: string;
 
     featured?: boolean;
+    buttonVariant?: "solid" | "outline";
     badge?: string;
 
     prices: {
@@ -62,19 +64,23 @@ export const pricingPlansApiResponse: PricingPlansApiResponse = {
     message: "Pricing plans fetched successfully.",
     data: [
         {
-            id: "trailhead",
-            slug: "trailhead",
+            id: "core",
+            slug: "core",
             category: "basic",
 
-            name: "Trailhead",
+            name: "Core",
             tagline: "It Starts Here",
+            description:
+                "Welcome to TripTrax. We believe in uncompromising quality regardless of membership tier, so we start you off with access to Scout—our AI adventure engine—plus all the essential tools you need to get out and go. Core keeps it light and fast so you can go further.",
+
+            buttonVariant: "outline",
 
             prices: {
                 standard: {
                     stripePriceId:
                         "price_1Tx14j2OsvEUQIN2GwmU8rXU",
-                    monthlyEquivalent: 15,
-                    amount: 15,
+                    monthlyEquivalent: 9.99,
+                    amount: 9.99,
                     currency: "USD",
                     interval: "month",
                 },
@@ -82,8 +88,8 @@ export const pricingPlansApiResponse: PricingPlansApiResponse = {
                 annual: {
                     stripePriceId:
                         "price_1Tx1DZ2OsvEUQIN2J53V8yAC",
-                    monthlyEquivalent: 12,
-                    amount: 144,
+                    monthlyEquivalent: 8.29,
+                    amount: 99.50,
                     currency: "USD",
                     interval: "year",
                 },
@@ -91,14 +97,13 @@ export const pricingPlansApiResponse: PricingPlansApiResponse = {
 
             features: [
                 "Access to Scout AI.",
-                "Generate 2 trip packages per month.",
-                "Additional packages available at $7.00 each.",
-                "All core modules included.",
-                "Basic Architect review and quality control.",
-                "Package generation available within 30 days of departure window.",
-                "Trailhead membership badge.",
-                "Tier IV priority in queue.",
-                "Access to members-only content.",
+                "Generate 2 trip packages per month",
+                "Additional packages - $5.00/ea",
+                "Includes all basic modules.",
+                "Package generation available within 30 days of departure.",
+                "Basic Analyst oversight and quality control included.",
+                "Tier IV priority in queue",
+                "Access to members-only content",
             ],
 
             isActive: true,
@@ -106,19 +111,23 @@ export const pricingPlansApiResponse: PricingPlansApiResponse = {
         },
 
         {
-            id: "basecamp",
-            slug: "basecamp",
+            id: "plus",
+            slug: "plus",
             category: "basic",
 
-            name: "Basecamp",
-            tagline: "Start the Climb",
+            name: "Plus",
+            tagline: "Go Further",
+            description:
+                "Plus is your launchpad to bigger and better things. You get more packages, more flexibility, and more guidance. If you're satisfied with what our basic modules provide, Plus is where you'll want to set up camp.",
+
+            buttonVariant: "solid",
 
             prices: {
                 standard: {
                     stripePriceId:
                         "price_1Tx17Y2OsvEUQIN2Z66WWfRn",
-                    monthlyEquivalent: 20,
-                    amount: 20,
+                    monthlyEquivalent: 19.99,
+                    amount: 19.99,
                     currency: "USD",
                     interval: "month",
                 },
@@ -126,22 +135,21 @@ export const pricingPlansApiResponse: PricingPlansApiResponse = {
                 annual: {
                     stripePriceId:
                         "price_1Tx1EU2OsvEUQIN2lNDoGNoY",
-                    monthlyEquivalent: 17,
-                    amount: 204,
+                    monthlyEquivalent: 16.59,
+                    amount: 199.10,
                     currency: "USD",
                     interval: "year",
                 },
             },
 
             features: [
-                "Scout AI Base Access.",
-                "Generate 4 trip packages per month.",
-                "Additional packages available at $6.00 each.",
-                "All core modules included.",
-                "Basic Architect review and quality control.",
-                "Package generation available within 60 days of departure window.",
-                "Basecamp membership badge.",
-                "Tier III priority in queue.",
+                "Access to Scout AI",
+                "Generate 4 trip packages per month",
+                "Additional packages - $5.00/ea",
+                "Includes all basic modules.",
+                "Package generation available within 60 days of departure.",
+                "Enhanced Analyst oversight, quality control, and guidance included.",
+                "Tier III priority in queue",
                 "Access to members-only content.",
                 "5% off all merchandise.",
             ],
@@ -151,22 +159,24 @@ export const pricingPlansApiResponse: PricingPlansApiResponse = {
         },
 
         {
-            id: "summit",
-            slug: "summit",
+            id: "prime",
+            slug: "prime",
             category: "premium",
 
-            name: "Summit",
-            tagline: "Enjoy the View",
+            name: "Prime",
+            tagline: "Level Up",
+            description:
+                "Prime is our Swiss Army Knife tier. It's powerful, versatile, and built for the savvy adventurer who wants more depth, deeper intelligence, and additional capability embedded in every package.",
 
             featured: true,
-            badge: "Most Popular",
+            buttonVariant: "solid",
 
             prices: {
                 standard: {
                     stripePriceId:
                         "price_1Tx18k2OsvEUQIN29GARuQJU",
-                    monthlyEquivalent: 30,
-                    amount: 30,
+                    monthlyEquivalent: 29.99,
+                    amount: 29.99,
                     currency: "USD",
                     interval: "month",
                 },
@@ -174,8 +184,8 @@ export const pricingPlansApiResponse: PricingPlansApiResponse = {
                 annual: {
                     stripePriceId:
                         "price_1Tx1Fw2OsvEUQIN2bbm9GaiX",
-                    monthlyEquivalent: 25,
-                    amount: 300,
+                    monthlyEquivalent: 24.89,
+                    amount: 298.70,
                     currency: "USD",
                     interval: "year",
                 },
@@ -183,15 +193,14 @@ export const pricingPlansApiResponse: PricingPlansApiResponse = {
 
             features: [
                 "Access to Scout AI.",
-                "Generate 6 trip packages per month.",
-                "Additional packages can be purchased beyond the 6 included for $5.00 each.",
-                "Includes all premium modules.",
-                "Package generation available within 120 days of departure.",
-                "In-depth Architect analysis of each trip.",
-                "10-question post-delivery Trip Q&A session with Scout.",
-                "Annual subscriptions receive 2 handcrafted Architect oversight trips per year.",
-                "Summit account badge.",
-                "Tier II membership-level priority in queue.",
+                "Generate 8 trip packages per month",
+                "Additional packages - $5.00/ea",
+                "Includes all premium modules",
+                "Package generation available within 120 days of departure",
+                "In-depth analysis of each trip with personalized adjustments.",
+                "10-question post-delivery Trip Q&A session with Scout",
+                "Yearly subscriptions receive 2 handcrafted, maximum Analyst oversight trips per year",
+                "Tier II priority in queue.",
                 "Access to members-only content.",
                 "10% off all merchandise.",
             ],
@@ -201,19 +210,23 @@ export const pricingPlansApiResponse: PricingPlansApiResponse = {
         },
 
         {
-            id: "apex-elite",
-            slug: "apex-elite",
+            id: "elite",
+            slug: "elite",
             category: "premium",
 
-            name: "Apex Elite",
-            tagline: "Welcome to the Top",
+            name: "Elite",
+            tagline: "All Access",
+            description:
+                "You've reached the top. Rare air. Whether that feeling is mild hypoxia or pure excitement, we'll let you decide. Elite is purpose-built for expedition leaders, dedicated overlanders, content creators, and explorers who demand the absolute best. If Prime is the Swiss Army Knife, Elite is the fully stacked toolbox—with power tools.",
+
+            buttonVariant: "outline",
 
             prices: {
                 standard: {
                     stripePriceId:
                         "price_apex_elite_monthly_replace_me",
-                    monthlyEquivalent: 50,
-                    amount: 50,
+                    monthlyEquivalent: 49.99,
+                    amount: 49.99,
                     currency: "USD",
                     interval: "month",
                 },
@@ -221,29 +234,25 @@ export const pricingPlansApiResponse: PricingPlansApiResponse = {
                 annual: {
                     stripePriceId:
                         "price_apex_elite_annual_replace_me",
-                    monthlyEquivalent: 42,
-                    amount: 504,
+                    monthlyEquivalent: 41.49,
+                    amount: 497.90,
                     currency: "USD",
                     interval: "year",
                 },
             },
 
             features: [
-                "Scout AI Base Access.",
-                "Generate 10 trip packages per month.",
-                "Additional packages can be purchased beyond the 10 included for $5.00 each.",
+                "Access to Scout AI.",
+                "Generate 18 trip packages per month",
+                "Additional packages - $5.00/ea",
                 "Includes all premium modules.",
                 "Package generation available within 180 days of departure.",
-                "In-depth Architect analysis of each trip with available personalized recommendations and top-tier quality control.",
+                "In-depth analysis of each trip with personalized adjustments.",
                 "20-question post-delivery Trip Q&A session with Scout.",
-                "Annual subscriptions receive 5 handcrafted Architect oversight trips per year.",
-                "Annual subscriptions receive a free one-time Apex Adventure Lab swag bag.",
-                "Apex Elite account badge.",
-                "20% off all merchandise.",
-                "Custom Apex Elite package design.",
-                "Tier I membership-level priority in queue.",
+                "Yearly subscriptions receive 5 handcrafted, maximum Analyst oversight trips per year",
+                "Tier I priority in queue",
                 "Access to members-only content.",
-                "Access to the Expedition Leader toolkit.",
+                "20% off all merchandise.",
             ],
 
             isActive: true,
