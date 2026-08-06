@@ -46,7 +46,7 @@ const PlanCta = () => {
                     >
                         <Link href="/plan">
                             {/* Plan Your Trip */}
-                            Explore
+                            Explore 
                         </Link>
                     </Button>
                     <Button
@@ -54,7 +54,7 @@ const PlanCta = () => {
                         variant="ghost"
                         className="h-[42px] sm:w-[151px]"
                     >
-                        <Link href="/how-it-works">
+                        <Link href="/memberships">
                             {/* Services Plan */}
                             Memberships
                         </Link>

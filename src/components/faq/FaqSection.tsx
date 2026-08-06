@@ -101,18 +101,17 @@ export default function FAQSection() {
                 })}
             </div>
 
-            <div className="mb-14 text-center">
+            {/* <div className="mb-14 text-center">
                 <p className="mb-4">Still have questions?</p>
 
                 <Button
                     asChild
                 >
                     <Link href="/contact">
-                        {/* Contact our team */}
                         Contact Us
                     </Link>
                 </Button>
-            </div>
+            </div> */}
         </section >
     )
 }

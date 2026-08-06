@@ -17,24 +17,24 @@ type ContactItem = {
 const contactItems: ContactItem[] = [
     {
         title: 'Head office',
-        value: 'Backpacker, Pacific Northwest',
+        value: 'Nashville, Tennessee',
         icon: Building2,
     },
-    {
-        title: 'Call centre',
-        value: '+851 022010255',
-        icon: Phone,
-    },
+    // {
+    //     title: 'Call centre',
+    //     value: '+851 022010255',
+    //     icon: Phone,
+    // },
     {
         title: 'Email',
-        value: 'hello@apexadventurelab.com',
+        value: 'contact@triptraxusa.com',
         icon: AtSign,
     },
-    {
-        title: 'Working Hours',
-        value: 'Monday - Friday (07 am-05pm)',
-        icon: Clock3,
-    },
+    // {
+    //     title: 'Working Hours',
+    //     value: 'Monday - Friday (07 am-05pm)',
+    //     icon: Clock3,
+    // },
 ]
 
 export default function ContactSection() {
@@ -72,10 +72,8 @@ export default function ContactSection() {
                                 sm:text-base
                             "
                         >
-                            Let&apos;s start the conversation. Whether you have
-                            a question about a dossier, membership, partnership
-                            opportunity, or upcoming expedition, our team is
-                            here to help.
+                            Let's start the conversation. Whether you have a question about a package, membership,
+                            partnership opportunity, or upcoming expedition, our team is here to help.
                         </p>
                     </div>
 
