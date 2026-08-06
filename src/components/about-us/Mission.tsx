@@ -33,7 +33,7 @@ export default function MissionSection() {
                             sm:text-[40px] lg:text-[48px]
                         "
                     >
-                        Adventure, Down To A Science.
+                        Plan. Track. Go.
                     </h2>
 
                     <div
@@ -44,35 +44,15 @@ export default function MissionSection() {
                         "
                     >
                         <p>
-                            Apex Adventure Lab is a platform built for a
-                            purpose. Initially conceived as a personal project
-                            by an active-duty U.S. servicemember who has spent
-                            over a decade balancing a demanding military
-                            lifestyle with a passion for the outdoors, it has
-                            since evolved into the world&apos;s first
-                            AI-powered, expert-verified adventure planning
-                            platform.
+                            TripTrax is a platform built for a purpose. Initially conceived as a personal project by an active-duty U.S. servicemember who has spent over a decade balancing a demanding military lifestyle with a passion for the outdoors, it has since evolved into the world's first Al- powered, expert-verified adventure planning platform.
                         </p>
 
                         <p>
-                            We understand that life is busy. People like us
-                            recharge when we can unplug and get outside. Proper
-                            preparation doesn&apos;t diminish adventure—it
-                            enables it. When your route is clear, your gear is
-                            dialed, your weather window is right, and your
-                            emergency contacts are set, you can step off with
-                            confidence. Less time spent hesitating and less time
-                            spent worrying means more time spent exploring.
-                            Every moment outside makes life better. It&apos;s
-                            good for the soul. That&apos;s why we do what we
-                            do.
+                            We understand that life is busy. People like us recharge when we can unplug and get outside. Proper preparation doesn't diminish adventure - it enables it. When your route is clear, your gear is dialed, your weather window is right, and your emergency contacts are set, you can step off with confidence. Less time spent hesitating and less time spent worrying means more time spent exploring. Every moment outside makes life better. It's good for the soul. That's why we do what we do.
                         </p>
 
                         <p>
-                            The world is meant to be explored. We&apos;re here
-                            to help you get there safely, intelligently, and
-                            with a personalized package that accounts for
-                            everything you didn&apos;t think to think about.
+                            The world is meant to be explored. We're here to help you get there safely, intelligently, and with a personalized package that accounts for everything you didn't think to think about.
                         </p>
                     </div>
                 </div>
