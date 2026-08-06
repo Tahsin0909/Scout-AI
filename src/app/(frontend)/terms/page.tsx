@@ -22,57 +22,55 @@ const policyNavigation = [
     { id: "contact", label: "Contact Information" },
 ];
 
-export default function RefundPolicyPage() {
+export default function TermsPage() {
     return (
         <main className="min-h-screen bg-background text-foreground">
-            {/* Hero */}
+            {/* Hero Header */}
             <section className="relative isolate overflow-hidden bg-[#1b1b1b] text-white">
                 {/* Decorative glow */}
                 <div
                     aria-hidden="true"
                     className="
-            pointer-events-none absolute inset-0 -z-20
-            bg-[radial-gradient(ellipse_55%_80%_at_92%_-12%,rgba(218,182,44,0.48),transparent_62%),radial-gradient(ellipse_42%_70%_at_8%_-25%,rgba(115,101,47,0.35),transparent_72%)]
-          "
+                        pointer-events-none absolute inset-0 -z-20
+                        bg-[radial-gradient(ellipse_55%_80%_at_92%_-12%,rgba(218,182,44,0.48),transparent_62%),radial-gradient(ellipse_42%_70%_at_8%_-25%,rgba(115,101,47,0.35),transparent_72%)]
+                    "
                 />
 
                 {/* Dark overlay */}
                 <div
                     aria-hidden="true"
                     className="
-            pointer-events-none absolute inset-0 -z-10
-            bg-[linear-gradient(90deg,rgba(0,0,0,0.12),rgba(0,0,0,0.35))]
-          "
+                        pointer-events-none absolute inset-0 -z-10
+                        bg-[linear-gradient(90deg,rgba(0,0,0,0.12),rgba(0,0,0,0.35))]
+                    "
                 />
 
                 <div
                     className="
-            container flex min-h-[250px] items-center
-            px-5 py-16
-            sm:min-h-[280px] sm:px-8
-            lg:min-h-[300px] lg:px-12
-          "
+                        container flex min-h-[250px] items-center
+                        px-5 py-16
+                        sm:min-h-[280px] sm:px-8
+                        lg:min-h-[300px] lg:px-12
+                    "
                 >
                     <div className="max-w-[980px]">
                         <h1
                             className="
-                text-4xl font-bold tracking-[-0.035em]
-                sm:text-5xl lg:text-6xl
-              "
+                                text-4xl font-bold tracking-[-0.035em]
+                                sm:text-5xl lg:text-6xl
+                            "
                         >
-                            Terms of Service
+                            Terms & Conditions
                         </h1>
 
                         <p
                             className="
-                mt-5 max-w-[900px]
-                text-base leading-[1.7] text-white/65
-                sm:text-lg
-              "
+                                mt-5 max-w-[900px]
+                                text-base leading-[1.7] text-white/70
+                                sm:text-lg
+                            "
                         >
-                            These Terms of Service govern your use of TripTrax Services. Please
-                            review these terms carefully before accessing or using any features,
-                            content, or services provided by TripTrax.
+                            These Terms & Conditions ("Terms") govern access to and use of the TripTrax, LLC ("TripTrax," "we," "our," or "us") website, intelligent master forms, AI-powered trip planning tools, digital products, physical merchandise, and related services ("Services"). By accessing or using the Services, you agree to be bound by these Terms. If you do not agree, do not use the Services.
                         </p>
 
                         <div
@@ -100,118 +98,115 @@ export default function RefundPolicyPage() {
             <section className="px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
                 <div
                     className="
-            container grid gap-10
-            lg:grid-cols-[230px_minmax(0,1fr)]
-            lg:gap-14 xl:grid-cols-[250px_minmax(0,1fr)]
-            xl:gap-20
-          "
+                        container grid gap-10
+                        lg:grid-cols-[230px_minmax(0,1fr)]
+                        lg:gap-14 xl:grid-cols-[250px_minmax(0,1fr)]
+                        xl:gap-20
+                    "
                 >
-                    {/* Navigation */}
+                    {/* Sticky Sidebar Navigation */}
                     <aside className="min-w-0">
                         <div className="lg:sticky lg:top-24">
                             <p
                                 className="
-                  mb-4 text-lg font-semibold uppercase
-                  tracking-[0.14em] text-muted-foreground
-                "
+                                    mb-5 text-xs font-bold uppercase
+                                    tracking-widest text-muted-foreground/80
+                                "
                             >
-                                Legal Menu
+                                LEGAL OVERVIEW
                             </p>
 
-                            <nav aria-label="Terms of service sections">
+                            <nav aria-label="Terms of condition sections">
                                 <ol
                                     className="
-                    flex gap-2 overflow-x-auto pb-2
-                    [scrollbar-width:none]
-                    [&::-webkit-scrollbar]:hidden
-                    lg:block lg:space-y-1 lg:overflow-visible
-                  "
+                                        flex gap-2 overflow-x-auto pb-2
+                                        [scrollbar-width:none]
+                                        [&::-webkit-scrollbar]:hidden
+                                        lg:block lg:space-y-3.5 lg:overflow-visible
+                                        lg:border-l lg:border-border/60 lg:pl-4
+                                    "
                                 >
-                                    {policyNavigation.map((item, index) => (
-                                        <li key={item.id} className="shrink-0">
-                                            <a
-                                                href={`#${item.id}`}
-                                                className="
-                          flex min-w-max items-start gap-2
-                          rounded-md border border-border
-                          bg-card px-3 py-2.5
-                          text-sm leading-snug
-                          text-muted-foreground
-                          transition-colors duration-200
-                          hover:border-primary/50
-                          hover:bg-muted
-                          hover:text-foreground
-                          lg:min-w-0 lg:border-0
-                          lg:bg-transparent lg:px-0
-                          lg:py-2
-                        "
-                                            >
-                                                <span className="text-foreground/50">
-                                                    {index + 1}.
-                                                </span>
-
-                                                <span>{item.label}</span>
-                                            </a>
-                                        </li>
-                                    ))}
+                                    {policyNavigation.map((item, index) => {
+                                        const isFirst = index === 0;
+                                        return (
+                                            <li key={item.id} className="shrink-0">
+                                                <a
+                                                    href={`#${item.id}`}
+                                                    className={`
+                                                        flex min-w-max items-center gap-1.5
+                                                        rounded-md border border-border
+                                                        bg-card px-3 py-2
+                                                        text-xs font-medium text-muted-foreground
+                                                        transition-colors duration-200
+                                                        hover:text-foreground
+                                                        lg:min-w-0 lg:border-0
+                                                        lg:bg-transparent lg:px-0 lg:py-0
+                                                        ${isFirst
+                                                            ? "lg:-ml-[17px] lg:border-l-[3px] lg:border-[#EAB308] lg:pl-3 lg:font-bold lg:text-foreground"
+                                                            : "lg:text-muted-foreground/90 hover:lg:text-foreground"
+                                                        }
+                                                    `}
+                                                >
+                                                    <span>{index + 1}.</span>
+                                                    <span>{item.label}</span>
+                                                </a>
+                                            </li>
+                                        );
+                                    })}
                                 </ol>
                             </nav>
                         </div>
                     </aside>
 
-                    {/* Policy content */}
+                    {/* Terms content */}
                     <article
                         className="
-              min-w-0 max-w-[900px]
-              text-base leading-[1.75]
-              text-muted-foreground
-              sm:text-lg
-            "
+                            min-w-0 max-w-[900px]
+                            text-sm leading-[1.8]
+                            text-muted-foreground
+                            sm:text-base
+                        "
                     >
+                        {/* 1. Eligibility */}
                         <PolicySection
                             id="eligibility"
                             number="1."
                             title="Eligibility"
                         >
                             <p>
-                                You must be at least 18 years old to use the Services without
-                                the consent of an adult. By using the Services, you represent
-                                that you are either at least 18 years old or have the consent
-                                of an adult to use the Services.
+                                You must be at least 18 years old to use the Services without the consent of an adult. By using the Services, you represent that you are either at least 18 years old or have the consent of an adult to use the Services.
                             </p>
                         </PolicySection>
 
+                        {/* 2. Accounts & Security */}
                         <PolicySection
                             id="accounts-security"
                             number="2."
                             title="Accounts & Security"
                         >
-                            <h3 className="mt-5 font-semibold text-foreground">
+                            <h3 className="mt-4 font-semibold text-foreground">
                                 2.1 Account Creation
                             </h3>
                             <p>
-                                You must create an account to access certain features. You agree
-                                to provide accurate, complete information and keep it updated.
+                                You must create an account to access certain features. You agree to provide accurate, complete information and keep it updated.
                             </p>
 
-                            <h3 className="mt-5 font-semibold text-foreground">
+                            <h3 className="mt-4 font-semibold text-foreground">
                                 2.2 Account Security
                             </h3>
                             <p>
-                                You are responsible for maintaining the confidentiality of your
-                                login credentials and for all activity under your account.
+                                You are responsible for maintaining the confidentiality of your login credentials and for all activity under your account.
                             </p>
 
-                            <h3 className="mt-5 font-semibold text-foreground">
+                            <h3 className="mt-4 font-semibold text-foreground">
                                 2.3 Unauthorized Use
                             </h3>
                             <p>
-                                Notify us immediately if you suspect unauthorized access to your
-                                account. You may also change your password at any time if you
-                                suspect that your account has been compromised.
+                                Notify us immediately if you suspect unauthorized access to your account. You may also change your password at any time if you suspect that your account has been compromised.
                             </p>
                         </PolicySection>
 
+                        {/* 3. Services Provided */}
                         <PolicySection
                             id="services-provided"
                             number="3."
@@ -220,7 +215,7 @@ export default function RefundPolicyPage() {
                             <p className="font-semibold text-foreground">TripTrax provides:</p>
                             <PolicyList
                                 items={[
-                                    "AI-powered trip packages",
+                                    "AI powered trip packages",
                                     "Route suggestions and planning tools",
                                     "Safety considerations and environmental insights",
                                     "Digital packages and membership tiers",
@@ -229,34 +224,28 @@ export default function RefundPolicyPage() {
                                 ]}
                             />
 
-                            <p>
-                                These Services are informational and not a substitute for
-                                professional outdoor guidance, emergency planning, or real time
-                                operational monitoring.
+                            <p className="mt-4">
+                                These Services are informational and not a substitute for professional outdoor guidance, emergency planning, or real time navigation tools. TripTrax does not provide emergency services or real-time operational monitoring.
                             </p>
                         </PolicySection>
 
+                        {/* 4. AI Generated Content */}
                         <PolicySection
                             id="ai-generated-content"
                             number="4."
                             title="AI Generated Content"
                         >
-                            <h3 className="mt-5 font-semibold text-foreground">
+                            <h3 className="mt-4 font-semibold text-foreground">
                                 4.1 Nature of AI Output
                             </h3>
                             <p>
-                                Trip packages, recommendations, and route suggestions are
-                                generated using AI models and third party data sources. They may
-                                contain inaccuracies, outdated information, or incomplete data.
+                                Trip packages, recommendations, and route suggestions are generated using AI models and third party data sources. They may contain inaccuracies, outdated information, or incomplete data.
                             </p>
 
-                            <h3 className="mt-5 font-semibold text-foreground">
+                            <h3 className="mt-4 font-semibold text-foreground">
                                 4.2 User Responsibility
                             </h3>
-                            <p>
-                                While we do our best to ensure you receive accurate information,
-                                you agree that:
-                            </p>
+                            <p>While we do our best to ensure you receive accurate information, you agree that:</p>
                             <PolicyList
                                 items={[
                                     "You will verify all critical information independently",
@@ -264,21 +253,18 @@ export default function RefundPolicyPage() {
                                     "You will exercise judgment appropriate for outdoor activities",
                                 ]}
                             />
-
-                            <p>
-                                TripTrax is not responsible for decisions made based on AI
-                                generated content.
+                            <p className="mt-3">
+                                TripTrax is not responsible for decisions made based on AI generated content.
                             </p>
                         </PolicySection>
 
+                        {/* 5. User Responsibilities */}
                         <PolicySection
                             id="user-responsibilities"
                             number="5."
                             title="User Responsibilities"
                         >
-                            <p className="font-semibold text-foreground">
-                                By using the Services, you agree to:
-                            </p>
+                            <p className="font-semibold text-foreground">By using the Services, you agree to:</p>
                             <PolicyList
                                 items={[
                                     "Follow all local laws, regulations, and land use rules",
@@ -290,6 +276,7 @@ export default function RefundPolicyPage() {
                             />
                         </PolicySection>
 
+                        {/* 6. Prohibited Conduct */}
                         <PolicySection
                             id="prohibited-conduct"
                             number="6."
@@ -306,20 +293,18 @@ export default function RefundPolicyPage() {
                                     "Interfere with the operation of the Services",
                                 ]}
                             />
-
-                            <p>
-                                Breach of these Terms may, at our discretion, subject your
-                                account to immediate deletion and termination of access to the
-                                Services.
+                            <p className="mt-4">
+                                Breach of these Terms may, at our discretion, subject your account to immediate deletion and termination of access to the Services.
                             </p>
                         </PolicySection>
 
+                        {/* 7. Goods, Subscriptions & Billing */}
                         <PolicySection
                             id="goods-subscriptions-billing"
                             number="7."
                             title="Goods, Subscriptions & Billing"
                         >
-                            <h3 className="mt-5 font-semibold text-foreground">
+                            <h3 className="mt-4 font-semibold text-foreground">
                                 7.1 Digital Goods
                             </h3>
                             <p>Digital products include:</p>
@@ -331,11 +316,8 @@ export default function RefundPolicyPage() {
                                     "AI generated content",
                                 ]}
                             />
-
-                            <p>
-                                Digital goods are delivered electronically and are considered
-                                consumed upon delivery. They cannot be returned, revoked, or
-                                refunded once delivered.
+                            <p className="mt-3">
+                                Digital goods are delivered electronically and are considered consumed upon delivery. They cannot be returned, revoked, or refunded once delivered.
                             </p>
 
                             <h3 className="mt-5 font-semibold text-foreground">
@@ -350,69 +332,59 @@ export default function RefundPolicyPage() {
                                     "Miscellaneous merchandise",
                                 ]}
                             />
-
-                            <p>
-                                Physical goods are manufactured and delivered to the shipping
-                                address you provide. Estimated shipping times and costs are
-                                displayed at checkout. Delivery estimates are not guaranteed.
-                                TripTrax is not responsible for delays caused by carriers,
-                                customs, or external factors outside our control. While we make
-                                reasonable efforts to display accurate product descriptions,
-                                colors, and images, actual colors may vary due to screen
-                                differences.
+                            <p className="mt-3">
+                                Physical goods are manufactured and delivered to the shipping address you provide. Estimated shipping times and costs are displayed at checkout. Delivery estimates are not guaranteed. TripTrax is not responsible for delays caused by carriers, customs, or external factors outside our control. While we make reasonable efforts to display accurate product descriptions, colors, and images, actual colors may vary due to screen differences.
                             </p>
 
                             <h3 className="mt-5 font-semibold text-foreground">
                                 7.3 Subscription Plans
                             </h3>
                             <p>
-                                TripTrax offers monthly and annual subscriptions for our
-                                membership tiers. Details and pricing are available on our
-                                website.
+                                TripTrax offers monthly and annual subscriptions for our membership tiers. Details and pricing are available on our website.
                             </p>
 
                             <h3 className="mt-5 font-semibold text-foreground">
                                 7.4 Automatic Renewal
                             </h3>
                             <p>
-                                Subscription plans renew automatically at the current membership
-                                tier unless canceled before the renewal date.
+                                Subscription plans renew automatically at the current membership tier unless canceled before the renewal date.
                             </p>
 
-                            <h3 className="mt-5 font-semibold text-foreground">7.5 Refunds</h3>
+                            <h3 className="mt-5 font-semibold text-foreground">
+                                7.5 Refunds
+                            </h3>
                             <p>
-                                Digital and physical goods are generally non-refundable, except
-                                where required by law or explicitly stated in our Refund Policy.
+                                Digital and physical goods are generally non refundable, except where required by law or explicitly stated in our Refund Policy.
                             </p>
 
                             <h3 className="mt-5 font-semibold text-foreground">
                                 7.6 Payment Processing
                             </h3>
                             <p>
-                                Payments are processed by third party providers. TripTrax does
-                                not store full credit card numbers.
+                                Payments are processed by third party providers. TripTrax does not store full credit card numbers.
                             </p>
                         </PolicySection>
 
+                        {/* 8. Affiliate Links */}
                         <PolicySection
                             id="affiliate-links"
                             number="8."
                             title="Affiliate Links"
                         >
                             <p>
-                                TripTrax participates in affiliate marketing programs. Some links
-                                in your packages or on the website may generate commissions for
-                                TripTrax at no additional cost to you. Affiliate relationships
-                                do not influence package content or recommendations.
+                                TripTrax participates in affiliate marketing programs. Some links in your packages or on the website may generate commissions for TripTrax at no additional cost to you. Affiliate relationships do not influence package content or recommendations.
                             </p>
                         </PolicySection>
 
+                        {/* 9. Third Party Services & Data */}
                         <PolicySection
                             id="third-party-services"
                             number="9."
                             title="Third Party Services & Data"
                         >
-                            <p>The Services may integrate with or rely on:</p>
+                            <p className="font-semibold text-foreground">
+                                The Services may integrate with or rely on:
+                            </p>
                             <PolicyList
                                 items={[
                                     "Mapping APIs",
@@ -422,70 +394,54 @@ export default function RefundPolicyPage() {
                                     "Payment processors",
                                 ]}
                             />
-
-                            <p>
-                                TripTrax is not responsible for the availability, accuracy, or
-                                policies of third party services.
+                            <p className="mt-4">
+                                TripTrax is not responsible for the availability, accuracy, or policies of third party services.
                             </p>
                         </PolicySection>
 
+                        {/* 10. Intellectual Property */}
                         <PolicySection
                             id="intellectual-property"
                             number="10."
                             title="Intellectual Property"
                         >
-                            <h3 className="mt-5 font-semibold text-foreground">
+                            <h3 className="mt-4 font-semibold text-foreground">
                                 10.1 Ownership
                             </h3>
                             <p>
-                                All content, branding, logos, software, and materials provided
-                                through the Services are owned by TripTrax or its licensors.
+                                All content, branding, logos, software, and materials provided through the Services are owned by TripTrax or its licensors.
                             </p>
 
-                            <h3 className="mt-5 font-semibold text-foreground">
+                            <h3 className="mt-4 font-semibold text-foreground">
                                 10.2 License for TripTrax Consumer-Series Subscribers
                             </h3>
                             <p>
-                                For all TripTrax Core, Plus, Prime, and Elite subscribers, we
-                                grant you a limited, non exclusive, non transferable license to
-                                use the Services for personal, non commercial purposes.
-                                Commercial use of our Services is strictly prohibited without
-                                TripTrax's prior written consent.
+                                For all TripTrax Core, Plus, Prime, and Elite subscribers, we grant you a limited, non exclusive, non transferable license to use the Services for personal, non commercial purposes. Commercial use of our Services is strictly prohibited without TripTrax's prior written consent.
                             </p>
 
-                            <h3 className="mt-5 font-semibold text-foreground">
+                            <h3 className="mt-4 font-semibold text-foreground">
                                 10.3 License for TripTrax Pro-Series Subscribers
                             </h3>
                             <p>
-                                For all TripTrax Pro-series subscribers, we grant you a limited,
-                                non exclusive, non transferable license to use the Services for
-                                organizational, operational, and mission support purposes within
-                                the subscriber's team, agency, or organization. This license
-                                permits internal use only and does not allow resale,
-                                redistribution, sublicensing, or use of the Services outside the
-                                subscriber's organization. All organizational use is subject to
-                                the subscriber's active Pro-series membership, and TripTrax
-                                reserves the right to revoke access for misuse, unauthorized
-                                sharing, or use beyond the scope of this license.
+                                For all TripTrax Pro-series subscribers, we grant you a limited, non exclusive, non transferable license to use the Services for organizational, operational, and mission support purposes within the subscriber's team, agency, or organization. This license permits internal use only and does not allow resale, redistribution, sublicensing, or use of the Services outside the subscriber's organization. All organizational use is subject to the subscriber's active Pro-series membership, and TripTrax reserves the right to revoke access for misuse, unauthorized sharing, or use beyond the scope of this license.
                             </p>
 
-                            <h3 className="mt-5 font-semibold text-foreground">
+                            <h3 className="mt-4 font-semibold text-foreground">
                                 10.4 Restrictions
                             </h3>
                             <p>
-                                You may not copy, modify, distribute, or create derivative works
-                                from the Services without written permission.
+                                You may not copy, modify, distribute, or create derivative works from the Services without written permission.
                             </p>
                         </PolicySection>
 
+                        {/* 11. User Content */}
                         <PolicySection
                             id="user-content"
                             number="11."
                             title="User Content"
                         >
                             <p className="font-semibold text-foreground">
-                                If you upload or submit content (photos, notes, reviews,
-                                preferences, etc.):
+                                If you upload or submit content (photos, notes, reviews, preferences, etc.):
                             </p>
                             <PolicyList
                                 items={[
@@ -496,18 +452,19 @@ export default function RefundPolicyPage() {
                             />
                         </PolicySection>
 
+                        {/* 12. Disclaimers */}
                         <PolicySection
                             id="disclaimers"
                             number="12."
                             title="Disclaimers"
                         >
-                            <h3 className="mt-5 font-semibold text-foreground">12.1 General</h3>
-                            <p>
+                            <h3 className="mt-4 font-semibold text-foreground">
+                                12.1 General
+                            </h3>
+                            <p className="font-semibold text-foreground">
                                 The Services are provided "as is" and "as available."
                             </p>
-                            <p>
-                                TripTrax makes no warranties, express or implied, including:
-                            </p>
+                            <p>TripTrax makes no warranties, express or implied, including:</p>
                             <PolicyList
                                 items={[
                                     "Accuracy of AI generated content",
@@ -522,87 +479,39 @@ export default function RefundPolicyPage() {
                                 12.2 Outdoor Activity Risks
                             </h3>
                             <p>
-                                Outdoor activities involve inherent risks, including but not
-                                limited to injury, illness, wildlife encounters, environmental
-                                hazards, equipment failure, and unpredictable weather conditions.
-                                TripTrax does not guarantee the safety, suitability, status,
-                                condition, or accuracy of any recommended route, trail, campsite,
-                                or location. You acknowledge that all outdoor decisions require
-                                personal judgment, proper preparation, and adherence to local
-                                regulations, land use rules, and safety advisories. You assume
-                                full responsibility for your actions and agree that TripTrax is
-                                not liable for any injuries, accidents, losses, or damages
-                                arising from your participation in outdoor activities.
+                                Outdoor activities involve inherent risks, including but not limited to injury, illness, wildlife encounters, environmental hazards, equipment failure, and unpredictable weather conditions. TripTrax does not guarantee the safety, suitability, status, condition, or accuracy of any recommended route, trail, campsite, or location. You acknowledge that all outdoor decisions require personal judgment, proper preparation, and adherence to local regulations, land use rules, and safety advisories. You assume full responsibility for your actions and agree that TripTrax is not liable for any injuries, accidents, losses, or damages arising from your participation in outdoor activities.
                             </p>
 
                             <h3 className="mt-5 font-semibold text-foreground">
                                 12.3 Mission Brief Accuracy
                             </h3>
                             <p>
-                                Mission briefs, operational summaries, hazard assessments, and
-                                other mission support materials generated through TripTrax Pro
-                                series tools may contain inaccuracies, omissions, outdated
-                                information, or incomplete data. These materials are
-                                informational only and are not a substitute for official SAR
-                                protocols, certified training, or real time field verification.
-                                You agree that all mission critical decisions must be based on
-                                verified information, agency procedures, and the judgment of
-                                qualified personnel. TripTrax is not responsible for operational
-                                outcomes or any damages arising from reliance on mission support
-                                materials.
+                                Mission briefs, operational summaries, hazard assessments, and other mission support materials generated through TripTrax Pro series tools may contain inaccuracies, omissions, outdated information, or incomplete data. These materials are informational only and are not a substitute for official SAR protocols, certified training, or real time field verification. You agree that all mission critical decisions must be based on verified information, agency procedures, and the judgment of qualified personnel. TripTrax is not responsible for operational outcomes or any damages arising from reliance on mission support materials.
                             </p>
 
                             <h3 className="mt-5 font-semibold text-foreground">
                                 12.4 SAR Operational Use
                             </h3>
                             <p>
-                                TripTrax Pro series tools, including mission support features,
-                                are designed to assist Search and Rescue (SAR) teams with
-                                planning, coordination, and information management. These tools
-                                are informational only and are not a substitute for certified SAR
-                                training, official Incident Command System (ICS) procedures, or
-                                real time operational decision making. TripTrax does not provide
-                                emergency services, dispatch capabilities, or guaranteed mission
-                                critical data. All SAR operations must follow established agency
-                                protocols, ICS guidelines, and the direction of qualified
-                                personnel. TripTrax is not responsible for operational outcomes,
-                                mission decisions, or any damages arising from reliance on Pro
-                                series features.
+                                TripTrax Pro series tools, including mission support features, are designed to assist Search and Rescue (SAR) teams with planning, coordination, and information management. These tools are informational only and are not a substitute for certified SAR training, official Incident Command System (ICS) procedures, or real time operational decision making. TripTrax does not provide emergency services, dispatch capabilities, or guaranteed mission critical data. All SAR operations must follow established agency protocols, ICS guidelines, and the direction of qualified personnel. TripTrax is not responsible for operational outcomes, mission decisions, or any damages arising from reliance on Pro series features.
                             </p>
 
                             <h3 className="mt-5 font-semibold text-foreground">
                                 12.5 Weather & Environmental Data
                             </h3>
                             <p>
-                                Weather forecasts, environmental insights, hazard summaries, and
-                                related data provided through the Services are sourced from third
-                                party providers and may be delayed, inaccurate, or incomplete.
-                                Environmental conditions can change rapidly and without warning.
-                                TripTrax does not guarantee the accuracy, timeliness, or
-                                completeness of any weather or environmental information. You
-                                agree to verify all critical conditions independently and
-                                acknowledge that TripTrax is not liable for injuries, losses, or
-                                damages resulting from reliance on weather or environmental data.
+                                Weather forecasts, environmental insights, hazard summaries, and related data provided through the Services are sourced from third party providers and may be delayed, inaccurate, or incomplete. Environmental conditions can change rapidly and without warning. TripTrax does not guarantee the accuracy, timeliness, or completeness of any weather or environmental information. You agree to verify all critical conditions independently and acknowledge that TripTrax is not liable for injuries, losses, or damages resulting from reliance on weather or environmental data.
                             </p>
 
                             <h3 className="mt-5 font-semibold text-foreground">
                                 12.6 No Emergency Guarantees
                             </h3>
                             <p>
-                                TripTrax does not provide real time emergency monitoring,
-                                emergency response, or life safety guarantees. TripTrax does not
-                                track users, monitor field conditions, or communicate with
-                                emergency services on your behalf. All information
-                                provided—whether AI generated, human enhanced, or sourced from
-                                third party data—is subject to delay, inaccuracy, or
-                                incompleteness. You agree that TripTrax is not liable for any
-                                harm, injury, or loss resulting from delayed information,
-                                unavailable data, or reliance on the Services during an emergency.
-                                In all emergency situations, you must contact local authorities
-                                or appropriate rescue services immediately.
+                                TripTrax does not provide real time emergency monitoring, emergency response, or life safety guarantees. TripTrax does not track users, monitor field conditions, or communicate with emergency services on your behalf. All information provided—whether AI generated, human enhanced, or sourced from third party data—is subject to delay, inaccuracy, or incompleteness. You agree that TripTrax is not liable for any harm, injury, or loss resulting from delayed information, unavailable data, or reliance on the Services during an emergency. In all emergency situations, you must contact local authorities or appropriate rescue services immediately.
                             </p>
                         </PolicySection>
 
+                        {/* 13. Limitation of Liability */}
                         <PolicySection
                             id="limitation-of-liability"
                             number="13."
@@ -618,23 +527,19 @@ export default function RefundPolicyPage() {
                                     "TripTrax's total liability will not exceed the amount you paid in the past 12 months",
                                 ]}
                             />
-
-                            <p>
-                                Some jurisdictions do not allow the exclusion of certain
-                                warranties or limitations of liability. In such jurisdictions,
-                                TripTrax's liability is limited to the maximum extent permitted
-                                by law. You agree to use the Services at your own risk.
+                            <p className="mt-4">
+                                Some jurisdictions do not allow the exclusion of certain warranties or limitations of liability. In such jurisdictions, TripTrax's liability is limited to the maximum extent permitted by law. You agree to use the Services at your own risk.
                             </p>
                         </PolicySection>
 
+                        {/* 14. Indemnification */}
                         <PolicySection
                             id="indemnification"
                             number="14."
                             title="Indemnification"
                         >
                             <p className="font-semibold text-foreground">
-                                You agree to indemnify and hold harmless TripTrax from any
-                                claims, damages, losses, or expenses arising from:
+                                You agree to indemnify and hold harmless TripTrax from any claims, damages, losses, or expenses arising from:
                             </p>
                             <PolicyList
                                 items={[
@@ -645,6 +550,7 @@ export default function RefundPolicyPage() {
                             />
                         </PolicySection>
 
+                        {/* 15. Termination */}
                         <PolicySection
                             id="termination"
                             number="15."
@@ -660,56 +566,51 @@ export default function RefundPolicyPage() {
                                     "You misuse the Services",
                                 ]}
                             />
-
-                            <p>
-                                Upon termination, you will lose access to all digital goods,
-                                packages, and membership benefits. You may terminate your own
-                                account at any time and for any reason.
+                            <p className="mt-4">
+                                Upon termination, you will lose access to all digital goods, packages, and membership benefits. You may terminate your own account at any time and for any reason.
                             </p>
                         </PolicySection>
 
+                        {/* 16. Governing Law */}
                         <PolicySection
                             id="governing-law"
                             number="16."
                             title="Governing Law"
                         >
                             <p>
-                                These Terms are governed by the laws of the State of Tennessee,
-                                without regard to conflict of law principles.
+                                These Terms are governed by the laws of the State of Tennessee, without regard to conflict of law principles.
                             </p>
                         </PolicySection>
 
+                        {/* 17. Changes to These Terms */}
                         <PolicySection
                             id="changes-to-terms"
                             number="17."
                             title="Changes to These Terms"
                         >
                             <p>
-                                We reserve the right to modify or update these Terms at any time.
-                                Continued use of the Services after changes are posted
-                                constitutes acceptance of the updated Terms.
+                                We reserve the right to modify or update these Terms at any time. Continued use of the Services after changes are posted constitutes acceptance of the updated Terms.
                             </p>
                         </PolicySection>
 
+                        {/* 18. Contact Information */}
                         <PolicySection
                             id="contact"
                             number="18."
                             title="Contact Information"
                         >
                             <p>
-                                If you have any questions or concerns about these Terms, please
-                                contact us at:
+                                If you have any questions or concerns about these Terms, please contact us at:
                             </p>
 
                             <div
                                 className="
-                  mt-5 rounded-lg border border-border
-                  bg-card p-5 text-base
-                "
+                                    mt-4 rounded-lg border border-border
+                                    bg-card p-5 text-sm sm:text-base
+                                "
                             >
                                 <p className="font-semibold text-foreground">TripTrax Support</p>
-
-                                <p className="mt-1">support@triptraxsa.com</p>
+                                <p className="mt-1 text-muted-foreground">support@triptraxusa.com</p>
                             </div>
                         </PolicySection>
                     </article>
@@ -736,17 +637,17 @@ function PolicySection({
         <section
             id={id}
             className="
-        scroll-mt-28 border-b border-border
-        py-8 first:pt-0 last:border-b-0
-      "
+                scroll-mt-28 border-b border-border
+                py-8 first:pt-0 last:border-b-0
+            "
         >
             <h2
                 className="
-          mb-4 flex items-start gap-2
-          text-xl font-semibold leading-tight
-          tracking-[-0.02em] text-foreground
-          sm:text-2xl
-        "
+                    mb-4 flex items-start gap-2
+                    text-xl font-semibold leading-tight
+                    tracking-[-0.02em] text-foreground
+                    sm:text-2xl
+                "
             >
                 <span>{number}</span>
                 <span>{title}</span>
@@ -759,15 +660,15 @@ function PolicySection({
 
 function PolicyList({ items }: { items: string[] }) {
     return (
-        <ul className="space-y-3 pl-5">
+        <ul className="space-y-3 pl-5 mt-3">
             {items.map((item) => (
                 <li
                     key={item}
                     className="
-            relative before:absolute before:-left-4
-            before:top-[0.65em] before:size-1.5
-            before:rounded-full before:bg-foreground/45
-          "
+                        relative before:absolute before:-left-4
+                        before:top-[0.65em] before:size-1.5
+                        before:rounded-full before:bg-foreground/45
+                    "
                 >
                     {item}
                 </li>
