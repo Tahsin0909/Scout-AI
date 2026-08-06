@@ -6,7 +6,7 @@ export const faqs = [
             "A package is a complete, custom-built trip planning document specific to your adventure. It includes all the modules relevant to your travel mode — weather forecasts along your route, navigation and GPX files, safety contacts, gear recommendations, campsite vetting, food planning, and more. It's delivered as a PDF you can download and use offline.",
     },
     {
-        question: 'How is this different from just using Google Maps or All Trails?',
+        question: 'How is this different from just using Google Maps or AllTrails?',
         answer:
             'Our platform combines expert curation with AI intelligence to provide personalized recommendations and comprehensive planning tools that go beyond what public mapping services offer.',
     },
