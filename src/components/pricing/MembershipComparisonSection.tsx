@@ -79,7 +79,7 @@ const comparisonRows: ComparisonRow[] = [
         elite: null,
     },
     {
-        feature: "Basic modules",
+        feature: "Premium modules",
         core: null,
         plus: null,
         prime: true,

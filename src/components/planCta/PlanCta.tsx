@@ -1,7 +1,16 @@
+"use client";
+
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Button } from '../ui/button';
 
 const PlanCta = () => {
+    const pathname = usePathname();
+
+    if (pathname === "/memberships") {
+        return null;
+    }
+
     return (
         <div
             className="
@@ -26,7 +35,7 @@ const PlanCta = () => {
             "
                 >
                     {/* Your next expedition starts here. */}
-                    Choose Your Adventure 
+                    Choose Your Adventure
                 </h3>
 
                 <p
@@ -46,7 +55,7 @@ const PlanCta = () => {
                     >
                         <Link href="/plan">
                             {/* Plan Your Trip */}
-                            Explore 
+                            Explore
                         </Link>
                     </Button>
                     <Button
