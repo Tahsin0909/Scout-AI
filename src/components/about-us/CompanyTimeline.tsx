@@ -49,7 +49,7 @@ export default function CompanyTimelineSection() {
                             sm:text-4xl lg:text-5xl
                         "
                     >
-                        TripTrax
+                        TripTrax {" "}
                         <span className="italic text-[#97B900]">
                             Core Values
                         </span>
