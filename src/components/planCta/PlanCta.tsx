@@ -37,7 +37,7 @@ const PlanCta = () => {
                 >
                     {/* Scout AI is ready. Give us the details and we&apos;ll build your
                     dossier — adventure, down to a science. */}
-                    Join today - Scout AI is ready. Tell us the goal, we build the trip.
+                    Join today — Scout AI is ready. Tell us the plan and we build you the trip.
                 </p>
 
                 <div className="flex w-full flex-col justify-center gap-[13px] sm:flex-row">
