@@ -155,13 +155,13 @@ export default function Foundation() {
                 </div>
 
                 {/* CTA */}
-                <div className="mx-auto mt-12 w-fit text-center md:mt-16">
+                {/* <div className="mx-auto mt-12 w-fit text-center md:mt-16">
                     <Button asChild variant="primary">
                         <Link href="/register">
                             View Packaging
                         </Link>
                     </Button>
-                </div>
+                </div> */}
             </div>
         </section>
     )

@@ -8,51 +8,51 @@ import { motion, useReducedMotion } from 'framer-motion'
 const testimonials = [
     {
         quote:
-            'Used AAI for a 10-day PCT section hike. The weather windows were accurate, the water source map was lifesaving, and Scout AI actually caught that I’d forgotten bear canister requirements for that permit zone.',
+            " “Used AAL for a 10-day PCT section hike. The weather windows were accurate, the water source map was lifesaving, and Scout AI actually caught that I'd forgotten bear canister requirements for that permit zone.”",
         name: 'Claire T.',
         role: 'Backpacker, Pacific Northwest',
         avatar: 'https://i.pravatar.cc/100?img=47',
     },
     {
         quote:
-            'The route details were incredibly accurate and helped us avoid several difficult trail sections. Everything felt thoughtfully planned from start to finish.',
-        name: 'Sarah M.',
-        role: 'Adventure Traveler, Colorado',
+            "“Used AAL for a 10-day PCT section hike. The weather windows were accurate, the water source map was lifesaving, and Scout AI actually caught that I'd forgotten bear canister requirements for that permit zone.”",
+        name: 'Claire T.',
+        role: 'Backpacker, Pacific Northwest',
         avatar: 'https://i.pravatar.cc/100?img=32',
     },
     {
         quote:
-            'Scout AI understood exactly what kind of adventure we wanted. The final dossier was clear, detailed, and genuinely useful throughout the trip.',
-        name: 'Daniel R.',
-        role: 'Overland Explorer, Arizona',
+            "“Used AAL for a 10-day PCT section hike. The weather windows were accurate, the water source map was lifesaving, and Scout AI actually caught that I'd forgotten bear canister requirements for that permit zone.”",
+        name: 'Claire T.',
+        role: 'Backpacker, Pacific Northwest',
         avatar: 'https://i.pravatar.cc/100?img=44',
     },
     {
         quote:
-            'The weather windows were accurate, the water source map was lifesaving, and the recommendations helped us feel prepared for every part of the journey.',
+            "“Used AAL for a 10-day PCT section hike. The weather windows were accurate, the water source map was lifesaving, and Scout AI actually caught that I'd forgotten bear canister requirements for that permit zone.”",
         name: 'Claire T.',
         role: 'Backpacker, Pacific Northwest',
         avatar: 'https://i.pravatar.cc/100?img=49',
     },
     {
         quote:
-            'Every part of our road trip felt carefully considered. The route, accommodation suggestions, and timing were all incredibly helpful.',
-        name: 'Emma W.',
-        role: 'Road Trip Photographer',
+            "“Used AAL for a 10-day PCT section hike. The weather windows were accurate, the water source map was lifesaving, and Scout AI actually caught that I'd forgotten bear canister requirements for that permit zone.”",
+        name: 'Claire T.',
+        role: 'Backpacker, Pacific Northwest',
         avatar: 'https://i.pravatar.cc/100?img=36',
     },
     {
         quote:
-            'Our RV journey was much easier because the plan included campgrounds, fuel stops, parking recommendations, and backup routes.',
-        name: 'Michael B.',
-        role: 'Full-Time RV Traveler',
+            "“Used AAL for a 10-day PCT section hike. The weather windows were accurate, the water source map was lifesaving, and Scout AI actually caught that I'd forgotten bear canister requirements for that permit zone.”",
+        name: 'Claire T.',
+        role: 'Backpacker, Pacific Northwest',
         avatar: 'https://i.pravatar.cc/100?img=45',
     },
     {
         quote:
-            'The final plan combined AI speed with thoughtful human review. It felt personal, practical, and ready to use immediately.',
-        name: 'Olivia P.',
-        role: 'Outdoor Guide, Montana',
+            "“Used AAL for a 10-day PCT section hike. The weather windows were accurate, the water source map was lifesaving, and Scout AI actually caught that I'd forgotten bear canister requirements for that permit zone.”",
+        name: 'Claire T.',
+        role: 'Backpacker, Pacific Northwest',
         avatar: 'https://i.pravatar.cc/100?img=48',
     },
 ]
