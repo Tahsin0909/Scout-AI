@@ -1,4 +1,4 @@
-import Overview from "@/features/admindashboard/components/Overview";
+import Overview from "@/features/admin/components/Overview";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {

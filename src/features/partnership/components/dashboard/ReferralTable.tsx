@@ -74,8 +74,6 @@ const ReferralTable = ({ referralData }: { referralData: IReferral[] }) => {
                     className="
               overflow-x-auto
               rounded-md
-              border
-              border-border/50
 
               [&_table]:min-w-[600px]
               [&_table]:border-collapse
