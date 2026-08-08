@@ -1,9 +1,8 @@
-import React from 'react';
-import TripPackages from "@/components/dashboard/trips/TripPackages";
+import AdminTripPackages from "@/features/admin/components/AdmintripPacakages";
 
 const page = () => {
     return (
-        <TripPackages />
+        <AdminTripPackages />
     );
 };
 
