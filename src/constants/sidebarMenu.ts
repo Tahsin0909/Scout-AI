@@ -53,6 +53,16 @@ export const ALL_MENU_ITEMS: Record<string, SidebarMenuItem> = {
     title: "Partnerships",
     icon: Handshake,
     url: "/admin/partnerships",
+    items: [
+      {
+        title: "All Partners",
+        url: "/admin/partnerships/aii-partners"
+      },
+      {
+        title: "Resource",
+        url: "/admin/partnerships/resources"
+      },
+    ]
   },
 
   userOverview: {
