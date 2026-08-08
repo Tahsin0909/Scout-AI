@@ -1,5 +1,4 @@
-import React from 'react';
-import ContentManagement from "@/components/dashboard/content/ContentManagement";
+import ContentManagement from "@/features/admin/components/ContentManagement";
 
 const page = () => {
     return (
