@@ -1,4 +1,4 @@
-import PaymentManagement from "@/components/dashboard/payments/PaymentManagement";
+import PaymentManagement from "@/features/admin/components/PaymentManagement";
 
 const page = () => {
     return (
