@@ -1,4 +1,4 @@
-import UserManagement from "@/components/dashboard/users/UserManagement";
+import UserManagement from "@/features/admin/components/UserManagement";
 
 const page = () => {
     return (
