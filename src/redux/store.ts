@@ -1,6 +1,9 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { userReducer } from "@/features/user/store/user.slice";
 import { baseApi } from "@/redux/api/baseApi";
+import { admindashboardReducer } from "@/features/admindashboard/store/admindashboard.slice";
+import { memberReducer } from "@/features/member/store/member.slice";
+import { metricksandchartsReducer } from "@/features/metricksandcharts/store/metricksandcharts.slice";
 import { partnershipReducer } from "@/features/partnership/store/partnership.slice";
 import { paymentReducer } from "@/features/payment/store/payment.slice";
 import { exploreMapReducer } from "@/features/explore-map/store/explore-map.slice";
@@ -47,6 +50,9 @@ const persistConfig = {
 };
 
 const appReducer = combineReducers({
+  admindashboard: admindashboardReducer,
+  member: memberReducer,
+  metricksandcharts: metricksandchartsReducer,
   partnerApplication: partnershipReducer,
   payment: paymentReducer,
   exploreMap: exploreMapReducer,
