@@ -17,6 +17,7 @@ export const baseApi = createApi({
     },
   }),
   tagTypes: [
+    "resource",
     "admindashboard",
     "member",
     "metricksandcharts",

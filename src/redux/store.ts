@@ -1,6 +1,7 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { userReducer } from "@/features/user/store/user.slice";
 import { baseApi } from "@/redux/api/baseApi";
+import { resourceReducer } from "@/features/resource/store/resource.slice";
 import { admindashboardReducer } from "@/features/admin/store/admindashboard.slice";
 import { memberReducer } from "@/features/member/store/member.slice";
 import { metricksandchartsReducer } from "@/features/metricksandcharts/store/metricksandcharts.slice";
@@ -50,6 +51,7 @@ const persistConfig = {
 };
 
 const appReducer = combineReducers({
+  resource: resourceReducer,
   admindashboard: admindashboardReducer,
   member: memberReducer,
   metricksandcharts: metricksandchartsReducer,
