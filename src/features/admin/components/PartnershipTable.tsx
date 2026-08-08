@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 
 import { ColumnDef, Table } from "@tanstack/react-table";
 import { ChevronDown, Eye } from "lucide-react";
+import Link from "next/link";
 import { useMemo } from "react";
 
 interface PartnerRecord {
@@ -198,7 +199,9 @@ export default function PartnershipTable() {
             cell: ({ row }) => (
                 <div className="flex items-center justify-end">
                     <Button type="button" variant="ghost" size="icon" title="View Partner" onClick={() => console.log("View partner:", row.original)} className="h-8 w-8 rounded-md border border-border/40 bg-muted/40 text-muted-foreground hover:bg-muted hover:text-foreground">
-                        <Eye className="h-3.5 w-3.5" />
+                        <Link href={`/admin/partnerships/aii-partners/${row.id}`}>
+                            <Eye className="h-3.5 w-3.5" />
+                        </Link>
                     </Button>
                 </div>
             ),
