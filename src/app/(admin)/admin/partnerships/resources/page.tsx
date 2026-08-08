@@ -1,8 +1,9 @@
+import AllResources from "@/features/resource/components/AllResources";
 
 const page = () => {
     return (
         <div>
-            All Resources
+            <AllResources />
         </div>
     );
 };
