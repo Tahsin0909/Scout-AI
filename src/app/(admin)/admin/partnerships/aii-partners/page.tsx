@@ -1,8 +1,9 @@
+import PartnershipTable from "@/features/admin/components/PartnershipTable";
 
 const page = () => {
     return (
         <div>
-            All PArtners
+            <PartnershipTable />
         </div>
     );
 };
