@@ -1,84 +1,170 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
-import { 
-  Search, 
-  Eye, 
-  Download, 
-  ChevronLeft, 
-  ChevronRight, 
-  ChevronDown 
+import {
+  CheckCircle2,
+  ChevronDown,
+  ChevronLeft,
+  ChevronRight,
+  Clock3,
+  Download,
+  Eye,
+  ReceiptText,
+  RotateCcw,
+  Search,
+  XCircle,
 } from "lucide-react";
+import { useMemo, useState } from "react";
+
+import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
-// Interface for Payment Record
 interface PaymentRecord {
   id: string;
   transactionId: string;
   name: string;
   email: string;
-  membership: "Apex Elite" | "Pathfinder Elite" | "Summit" | "Basecamp" | "Trailhead";
+  membership:
+  | "Apex Elite"
+  | "Pathfinder Elite"
+  | "Summit"
+  | "Basecamp"
+  | "Trailhead";
   date: string;
   amount: string;
   status: "Successful" | "Pending" | "Failed";
   avatarUrl?: string;
 }
 
+const getStatusStyle = (status: PaymentRecord["status"]) => {
+  switch (status) {
+    case "Successful":
+      return "border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-500/20 dark:bg-emerald-500/10 dark:text-emerald-400";
+
+    case "Pending":
+      return "border-amber-200 bg-amber-50 text-amber-700 dark:border-amber-500/20 dark:bg-amber-500/10 dark:text-amber-400";
+
+    case "Failed":
+      return "border-red-200 bg-red-50 text-red-700 dark:border-red-500/20 dark:bg-red-500/10 dark:text-red-400";
+
+    default:
+      return "border-border bg-muted text-muted-foreground";
+  }
+};
+
+const getStatusIcon = (status: PaymentRecord["status"]) => {
+  switch (status) {
+    case "Successful":
+      return CheckCircle2;
+
+    case "Pending":
+      return Clock3;
+
+    case "Failed":
+      return XCircle;
+
+    default:
+      return Clock3;
+  }
+};
+
+const getMembershipStyle = (
+  membership: PaymentRecord["membership"]
+) => {
+  switch (membership) {
+    case "Apex Elite":
+      return "border-amber-200 bg-amber-50 text-amber-700 dark:border-amber-500/20 dark:bg-amber-500/10 dark:text-amber-400";
+
+    case "Pathfinder Elite":
+      return "border-violet-200 bg-violet-50 text-violet-700 dark:border-violet-500/20 dark:bg-violet-500/10 dark:text-violet-400";
+
+    case "Summit":
+      return "border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-500/20 dark:bg-emerald-500/10 dark:text-emerald-400";
+
+    case "Basecamp":
+      return "border-blue-200 bg-blue-50 text-blue-700 dark:border-blue-500/20 dark:bg-blue-500/10 dark:text-blue-400";
+
+    case "Trailhead":
+      return "border-cyan-200 bg-cyan-50 text-cyan-700 dark:border-cyan-500/20 dark:bg-cyan-500/10 dark:text-cyan-400";
+
+    default:
+      return "border-border bg-muted text-muted-foreground";
+  }
+};
+
 export default function PaymentManagement() {
   const [searchTerm, setSearchTerm] = useState("");
   const [dateRangeFilter, setDateRangeFilter] = useState("Last 30 Days");
   const [membershipFilter, setMembershipFilter] = useState("All Tiers");
   const [statusFilter, setStatusFilter] = useState("All Status");
-  const [currentPage, setCurrentPage] = useState(2); // Default to Page 2 as in screenshot
+  const [currentPage, setCurrentPage] = useState(2);
+
   const itemsPerPage = 10;
 
-  // Generate mock payment database (50 records for 5 pages of pagination)
   const mockPayments: PaymentRecord[] = useMemo(() => {
     const list: PaymentRecord[] = [];
-    
+
     for (let i = 1; i <= 50; i++) {
       let transactionId = "#TXN-98234-AD";
       let name = "Marcus Thorne";
       let email = "m.thorne@apexlab.com";
-      let membership: "Apex Elite" | "Pathfinder Elite" | "Summit" | "Basecamp" | "Trailhead" = "Pathfinder Elite";
+      let membership: PaymentRecord["membership"] = "Pathfinder Elite";
       let date = "Oct 12, 2023";
       let amount = "$499.00";
-      let status: "Successful" | "Pending" | "Failed" = "Successful";
+      let status: PaymentRecord["status"] = "Successful";
 
       if (i <= 10) {
-        // Page 1 data
-        transactionId = `#TXN-76342-BC`;
+        transactionId = "#TXN-76342-BC";
         name = i % 2 === 0 ? "Sarah Jenkins" : "David Chen";
-        email = i % 2 === 0 ? "s.jenkins@apexlab.com" : "d.chen@apexlab.com";
+        email =
+          i % 2 === 0
+            ? "s.jenkins@apexlab.com"
+            : "d.chen@apexlab.com";
         membership = i % 2 === 0 ? "Summit" : "Basecamp";
         date = "Oct 28, 2023";
         amount = i % 2 === 0 ? "$299.00" : "$199.00";
         status = i % 4 === 0 ? "Failed" : "Successful";
-      } else if (i > 10 && i <= 20) {
-        // Page 2 data - MATCHES SCREENSHOT EXACTLY
+      } else if (i <= 20) {
         transactionId = "#TXN-98234-AD";
         name = "Marcus Thorne";
         email = "m.thorne@apexlab.com";
-        // First row on page 2 is Apex Elite, others are Pathfinder Elite
         membership = i === 11 ? "Apex Elite" : "Pathfinder Elite";
         date = "Oct 12, 2023";
         amount = "$499.00";
         status = "Successful";
-      } else if (i > 20 && i <= 30) {
-        // Page 3 data
-        transactionId = `#TXN-54129-XY`;
-        name = i % 2 === 0 ? "Elena Rodriguez" : "Liam Carter";
-        email = i % 2 === 0 ? "e.rodriguez@apexlab.com" : "l.carter@apexlab.com";
-        membership = i % 2 === 0 ? "Trailhead" : "Summit";
+      } else if (i <= 30) {
+        transactionId = "#TXN-54129-XY";
+        name =
+          i % 2 === 0
+            ? "Elena Rodriguez"
+            : "Liam Carter";
+        email =
+          i % 2 === 0
+            ? "e.rodriguez@apexlab.com"
+            : "l.carter@apexlab.com";
+        membership =
+          i % 2 === 0
+            ? "Trailhead"
+            : "Summit";
         date = "Sep 15, 2023";
         amount = "$149.00";
-        status = i % 5 === 0 ? "Pending" : "Successful";
+        status =
+          i % 5 === 0
+            ? "Pending"
+            : "Successful";
       } else {
-        // Page 4 and 5 data
-        transactionId = `#TXN-32984-ZT`;
-        name = i % 2 === 0 ? "Sophia Martinez" : "Jackson Reed";
-        email = i % 2 === 0 ? "s.martinez@apexlab.com" : "j.reed@apexlab.com";
-        membership = i % 2 === 0 ? "Basecamp" : "Trailhead";
+        transactionId = "#TXN-32984-ZT";
+        name =
+          i % 2 === 0
+            ? "Sophia Martinez"
+            : "Jackson Reed";
+        email =
+          i % 2 === 0
+            ? "s.martinez@apexlab.com"
+            : "j.reed@apexlab.com";
+        membership =
+          i % 2 === 0
+            ? "Basecamp"
+            : "Trailhead";
         date = "Aug 02, 2023";
         amount = "$199.00";
         status = "Successful";
@@ -96,35 +182,63 @@ export default function PaymentManagement() {
         avatarUrl: `https://api.dicebear.com/7.x/avataaars/svg?seed=${name}-${i}`,
       });
     }
+
     return list;
   }, []);
 
-  // Filtered Payments
   const filteredPayments = useMemo(() => {
-    return mockPayments.filter((record) => {
-      const matchesSearch = 
-        record.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        record.transactionId.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        record.email.toLowerCase().includes(searchTerm.toLowerCase());
-      
-      const matchesMembership = 
-        membershipFilter === "All Tiers" || record.membership === membershipFilter;
-      
-      const matchesStatus = 
-        statusFilter === "All Status" || record.status === statusFilter;
+    const normalizedSearch = searchTerm.trim().toLowerCase();
 
-      return matchesSearch && matchesMembership && matchesStatus;
+    return mockPayments.filter((record) => {
+      const matchesSearch =
+        !normalizedSearch ||
+        record.name.toLowerCase().includes(normalizedSearch) ||
+        record.email.toLowerCase().includes(normalizedSearch) ||
+        record.transactionId.toLowerCase().includes(normalizedSearch) ||
+        record.id.toLowerCase().includes(normalizedSearch);
+
+      const matchesMembership =
+        membershipFilter === "All Tiers" ||
+        record.membership === membershipFilter;
+
+      const matchesStatus =
+        statusFilter === "All Status" ||
+        record.status === statusFilter;
+
+      /*
+       * Replace this with actual backend/date filtering.
+       * Your mock data uses historical dates, so applying
+       * "Last 7 Days" against today's date would return 0.
+       */
+      const matchesDateRange = true;
+
+      return (
+        matchesSearch &&
+        matchesMembership &&
+        matchesStatus &&
+        matchesDateRange
+      );
     });
   }, [mockPayments, searchTerm, membershipFilter, statusFilter]);
 
-  // Total pages
-  const totalPages = Math.ceil(filteredPayments.length / itemsPerPage) || 1;
+  const totalPages =
+    Math.ceil(filteredPayments.length / itemsPerPage) || 1;
 
-  // Paginated Payments
   const paginatedPayments = useMemo(() => {
-    const startIndex = (currentPage - 1) * itemsPerPage;
-    return filteredPayments.slice(startIndex, startIndex + itemsPerPage);
+    const startIndex =
+      (currentPage - 1) * itemsPerPage;
+
+    return filteredPayments.slice(
+      startIndex,
+      startIndex + itemsPerPage
+    );
   }, [filteredPayments, currentPage]);
+
+  const hasActiveFilters =
+    searchTerm ||
+    dateRangeFilter !== "Last 30 Days" ||
+    membershipFilter !== "All Tiers" ||
+    statusFilter !== "All Status";
 
   const handlePageChange = (page: number) => {
     if (page >= 1 && page <= totalPages) {
@@ -132,247 +246,484 @@ export default function PaymentManagement() {
     }
   };
 
-  // Status Badge Styling Helper
-  const getStatusBadgeStyle = (status: string) => {
-    switch (status) {
-      case "Successful":
-        return "text-[#38d792] bg-[#009a57]/15 border-[#009a57]/20";
-      case "Pending":
-        return "text-amber-400 bg-amber-500/10 border-amber-500/20";
-      case "Failed":
-        return "text-[#ff6467] bg-[#ff6467]/10 border-[#ff6467]/20";
-      default:
-        return "text-zinc-400 bg-zinc-800/50 border-zinc-700/30";
-    }
+  const handleResetFilters = () => {
+    setSearchTerm("");
+    setDateRangeFilter("Last 30 Days");
+    setMembershipFilter("All Tiers");
+    setStatusFilter("All Status");
+    setCurrentPage(1);
   };
 
   return (
-    <div className="w-full bg-[#111111] text-zinc-100 min-h-screen p-6 md:p-8 space-y-8 font-sans">
-      
-      {/* Page Header */}
-      <div className="space-y-2">
-        <h1 className="text-3xl md:text-4xl font-semibold tracking-tight text-white">
-          Payments Management
-        </h1>
-        <p className="text-zinc-400 text-sm md:text-base max-w-2xl font-light">
-          Financial records and transaction history.
-        </p>
-      </div>
+    <div className="w-full space-y-8">
+      {/* Header */}
+      <section className="relative overflow-hidden rounded-2xl border border-border bg-gradient-to-br from-card via-card to-amber-50/70 p-5 shadow-sm dark:from-card dark:via-card dark:to-amber-500/[0.04] sm:p-6">
+        <div className="pointer-events-none absolute -right-20 -top-24 h-64 w-64 rounded-full bg-amber-400/10 blur-3xl dark:bg-amber-400/5" />
 
-      {/* Filter and Search Section */}
-      <div className="flex flex-col xl:flex-row xl:items-center justify-between gap-4">
-        
-        {/* Search Input */}
-        <div className="relative flex-1 max-w-md">
-          <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4.5 h-4.5 text-zinc-500" />
-          <input
-            type="text"
-            placeholder="Name or ID ..."
-            value={searchTerm}
-            onChange={(e) => {
-              setSearchTerm(e.target.value);
-              setCurrentPage(1);
-            }}
-            className="w-full pl-11 pr-4 py-2.5 bg-[#181818] border border-[#262626] rounded-xl text-zinc-200 text-sm placeholder-zinc-500 focus:outline-none focus:border-[#FFD23F] focus:ring-1 focus:ring-[#FFD23F] transition-all"
-          />
+        <div className="relative">
+          <h1 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+            Payments Management
+          </h1>
+
+          <p className="mt-2 max-w-2xl text-sm leading-6 text-muted-foreground sm:text-base">
+            Review financial records, transaction history, payment status, and membership purchases.
+          </p>
+        </div>
+      </section>
+
+      {/* Filters */}
+      <section className="flex flex-col gap-4 xl:flex-row xl:items-end xl:justify-between">
+        <div>
+          <h2 className="text-xl font-bold tracking-tight text-foreground">
+            Transactions
+          </h2>
+
+          <p className="mt-1 text-sm text-muted-foreground">
+            Search and filter membership payment records.
+          </p>
         </div>
 
-        {/* Dropdowns Filters */}
-        <div className="flex flex-wrap items-center gap-4 self-start xl:self-auto">
-          
-          {/* Date Range Select */}
-          <div className="flex items-center gap-2">
-            <span className="text-xs text-zinc-400 font-medium">Date Range</span>
-            <div className="relative">
-              <select
-                value={dateRangeFilter}
-                onChange={(e) => setDateRangeFilter(e.target.value)}
-                className="appearance-none bg-[#181818] border border-[#262626] rounded-xl px-4 py-2.5 pr-10 text-xs font-semibold text-zinc-200 focus:outline-none focus:border-[#FFD23F] cursor-pointer"
-              >
-                <option value="Last 30 Days">Last 30 Days</option>
-                <option value="Last 7 Days">Last 7 Days</option>
-                <option value="Last 12 Months">Last 12 Months</option>
-              </select>
-              <ChevronDown className="absolute right-3.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-zinc-400 pointer-events-none" />
-            </div>
+        <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+          {/* Search */}
+          <div className="relative w-full sm:w-[270px]">
+            <Search className="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+
+            <input
+              type="text"
+              placeholder="Name, email or transaction..."
+              value={searchTerm}
+              onChange={(e) => {
+                setSearchTerm(e.target.value);
+                setCurrentPage(1);
+              }}
+              className="h-10 w-full rounded-xl border border-border bg-card pl-10 pr-4 text-sm text-foreground outline-none transition placeholder:text-muted-foreground hover:border-foreground/20 focus:border-amber-500/60 focus:ring-2 focus:ring-amber-500/10"
+            />
           </div>
 
-          {/* Membership Select */}
-          <div className="flex items-center gap-2">
-            <span className="text-xs text-zinc-400 font-medium">Membership</span>
-            <div className="relative">
-              <select
-                value={membershipFilter}
-                onChange={(e) => {
-                  setMembershipFilter(e.target.value);
-                  setCurrentPage(1);
-                }}
-                className="appearance-none bg-[#181818] border border-[#262626] rounded-xl px-4 py-2.5 pr-10 text-xs font-semibold text-zinc-200 focus:outline-none focus:border-[#FFD23F] cursor-pointer"
-              >
-                <option value="All Tiers">All Tiers</option>
-                <option value="Apex Elite">Apex Elite</option>
-                <option value="Pathfinder Elite">Pathfinder Elite</option>
-                <option value="Summit">Summit</option>
-                <option value="Basecamp">Basecamp</option>
-                <option value="Trailhead">Trailhead</option>
-              </select>
-              <ChevronDown className="absolute right-3.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-zinc-400 pointer-events-none" />
-            </div>
+          {/* Date Range */}
+          <div className="relative">
+            <select
+              value={dateRangeFilter}
+              onChange={(e) => {
+                setDateRangeFilter(e.target.value);
+                setCurrentPage(1);
+              }}
+              className="h-10 appearance-none rounded-xl border border-border bg-card px-3 pr-9 text-sm font-medium text-foreground outline-none transition hover:border-foreground/20 focus:border-amber-500/60 focus:ring-2 focus:ring-amber-500/10"
+            >
+              <option value="Last 7 Days">Last 7 Days</option>
+              <option value="Last 30 Days">Last 30 Days</option>
+              <option value="Last 12 Months">Last 12 Months</option>
+            </select>
+
+            <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-muted-foreground" />
           </div>
 
-          {/* Status Select */}
-          <div className="flex items-center gap-2">
-            <span className="text-xs text-zinc-400 font-medium">Status</span>
-            <div className="relative">
-              <select
-                value={statusFilter}
-                onChange={(e) => {
-                  setStatusFilter(e.target.value);
-                  setCurrentPage(1);
-                }}
-                className="appearance-none bg-[#181818] border border-[#262626] rounded-xl px-4 py-2.5 pr-10 text-xs font-semibold text-zinc-200 focus:outline-none focus:border-[#FFD23F] cursor-pointer"
-              >
-                <option value="All Status">All Status</option>
-                <option value="Successful">Successful</option>
-                <option value="Pending">Pending</option>
-                <option value="Failed">Failed</option>
-              </select>
-              <ChevronDown className="absolute right-3.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-zinc-400 pointer-events-none" />
-            </div>
+          {/* Membership */}
+          <div className="relative">
+            <select
+              value={membershipFilter}
+              onChange={(e) => {
+                setMembershipFilter(e.target.value);
+                setCurrentPage(1);
+              }}
+              className="h-10 appearance-none rounded-xl border border-border bg-card px-3 pr-9 text-sm font-medium text-foreground outline-none transition hover:border-foreground/20 focus:border-amber-500/60 focus:ring-2 focus:ring-amber-500/10"
+            >
+              <option value="All Tiers">All Tiers</option>
+              <option value="Apex Elite">Apex Elite</option>
+              <option value="Pathfinder Elite">
+                Pathfinder Elite
+              </option>
+              <option value="Summit">Summit</option>
+              <option value="Basecamp">Basecamp</option>
+              <option value="Trailhead">Trailhead</option>
+            </select>
+
+            <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-muted-foreground" />
           </div>
 
+          {/* Status */}
+          <div className="relative">
+            <select
+              value={statusFilter}
+              onChange={(e) => {
+                setStatusFilter(e.target.value);
+                setCurrentPage(1);
+              }}
+              className="h-10 appearance-none rounded-xl border border-border bg-card px-3 pr-9 text-sm font-medium text-foreground outline-none transition hover:border-foreground/20 focus:border-amber-500/60 focus:ring-2 focus:ring-amber-500/10"
+            >
+              <option value="All Status">All Status</option>
+              <option value="Successful">Successful</option>
+              <option value="Pending">Pending</option>
+              <option value="Failed">Failed</option>
+            </select>
+
+            <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-muted-foreground" />
+          </div>
+
+          {hasActiveFilters && (
+            <Button
+              type="button"
+              variant="ghost"
+              onClick={handleResetFilters}
+              className="h-10 rounded-xl px-3 text-xs font-semibold text-amber-600 hover:bg-amber-50 hover:text-amber-700 dark:text-amber-400 dark:hover:bg-amber-500/10 dark:hover:text-amber-300"
+            >
+              <RotateCcw className="mr-1.5 h-3.5 w-3.5" />
+              Reset
+            </Button>
+          )}
         </div>
+      </section>
 
-      </div>
-
-      {/* Payments Table */}
-      <Card className="bg-[#181818] border-[#262626] rounded-xl shadow-md overflow-hidden">
+      {/* Payment Card */}
+      <Card className="overflow-hidden rounded-2xl border-border/70 bg-card shadow-sm dark:shadow-none">
         <CardContent className="p-0">
-          <div className="overflow-x-auto">
+          {/* Meta */}
+          <div className="flex flex-col gap-2 border-b border-border/70 px-5 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-6">
+            <p className="text-xs font-medium text-muted-foreground">
+              Showing{" "}
+              <span className="font-semibold text-foreground">
+                {paginatedPayments.length}
+              </span>{" "}
+              of{" "}
+              <span className="font-semibold text-foreground">
+                {filteredPayments.length}
+              </span>{" "}
+              transactions
+            </p>
+
+            <span className="self-start rounded-full border border-border bg-muted/40 px-2.5 py-1 text-[11px] font-medium text-muted-foreground sm:self-auto">
+              Page {currentPage} of {totalPages}
+            </span>
+          </div>
+
+          {/* Desktop */}
+          <div className="hidden overflow-x-auto lg:block">
             <table className="w-full text-left text-sm">
               <thead>
-                <tr className="border-b border-[#262626] text-zinc-500 font-medium text-xs tracking-wider uppercase bg-[#141313]/40">
-                  <th className="px-6 py-4">Transaction ID</th>
-                  <th className="px-6 py-4">Name</th>
-                  <th className="px-6 py-4">Membership</th>
-                  <th className="px-6 py-4">Dates</th>
-                  <th className="px-6 py-4">Amount</th>
-                  <th className="px-6 py-4">Status</th>
-                  <th className="px-6 py-4 text-right">Actions</th>
+                <tr className="border-b border-border/70 bg-muted/20 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+                  <th className="px-6 py-4">
+                    Transaction
+                  </th>
+
+                  <th className="px-6 py-4">
+                    Customer
+                  </th>
+
+                  <th className="px-6 py-4">
+                    Membership
+                  </th>
+
+                  <th className="px-6 py-4">
+                    Date
+                  </th>
+
+                  <th className="px-6 py-4">
+                    Amount
+                  </th>
+
+                  <th className="px-6 py-4">
+                    Status
+                  </th>
+
+                  <th className="px-6 py-4 text-right">
+                    Actions
+                  </th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-[#262626]/50">
+
+              <tbody className="divide-y divide-border/60">
                 {paginatedPayments.length > 0 ? (
-                  paginatedPayments.map((record) => (
-                    <tr key={record.id} className="hover:bg-[#202020]/30 transition-colors">
-                      
-                      {/* Transaction ID */}
-                      <td className="px-6 py-4 text-zinc-400 font-mono text-sm">
-                        {record.transactionId}
-                      </td>
+                  paginatedPayments.map((record) => {
+                    const StatusIcon =
+                      getStatusIcon(record.status);
 
-                      {/* Name Column with Avatar */}
-                      <td className="px-6 py-4">
-                        <div className="flex items-center gap-3.5">
-                          {/* eslint-disable-next-line @next/next/no-img-element */}
-                          <img
-                            src={record.avatarUrl}
-                            alt={record.name}
-                            className="w-10 h-10 rounded-full bg-zinc-800 border border-zinc-700/50"
-                          />
-                          <div className="flex flex-col">
-                            <span className="font-semibold text-zinc-200 text-sm">{record.name}</span>
-                            <span className="text-zinc-500 text-xs mt-0.5">{record.email}</span>
+                    return (
+                      <tr
+                        key={record.id}
+                        className="group transition-colors hover:bg-muted/30"
+                      >
+                        {/* Transaction */}
+                        <td className="px-6 py-4">
+                          <p className="font-mono text-xs font-semibold text-foreground">
+                            {record.transactionId}
+                          </p>
+
+                          <p className="mt-1 text-[10px] text-muted-foreground">
+                            {record.id}
+                          </p>
+                        </td>
+
+                        {/* Customer */}
+                        <td className="px-6 py-4">
+                          <div className="flex items-center gap-3">
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                            <img
+                              src={record.avatarUrl}
+                              alt={record.name}
+                              className="h-10 w-10 shrink-0 rounded-full border border-border bg-muted object-cover"
+                            />
+
+                            <div className="min-w-0">
+                              <p className="truncate text-sm font-semibold text-foreground">
+                                {record.name}
+                              </p>
+
+                              <p className="mt-0.5 truncate text-xs text-muted-foreground">
+                                {record.email}
+                              </p>
+                            </div>
                           </div>
-                        </div>
-                      </td>
+                        </td>
 
-                      {/* Membership text */}
-                      <td className="px-6 py-4 text-zinc-300 text-sm">
-                        {record.membership}
-                      </td>
+                        {/* Membership */}
+                        <td className="px-6 py-4">
+                          <span className={`inline-flex rounded-full border px-2.5 py-1 text-[11px] font-semibold ${getMembershipStyle(record.membership)}`}>
+                            {record.membership}
+                          </span>
+                        </td>
 
-                      {/* Date */}
-                      <td className="px-6 py-4 text-zinc-400 text-sm">
-                        {record.date}
-                      </td>
+                        {/* Date */}
+                        <td className="px-6 py-4 text-sm text-muted-foreground">
+                          {record.date}
+                        </td>
 
-                      {/* Amount */}
-                      <td className="px-6 py-4 text-white text-sm font-medium">
-                        {record.amount}
-                      </td>
+                        {/* Amount */}
+                        <td className="px-6 py-4">
+                          <span className="text-sm font-bold text-foreground">
+                            {record.amount}
+                          </span>
+                        </td>
 
-                      {/* Status Badge */}
-                      <td className="px-6 py-4">
-                        <span className={`px-2.5 py-1 text-xs font-semibold rounded-md border ${getStatusBadgeStyle(record.status)}`}>
-                          {record.status}
-                        </span>
-                      </td>
+                        {/* Status */}
+                        <td className="px-6 py-4">
+                          <span className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-[11px] font-semibold ${getStatusStyle(record.status)}`}>
+                            <StatusIcon className="h-3 w-3" />
+                            {record.status}
+                          </span>
+                        </td>
 
-                      {/* Action Icons */}
-                      <td className="px-6 py-4 text-right">
-                        <div className="flex items-center justify-end gap-1.5">
-                          <button className="p-2 hover:bg-zinc-800 hover:text-white rounded-lg text-zinc-400 transition cursor-pointer" title="View Transaction">
-                            <Eye className="w-4.5 h-4.5" />
-                          </button>
-                          <button className="p-2 hover:bg-zinc-800 hover:text-white rounded-lg text-zinc-400 transition cursor-pointer" title="Download Invoice">
-                            <Download className="w-4.5 h-4.5" />
-                          </button>
-                        </div>
-                      </td>
-                    </tr>
-                  ))
+                        {/* Actions */}
+                        <td className="px-6 py-4">
+                          <div className="flex items-center justify-end gap-1">
+                            <Button
+                              type="button"
+                              variant="ghost"
+                              size="icon"
+                              title="View transaction"
+                              className="h-9 w-9 rounded-lg text-muted-foreground hover:bg-amber-50 hover:text-amber-700 dark:hover:bg-amber-500/10 dark:hover:text-amber-400"
+                            >
+                              <Eye className="h-4 w-4" />
+                            </Button>
+
+                            <Button
+                              type="button"
+                              variant="ghost"
+                              size="icon"
+                              title="Download invoice"
+                              className="h-9 w-9 rounded-lg text-muted-foreground hover:bg-muted hover:text-foreground"
+                            >
+                              <Download className="h-4 w-4" />
+                            </Button>
+                          </div>
+                        </td>
+                      </tr>
+                    );
+                  })
                 ) : (
                   <tr>
-                    <td colSpan={7} className="px-6 py-12 text-center text-zinc-500">
-                      No records found matching the filter criteria.
+                    <td
+                      colSpan={7}
+                      className="px-6 py-16 text-center"
+                    >
+                      <div className="mx-auto flex max-w-sm flex-col items-center">
+                        <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-border bg-muted/50 text-muted-foreground">
+                          <ReceiptText className="h-5 w-5" />
+                        </div>
+
+                        <h3 className="mt-4 text-sm font-semibold text-foreground">
+                          No transactions found
+                        </h3>
+
+                        <p className="mt-1 text-xs leading-5 text-muted-foreground">
+                          No payment records match your current search or filters.
+                        </p>
+
+                        {hasActiveFilters && (
+                          <Button
+                            type="button"
+                            variant="outline"
+                            onClick={handleResetFilters}
+                            className="mt-4 rounded-xl"
+                          >
+                            <RotateCcw className="mr-2 h-3.5 w-3.5" />
+                            Clear filters
+                          </Button>
+                        )}
+                      </div>
                     </td>
                   </tr>
                 )}
               </tbody>
             </table>
           </div>
+
+          {/* Tablet / Mobile */}
+          <div className="divide-y divide-border/60 lg:hidden">
+            {paginatedPayments.length > 0 ? (
+              paginatedPayments.map((record) => {
+                const StatusIcon =
+                  getStatusIcon(record.status);
+
+                return (
+                  <article
+                    key={record.id}
+                    className="p-5"
+                  >
+                    {/* Top */}
+                    <div className="flex items-start justify-between gap-3">
+                      <div className="flex min-w-0 items-center gap-3">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          src={record.avatarUrl}
+                          alt={record.name}
+                          className="h-11 w-11 shrink-0 rounded-full border border-border bg-muted"
+                        />
+
+                        <div className="min-w-0">
+                          <h3 className="truncate text-sm font-semibold text-foreground">
+                            {record.name}
+                          </h3>
+
+                          <p className="mt-0.5 truncate text-xs text-muted-foreground">
+                            {record.email}
+                          </p>
+                        </div>
+                      </div>
+
+                      <p className="shrink-0 text-base font-bold text-foreground">
+                        {record.amount}
+                      </p>
+                    </div>
+
+                    {/* Transaction */}
+                    <div className="mt-4 rounded-xl border border-border/60 bg-muted/20 px-3.5 py-3">
+                      <p className="text-[10px] font-medium uppercase tracking-wide text-muted-foreground">
+                        Transaction
+                      </p>
+
+                      <div className="mt-1 flex items-center justify-between gap-3">
+                        <span className="truncate font-mono text-xs font-semibold text-foreground">
+                          {record.transactionId}
+                        </span>
+
+                        <span className="text-[10px] text-muted-foreground">
+                          {record.date}
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Badges */}
+                    <div className="mt-3 flex flex-wrap gap-2">
+                      <span className={`inline-flex rounded-full border px-2.5 py-1 text-[11px] font-semibold ${getMembershipStyle(record.membership)}`}>
+                        {record.membership}
+                      </span>
+
+                      <span className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-[11px] font-semibold ${getStatusStyle(record.status)}`}>
+                        <StatusIcon className="h-3 w-3" />
+                        {record.status}
+                      </span>
+                    </div>
+
+                    {/* Actions */}
+                    <div className="mt-4 flex items-center gap-2 border-t border-border/60 pt-4">
+                      <Button
+                        type="button"
+                        variant="outline"
+                        size="sm"
+                        className="flex-1 rounded-xl"
+                      >
+                        <Eye className="mr-2 h-3.5 w-3.5" />
+                        View transaction
+                      </Button>
+
+                      <Button
+                        type="button"
+                        variant="outline"
+                        size="icon"
+                        title="Download invoice"
+                        className="h-9 w-9 shrink-0 rounded-xl"
+                      >
+                        <Download className="h-4 w-4" />
+                      </Button>
+                    </div>
+                  </article>
+                );
+              })
+            ) : (
+              <div className="px-5 py-14 text-center">
+                <ReceiptText className="mx-auto h-6 w-6 text-muted-foreground" />
+
+                <p className="mt-3 text-sm font-semibold text-foreground">
+                  No transactions found
+                </p>
+
+                <p className="mt-1 text-xs text-muted-foreground">
+                  Try changing your filters or search.
+                </p>
+              </div>
+            )}
+          </div>
         </CardContent>
       </Card>
 
-      {/* Pagination Footer */}
+      {/* Pagination */}
       {totalPages > 1 && (
-        <div className="flex justify-center items-center gap-2 pt-2 select-none">
-          {/* Previous Arrow */}
-          <button
-            onClick={() => handlePageChange(currentPage - 1)}
-            disabled={currentPage === 1}
-            className="p-2 bg-[#181818] border border-[#262626] hover:bg-zinc-800 rounded-lg text-zinc-400 disabled:opacity-40 disabled:hover:bg-[#181818] cursor-pointer disabled:cursor-not-allowed transition-colors"
-          >
-            <ChevronLeft className="w-4.5 h-4.5" />
-          </button>
-
-          {/* Page Numbers */}
-          {Array.from({ length: totalPages }, (_, idx) => idx + 1).map((page) => (
+        <div className="flex items-center justify-center pt-2">
+          <div className="flex items-center gap-1 rounded-xl border border-border bg-card p-1 shadow-sm">
             <button
-              key={page}
-              onClick={() => handlePageChange(page)}
-              className={`w-9.5 h-9.5 rounded-lg text-sm font-semibold transition-all border ${
-                currentPage === page
-                  ? "bg-[#FFD23F] text-black border-[#FFD23F] font-bold shadow-md"
-                  : "bg-transparent text-zinc-400 border-transparent hover:bg-zinc-800 hover:text-white"
-              } cursor-pointer`}
+              type="button"
+              aria-label="Previous page"
+              onClick={() =>
+                handlePageChange(currentPage - 1)
+              }
+              disabled={currentPage === 1}
+              className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition hover:bg-muted hover:text-foreground disabled:pointer-events-none disabled:opacity-40"
             >
-              {page}
+              <ChevronLeft className="h-4 w-4" />
             </button>
-          ))}
 
-          {/* Next Arrow */}
-          <button
-            onClick={() => handlePageChange(currentPage + 1)}
-            disabled={currentPage === totalPages}
-            className="p-2 bg-[#181818] border border-[#262626] hover:bg-zinc-800 rounded-lg text-zinc-400 disabled:opacity-40 disabled:hover:bg-[#181818] cursor-pointer disabled:cursor-not-allowed transition-colors"
-          >
-            <ChevronRight className="w-4.5 h-4.5" />
-          </button>
+            {Array.from(
+              { length: totalPages },
+              (_, index) => index + 1
+            ).map((page) => (
+              <button
+                type="button"
+                key={page}
+                onClick={() =>
+                  handlePageChange(page)
+                }
+                className={`h-9 min-w-9 rounded-lg px-2 text-xs font-semibold transition-all ${currentPage === page ? "bg-amber-400 text-zinc-950 shadow-sm hover:bg-amber-500" : "text-muted-foreground hover:bg-muted hover:text-foreground"}`}
+              >
+                {page}
+              </button>
+            ))}
+
+            <button
+              type="button"
+              aria-label="Next page"
+              onClick={() =>
+                handlePageChange(currentPage + 1)
+              }
+              disabled={
+                currentPage === totalPages
+              }
+              className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition hover:bg-muted hover:text-foreground disabled:pointer-events-none disabled:opacity-40"
+            >
+              <ChevronRight className="h-4 w-4" />
+            </button>
+          </div>
         </div>
       )}
-
     </div>
   );
 }

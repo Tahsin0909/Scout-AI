@@ -1,346 +1,973 @@
 "use client";
 
 import React, { useState } from "react";
-import { 
-  Users, 
-  Handshake 
+
+import {
+  ArrowUpRight,
+  BriefcaseBusiness,
+  Building2,
+  Clock3,
+  Handshake,
+  TrendingUp,
+  UserCheck,
+  Users,
 } from "lucide-react";
+
 import { Card, CardContent } from "@/components/ui/card";
 
+type TimeRange = "7d" | "30d" | "12m";
+
+const metrics = [
+  {
+    title: "Total Partners",
+    value: "2,486",
+    change: "+12%",
+    icon: Users,
+  },
+  {
+    title: "Active Partners",
+    value: "2,000",
+    change: "+8.4%",
+    icon: UserCheck,
+  },
+];
+
+const activities = [
+  {
+    id: 1,
+    type: "application",
+    title: "New Application: Alpine Ascent Outfitters",
+    description:
+      "Adventure guide service based in Switzerland applied for the Elite Tier partnership. Verification required.",
+    time: "2m ago",
+  },
+  {
+    id: 2,
+    type: "renewal",
+    title: "Renewal Request: Summit Trail Trekkers",
+    description:
+      "Experienced hiking company from Canada is seeking an Elite Tier renewal. Awaiting document submission.",
+    time: "5m ago",
+  },
+  {
+    id: 3,
+    type: "application",
+    title: "New Application: Alpine Ascent Outfitters",
+    description:
+      "Adventure guide service based in Switzerland applied for the Elite Tier partnership. Verification required.",
+    time: "2m ago",
+  },
+  {
+    id: 4,
+    type: "application",
+    title: "New Application: Ocean Wave Explorers",
+    description:
+      "Surfing school from Australia applied for the Pro Tier. Background check is currently in progress.",
+    time: "10m ago",
+  },
+];
+
+const barChartData = [
+  { month: "Jan", value: 4 },
+  { month: "Feb", value: 15 },
+  { month: "Mar", value: 10 },
+  { month: "Apr", value: 25 },
+  { month: "May", value: 35 },
+  {
+    month: "Jun",
+    value: 45,
+    isCurrent: true,
+    tooltip: "This month: 8,879",
+  },
+  { month: "Jul", value: 20 },
+  { month: "Aug", value: 30 },
+  { month: "Sep", value: 18 },
+  { month: "Oct", value: 15 },
+  { month: "Nov", value: 28 },
+  { month: "Dec", value: 40 },
+];
+
+const tierDistribution = [
+  {
+    label: "Member",
+    percentage: 45,
+    color: "#34d399",
+  },
+  {
+    label: "Ambassador",
+    percentage: 30,
+    color: "#a3e635",
+  },
+  {
+    label: "Advocate",
+    percentage: 25,
+    color: "#facc15",
+  },
+];
+
+const getActivityIcon = (type: string) => {
+  switch (type) {
+    case "renewal":
+      return Clock3;
+
+    default:
+      return Building2;
+  }
+};
+
 export default function PartnershipManagement() {
-  const [activeTab, setActiveTab] = useState<"7d" | "30d" | "12m">("30d");
+  const [activeTab, setActiveTab] =
+    useState<TimeRange>("30d");
 
-  // Mock Activity Data
-  const activities = [
-    {
-      title: "New Application: Alpine Ascent Outfitters",
-      description: "Adventure guide service based in Switzerland applied for the Elite Tier. partnership. Verification required.",
-      time: "2m ago",
-    },
-    {
-      title: "Renewal Request: Summit Trail Trekkers",
-      description: "Experienced hiking company from Canada seeking Elite Tier renewal. Awaiting document submission.",
-      time: "5m ago",
-    },
-    {
-      title: "New Application: Alpine Ascent Outfitters",
-      description: "Adventure guide service based in Switzerland applied for the Elite Tier. partnership. Verification required.",
-      time: "2m ago",
-    },
-    {
-      title: "New Application: Ocean Wave Explorers",
-      description: "Surfing school from Australia applied for the Pro Tier. Background check in progress.",
-      time: "10m ago",
-    },
-  ];
-
-  // Bar Chart Data (Jan - Dec)
-  const barChartData = [
-    { month: "Jan", value: 4, height: "h-[8%]" },
-    { month: "Feb", value: 15, height: "h-[30%]" },
-    { month: "Mar", value: 10, height: "h-[20%]" },
-    { month: "Apr", value: 25, height: "h-[50%]" },
-    { month: "May", value: 35, height: "h-[70%]" },
-    { month: "Jun", value: 45, height: "h-[90%]", isCurrent: true, tooltip: "This month: 8879.09" },
-    { month: "Jul", value: 20, height: "h-[40%]" },
-    { month: "Aug", value: 30, height: "h-[60%]" },
-    { month: "Sep", value: 18, height: "h-[36%]" },
-    { month: "Oct", value: 15, height: "h-[30%]" },
-    { month: "Nov", value: 28, height: "h-[56%]" },
-    { month: "Dec", value: 40, height: "h-[80%]" },
-  ];
+  const maxChartValue = Math.max(
+    ...barChartData.map((item) => item.value)
+  );
 
   return (
-    <div className="w-full bg-[#111111] text-zinc-100 min-h-screen p-6 md:p-8 space-y-8 font-sans">
-      
-      {/* Page Header */}
-      <div className="space-y-2">
-        <h1 className="text-3xl md:text-4xl font-semibold tracking-tight text-white">
-          Partnership Management
-        </h1>
-      </div>
+    <div className="w-full space-y-8">
+      {/* Header */}
+      <section
+        className="
+          relative overflow-hidden
+          rounded-2xl
+          border border-border
+          bg-gradient-to-br
+          from-card via-card to-amber-50/70
+          p-5
+          shadow-sm
+          dark:from-card
+          dark:via-card
+          dark:to-amber-500/[0.04]
+          sm:p-6
+        "
+      >
+        <div
+          className="
+            pointer-events-none
+            absolute -right-20 -top-24
+            h-64 w-64
+            rounded-full
+            bg-amber-400/10
+            blur-3xl
+            dark:bg-amber-400/5
+          "
+        />
 
-      {/* Metrics Row (2 Cards taking full width of the row) */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
-        {/* Card 1: Total Partner */}
-        <Card className="bg-[#181818] border-[#262626] rounded-xl overflow-hidden shadow-md">
-          <CardContent className="p-5 flex flex-col justify-between h-full space-y-4">
-            <div className="flex items-center justify-between">
-              <span className="text-2xl md:text-3xl font-semibold text-white tracking-tight">
-                2,486
-              </span>
-              <div className="w-8 h-8 rounded-lg bg-[#262626] flex items-center justify-center">
-                <Users className="w-4 h-4 text-zinc-400" />
-              </div>
-            </div>
-            <div className="flex items-end justify-between">
-              <span className="text-zinc-400 text-sm font-medium">Total Partner</span>
-              <span className="bg-[#009a57]/15 text-[#38d792] text-xs font-semibold px-2 py-0.5 rounded-full flex items-center gap-1 border border-[#009a57]/20">
-                +12%
-              </span>
-            </div>
-          </CardContent>
-        </Card>
+        <div className="relative">
+          <div
+            className="
+              mb-4 flex h-10 w-10
+              items-center justify-center
+              rounded-xl
+              border border-border
+              bg-background/60
+              text-muted-foreground
+            "
+          >
+            <Handshake className="h-5 w-5" />
+          </div>
 
-        {/* Card 2: Active Partner */}
-        <Card className="bg-[#181818] border-[#262626] rounded-xl overflow-hidden shadow-md">
-          <CardContent className="p-5 flex flex-col justify-between h-full space-y-4">
-            <div className="flex items-center justify-between">
-              <span className="text-2xl md:text-3xl font-semibold text-white tracking-tight">
-                2,000
-              </span>
-              <div className="w-8 h-8 rounded-lg bg-[#262626] flex items-center justify-center">
-                <Users className="w-4 h-4 text-zinc-400" />
-              </div>
-            </div>
-            <div className="flex items-end justify-between">
-              <span className="text-zinc-400 text-sm font-medium">Active Partner</span>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
+          <h1
+            className="
+              text-2xl font-bold
+              tracking-tight
+              text-foreground
+              sm:text-3xl
+            "
+          >
+            Partnership Management
+          </h1>
 
-      {/* Charts Section */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        
-        {/* Partner Growth Bar Chart */}
-        <Card className="lg:col-span-2 bg-[#181818] border-[#262626] rounded-xl shadow-md">
-          <CardContent className="p-6 space-y-6">
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-              <div>
-                <span className="text-zinc-100 text-base font-semibold">Partner Growth</span>
-              </div>
-              
-              {/* Tab Selector */}
-              <div className="flex bg-[#262626] p-1 rounded-lg self-start text-xs font-medium border border-[#333333]">
-                <button
-                  onClick={() => setActiveTab("7d")}
-                  className={`px-3 py-1.5 rounded-md transition-all ${
-                    activeTab === "7d"
-                      ? "bg-transparent text-zinc-400"
-                      : "text-zinc-400 hover:text-white"
-                  }`}
+          <p
+            className="
+              mt-2 max-w-2xl
+              text-sm leading-6
+              text-muted-foreground
+              sm:text-base
+            "
+          >
+            Monitor partner growth, tier distribution, applications,
+            renewals, and recent partnership activity.
+          </p>
+        </div>
+      </section>
+
+      {/* Metrics */}
+      <section
+        className="
+          grid grid-cols-1
+          gap-4
+          sm:grid-cols-2
+        "
+      >
+        {metrics.map((metric) => {
+          const Icon = metric.icon;
+
+          return (
+            <Card
+              key={metric.title}
+              className="
+                group overflow-hidden
+                rounded-2xl
+                border-border/70
+                bg-card
+                shadow-sm
+                transition-all
+                duration-200
+                hover:-translate-y-0.5
+                hover:border-border
+                hover:shadow-md
+                dark:shadow-none
+                dark:hover:bg-accent/20
+              "
+            >
+              <CardContent className="p-5">
+                <div
+                  className="
+                    flex items-start
+                    justify-between
+                    gap-4
+                  "
                 >
-                  Last 7 Days
-                </button>
-                <button
-                  onClick={() => setActiveTab("30d")}
-                  className={`px-3 py-1.5 rounded-md transition-all ${
-                    activeTab === "30d"
-                      ? "bg-[#FFD23F] text-black font-semibold shadow-sm"
-                      : "text-zinc-400 hover:text-white"
-                  }`}
-                >
-                  Last 30 Days
-                </button>
-                <button
-                  onClick={() => setActiveTab("12m")}
-                  className={`px-3 py-1.5 rounded-md transition-all ${
-                    activeTab === "12m"
-                      ? "bg-transparent text-zinc-400"
-                      : "text-zinc-400 hover:text-white"
-                  }`}
-                >
-                  Last 12 Months
-                </button>
-              </div>
-            </div>
-
-            {/* Custom Bar Chart Container */}
-            <div className="relative pt-12 pb-2 h-72 flex items-end">
-              
-              {/* Grid Lines & Y Axis */}
-              <div className="absolute inset-0 flex flex-col justify-between text-right text-[10px] text-zinc-500 font-medium pe-2 select-none pointer-events-none pb-7 pt-12">
-                <div className="flex items-center w-full">
-                  <span className="w-8 text-left">50k</span>
-                  <div className="w-full border-t border-[#262626]/60 ml-2" />
-                </div>
-                <div className="flex items-center w-full">
-                  <span className="w-8 text-left">30k</span>
-                  <div className="w-full border-t border-[#262626]/60 ml-2" />
-                </div>
-                <div className="flex items-center w-full">
-                  <span className="w-8 text-left">20k</span>
-                  <div className="w-full border-t border-[#262626]/60 ml-2" />
-                </div>
-                <div className="flex items-center w-full">
-                  <span className="w-8 text-left">10k</span>
-                  <div className="w-full border-t border-[#262626]/60 ml-2" />
-                </div>
-                <div className="flex items-center w-full">
-                  <span className="w-8 text-left">5k</span>
-                  <div className="w-full border-t border-[#262626]/60 ml-2" />
-                </div>
-                <div className="flex items-center w-full">
-                  <span className="w-8 text-left">1k</span>
-                  <div className="w-full border-t border-[#262626]/60 ml-2" />
-                </div>
-                <div className="flex items-center w-full">
-                  <span className="w-8 text-left">0</span>
-                  <div className="w-full border-t border-[#262626]/60 ml-2" />
-                </div>
-              </div>
-
-              {/* Bars Row */}
-              <div className="flex-1 flex justify-between items-end h-full pl-10 relative z-10 pb-6">
-                {barChartData.map((data, index) => (
-                  <div key={index} className="flex flex-col items-center flex-1 group cursor-pointer relative h-full justify-end">
-                    
-                    {/* Tooltip for Current Month (June) */}
-                    {data.isCurrent && (
-                      <div className="absolute bottom-[calc(90%+16px)] left-1/2 -translate-x-1/2 flex flex-col items-center z-20">
-                        <div className="bg-white text-black font-semibold text-[11px] px-2.5 py-1 rounded-md shadow-lg whitespace-nowrap border border-zinc-200">
-                          {data.tooltip}
-                        </div>
-                        {/* Connecting Dashed Line */}
-                        <div className="h-16 border-l border-dashed border-[#FFD23F] mt-1" />
-                      </div>
-                    )}
-
-                    {/* Bar representation */}
-                    <div 
-                      className={`w-4 sm:w-6 md:w-7 rounded-t-sm transition-all duration-300 ${
-                        data.isCurrent 
-                          ? "bg-[#FFD23F] hover:bg-[#ffe066]" 
-                          : "bg-[#2d2d2d] group-hover:bg-[#404040]"
-                      } ${data.height}`}
-                    />
-                    
-                    {/* X Axis label */}
-                    <span className="absolute bottom-[-24px] text-[11px] text-zinc-500 font-medium group-hover:text-white transition-colors mt-2">
-                      {data.month}
-                    </span>
+                  <div
+                    className="
+                      flex h-11 w-11
+                      items-center justify-center
+                      rounded-xl
+                      border border-border/70
+                      bg-muted/60
+                      text-muted-foreground
+                      transition-colors
+                      group-hover:bg-amber-50
+                      group-hover:text-amber-600
+                      dark:group-hover:bg-amber-500/10
+                      dark:group-hover:text-amber-400
+                    "
+                  >
+                    <Icon className="h-5 w-5" />
                   </div>
+
+                  <span
+                    className="
+                      inline-flex
+                      items-center gap-1
+                      rounded-full
+                      border border-emerald-200
+                      bg-emerald-50
+                      px-2.5 py-1
+                      text-xs font-semibold
+                      text-emerald-700
+                      dark:border-emerald-500/20
+                      dark:bg-emerald-500/10
+                      dark:text-emerald-400
+                    "
+                  >
+                    <ArrowUpRight className="h-3 w-3" />
+                    {metric.change}
+                  </span>
+                </div>
+
+                <div className="mt-6">
+                  <p
+                    className="
+                      text-3xl
+                      font-bold
+                      tracking-tight
+                      text-foreground
+                    "
+                  >
+                    {metric.value}
+                  </p>
+
+                  <p
+                    className="
+                      mt-1
+                      text-sm
+                      font-medium
+                      text-muted-foreground
+                    "
+                  >
+                    {metric.title}
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+          );
+        })}
+      </section>
+
+      {/* Charts */}
+      <section
+        className="
+          grid grid-cols-1
+          gap-6
+          xl:grid-cols-3
+        "
+      >
+        {/* Partner Growth */}
+        <Card
+          className="
+            overflow-hidden
+            rounded-2xl
+            border-border/70
+            bg-card
+            shadow-sm
+            dark:shadow-none
+            xl:col-span-2
+          "
+        >
+          <CardContent className="p-5 sm:p-6">
+            {/* Chart Header */}
+            <div
+              className="
+                flex flex-col
+                gap-4
+                sm:flex-row
+                sm:items-start
+                sm:justify-between
+              "
+            >
+              <div>
+                <div className="flex items-center gap-2">
+                  <div
+                    className="
+                      flex h-9 w-9
+                      items-center justify-center
+                      rounded-xl
+                      border border-border
+                      bg-muted/50
+                      text-muted-foreground
+                    "
+                  >
+                    <TrendingUp className="h-4 w-4" />
+                  </div>
+
+                  <div>
+                    <h2
+                      className="
+                        text-base
+                        font-bold
+                        text-foreground
+                      "
+                    >
+                      Partner Growth
+                    </h2>
+
+                    <p
+                      className="
+                        mt-0.5
+                        text-xs
+                        text-muted-foreground
+                      "
+                    >
+                      New partners joining over time.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Tabs */}
+              <div
+                className="
+                  flex self-start
+                  rounded-xl
+                  border border-border
+                  bg-muted/40
+                  p-1
+                "
+              >
+                {[
+                  {
+                    value: "7d",
+                    label: "7 Days",
+                  },
+                  {
+                    value: "30d",
+                    label: "30 Days",
+                  },
+                  {
+                    value: "12m",
+                    label: "12 Months",
+                  },
+                ].map((tab) => (
+                  <button
+                    key={tab.value}
+                    type="button"
+                    onClick={() =>
+                      setActiveTab(
+                        tab.value as TimeRange
+                      )
+                    }
+                    className={`
+                      rounded-lg
+                      px-3 py-1.5
+                      text-xs
+                      font-semibold
+                      transition-all
+                      ${activeTab === tab.value
+                        ? `
+                            bg-background
+                            text-foreground
+                            shadow-sm
+                            ring-1
+                            ring-border
+                          `
+                        : `
+                            text-muted-foreground
+                            hover:text-foreground
+                          `
+                      }
+                    `}
+                  >
+                    {tab.label}
+                  </button>
                 ))}
               </div>
             </div>
+
+            {/* Chart */}
+            <div className="mt-8">
+              <div className="relative h-[290px]">
+                {/* Grid */}
+                <div
+                  className="
+                    pointer-events-none
+                    absolute inset-0
+                    flex flex-col
+                    justify-between
+                    pb-7
+                  "
+                >
+                  {[
+                    "50k",
+                    "40k",
+                    "30k",
+                    "20k",
+                    "10k",
+                    "0",
+                  ].map((label) => (
+                    <div
+                      key={label}
+                      className="
+                        flex items-center
+                        text-[10px]
+                        text-muted-foreground
+                      "
+                    >
+                      <span className="w-8 shrink-0">
+                        {label}
+                      </span>
+
+                      <div
+                        className="
+                          ml-2
+                          w-full
+                          border-t
+                          border-dashed
+                          border-border/70
+                        "
+                      />
+                    </div>
+                  ))}
+                </div>
+
+                {/* Bars */}
+                <div
+                  className="
+                    absolute inset-0
+                    flex items-end
+                    gap-1
+                    pb-7
+                    pl-10
+                    sm:gap-2
+                  "
+                >
+                  {barChartData.map((data) => {
+                    const heightPercentage =
+                      (data.value /
+                        maxChartValue) *
+                      82;
+
+                    return (
+                      <div
+                        key={data.month}
+                        className="
+                          group relative
+                          flex h-full
+                          flex-1
+                          items-end
+                          justify-center
+                        "
+                      >
+                        {data.isCurrent && (
+                          <div
+                            className="
+                              absolute
+                              left-1/2
+                              z-20
+                              -translate-x-1/2
+                              whitespace-nowrap
+                            "
+                            style={{
+                              bottom: `calc(${heightPercentage}% + 36px)`,
+                            }}
+                          >
+                            <div
+                              className="
+                                rounded-lg
+                                border border-border
+                                bg-popover
+                                px-2.5 py-1.5
+                                text-[10px]
+                                font-semibold
+                                text-popover-foreground
+                                shadow-lg
+                              "
+                            >
+                              {data.tooltip}
+                            </div>
+                          </div>
+                        )}
+
+                        <div
+                          style={{
+                            height: `${heightPercentage}%`,
+                          }}
+                          className={`
+                            w-full
+                            max-w-7
+                            rounded-t-md
+                            transition-all
+                            duration-300
+                            ${data.isCurrent
+                              ? `
+                                  bg-amber-400
+                                  hover:bg-amber-500
+                                `
+                              : `
+                                  bg-muted-foreground/20
+                                  group-hover:bg-muted-foreground/35
+                                  dark:bg-muted-foreground/25
+                                `
+                            }
+                          `}
+                        />
+
+                        <span
+                          className="
+                            absolute
+                            -bottom-1
+                            translate-y-full
+                            text-[10px]
+                            font-medium
+                            text-muted-foreground
+                            transition-colors
+                            group-hover:text-foreground
+                          "
+                        >
+                          {data.month}
+                        </span>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
           </CardContent>
         </Card>
 
-        {/* Tier Distribution Donut Chart */}
-        <Card className="bg-[#181818] border-[#262626] rounded-xl shadow-md">
-          <CardContent className="p-6 space-y-6 flex flex-col justify-between h-full">
+        {/* Tier Distribution */}
+        <Card
+          className="
+            overflow-hidden
+            rounded-2xl
+            border-border/70
+            bg-card
+            shadow-sm
+            dark:shadow-none
+          "
+        >
+          <CardContent
+            className="
+              flex h-full
+              flex-col
+              p-5
+              sm:p-6
+            "
+          >
             <div>
-              <span className="text-zinc-100 text-base font-semibold">Tier Distribution</span>
+              <h2
+                className="
+                  text-base
+                  font-bold
+                  text-foreground
+                "
+              >
+                Tier Distribution
+              </h2>
+
+              <p
+                className="
+                  mt-1
+                  text-xs
+                  text-muted-foreground
+                "
+              >
+                Partners grouped by program tier.
+              </p>
             </div>
 
-            {/* Donut SVG Wrapper */}
-            <div className="relative flex items-center justify-center py-4">
-              <svg className="w-48 h-48 transform -rotate-90" viewBox="0 0 160 160">
-                <defs>
-                  <filter id="round-corners">
-                    <feGaussianBlur in="SourceGraphic" stdDeviation="1.2" />
-                    <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" />
-                  </filter>
-                </defs>
-                {/* Background Ring */}
+            {/* Donut */}
+            <div
+              className="
+                relative
+                flex flex-1
+                items-center
+                justify-center
+                py-8
+              "
+            >
+              <svg
+                className="
+                  h-48 w-48
+                  -rotate-90
+                  transform
+                "
+                viewBox="0 0 160 160"
+              >
+                {/* Background */}
                 <circle
                   cx="80"
                   cy="80"
                   r="62"
                   fill="transparent"
-                  stroke="#262626"
+                  stroke="currentColor"
                   strokeWidth="14"
+                  className="text-muted"
                 />
-                
-                <g filter="url(#round-corners)">
-                  {/* Teal Segment (Member) - 45% */}
-                  <circle
-                    cx="80"
-                    cy="80"
-                    r="62"
-                    fill="transparent"
-                    stroke="#38d792"
-                    strokeWidth="14"
-                    strokeDasharray="170 389.5"
-                    strokeDashoffset="-2"
-                    strokeLinecap="butt"
-                    className="transition-all duration-500 hover:stroke-opacity-80 cursor-pointer"
-                  />
 
-                  {/* Lime Green Segment (Ambassador) - 30% */}
-                  <circle
-                    cx="80"
-                    cy="80"
-                    r="62"
-                    fill="transparent"
-                    stroke="#a3e635"
-                    strokeWidth="14"
-                    strokeDasharray="113 389.5"
-                    strokeDashoffset="-176"
-                    strokeLinecap="butt"
-                    className="transition-all duration-500 hover:stroke-opacity-80 cursor-pointer"
-                  />
+                {/* Member 45% */}
+                <circle
+                  cx="80"
+                  cy="80"
+                  r="62"
+                  fill="transparent"
+                  stroke="#34d399"
+                  strokeWidth="14"
+                  strokeDasharray="175.3 389.6"
+                  strokeDashoffset="0"
+                  strokeLinecap="round"
+                  className="
+                    cursor-pointer
+                    transition-opacity
+                    hover:opacity-80
+                  "
+                />
 
-                  {/* Yellow Segment (Advocate) - 25% */}
-                  <circle
-                    cx="80"
-                    cy="80"
-                    r="62"
-                    fill="transparent"
-                    stroke="#FFD23F"
-                    strokeWidth="14"
-                    strokeDasharray="94.5 389.5"
-                    strokeDashoffset="-293"
-                    strokeLinecap="butt"
-                    className="transition-all duration-500 hover:stroke-opacity-80 cursor-pointer"
-                  />
-                </g>
+                {/* Ambassador 30% */}
+                <circle
+                  cx="80"
+                  cy="80"
+                  r="62"
+                  fill="transparent"
+                  stroke="#a3e635"
+                  strokeWidth="14"
+                  strokeDasharray="116.9 389.6"
+                  strokeDashoffset="-180"
+                  strokeLinecap="round"
+                  className="
+                    cursor-pointer
+                    transition-opacity
+                    hover:opacity-80
+                  "
+                />
+
+                {/* Advocate 25% */}
+                <circle
+                  cx="80"
+                  cy="80"
+                  r="62"
+                  fill="transparent"
+                  stroke="#facc15"
+                  strokeWidth="14"
+                  strokeDasharray="97.4 389.6"
+                  strokeDashoffset="-301"
+                  strokeLinecap="round"
+                  className="
+                    cursor-pointer
+                    transition-opacity
+                    hover:opacity-80
+                  "
+                />
               </svg>
+
+              {/* Center */}
+              <div
+                className="
+                  absolute
+                  flex flex-col
+                  items-center
+                  justify-center
+                  text-center
+                "
+              >
+                <span
+                  className="
+                    text-3xl
+                    font-bold
+                    tracking-tight
+                    text-foreground
+                  "
+                >
+                  2,486
+                </span>
+
+                <span
+                  className="
+                    mt-1
+                    text-xs
+                    text-muted-foreground
+                  "
+                >
+                  Partners
+                </span>
+              </div>
             </div>
 
-            {/* Donut Legend */}
-            <div className="space-y-3 pt-2">
-              <div className="flex items-center justify-between text-sm">
-                <div className="flex items-center gap-2">
-                  <span className="w-3 h-3 rounded-sm bg-[#38d792]" />
-                  <span className="text-zinc-300 font-medium">Member</span>
+            {/* Legend */}
+            <div className="space-y-3">
+              {tierDistribution.map((tier) => (
+                <div
+                  key={tier.label}
+                  className="
+                    flex items-center
+                    justify-between
+                    rounded-lg
+                    px-1 py-1
+                  "
+                >
+                  <div
+                    className="
+                      flex items-center
+                      gap-2.5
+                    "
+                  >
+                    <span
+                      className="
+                        h-2.5 w-2.5
+                        rounded-full
+                      "
+                      style={{
+                        backgroundColor:
+                          tier.color,
+                      }}
+                    />
+
+                    <span
+                      className="
+                        text-sm
+                        font-medium
+                        text-muted-foreground
+                      "
+                    >
+                      {tier.label}
+                    </span>
+                  </div>
+
+                  <span
+                    className="
+                      text-sm
+                      font-semibold
+                      text-foreground
+                    "
+                  >
+                    {tier.percentage}%
+                  </span>
                 </div>
-                <span className="text-zinc-100 font-semibold">45%</span>
-              </div>
-              <div className="flex items-center justify-between text-sm">
-                <div className="flex items-center gap-2">
-                  <span className="w-3 h-3 rounded-sm bg-[#a3e635]" />
-                  <span className="text-zinc-300 font-medium">Ambassador</span>
-                </div>
-                <span className="text-zinc-100 font-semibold">30%</span>
-              </div>
-              <div className="flex items-center justify-between text-sm">
-                <div className="flex items-center gap-2">
-                  <span className="w-3 h-3 rounded-sm bg-[#FFD23F]" />
-                  <span className="text-zinc-300 font-medium">Advocate</span>
-                </div>
-                <span className="text-zinc-100 font-semibold">25%</span>
-              </div>
+              ))}
             </div>
           </CardContent>
         </Card>
+      </section>
 
-      </div>
+      {/* Recent Activity */}
+      <Card
+        className="
+          overflow-hidden
+          rounded-2xl
+          border-border/70
+          bg-card
+          shadow-sm
+          dark:shadow-none
+        "
+      >
+        <CardContent className="p-0">
+          {/* Header */}
+          <div
+            className="
+              flex items-center
+              justify-between
+              border-b
+              border-border/70
+              px-5 py-5
+              sm:px-6
+            "
+          >
+            <div>
+              <h2
+                className="
+                  text-lg
+                  font-bold
+                  tracking-tight
+                  text-foreground
+                "
+              >
+                Recent Activity
+              </h2>
 
-      {/* Recent Activity Section */}
-      <Card className="bg-[#181818] border-[#262626] rounded-xl shadow-md overflow-hidden">
-        <CardContent className="p-6 space-y-4">
-          <div>
-            <h4 className="text-lg font-semibold text-white">Recent Activity</h4>
+              <p
+                className="
+                  mt-1
+                  text-xs
+                  text-muted-foreground
+                "
+              >
+                Latest applications, renewals, and partnership updates.
+              </p>
+            </div>
+
+            <div
+              className="
+                flex h-9 w-9
+                items-center
+                justify-center
+                rounded-xl
+                border border-border
+                bg-muted/50
+                text-muted-foreground
+              "
+            >
+              <BriefcaseBusiness className="h-4 w-4" />
+            </div>
           </div>
-          
-          <div className="border border-[#262626] rounded-xl overflow-hidden divide-y divide-[#262626]">
-            {activities.map((act, idx) => (
-              <div key={idx} className="p-5 flex items-start justify-between gap-4 hover:bg-[#202020]/20 transition-colors">
-                <div className="space-y-1.5">
-                  <h5 className="text-sm font-semibold text-zinc-100">{act.title}</h5>
-                  <p className="text-xs text-zinc-400 font-light leading-relaxed">{act.description}</p>
+
+          {/* Activity List */}
+          <div
+            className="
+              divide-y
+              divide-border/60
+            "
+          >
+            {activities.map((activity) => {
+              const ActivityIcon =
+                getActivityIcon(
+                  activity.type
+                );
+
+              return (
+                <div
+                  key={activity.id}
+                  className="
+                    group
+                    flex items-start
+                    gap-4
+                    px-5 py-5
+                    transition-colors
+                    hover:bg-muted/30
+                    sm:px-6
+                  "
+                >
+                  {/* Icon */}
+                  <div
+                    className="
+                      flex h-10 w-10
+                      shrink-0
+                      items-center
+                      justify-center
+                      rounded-xl
+                      border border-border
+                      bg-muted/50
+                      text-muted-foreground
+                      transition-colors
+                      group-hover:bg-amber-50
+                      group-hover:text-amber-600
+                      dark:group-hover:bg-amber-500/10
+                      dark:group-hover:text-amber-400
+                    "
+                  >
+                    <ActivityIcon className="h-4 w-4" />
+                  </div>
+
+                  {/* Content */}
+                  <div
+                    className="
+                      min-w-0 flex-1
+                    "
+                  >
+                    <div
+                      className="
+                        flex flex-col
+                        gap-1
+                        sm:flex-row
+                        sm:items-start
+                        sm:justify-between
+                        sm:gap-4
+                      "
+                    >
+                      <div>
+                        <h3
+                          className="
+                            text-sm
+                            font-semibold
+                            text-foreground
+                          "
+                        >
+                          {activity.title}
+                        </h3>
+
+                        <p
+                          className="
+                            mt-1.5
+                            max-w-3xl
+                            text-xs
+                            leading-5
+                            text-muted-foreground
+                            sm:text-sm
+                          "
+                        >
+                          {activity.description}
+                        </p>
+                      </div>
+
+                      <span
+                        className="
+                          mt-1
+                          inline-flex
+                          shrink-0
+                          items-center
+                          gap-1
+                          self-start
+                          rounded-full
+                          border border-border
+                          bg-muted/40
+                          px-2.5 py-1
+                          text-[10px]
+                          font-medium
+                          text-muted-foreground
+                          sm:mt-0
+                        "
+                      >
+                        <Clock3 className="h-3 w-3" />
+                        {activity.time}
+                      </span>
+                    </div>
+                  </div>
                 </div>
-                <span className="text-[10px] text-zinc-500 font-medium bg-zinc-800/40 border border-zinc-700/30 px-2 py-0.5 rounded-full shrink-0">
-                  {act.time}
-                </span>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </CardContent>
       </Card>
-
     </div>
   );
 }

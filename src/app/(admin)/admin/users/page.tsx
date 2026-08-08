@@ -1,4 +1,3 @@
-import React from 'react';
 import UserManagement from "@/components/dashboard/users/UserManagement";
 
 const page = () => {

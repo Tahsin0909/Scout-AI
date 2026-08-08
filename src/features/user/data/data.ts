@@ -61,6 +61,7 @@ const userToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjUwN2YxOTFlODEw
 
 // export const currentUser: IUser | null = null;
 export const currentUser: IUser = adminUser;
+// export const currentUser: IUser = partnerUser;
 // export const currentUser: IUser = standardUser;
 const getTokenForUser = (user: IUser | null): string => {
     if (!user) return "";

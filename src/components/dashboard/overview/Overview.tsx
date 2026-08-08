@@ -2,402 +2,992 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { 
-  Users, 
-  UserCheck, 
-  DollarSign, 
-  RefreshCw, 
-  TrendingUp, 
-  CreditCard 
+
+import {
+  ArrowRight,
+  ArrowUpRight,
+  CreditCard,
+  DollarSign,
+  RefreshCw,
+  TrendingUp,
+  UserCheck,
+  Users,
 } from "lucide-react";
+
 import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+
+type TimeRange = "7d" | "30d" | "12m";
+
+const metrics = [
+  {
+    title: "Total Members",
+    value: "2,486",
+    change: "+12%",
+    icon: Users,
+  },
+  {
+    title: "Active Memberships",
+    value: "2,214",
+    change: "+12%",
+    icon: UserCheck,
+  },
+  {
+    title: "Monthly Revenue",
+    value: "$18,420",
+    change: "+8.5%",
+    icon: DollarSign,
+  },
+  {
+    title: "Membership Renewals",
+    value: "128",
+    change: "+8.5%",
+    icon: RefreshCw,
+  },
+];
+
+const barChartData = [
+  { month: "Jan", value: 4 },
+  { month: "Feb", value: 15 },
+  { month: "Mar", value: 10 },
+  { month: "Apr", value: 25 },
+  { month: "May", value: 35 },
+  {
+    month: "Jun",
+    value: 45,
+    isCurrent: true,
+    tooltip: "This month: $8,879.09",
+  },
+  { month: "Jul", value: 20 },
+  { month: "Aug", value: 30 },
+  { month: "Sep", value: 18 },
+  { month: "Oct", value: 15 },
+  { month: "Nov", value: 28 },
+  { month: "Dec", value: 40 },
+];
+
+const recentMembers = [
+  {
+    name: "Marcus Thorne",
+    tier: "Apex Elite",
+    status: "Active",
+    tierVariant: "apex",
+  },
+  {
+    name: "Sarah Jenkins",
+    tier: "Summit",
+    status: "Active",
+    tierVariant: "summit",
+  },
+  {
+    name: "David Chen",
+    tier: "Basecamp",
+    status: "Active",
+    tierVariant: "basecamp",
+  },
+  {
+    name: "Elena Rodriguez",
+    tier: "Trailhead",
+    status: "Active",
+    tierVariant: "trailhead",
+  },
+  {
+    name: "Olivia Bennett",
+    tier: "Summit",
+    status: "Active",
+    tierVariant: "summit",
+  },
+];
+
+const recentPayments = [
+  {
+    id: "#INV-8821",
+    amount: "$199.00",
+    date: "Oct 24, 2024",
+  },
+  {
+    id: "#INV-8820",
+    amount: "$199.00",
+    date: "Oct 24, 2024",
+  },
+  {
+    id: "#INV-8819",
+    amount: "$199.00",
+    date: "Oct 23, 2024",
+  },
+  {
+    id: "#INV-8818",
+    amount: "$199.00",
+    date: "Oct 22, 2024",
+  },
+  {
+    id: "#INV-8817",
+    amount: "$199.00",
+    date: "Oct 21, 2024",
+  },
+];
+
+const membershipDistribution = [
+  {
+    label: "Trailhead",
+    value: 820,
+    percentage: 42,
+    color: "#34d399",
+  },
+  {
+    label: "Summit",
+    value: 710,
+    percentage: 30,
+    color: "#a3e635",
+  },
+  {
+    label: "Apex Elite",
+    value: 560,
+    percentage: 28,
+    color: "#facc15",
+  },
+];
+
+const getTierClasses = (variant: string) => {
+  switch (variant) {
+    case "apex":
+      return `
+        border-amber-200
+        bg-amber-50
+        text-amber-700
+        dark:border-amber-500/20
+        dark:bg-amber-500/10
+        dark:text-amber-400
+      `;
+
+    case "summit":
+      return `
+        border-emerald-200
+        bg-emerald-50
+        text-emerald-700
+        dark:border-emerald-500/20
+        dark:bg-emerald-500/10
+        dark:text-emerald-400
+      `;
+
+    case "basecamp":
+      return `
+        border-blue-200
+        bg-blue-50
+        text-blue-700
+        dark:border-blue-500/20
+        dark:bg-blue-500/10
+        dark:text-blue-400
+      `;
+
+    case "trailhead":
+      return `
+        border-cyan-200
+        bg-cyan-50
+        text-cyan-700
+        dark:border-cyan-500/20
+        dark:bg-cyan-500/10
+        dark:text-cyan-400
+      `;
+
+    default:
+      return "border-border bg-muted text-muted-foreground";
+  }
+};
 
 export default function Overview() {
-  const [activeTab, setActiveTab] = useState<"7d" | "30d" | "12m">("30d");
+  const [activeTab, setActiveTab] = useState<TimeRange>("30d");
 
-  // Metrics Data
-  const metrics = [
-    {
-      title: "Total Members",
-      value: "2,486",
-      change: "+12%",
-      icon: Users,
-    },
-    {
-      title: "Active Memberships",
-      value: "2,214",
-      change: "+12%",
-      icon: UserCheck,
-    },
-    {
-      title: "Monthly Revenue",
-      value: "$18,420",
-      change: "+8.5%",
-      icon: DollarSign,
-    },
-    {
-      title: "Membership Renewals",
-      value: "128",
-      change: "+8.5%",
-      icon: RefreshCw,
-    },
-  ];
-
-  // Bar Chart Data (Jan - Dec)
-  const barChartData = [
-    { month: "Jan", value: 4, height: "h-[8%]" },
-    { month: "Feb", value: 15, height: "h-[30%]" },
-    { month: "Mar", value: 10, height: "h-[20%]" },
-    { month: "Apr", value: 25, height: "h-[50%]" },
-    { month: "May", value: 35, height: "h-[70%]" },
-    { month: "Jun", value: 45, height: "h-[90%]", isCurrent: true, tooltip: "This month: $8879.09" },
-    { month: "Jul", value: 20, height: "h-[40%]" },
-    { month: "Aug", value: 30, height: "h-[60%]" },
-    { month: "Sep", value: 18, height: "h-[36%]" },
-    { month: "Oct", value: 15, height: "h-[30%]" },
-    { month: "Nov", value: 28, height: "h-[56%]" },
-    { month: "Dec", value: 40, height: "h-[80%]" },
-  ];
-
-  // Recent Members Data
-  const recentMembers = [
-    {
-      name: "Marcus Thorne",
-      tier: "Apex Elite",
-      status: "Active",
-      tierColor: "bg-[#38d792]/10 text-[#38d792] border-[#38d792]/20",
-    },
-    {
-      name: "Sarah Jenkins",
-      tier: "Summit",
-      status: "Active",
-      tierColor: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20",
-    },
-    {
-      name: "David Chen",
-      tier: "Basecamp",
-      status: "Active",
-      tierColor: "bg-blue-500/10 text-blue-400 border-blue-500/20",
-    },
-    {
-      name: "Elena Rodriguez",
-      tier: "Trailhead",
-      status: "Active",
-      tierColor: "bg-cyan-500/10 text-cyan-400 border-cyan-500/20",
-    },
-    {
-      name: "Elena Rodriguez",
-      tier: "Trailhead",
-      status: "Active",
-      tierColor: "bg-cyan-500/10 text-cyan-400 border-cyan-500/20",
-    },
-  ];
-
-  // Recent Payments Data
-  const recentPayments = [
-    { id: "#INV-8821", amount: "$199.00", date: "Oct 24, 2024" },
-    { id: "#INV-8820", amount: "$199.00", date: "Oct 24, 2024" },
-    { id: "#INV-8819", amount: "$199.00", date: "Oct 24, 2024" },
-    { id: "#INV-8818", amount: "$199.00", date: "Oct 24, 2024" },
-    { id: "#INV-8819", amount: "$199.00", date: "Oct 24, 2024" },
-  ];
+  const maxChartValue = Math.max(
+    ...barChartData.map((item) => item.value)
+  );
 
   return (
-    <div className="w-full bg-[#111111] text-zinc-100 min-h-screen p-6 md:p-8 space-y-8 font-sans">
-      
-      {/* Welcome Header */}
-      <div className="space-y-2">
-        <h1 className="text-3xl md:text-4xl font-semibold tracking-tight text-white">
-          Welcome Back, Alex
-        </h1>
-        <p className="text-zinc-400 text-sm md:text-base max-w-2xl font-light">
-          Plan, track, and manage your adventures from one place. Your rugged intelligence is ready.
-        </p>
-      </div>
+    <div className="w-full space-y-8">
+      {/* Header */}
+      <section
+        className="
+          relative overflow-hidden
+          rounded-2xl
+          border border-border
+          bg-gradient-to-br
+          from-card via-card to-amber-50/70
+          p-5
+          shadow-sm
+          dark:from-card
+          dark:via-card
+          dark:to-amber-500/[0.04]
+          sm:p-6
+        "
+      >
+        <div
+          className="
+            pointer-events-none
+            absolute -right-20 -top-24
+            h-64 w-64
+            rounded-full
+            bg-amber-400/10
+            blur-3xl
+            dark:bg-amber-400/5
+          "
+        />
 
-      {/* Metrics Row */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        {metrics.map((metric, idx) => (
-          <Card key={idx} className="bg-[#181818] border-[#262626] rounded-xl overflow-hidden shadow-md">
-            <CardContent className="p-5 flex flex-col justify-between h-full space-y-4">
-              <div className="flex items-center justify-between">
-                <span className="text-zinc-400 text-sm font-medium">{metric.title}</span>
-                <div className="w-8 h-8 rounded-lg bg-[#262626] flex items-center justify-center">
-                  <metric.icon className="w-4 h-4 text-zinc-400" />
+        <div className="relative space-y-2">
+          <h1
+            className="
+              text-2xl font-bold
+              tracking-tight
+              text-foreground
+              sm:text-3xl
+            "
+          >
+            Welcome Back, Alex
+          </h1>
+
+          <p
+            className="
+              max-w-2xl
+              text-sm leading-6
+              text-muted-foreground
+              sm:text-base
+            "
+          >
+            Plan, track, and manage your adventure business from one place.
+            Your Scout administration dashboard is ready.
+          </p>
+        </div>
+      </section>
+
+      {/* Metrics */}
+      <section
+        className="
+          grid grid-cols-1
+          gap-4
+          sm:grid-cols-2
+          xl:grid-cols-4
+        "
+      >
+        {metrics.map((metric) => {
+          const Icon = metric.icon;
+
+          return (
+            <Card
+              key={metric.title}
+              className="
+                group overflow-hidden
+                rounded-2xl
+                border-border/70
+                bg-card
+                shadow-sm
+                transition-all
+                duration-200
+                hover:-translate-y-0.5
+                hover:border-border
+                hover:shadow-md
+                dark:shadow-none
+                dark:hover:bg-accent/20
+              "
+            >
+              <CardContent className="p-5">
+                <div
+                  className="
+                    flex items-start
+                    justify-between
+                    gap-4
+                  "
+                >
+                  <div
+                    className="
+                      flex h-11 w-11
+                      items-center
+                      justify-center
+                      rounded-xl
+                      border border-border/70
+                      bg-muted/60
+                      text-muted-foreground
+                      transition-colors
+                      group-hover:bg-amber-50
+                      group-hover:text-amber-600
+                      dark:group-hover:bg-amber-500/10
+                      dark:group-hover:text-amber-400
+                    "
+                  >
+                    <Icon className="h-5 w-5" />
+                  </div>
+
+                  <span
+                    className="
+                      inline-flex
+                      items-center gap-1
+                      rounded-full
+                      border border-emerald-200
+                      bg-emerald-50
+                      px-2.5 py-1
+                      text-xs font-semibold
+                      text-emerald-700
+                      dark:border-emerald-500/20
+                      dark:bg-emerald-500/10
+                      dark:text-emerald-400
+                    "
+                  >
+                    <ArrowUpRight className="h-3 w-3" />
+                    {metric.change}
+                  </span>
+                </div>
+
+                <div className="mt-6">
+                  <p
+                    className="
+                      text-3xl
+                      font-bold
+                      tracking-tight
+                      text-foreground
+                    "
+                  >
+                    {metric.value}
+                  </p>
+
+                  <p
+                    className="
+                      mt-1
+                      text-sm
+                      font-medium
+                      text-muted-foreground
+                    "
+                  >
+                    {metric.title}
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+          );
+        })}
+      </section>
+
+      {/* Charts */}
+      <section
+        className="
+          grid grid-cols-1
+          gap-6
+          xl:grid-cols-3
+        "
+      >
+        {/* Revenue Chart */}
+        <Card
+          className="
+            overflow-hidden
+            rounded-2xl
+            border-border/70
+            bg-card
+            shadow-sm
+            dark:shadow-none
+            xl:col-span-2
+          "
+        >
+          <CardContent className="p-5 sm:p-6">
+            {/* Chart Header */}
+            <div
+              className="
+                flex flex-col
+                gap-4
+                sm:flex-row
+                sm:items-start
+                sm:justify-between
+              "
+            >
+              <div>
+                <div className="flex items-center gap-2">
+                  <div
+                    className="
+                      flex h-9 w-9
+                      items-center
+                      justify-center
+                      rounded-xl
+                      border border-border
+                      bg-muted/50
+                      text-muted-foreground
+                    "
+                  >
+                    <TrendingUp className="h-4 w-4" />
+                  </div>
+
+                  <p
+                    className="
+                      text-sm
+                      font-medium
+                      text-muted-foreground
+                    "
+                  >
+                    Revenue Breakdown
+                  </p>
+                </div>
+
+                <div
+                  className="
+                    mt-4
+                    flex flex-wrap
+                    items-end gap-2
+                  "
+                >
+                  <h3
+                    className="
+                      text-2xl
+                      font-bold
+                      tracking-tight
+                      text-foreground
+                      sm:text-3xl
+                    "
+                  >
+                    $18,420
+                  </h3>
+
+                  <span
+                    className="
+                      mb-1
+                      text-xs font-medium
+                      text-emerald-600
+                      dark:text-emerald-400
+                    "
+                  >
+                    +8.5% this month
+                  </span>
                 </div>
               </div>
-              <div className="flex items-end justify-between">
-                <span className="text-2xl md:text-3xl font-semibold text-white tracking-tight">
-                  {metric.value}
-                </span>
-                <span className="bg-[#009a57]/15 text-[#38d792] text-xs font-semibold px-2 py-0.5 rounded-full flex items-center gap-1 border border-[#009a57]/20">
-                  {metric.change}
-                </span>
-              </div>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
 
-      {/* Charts Section */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        
-        {/* Revenue Breakdown Bar Chart */}
-        <Card className="lg:col-span-2 bg-[#181818] border-[#262626] rounded-xl shadow-md">
-          <CardContent className="p-6 space-y-6">
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-              <div>
-                <span className="text-zinc-400 text-sm font-medium">Revenue Breakdown</span>
-                <h3 className="text-3xl font-semibold text-white tracking-tight mt-1">$18,420</h3>
-              </div>
-              
-              {/* Tab Selector */}
-              <div className="flex bg-[#262626] p-1 rounded-lg self-start text-xs font-medium border border-[#333333]">
-                <button
-                  onClick={() => setActiveTab("7d")}
-                  className={`px-3 py-1.5 rounded-md transition-all ${
-                    activeTab === "7d"
-                      ? "bg-transparent text-zinc-400"
-                      : "text-zinc-400 hover:text-white"
-                  }`}
-                >
-                  Last 7 Days
-                </button>
-                <button
-                  onClick={() => setActiveTab("30d")}
-                  className={`px-3 py-1.5 rounded-md transition-all ${
-                    activeTab === "30d"
-                      ? "bg-[#FFD23F] text-black font-semibold shadow-sm"
-                      : "text-zinc-400 hover:text-white"
-                  }`}
-                >
-                  Last 30 Days
-                </button>
-                <button
-                  onClick={() => setActiveTab("12m")}
-                  className={`px-3 py-1.5 rounded-md transition-all ${
-                    activeTab === "12m"
-                      ? "bg-transparent text-zinc-400"
-                      : "text-zinc-400 hover:text-white"
-                  }`}
-                >
-                  Last 12 Months
-                </button>
+              {/* Tabs */}
+              <div
+                className="
+                  flex self-start
+                  rounded-xl
+                  border border-border
+                  bg-muted/40
+                  p-1
+                "
+              >
+                {[
+                  { value: "7d", label: "7 Days" },
+                  { value: "30d", label: "30 Days" },
+                  { value: "12m", label: "12 Months" },
+                ].map((tab) => (
+                  <button
+                    key={tab.value}
+                    type="button"
+                    onClick={() =>
+                      setActiveTab(tab.value as TimeRange)
+                    }
+                    className={`
+                      rounded-lg
+                      px-3 py-1.5
+                      text-xs font-semibold
+                      transition-all
+                      ${activeTab === tab.value
+                        ? `
+                            bg-background
+                            text-foreground
+                            shadow-sm
+                            ring-1
+                            ring-border
+                          `
+                        : `
+                            text-muted-foreground
+                            hover:text-foreground
+                          `
+                      }
+                    `}
+                  >
+                    {tab.label}
+                  </button>
+                ))}
               </div>
             </div>
 
-            {/* Custom Bar Chart Container */}
-            <div className="relative pt-12 pb-2 h-72 flex items-end">
-              
-              {/* Grid Lines & Y Axis */}
-              <div className="absolute inset-0 flex flex-col justify-between text-right text-[10px] text-zinc-500 font-medium pe-2 select-none pointer-events-none pb-7 pt-12">
-                <div className="flex items-center w-full">
-                  <span className="w-8 text-left">50k</span>
-                  <div className="w-full border-t border-[#262626]/60 ml-2" />
-                </div>
-                <div className="flex items-center w-full">
-                  <span className="w-8 text-left">30k</span>
-                  <div className="w-full border-t border-[#262626]/60 ml-2" />
-                </div>
-                <div className="flex items-center w-full">
-                  <span className="w-8 text-left">20k</span>
-                  <div className="w-full border-t border-[#262626]/60 ml-2" />
-                </div>
-                <div className="flex items-center w-full">
-                  <span className="w-8 text-left">10k</span>
-                  <div className="w-full border-t border-[#262626]/60 ml-2" />
-                </div>
-                <div className="flex items-center w-full">
-                  <span className="w-8 text-left">5k</span>
-                  <div className="w-full border-t border-[#262626]/60 ml-2" />
-                </div>
-                <div className="flex items-center w-full">
-                  <span className="w-8 text-left">1k</span>
-                  <div className="w-full border-t border-[#262626]/60 ml-2" />
-                </div>
-                <div className="flex items-center w-full">
-                  <span className="w-8 text-left">0</span>
-                  <div className="w-full border-t border-[#262626]/60 ml-2" />
-                </div>
-              </div>
+            {/* Chart */}
+            <div className="mt-8">
+              <div className="relative h-[290px]">
+                {/* Grid */}
+                <div
+                  className="
+                    pointer-events-none
+                    absolute inset-0
+                    flex flex-col
+                    justify-between
+                    pb-7
+                  "
+                >
+                  {["50k", "40k", "30k", "20k", "10k", "0"].map(
+                    (label) => (
+                      <div
+                        key={label}
+                        className="
+                          flex items-center
+                          text-[10px]
+                          text-muted-foreground
+                        "
+                      >
+                        <span className="w-8 shrink-0">
+                          {label}
+                        </span>
 
-              {/* Bars Row */}
-              <div className="flex-1 flex justify-between items-end h-full pl-10 relative z-10 pb-6">
-                {barChartData.map((data, index) => (
-                  <div key={index} className="flex flex-col items-center flex-1 group cursor-pointer relative h-full justify-end">
-                    
-                    {/* Tooltip for Current Month (June) */}
-                    {data.isCurrent && (
-                      <div className="absolute bottom-[calc(90%+16px)] left-1/2 -translate-x-1/2 flex flex-col items-center z-20">
-                        <div className="bg-white text-black font-semibold text-[11px] px-2.5 py-1 rounded-md shadow-lg whitespace-nowrap border border-zinc-200">
-                          {data.tooltip}
-                        </div>
-                        {/* Connecting Dashed Line */}
-                        <div className="h-16 border-l border-dashed border-[#FFD23F] mt-1" />
+                        <div
+                          className="
+                            ml-2
+                            w-full
+                            border-t
+                            border-dashed
+                            border-border/70
+                          "
+                        />
                       </div>
-                    )}
+                    )
+                  )}
+                </div>
 
-                    {/* Bar representation */}
-                    <div 
-                      className={`w-4 sm:w-6 md:w-7 rounded-t-sm transition-all duration-300 ${
-                        data.isCurrent 
-                          ? "bg-[#FFD23F] hover:bg-[#ffe066]" 
-                          : "bg-[#2d2d2d] group-hover:bg-[#404040]"
-                      } ${data.height}`}
-                    />
-                    
-                    {/* X Axis label */}
-                    <span className="absolute bottom-[-24px] text-[11px] text-zinc-500 font-medium group-hover:text-white transition-colors mt-2">
-                      {data.month}
-                    </span>
-                  </div>
-                ))}
+                {/* Bars */}
+                <div
+                  className="
+                    absolute
+                    inset-0
+                    flex items-end
+                    gap-1
+                    pb-7
+                    pl-10
+                    sm:gap-2
+                  "
+                >
+                  {barChartData.map((data) => {
+                    const heightPercentage =
+                      (data.value / maxChartValue) * 82;
+
+                    return (
+                      <div
+                        key={data.month}
+                        className="
+                          group relative
+                          flex h-full
+                          flex-1
+                          items-end
+                          justify-center
+                        "
+                      >
+                        {data.isCurrent && (
+                          <div
+                            className="
+                              absolute
+                              left-1/2
+                              z-20
+                              -translate-x-1/2
+                              whitespace-nowrap
+                            "
+                            style={{
+                              bottom: `calc(${heightPercentage}% + 36px)`,
+                            }}
+                          >
+                            <div
+                              className="
+                                rounded-lg
+                                border border-border
+                                bg-popover
+                                px-2.5 py-1.5
+                                text-[10px]
+                                font-semibold
+                                text-popover-foreground
+                                shadow-lg
+                              "
+                            >
+                              {data.tooltip}
+                            </div>
+                          </div>
+                        )}
+
+                        <div
+                          style={{
+                            height: `${heightPercentage}%`,
+                          }}
+                          className={`
+                            w-full
+                            max-w-7
+                            rounded-t-md
+                            transition-all
+                            duration-300
+                            ${data.isCurrent
+                              ? `
+                                  bg-amber-400
+                                  hover:bg-amber-500
+                                `
+                              : `
+                                  bg-muted-foreground/20
+                                  group-hover:bg-muted-foreground/35
+                                  dark:bg-muted-foreground/25
+                                `
+                            }
+                          `}
+                        />
+
+                        <span
+                          className="
+                            absolute
+                            -bottom-1
+                            translate-y-full
+                            text-[10px]
+                            font-medium
+                            text-muted-foreground
+                            transition-colors
+                            group-hover:text-foreground
+                          "
+                        >
+                          {data.month}
+                        </span>
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
             </div>
           </CardContent>
         </Card>
 
-        {/* Membership Distribution Donut Chart */}
-        <Card className="bg-[#181818] border-[#262626] rounded-xl shadow-md">
-          <CardContent className="p-6 space-y-6 flex flex-col justify-between h-full">
+        {/* Membership Distribution */}
+        <Card
+          className="
+            overflow-hidden
+            rounded-2xl
+            border-border/70
+            bg-card
+            shadow-sm
+            dark:shadow-none
+          "
+        >
+          <CardContent
+            className="
+              flex h-full
+              flex-col
+              p-5
+              sm:p-6
+            "
+          >
             <div>
-              <span className="text-zinc-400 text-sm font-medium">Membership Distribution</span>
+              <h3 className="text-base font-bold text-foreground">
+                Membership Distribution
+              </h3>
+
+              <p className="mt-1 text-xs text-muted-foreground">
+                Current members by subscription tier.
+              </p>
             </div>
 
-            {/* Donut SVG Wrapper */}
-            <div className="relative flex items-center justify-center py-4">
-              <svg className="w-48 h-48 transform -rotate-90" viewBox="0 0 160 160">
-                {/* Background Ring */}
-                <defs>
-                  <filter id="round-corners">
-                    <feGaussianBlur in="SourceGraphic" stdDeviation="1.2" />
-                    <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" />
-                  </filter>
-                </defs>
-                {/* Background Ring */}
+            {/* Donut */}
+            <div
+              className="
+                relative
+                flex flex-1
+                items-center
+                justify-center
+                py-7
+              "
+            >
+              <svg
+                viewBox="0 0 160 160"
+                className="
+                  h-48 w-48
+                  -rotate-90
+                  transform
+                "
+              >
                 <circle
                   cx="80"
                   cy="80"
                   r="62"
                   fill="transparent"
-                  stroke="#262626"
+                  stroke="currentColor"
                   strokeWidth="14"
+                  className="text-muted"
                 />
-                
-                <g filter="url(#round-corners)">
-                  {/* Teal/Cyan Segment (Trailhead) - 42% */}
-                  <circle
-                    cx="80"
-                    cy="80"
-                    r="62"
-                    fill="transparent"
-                    stroke="#38d792"
-                    strokeWidth="14"
-                    strokeDasharray="161.6 389.5"
-                    strokeDashoffset="-1"
-                    strokeLinecap="butt"
-                    className="transition-all duration-500 hover:stroke-opacity-80 cursor-pointer"
-                  />
 
-                  {/* Lime Green Segment (Summit) - 30% */}
-                  <circle
-                    cx="80"
-                    cy="80"
-                    r="62"
-                    fill="transparent"
-                    stroke="#a3e635"
-                    strokeWidth="14"
-                    strokeDasharray="114.8 389.5"
-                    strokeDashoffset="-164.6"
-                    strokeLinecap="butt"
-                    className="transition-all duration-500 hover:stroke-opacity-80 cursor-pointer"
-                  />
+                {/* Trailhead */}
+                <circle
+                  cx="80"
+                  cy="80"
+                  r="62"
+                  fill="transparent"
+                  stroke="#34d399"
+                  strokeWidth="14"
+                  strokeDasharray="163.6 389.6"
+                  strokeDashoffset="0"
+                  strokeLinecap="round"
+                />
 
-                  {/* Yellow Segment (Apex Elite) - 28% */}
-                  <circle
-                    cx="80"
-                    cy="80"
-                    r="62"
-                    fill="transparent"
-                    stroke="#FFD23F"
-                    strokeWidth="14"
-                    strokeDasharray="107.1 389.5"
-                    strokeDashoffset="-281.4"
-                    strokeLinecap="butt"
-                    className="transition-all duration-500 hover:stroke-opacity-80 cursor-pointer"
-                  />
-                </g>
+                {/* Summit */}
+                <circle
+                  cx="80"
+                  cy="80"
+                  r="62"
+                  fill="transparent"
+                  stroke="#a3e635"
+                  strokeWidth="14"
+                  strokeDasharray="116.9 389.6"
+                  strokeDashoffset="-167"
+                  strokeLinecap="round"
+                />
+
+                {/* Apex */}
+                <circle
+                  cx="80"
+                  cy="80"
+                  r="62"
+                  fill="transparent"
+                  stroke="#facc15"
+                  strokeWidth="14"
+                  strokeDasharray="109.1 389.6"
+                  strokeDashoffset="-287"
+                  strokeLinecap="round"
+                />
               </svg>
 
-              {/* Inside Text */}
-              <div className="absolute flex flex-col items-center text-center justify-center">
-                <span className="text-3xl font-semibold text-white tracking-tight">2,486</span>
-                <span className="text-zinc-500 text-xs mt-2">Members</span>
+              <div
+                className="
+                  absolute
+                  flex flex-col
+                  items-center
+                  justify-center
+                  text-center
+                "
+              >
+                <span
+                  className="
+                    text-3xl
+                    font-bold
+                    tracking-tight
+                    text-foreground
+                  "
+                >
+                  2,486
+                </span>
+
+                <span
+                  className="
+                    mt-1
+                    text-xs
+                    text-muted-foreground
+                  "
+                >
+                  Members
+                </span>
               </div>
             </div>
 
-            {/* Donut Legend */}
-            <div className="space-y-3 pt-2">
-              <div className="flex items-center justify-between text-sm">
-                <div className="flex items-center gap-2">
-                  <span className="w-3 h-3 rounded-sm bg-[#38d792]" />
-                  <span className="text-zinc-300 font-medium">Trailhead</span>
+            {/* Legend */}
+            <div className="space-y-3">
+              {membershipDistribution.map((item) => (
+                <div
+                  key={item.label}
+                  className="
+                    flex items-center
+                    justify-between
+                    rounded-lg
+                    px-1 py-1
+                  "
+                >
+                  <div className="flex items-center gap-2.5">
+                    <span
+                      className="
+                        h-2.5 w-2.5
+                        rounded-full
+                      "
+                      style={{
+                        backgroundColor: item.color,
+                      }}
+                    />
+
+                    <span
+                      className="
+                        text-sm
+                        font-medium
+                        text-muted-foreground
+                      "
+                    >
+                      {item.label}
+                    </span>
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    <span
+                      className="
+                        text-xs
+                        text-muted-foreground
+                      "
+                    >
+                      {item.percentage}%
+                    </span>
+
+                    <span
+                      className="
+                        min-w-10
+                        text-right
+                        text-sm
+                        font-semibold
+                        text-foreground
+                      "
+                    >
+                      {item.value}
+                    </span>
+                  </div>
                 </div>
-                <span className="text-zinc-100 font-semibold">820</span>
-              </div>
-              <div className="flex items-center justify-between text-sm">
-                <div className="flex items-center gap-2">
-                  <span className="w-3 h-3 rounded-sm bg-[#a3e635]" />
-                  <span className="text-zinc-300 font-medium">Trailhead</span>
-                </div>
-                <span className="text-zinc-100 font-semibold">710</span>
-              </div>
-              <div className="flex items-center justify-between text-sm">
-                <div className="flex items-center gap-2">
-                  <span className="w-3 h-3 rounded-sm bg-[#FFD23F]" />
-                  <span className="text-zinc-300 font-medium">Trailhead</span>
-                </div>
-                <span className="text-zinc-100 font-semibold">560</span>
-              </div>
+              ))}
             </div>
           </CardContent>
         </Card>
+      </section>
 
-      </div>
-
-      {/* Lists / Tables Section */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        
+      {/* Tables */}
+      <section
+        className="
+          grid grid-cols-1
+          gap-6
+          xl:grid-cols-2
+        "
+      >
         {/* Recent Members */}
-        <Card className="bg-[#181818] border-[#262626] rounded-xl shadow-md overflow-hidden">
-          <CardContent className="p-6 space-y-4">
-            <div className="flex items-center justify-between">
-              <h4 className="text-lg font-semibold text-white">Recent Members</h4>
-              <Link href="#" className="text-[#FFD23F] hover:underline text-sm font-medium">
-                View All
+        <Card
+          className="
+            overflow-hidden
+            rounded-2xl
+            border-border/70
+            bg-card
+            shadow-sm
+            dark:shadow-none
+          "
+        >
+          <CardContent className="p-0">
+            <div
+              className="
+                flex items-center
+                justify-between
+                border-b
+                border-border/70
+                px-5 py-5
+                sm:px-6
+              "
+            >
+              <div>
+                <h3 className="text-lg font-bold text-foreground">
+                  Recent Members
+                </h3>
+
+                <p className="mt-1 text-xs text-muted-foreground">
+                  Latest users joining your memberships.
+                </p>
+              </div>
+
+              <Link
+                href="#"
+                className="
+                  group flex
+                  items-center gap-1
+                  text-sm font-semibold
+                  text-amber-600
+                  transition-colors
+                  hover:text-amber-700
+                  dark:text-amber-400
+                  dark:hover:text-amber-300
+                "
+              >
+                View all
+
+                <ArrowRight
+                  className="
+                    h-4 w-4
+                    transition-transform
+                    group-hover:translate-x-0.5
+                  "
+                />
               </Link>
             </div>
-            
+
             <div className="overflow-x-auto">
               <table className="w-full text-left text-sm">
                 <thead>
-                  <tr className="border-b border-[#262626] text-zinc-500 font-medium">
-                    <th className="pb-3 pt-1">Name</th>
-                    <th className="pb-3 pt-1">Tier</th>
-                    <th className="pb-3 pt-1">Status</th>
+                  <tr
+                    className="
+                      border-b
+                      border-border/70
+                      bg-muted/20
+                      text-xs
+                      font-medium
+                      text-muted-foreground
+                    "
+                  >
+                    <th className="px-5 py-3.5 sm:px-6">
+                      Name
+                    </th>
+
+                    <th className="px-4 py-3.5">
+                      Tier
+                    </th>
+
+                    <th className="px-5 py-3.5 sm:px-6">
+                      Status
+                    </th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-[#262626]/50">
-                  {recentMembers.map((member, idx) => (
-                    <tr key={idx} className="hover:bg-[#202020]/40 transition-colors">
-                      <td className="py-3.5 text-zinc-200 font-medium">{member.name}</td>
-                      <td className="py-3.5">
-                        <span className={`px-2 py-0.5 text-xs font-semibold rounded-md border ${member.tierColor}`}>
+
+                <tbody className="divide-y divide-border/60">
+                  {recentMembers.map((member) => (
+                    <tr
+                      key={member.name}
+                      className="
+                        transition-colors
+                        hover:bg-muted/30
+                      "
+                    >
+                      <td
+                        className="
+                          px-5 py-4
+                          font-medium
+                          text-foreground
+                          sm:px-6
+                        "
+                      >
+                        {member.name}
+                      </td>
+
+                      <td className="px-4 py-4">
+                        <span
+                          className={`
+                            inline-flex
+                            rounded-full
+                            border
+                            px-2.5 py-1
+                            text-[11px]
+                            font-semibold
+                            ${getTierClasses(
+                            member.tierVariant
+                          )}
+                          `}
+                        >
                           {member.tier}
                         </span>
                       </td>
-                      <td className="py-3.5 text-zinc-400">{member.status}</td>
+
+                      <td className="px-5 py-4 sm:px-6">
+                        <span
+                          className="
+                            inline-flex
+                            items-center gap-1.5
+                            text-xs
+                            font-medium
+                            text-muted-foreground
+                          "
+                        >
+                          <span
+                            className="
+                              h-1.5 w-1.5
+                              rounded-full
+                              bg-emerald-500
+                            "
+                          />
+
+                          {member.status}
+                        </span>
+                      </td>
                     </tr>
                   ))}
                 </tbody>
@@ -407,30 +997,147 @@ export default function Overview() {
         </Card>
 
         {/* Recent Payments */}
-        <Card className="bg-[#181818] border-[#262626] rounded-xl shadow-md overflow-hidden">
-          <CardContent className="p-6 space-y-4">
-            <div className="flex items-center justify-between">
-              <h4 className="text-lg font-semibold text-white">Recent Payments</h4>
-              <Link href="#" className="text-[#FFD23F] hover:underline text-sm font-medium">
-                View All
+        <Card
+          className="
+            overflow-hidden
+            rounded-2xl
+            border-border/70
+            bg-card
+            shadow-sm
+            dark:shadow-none
+          "
+        >
+          <CardContent className="p-0">
+            <div
+              className="
+                flex items-center
+                justify-between
+                border-b
+                border-border/70
+                px-5 py-5
+                sm:px-6
+              "
+            >
+              <div>
+                <h3 className="text-lg font-bold text-foreground">
+                  Recent Payments
+                </h3>
+
+                <p className="mt-1 text-xs text-muted-foreground">
+                  Latest successful membership transactions.
+                </p>
+              </div>
+
+              <Link
+                href="#"
+                className="
+                  group flex
+                  items-center gap-1
+                  text-sm font-semibold
+                  text-amber-600
+                  transition-colors
+                  hover:text-amber-700
+                  dark:text-amber-400
+                  dark:hover:text-amber-300
+                "
+              >
+                View all
+
+                <ArrowRight
+                  className="
+                    h-4 w-4
+                    transition-transform
+                    group-hover:translate-x-0.5
+                  "
+                />
               </Link>
             </div>
 
             <div className="overflow-x-auto">
               <table className="w-full text-left text-sm">
                 <thead>
-                  <tr className="border-b border-[#262626] text-zinc-500 font-medium">
-                    <th className="pb-3 pt-1">ID</th>
-                    <th className="pb-3 pt-1">Amount</th>
-                    <th className="pb-3 pt-1">Date</th>
+                  <tr
+                    className="
+                      border-b
+                      border-border/70
+                      bg-muted/20
+                      text-xs
+                      font-medium
+                      text-muted-foreground
+                    "
+                  >
+                    <th className="px-5 py-3.5 sm:px-6">
+                      Invoice
+                    </th>
+
+                    <th className="px-4 py-3.5">
+                      Amount
+                    </th>
+
+                    <th className="px-5 py-3.5 sm:px-6">
+                      Date
+                    </th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-[#262626]/50">
-                  {recentPayments.map((payment, idx) => (
-                    <tr key={idx} className="hover:bg-[#202020]/40 transition-colors">
-                      <td className="py-3.5 text-zinc-400 font-mono">{payment.id}</td>
-                      <td className="py-3.5 text-zinc-200 font-medium">{payment.amount}</td>
-                      <td className="py-3.5 text-zinc-400">{payment.date}</td>
+
+                <tbody className="divide-y divide-border/60">
+                  {recentPayments.map((payment) => (
+                    <tr
+                      key={payment.id}
+                      className="
+                        transition-colors
+                        hover:bg-muted/30
+                      "
+                    >
+                      <td className="px-5 py-4 sm:px-6">
+                        <div className="flex items-center gap-2.5">
+                          <div
+                            className="
+                              flex h-8 w-8
+                              items-center
+                              justify-center
+                              rounded-lg
+                              border border-border
+                              bg-muted/50
+                              text-muted-foreground
+                            "
+                          >
+                            <CreditCard className="h-3.5 w-3.5" />
+                          </div>
+
+                          <span
+                            className="
+                              font-mono
+                              text-xs
+                              font-medium
+                              text-muted-foreground
+                            "
+                          >
+                            {payment.id}
+                          </span>
+                        </div>
+                      </td>
+
+                      <td
+                        className="
+                          px-4 py-4
+                          font-semibold
+                          text-foreground
+                        "
+                      >
+                        {payment.amount}
+                      </td>
+
+                      <td
+                        className="
+                          px-5 py-4
+                          text-sm
+                          text-muted-foreground
+                          sm:px-6
+                        "
+                      >
+                        {payment.date}
+                      </td>
                     </tr>
                   ))}
                 </tbody>
@@ -438,9 +1145,7 @@ export default function Overview() {
             </div>
           </CardContent>
         </Card>
-
-      </div>
-
+      </section>
     </div>
   );
 }
