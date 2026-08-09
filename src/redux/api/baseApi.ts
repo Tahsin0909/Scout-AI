@@ -17,6 +17,7 @@ export const baseApi = createApi({
     },
   }),
   tagTypes: [
+    "triptrax",
     "resource",
     "admindashboard",
     "member",

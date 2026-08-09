@@ -250,52 +250,26 @@ export default function UserTrips() {
   return (
     <div className="w-full space-y-8">
       {/* Header */}
-      <section
+      <div
         className="
-          relative overflow-hidden rounded-2xl
-          border border-border
-          bg-gradient-to-br
-          from-card via-card to-amber-50/70
-          p-5 shadow-sm
-          dark:from-card
-          dark:via-card
-          dark:to-amber-500/[0.04]
-          sm:p-6
-        "
-      >
-        {/* Decorative glow */}
-        <div
-          className="
-            pointer-events-none
-            absolute -right-20 -top-24
-            h-64 w-64
-            rounded-full
-            bg-amber-400/10
-            blur-3xl
-            dark:bg-amber-400/5
-          "
-        />
-
-        <div
-          className="
             relative flex flex-col gap-5
             md:flex-row md:items-center md:justify-between
           "
-        >
-          <div className="space-y-2">
-            <h1 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
-              My Trips
-            </h1>
+      >
+        <div className="space-y-2">
+          <h1 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+            My Trips
+          </h1>
 
-            <p className="max-w-2xl text-sm leading-6 text-muted-foreground sm:text-base">
-              View, manage, and track all of your adventure packages in one
-              place.
-            </p>
-          </div>
+          <p className="max-w-2xl text-sm leading-6 text-muted-foreground sm:text-base">
+            View, manage, and track all of your adventure packages in one
+            place.
+          </p>
+        </div>
 
-          <Button
-            variant="primary"
-            className="
+        <Button
+          variant="primary"
+          className="
               h-11 self-start
               rounded-xl px-5
               shadow-sm
@@ -304,12 +278,11 @@ export default function UserTrips() {
               hover:shadow-md
               md:self-auto
             "
-          >
-            <Compass className="mr-2 h-4 w-4" />
-            Plan with Scout AI
-          </Button>
-        </div>
-      </section>
+        >
+          <Compass className="mr-2 h-4 w-4" />
+          Plan with Scout AI
+        </Button>
+      </div>
 
       {/* Stats */}
       <section className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">

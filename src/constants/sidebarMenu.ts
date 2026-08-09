@@ -74,13 +74,13 @@ export const ALL_MENU_ITEMS: Record<string, SidebarMenuItem> = {
   userTips: {
     title: "Travel Trips",
     icon: Lightbulb,
-    url: "/user/travel-trips",
+    url: "/travel-trips",
   },
 
   userMembership: {
     title: "Membership",
     icon: WalletCards,
-    url: "/user/membership",
+    url: "/membership",
   },
 };
 
