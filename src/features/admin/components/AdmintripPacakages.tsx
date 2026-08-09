@@ -127,7 +127,7 @@ export default function AdminTripPackages() {
     return (
         <div className="w-full space-y-8">
             {/* Header */}
-            <div className="pointer-events-none absolute -right-20 -top-24 h-64 w-64 rounded-full bg-amber-400/10 blur-3xl dark:bg-amber-400/5" />
+            {/* <div className="pointer-events-none absolute -right-20 -top-24 h-64 w-64 rounded-full bg-amber-400/10 blur-3xl dark:bg-amber-400/5" /> */}
 
             <div className="relative">
                 <h1 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
