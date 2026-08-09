@@ -1,101 +1,11 @@
 "use client";
 
-import {
-  ArrowRight,
-  Plus
-} from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
+import { Plus } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/features/auth/hooks/useAuth";
 import UserMetrics from "@/features/metricksandcharts/components/UserMetrics";
-
-
-const recentTrips = [
-  {
-    id: "1",
-    title: "Hiking Trip 1112",
-    status: "In Progress",
-    statusVariant: "in-progress",
-    meta: "Submitted 2 days ago • Expected in 48h",
-    actionText: "Undergoing Route Analysis",
-    actionDisabled: true,
-    image:
-      "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=300&auto=format&fit=crop&q=80",
-  },
-  {
-    id: "2",
-    title: "Hiking Trip 1112",
-    status: "In Progress",
-    statusVariant: "in-progress",
-    meta: "Submitted 2 days ago • Expected in 48h",
-    actionText: "Undergoing Route Analysis",
-    actionDisabled: true,
-    image:
-      "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=300&auto=format&fit=crop&q=80",
-  },
-  {
-    id: "3",
-    title: "Hiking Trip 1112",
-    status: "Ready",
-    statusVariant: "ready",
-    meta: "Submitted 2 days ago • Expected in 48h",
-    actionText: "View Details",
-    actionDisabled: false,
-    image:
-      "https://images.unsplash.com/photo-1426604966848-d7adac402bff?w=300&auto=format&fit=crop&q=80",
-  },
-  {
-    id: "4",
-    title: "Hiking Trip 1112",
-    status: "Completed",
-    statusVariant: "completed",
-    meta: "Submitted 2 days ago • Expected in 48h",
-    actionText: "View Details",
-    actionDisabled: false,
-    image:
-      "https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=300&auto=format&fit=crop&q=80",
-  },
-  {
-    id: "5",
-    title: "Hiking Trip 1112",
-    status: "Completed",
-    statusVariant: "completed",
-    meta: "Submitted 2 days ago • Expected in 48h",
-    actionText: "View Details",
-    actionDisabled: false,
-    image:
-      "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=300&auto=format&fit=crop&q=80",
-  },
-];
-
-const getStatusClasses = (variant: string) => {
-  switch (variant) {
-    case "in-progress":
-      return `
-        border-amber-200 bg-amber-50 text-amber-700
-        dark:border-amber-500/20 dark:bg-amber-500/10 dark:text-amber-400
-      `;
-
-    case "ready":
-      return `
-        border-emerald-200 bg-emerald-50 text-emerald-700
-        dark:border-emerald-500/20 dark:bg-emerald-500/10 dark:text-emerald-400
-      `;
-
-    case "completed":
-      return `
-        border-zinc-200 bg-zinc-100 text-zinc-600
-        dark:border-zinc-700 dark:bg-zinc-800/80 dark:text-zinc-300
-      `;
-
-    default:
-      return `
-        border-border bg-muted text-muted-foreground
-      `;
-  }
-};
+import UserRecentTrip from "@/features/triptrax/components/UserRecentTrip";
 
 export default function UserOverview() {
   const { profile } = useAuth();
@@ -107,179 +17,29 @@ export default function UserOverview() {
   return (
     <div className="space-y-8">
       {/* Welcome Header */}
-      <div
-        className="
-            relative flex flex-col gap-5
-            sm:flex-row sm:items-center sm:justify-between
-          "
-      >
-        <div className="space-y-2">
+      <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
+        <div>
           <h1 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
-            Welcome Back, {userName}{" "}
-            <span className="inline-block">👋</span>
+            Welcome Back, {userName} 👋
           </h1>
 
-          <p className="max-w-2xl text-sm leading-6 text-muted-foreground sm:text-base">
-            Ready for your next adventure? Scout AI is standing by to help
-            you build your next journey.
+          <p className="mt-2 max-w-2xl text-sm leading-6 text-muted-foreground sm:text-base">
+            Ready for your next adventure? Scout AI is standing by to help you
+            build your next journey.
           </p>
         </div>
 
-        <Button
-          variant="primary"
-        >
+        <Button variant="primary">
           <Plus className="mr-2 h-4 w-4" />
           Create new trip plan
         </Button>
       </div>
+
       {/* Stats */}
       <UserMetrics />
 
       {/* Recent Trips */}
-      <section className="space-y-4">
-        <div className="flex items-center justify-between gap-4">
-          <div>
-            <h2 className="text-xl font-bold tracking-tight text-foreground">
-              Recent Trips
-            </h2>
-
-            <p className="mt-1 text-sm text-muted-foreground">
-              Track your latest travel plans and their current status.
-            </p>
-          </div>
-
-          <Link
-            href="/user/travel-trips"
-            className="
-              group flex shrink-0 items-center gap-1.5
-              text-sm font-semibold
-              text-amber-600
-              transition-colors
-              hover:text-amber-700
-              dark:text-amber-400
-              dark:hover:text-amber-300
-            "
-          >
-            View all
-
-            <ArrowRight
-              className="
-                h-4 w-4 transition-transform
-                group-hover:translate-x-0.5
-              "
-            />
-          </Link>
-        </div>
-
-        <div className="space-y-3">
-          {recentTrips.map((trip) => (
-            <div
-              key={trip.id}
-              className="
-                group flex flex-col gap-4
-                rounded-2xl border border-border/70
-                bg-card p-4
-                shadow-sm
-                transition-all duration-200
-                hover:border-border
-                hover:shadow-md
-                dark:shadow-none
-                dark:hover:bg-accent/20
-                sm:flex-row
-                sm:items-center
-                sm:justify-between
-              "
-            >
-              {/* Trip Info */}
-              <div className="flex min-w-0 items-center gap-4">
-                <div
-                  className="
-                    relative h-16 w-16
-                    shrink-0 overflow-hidden
-                    rounded-xl
-                    bg-muted
-                    ring-1 ring-border/50
-                  "
-                >
-                  <Image
-                    src={trip.image}
-                    alt={trip.title}
-                    fill
-                    sizes="64px"
-                    className="
-                      object-cover
-                      transition-transform duration-300
-                      group-hover:scale-105
-                    "
-                  />
-                </div>
-
-                <div className="min-w-0 space-y-1.5">
-                  <div className="flex flex-wrap items-center gap-2">
-                    <h3 className="truncate text-sm font-semibold text-foreground sm:text-base">
-                      {trip.title}
-                    </h3>
-
-                    <span
-                      className={`
-                        inline-flex items-center
-                        rounded-full border
-                        px-2.5 py-1
-                        text-[11px] font-semibold
-                        leading-none
-                        ${getStatusClasses(trip.statusVariant)}
-                      `}
-                    >
-                      {trip.status}
-                    </span>
-                  </div>
-
-                  <p className="text-xs leading-5 text-muted-foreground sm:text-sm">
-                    {trip.meta}
-                  </p>
-                </div>
-              </div>
-
-              {/* Action */}
-              <div className="shrink-0 sm:pl-4">
-                {trip.actionDisabled ? (
-                  <Button
-                    disabled
-                    variant="outline"
-                    className="
-                      w-full rounded-xl
-                      border-border/60
-                      bg-muted/40
-                      text-muted-foreground
-                      opacity-70
-                      sm:w-auto
-                    "
-                  >
-                    {trip.actionText}
-                  </Button>
-                ) : (
-                  <Button
-                    variant="ghost"
-                    className="
-                      w-full rounded-xl
-                      px-4
-                      font-medium
-                      hover:bg-amber-50
-                      hover:text-amber-700
-                      dark:hover:bg-amber-500/10
-                      dark:hover:text-amber-400
-                      sm:w-auto
-                    "
-                  >
-                    {trip.actionText}
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
-                )}
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
+      <UserRecentTrip />
     </div>
   );
 }
