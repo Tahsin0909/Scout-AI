@@ -1,10 +1,9 @@
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
-import { TripStatusVariant } from "../triptrax.interface";
 import { recentTrips } from "../data/userRecentTrip.data";
+import { TripStatusVariant } from "../triptrax.interface";
 
 
 const getStatusClasses = (variant: TripStatusVariant) => {
@@ -23,26 +22,9 @@ const getStatusClasses = (variant: TripStatusVariant) => {
     }
 };
 
-const UserRecentTrip = () => {
+const AllUserTrips = () => {
     return (
         <section className="space-y-4">
-            <div className="flex items-center justify-between gap-4">
-                <div>
-                    <h2 className="text-xl font-bold tracking-tight text-foreground">
-                        Recent Trips
-                    </h2>
-
-                    <p className="mt-1 text-sm text-muted-foreground">
-                        Track your latest travel plans and their current status.
-                    </p>
-                </div>
-
-                <Link href="/travel-trips" className="group flex shrink-0 items-center gap-1.5 text-sm font-semibold text-amber-600 transition-colors hover:text-amber-700 dark:text-amber-400 dark:hover:text-amber-300">
-                    View all
-                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-                </Link>
-            </div>
-
             <div className="space-y-3">
                 {recentTrips.map((trip) => (
                     <div key={trip.id} className="group flex flex-col gap-4 rounded-2xl border border-border/70 bg-card p-4 shadow-sm transition-all duration-200 hover:border-border hover:shadow-md dark:shadow-none dark:hover:bg-accent/20 sm:flex-row sm:items-center sm:justify-between">
@@ -87,4 +69,4 @@ const UserRecentTrip = () => {
     );
 };
 
-export default UserRecentTrip;
+export default AllUserTrips;
