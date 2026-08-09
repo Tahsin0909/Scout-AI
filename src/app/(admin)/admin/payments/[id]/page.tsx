@@ -1,9 +1,9 @@
-import React from 'react';
+import UnderConstruction from '@/components/others-state/underConstruction';
 
 const page = () => {
     return (
         <div>
-            Payment Details
+            <UnderConstruction name='Payment Details' type='server' />
         </div>
     );
 };

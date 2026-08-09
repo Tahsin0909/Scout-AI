@@ -32,7 +32,7 @@ import {
 
 import type {
     BillingType,
-} from "@/components/pricing/data/pricing";
+} from "@/features/payment/components/pricing/data/pricing";
 import { Button } from "@/components/ui/button";
 
 const publishableKey =

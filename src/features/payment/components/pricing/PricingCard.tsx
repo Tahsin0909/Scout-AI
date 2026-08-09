@@ -10,8 +10,8 @@ import { BillingType, PricingPlan } from "./data/pricing";
 
 type PricingCardProps = {
     plan: PricingPlan;
-    annual: boolean;
-    nextPage: string
+    annual?: boolean;
+    nextPage?: string
 };
 
 function formatCurrency(
@@ -46,7 +46,7 @@ export function PricingCard({
 
     const registrationParams =
         new URLSearchParams({
-            plan: plan.slug,
+            plan: plan?.slug || "",
             billing,
         });
 
@@ -74,10 +74,10 @@ export function PricingCard({
                     `,
             )}
         >
-            <PricingPattern featured={plan.featured} />
+            <PricingPattern featured={plan?.featured} />
 
             {/* Badge */}
-            {plan.badge && (
+            {plan?.badge && (
                 <span
                     className="
                         absolute right-3 top-0 z-20
@@ -95,7 +95,7 @@ export function PricingCard({
             {/* Header */}
             <header>
                 <h3 className="text-lg font-semibold sm:text-xl">
-                    {plan.name}
+                    {plan?.name}
                 </h3>
 
                 <div className="mt-2 flex items-end gap-1">
@@ -175,23 +175,42 @@ export function PricingCard({
             </div>
 
             {/* CTA */}
-            <Button
-                asChild
-                variant={
-                    plan.featured
-                        ? "primary"
-                        : "outline"
-                }
-                size="lg"
-                fullWidth
-                className="mt-5 rounded-md"
-            >
-                <Link
-                    href={`/${nextPage}?${registrationParams.toString()}`}
+            {
+                nextPage ? <Button
+                    asChild
+                    variant={
+                        plan.featured
+                            ? "primary"
+                            : "outline"
+                    }
+                    size="lg"
+                    fullWidth
+                    className="mt-5 rounded-md"
                 >
-                    Get Started
-                </Link>
-            </Button>
+                    <Link
+                        href={`/${nextPage}?${registrationParams.toString()}`}
+                    >
+                        Get Started
+                    </Link>
+                </Button> : <Button
+                    asChild
+                    variant={
+                        plan.featured
+                            ? "primary"
+                            : "outline"
+                    }
+                    size="lg"
+                    fullWidth
+                    className="mt-5 rounded-md"
+                >
+                    <Link
+                        href={`/admin/subscriptions/${plan.id}`}
+                    >
+                        Edit
+                    </Link>
+                </Button>
+            }
+
         </article>
     );
 }

@@ -75,7 +75,7 @@ export const AppSidebar = () => {
                             className={cn(
                               "[&>svg:first-child]:size-5 md:p-3 p-2",
                               isParentActive
-                                ? "bg-primary-100 text-primary"
+                                ? "bg-primary-100 text-black"
                                 : "text-muted-foreground hover:bg-muted"
                             )}
                             asChild

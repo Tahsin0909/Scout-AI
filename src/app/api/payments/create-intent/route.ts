@@ -4,7 +4,7 @@ import Stripe from "stripe";
 import {
     getPlanById,
     type BillingType,
-} from "@/components/pricing/data/pricing";
+} from "@/features/payment/components/pricing/data/pricing";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";

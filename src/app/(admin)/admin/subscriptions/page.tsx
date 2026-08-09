@@ -1,9 +1,8 @@
-import React from 'react';
-import Subscriptions from "@/components/dashboard/subscriptions/Subscriptions";
+import AdminSubscription from "@/features/admin/components/subscriptions/AdminSubscription";
 
 const page = () => {
     return (
-        <Subscriptions />
+        <AdminSubscription />
     );
 };
 
