@@ -41,6 +41,7 @@ export const initialTripWizardState: TripWizardState = {
 
   preferences: {
     tripType: "day-hike",
+    multiDayStyle: "",
     maximumDailyMileage: "5",
     maximumElevationGain: "negative-500",
     trailStyles: ["loop"],

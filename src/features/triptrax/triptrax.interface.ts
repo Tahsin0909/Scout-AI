@@ -58,6 +58,7 @@ export interface GroupDetails {
 
 export interface TripPreferences {
   tripType: string;
+  multiDayStyle: string;
   maximumDailyMileage: string;
   maximumElevationGain: string;
   trailStyles: string[];
