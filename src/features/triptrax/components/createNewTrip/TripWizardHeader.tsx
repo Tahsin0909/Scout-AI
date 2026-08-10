@@ -8,12 +8,12 @@ const TripWizardHeader = ({ step }: TripWizardHeaderProps) => {
 
     return (
         <div className="flex items-center gap-5">
-            <span className="w-10 text-xs font-medium text-muted-foreground">
+            <span className="w-10 text-xs font-medium text-muted-foreground ">
                 {Math.round(progress)}%
             </span>
 
-            <div className="h-3 flex-1 overflow-hidden rounded-full bg-muted">
-                <div className="h-full bg-foreground transition-all duration-300" style={{ width: `${progress}%` }} />
+            <div className="h-3 flex-1 overflow-hidden rounded-full dark:bg-muted bg-gray-400">
+                <div className="h-full bg-foreground transition-all duration-300 " style={{ width: `${progress}%` }} />
             </div>
 
             <span className="min-w-[70px] text-xs font-medium text-muted-foreground">

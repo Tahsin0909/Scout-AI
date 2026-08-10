@@ -8,6 +8,7 @@ import {
 
 import { Button } from "@/components/ui/button";
 import { TripStepProps } from "../../triptrax.interface";
+import { PricingPattern } from "@/features/payment/components/pricing/PricingPattern";
 
 
 const AdventureModeStep = ({ state, dispatch }: TripStepProps) => {
@@ -15,7 +16,7 @@ const AdventureModeStep = ({ state, dispatch }: TripStepProps) => {
 
     return (
         <div className="space-y-10">
-            <div>
+            <div className="">
                 <h1 className="text-3xl font-bold tracking-tight">
                     Choose Your Adventure Mode
                 </h1>
@@ -26,25 +27,32 @@ const AdventureModeStep = ({ state, dispatch }: TripStepProps) => {
                 </p>
             </div>
 
-            <div className="grid gap-5 md:grid-cols-2">
-                <button type="button" onClick={() => dispatch({ type: "SET_ADVENTURE_MODE", payload: "hiking" })} className={`relative rounded-xl border p-6 text-left transition-colors ${selected === "hiking" ? "border-amber-400 bg-accent" : "border-border bg-card hover:bg-accent/40"}`}>
-                    <Footprints className="mb-5 h-8 w-8" />
+            <div className="grid gap-5 md:grid-cols-2 relative">
 
+                <button
+                    type="button"
+                    onClick={() => dispatch({ type: "SET_ADVENTURE_MODE", payload: "hiking" })}
+                    className={`relative rounded-xl border cursor-pointer p-6 text-left transition-colors ${selected === "hiking" ? "" : ""}`}
+                >
+                    <div className="isolate">
+                        <PricingPattern featured={selected === "hiking"} />
+                    </div>
+                    <Footprints className="mb-5 h-8 w-8" />
                     {selected === "hiking" && (
                         <CircleCheck className="absolute right-5 top-5 h-5 w-5 text-amber-400" />
                     )}
-
                     <h3 className="text-lg font-semibold">Hiking</h3>
-
                     <p className="mt-2 text-sm leading-6 text-muted-foreground">
                         Technical off-road corridors, recovery-ready routing, dispersed
                         camping, and terrain analysis for when the pavement ends.
                     </p>
                 </button>
 
-                <button type="button" onClick={() => dispatch({ type: "SET_ADVENTURE_MODE", payload: "road" })} className={`relative rounded-xl border p-6 text-left transition-colors ${selected === "road" ? "border-amber-400 bg-accent" : "border-border bg-card hover:bg-accent/40"}`}>
+                <button type="button" onClick={() => dispatch({ type: "SET_ADVENTURE_MODE", payload: "road" })} className={`relative rounded-xl border cursor-pointer p-6 text-left transition-colors ${selected === "road" ? "" : ""}`}>
                     <Car className="mb-5 h-8 w-8" />
-
+                    <div className="isolate">
+                        <PricingPattern featured={selected === "road"} />
+                    </div>
                     {selected === "road" && (
                         <CircleCheck className="absolute right-5 top-5 h-5 w-5 text-amber-400" />
                     )}
@@ -57,9 +65,11 @@ const AdventureModeStep = ({ state, dispatch }: TripStepProps) => {
                     </p>
                 </button>
 
-                <button type="button" onClick={() => dispatch({ type: "SET_ADVENTURE_MODE", payload: "rv" })} className={`relative rounded-xl border p-6 text-left transition-colors ${selected === "rv" ? "border-amber-400 bg-accent" : "border-border bg-card hover:bg-accent/40"}`}>
+                <button type="button" onClick={() => dispatch({ type: "SET_ADVENTURE_MODE", payload: "rv" })} className={`relative rounded-xl border cursor-pointer p-6 text-left transition-colors ${selected === "rv" ? "" : ""}`}>
                     <Caravan className="mb-5 h-8 w-8" />
-
+                    <div className="isolate">
+                        <PricingPattern featured={selected === "rv"} />
+                    </div>
                     {selected === "rv" && (
                         <CircleCheck className="absolute right-5 top-5 h-5 w-5 text-amber-400" />
                     )}
@@ -72,9 +82,11 @@ const AdventureModeStep = ({ state, dispatch }: TripStepProps) => {
                     </p>
                 </button>
 
-                <button type="button" onClick={() => dispatch({ type: "SET_ADVENTURE_MODE", payload: "overland" })} className={`relative rounded-xl border p-6 text-left transition-colors ${selected === "overland" ? "border-amber-400 bg-accent" : "border-border bg-card hover:bg-accent/40"}`}>
+                <button type="button" onClick={() => dispatch({ type: "SET_ADVENTURE_MODE", payload: "overland" })} className={`relative rounded-xl border cursor-pointer p-6 text-left transition-colors ${selected === "overland" ? "" : ""}`}>
                     <Compass className="mb-5 h-8 w-8" />
-
+                    <div className="isolate">
+                        <PricingPattern featured={selected === "overland"} />
+                    </div>
                     {selected === "overland" && (
                         <CircleCheck className="absolute right-5 top-5 h-5 w-5 text-amber-400" />
                     )}
