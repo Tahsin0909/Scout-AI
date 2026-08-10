@@ -3,17 +3,25 @@ import {
     Map,
     MapPin,
 } from "lucide-react";
+import { FormEvent } from "react";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { TripStepProps } from "../../triptrax.interface";
 
-
 const TripBasicsStep = ({ state, dispatch }: TripStepProps) => {
+    const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+
+        dispatch({ type: "NEXT_STEP" });
+    };
+
     return (
-        <div className="space-y-8">
+        <form onSubmit={handleSubmit} className="space-y-8">
             <div>
-                <h1 className="text-3xl font-bold tracking-tight">Trip Basics</h1>
+                <h1 className="text-3xl font-bold tracking-tight">
+                    Trip Basics
+                </h1>
 
                 <p className="mt-2 text-sm text-muted-foreground">
                     Define the core parameters of your expedition. This data will be used
@@ -37,6 +45,7 @@ const TripBasicsStep = ({ state, dispatch }: TripStepProps) => {
                 </div>
 
                 <div className="space-y-4">
+                    {/* Trip Details */}
                     <Card>
                         <CardContent className="p-5">
                             <h2 className="border-b border-border pb-4 text-lg font-semibold">
@@ -44,46 +53,62 @@ const TripBasicsStep = ({ state, dispatch }: TripStepProps) => {
                             </h2>
 
                             <div className="mt-5 grid gap-4 sm:grid-cols-2">
+                                {/* Trip Name */}
                                 <div>
-                                    <label className="mb-2 block text-sm text-muted-foreground">
-                                        Trip Name
+                                    <label htmlFor="tripName" className="mb-2 block text-sm text-muted-foreground">
+                                        Trip Name <span className="text-destructive">*</span>
                                     </label>
 
-                                    <input value={state.trip.name} onChange={(event) => dispatch({ type: "UPDATE_TRIP", payload: { name: event.target.value } })} placeholder="e.g. Glacier Peak High Route" className="h-11 w-full rounded-lg border border-border bg-background px-3 text-sm outline-none transition-colors focus:border-amber-400" />
+                                    <input id="tripName" name="tripName" type="text" required value={state.trip.name} onChange={(event) => dispatch({ type: "UPDATE_TRIP", payload: { name: event.target.value } })} placeholder="e.g. Glacier Peak High Route" className="h-11 w-full rounded-lg border border-border bg-background px-3 text-sm outline-none transition-colors focus:border-amber-400" />
                                 </div>
 
+                                {/* Region */}
                                 <div>
-                                    <label className="mb-2 block text-sm text-muted-foreground">
-                                        Region
+                                    <label htmlFor="region" className="mb-2 block text-sm text-muted-foreground">
+                                        Region <span className="text-destructive">*</span>
                                     </label>
 
-                                    <select value={state.trip.region} onChange={(event) => dispatch({ type: "UPDATE_TRIP", payload: { region: event.target.value } })} className="h-11 w-full rounded-lg border border-border bg-background px-3 text-sm outline-none focus:border-amber-400">
-                                        <option value="">Select a region...</option>
-                                        <option value="yellowstone">Yellowstone</option>
-                                        <option value="yosemite">Yosemite</option>
-                                        <option value="glacier">Glacier National Park</option>
+                                    <select id="region" name="region" required value={state.trip.region} onChange={(event) => dispatch({ type: "UPDATE_TRIP", payload: { region: event.target.value } })} className="h-11 w-full rounded-lg border border-border bg-background px-3 text-sm outline-none focus:border-amber-400">
+                                        <option value="" disabled>
+                                            Select a region...
+                                        </option>
+
+                                        <option value="yellowstone">
+                                            Yellowstone
+                                        </option>
+
+                                        <option value="yosemite">
+                                            Yosemite
+                                        </option>
+
+                                        <option value="glacier">
+                                            Glacier National Park
+                                        </option>
                                     </select>
                                 </div>
 
+                                {/* Start Date */}
                                 <div>
-                                    <label className="mb-2 block text-sm text-muted-foreground">
-                                        Start Date
+                                    <label htmlFor="startDate" className="mb-2 block text-sm text-muted-foreground">
+                                        Start Date <span className="text-destructive">*</span>
                                     </label>
 
-                                    <input type="date" value={state.trip.startDate} onChange={(event) => dispatch({ type: "UPDATE_TRIP", payload: { startDate: event.target.value } })} className="h-11 w-full rounded-lg border border-border bg-background px-3 text-sm outline-none focus:border-amber-400" />
+                                    <input id="startDate" name="startDate" type="date" required value={state.trip.startDate} onChange={(event) => dispatch({ type: "UPDATE_TRIP", payload: { startDate: event.target.value } })} className="h-11 w-full rounded-lg border border-border bg-background px-3 text-sm outline-none focus:border-amber-400" />
                                 </div>
 
+                                {/* End Date */}
                                 <div>
-                                    <label className="mb-2 block text-sm text-muted-foreground">
-                                        End Date
+                                    <label htmlFor="endDate" className="mb-2 block text-sm text-muted-foreground">
+                                        End Date <span className="text-destructive">*</span>
                                     </label>
 
-                                    <input type="date" value={state.trip.endDate} onChange={(event) => dispatch({ type: "UPDATE_TRIP", payload: { endDate: event.target.value } })} className="h-11 w-full rounded-lg border border-border bg-background px-3 text-sm outline-none focus:border-amber-400" />
+                                    <input id="endDate" name="endDate" type="date" required min={state.trip.startDate || undefined} value={state.trip.endDate} onChange={(event) => dispatch({ type: "UPDATE_TRIP", payload: { endDate: event.target.value } })} className="h-11 w-full rounded-lg border border-border bg-background px-3 text-sm outline-none focus:border-amber-400" />
                                 </div>
                             </div>
                         </CardContent>
                     </Card>
 
+                    {/* Trip Route */}
                     <Card>
                         <CardContent className="p-5">
                             <h2 className="border-b border-border pb-4 text-lg font-semibold">
@@ -91,27 +116,29 @@ const TripBasicsStep = ({ state, dispatch }: TripStepProps) => {
                             </h2>
 
                             <div className="mt-5 grid gap-4 sm:grid-cols-2">
+                                {/* Start Location */}
                                 <div>
-                                    <label className="mb-2 block text-sm text-muted-foreground">
-                                        Start Location
+                                    <label htmlFor="startLocation" className="mb-2 block text-sm text-muted-foreground">
+                                        Start Location <span className="text-destructive">*</span>
                                     </label>
 
                                     <div className="relative">
                                         <MapPin className="absolute left-3 top-3 h-5 w-5 text-muted-foreground" />
 
-                                        <input value={state.trip.startLocation} onChange={(event) => dispatch({ type: "UPDATE_TRIP", payload: { startLocation: event.target.value } })} placeholder="Enter location..." className="h-11 w-full rounded-lg border border-border bg-background pl-10 pr-3 text-sm outline-none focus:border-amber-400" />
+                                        <input id="startLocation" name="startLocation" type="text" required value={state.trip.startLocation} onChange={(event) => dispatch({ type: "UPDATE_TRIP", payload: { startLocation: event.target.value } })} placeholder="Enter location..." className="h-11 w-full rounded-lg border border-border bg-background pl-10 pr-3 text-sm outline-none focus:border-amber-400" />
                                     </div>
                                 </div>
 
+                                {/* End Location */}
                                 <div>
-                                    <label className="mb-2 block text-sm text-muted-foreground">
-                                        End Point
+                                    <label htmlFor="endLocation" className="mb-2 block text-sm text-muted-foreground">
+                                        End Point <span className="text-destructive">*</span>
                                     </label>
 
                                     <div className="relative">
                                         <Flag className="absolute left-3 top-3 h-5 w-5 text-muted-foreground" />
 
-                                        <input value={state.trip.endLocation} onChange={(event) => dispatch({ type: "UPDATE_TRIP", payload: { endLocation: event.target.value } })} placeholder="Enter location..." className="h-11 w-full rounded-lg border border-border bg-background pl-10 pr-3 text-sm outline-none focus:border-amber-400" />
+                                        <input id="endLocation" name="endLocation" type="text" required value={state.trip.endLocation} onChange={(event) => dispatch({ type: "UPDATE_TRIP", payload: { endLocation: event.target.value } })} placeholder="Enter location..." className="h-11 w-full rounded-lg border border-border bg-background pl-10 pr-3 text-sm outline-none focus:border-amber-400" />
                                     </div>
                                 </div>
                             </div>
@@ -121,15 +148,15 @@ const TripBasicsStep = ({ state, dispatch }: TripStepProps) => {
             </div>
 
             <div className="flex justify-between">
-                <Button variant="outline" onClick={() => dispatch({ type: "PREVIOUS_STEP" })}>
+                <Button type="button" variant="outline" onClick={() => dispatch({ type: "PREVIOUS_STEP" })}>
                     Back
                 </Button>
 
-                <Button variant="primary" onClick={() => dispatch({ type: "NEXT_STEP" })}>
+                <Button type="submit" variant="primary">
                     Continue
                 </Button>
             </div>
-        </div>
+        </form>
     );
 };
 
