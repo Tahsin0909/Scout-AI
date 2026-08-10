@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { useAuth } from "@/features/auth/hooks/useAuth";
 import UserMetrics from "@/features/metricksandcharts/components/UserMetrics";
 import UserRecentTrip from "@/features/triptrax/components/UserRecentTrip";
+import Link from "next/link";
 
 export default function UserOverview() {
   const { profile } = useAuth();
@@ -29,9 +30,11 @@ export default function UserOverview() {
           </p>
         </div>
 
-        <Button variant="primary">
-          <Plus className="mr-2 h-4 w-4" />
-          Create new trip plan
+        <Button variant="primary" asChild>
+          <Link href={"/create-trip-plan"}>
+            <Plus className="mr-2 h-4 w-4" />
+            Create new trip plan
+          </Link>
         </Button>
       </div>
 
