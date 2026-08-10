@@ -135,3 +135,117 @@ export interface TripStepProps {
   state: TripWizardState;
   dispatch: React.Dispatch<TripWizardAction>;
 }
+
+export interface ITripReportWeather {
+  date: string;
+  day: string;
+  temperature: string;
+  precipitation: string;
+  status: "low" | "medium" | "ideal" | "storm";
+  weather: "sunny" | "rain" | "cloudy";
+}
+
+export interface ITripRouteStop {
+  name: string;
+  coordinate: string;
+  elevation: string;
+  badge: string;
+  danger?: boolean;
+}
+
+export interface IMissionAlert {
+  title: string;
+  description: string;
+  type: "danger" | "warning" | "info";
+}
+
+export interface ISafetyContact {
+  title: string;
+  phone: string;
+  subtitle: string;
+}
+
+export interface ILodging {
+  id: string;
+  nights: string;
+  title: string;
+  description: string;
+  image?: string;
+  status: "available" | "limited";
+}
+
+export interface IMeal {
+  type: string;
+  title: string;
+}
+
+export interface ITripFile {
+  id: string;
+  title: string;
+  meta: string;
+  type: "pdf" | "gpx";
+}
+
+export interface ITripReport {
+  id: string;
+  title: string;
+  subtitle: string;
+
+  overview: {
+    duration: string;
+    distance: string;
+    difficulty: string;
+    risk: string;
+    maxElevation: string;
+  };
+
+  briefing: {
+    classification: string;
+    description: string;
+    tags: string[];
+  };
+
+  weather: ITripReportWeather[];
+
+  route: ITripRouteStop[];
+
+  missionAlerts: IMissionAlert[];
+
+  highlights: {
+    bestSummitDay: string;
+    stormAlert: string;
+  };
+
+  mileage: {
+    total: number;
+    offRoad: number;
+    driveTime: string;
+  };
+
+  safetyContacts: ISafetyContact[];
+
+  gear: {
+    readiness: number;
+
+    checklist: {
+      title: string;
+      completed: boolean;
+      danger?: boolean;
+    }[];
+
+    vehicleDescription: string;
+    tires: string;
+    recovery: string;
+  };
+
+  lodging: ILodging[];
+
+  sustainment: {
+    waterPerDay: string;
+    reservoir: number;
+    note: string;
+    meals: IMeal[];
+  };
+
+  files: ITripFile[];
+}

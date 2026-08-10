@@ -58,7 +58,7 @@ export default function UnderConstruction({
     // Nothing passed → previous/default design
     if (!type) {
         return (
-            <div className="flex min-h-[70vh] items-center justify-center px-4">
+            <div className="flex h-full items-center justify-center px-4">
                 <div className="w-full max-w-xl text-center">
                     <div className="mb-6 flex justify-center">
                         <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-primary/10">
@@ -90,7 +90,7 @@ export default function UnderConstruction({
     const Icon = config.icon;
 
     return (
-        <div className="flex min-h-[70vh] items-center justify-center px-4">
+        <div className="flex items-center justify-center px-4">
             <div className="w-full max-w-xl text-center">
                 <div className="mb-6 flex justify-center">
                     <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-primary/10">
@@ -99,7 +99,7 @@ export default function UnderConstruction({
                 </div>
 
                 <div className="mb-4">
-                    <span className="inline-flex items-center gap-2 rounded-full border bg-muted/50 px-3 py-1 text-sm text-muted-foreground">
+                    <span className="inline-flex items-center gap-2 rounded-full border bg-muted/50 px-3 py-1 text-sm ">
                         <Wrench className="h-3.5 w-3.5" />
                         {config.badge}
                     </span>

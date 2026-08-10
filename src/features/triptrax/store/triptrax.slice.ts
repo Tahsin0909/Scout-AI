@@ -1,16 +1,59 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { TripWizardAction, TripWizardState } from "../triptrax.interface";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import {
+  ITripReport,
+  TripWizardAction,
+  TripWizardState,
+} from "../triptrax.interface";
 
+interface TriptraxSliceState {
+  tripReport: ITripReport | null;
+  isLoading: boolean;
+  error: string | null;
+}
 
+const initialState: TriptraxSliceState = {
+  tripReport: null,
+  isLoading: false,
+  error: null,
+};
 
 export const triptraxSlice = createSlice({
   name: "triptrax",
-  initialState: {},
-  reducers: {},
+  initialState,
+
+  reducers: {
+    setTripReport: (state, action: PayloadAction<ITripReport>) => {
+      state.tripReport = action.payload;
+      state.error = null;
+    },
+
+    clearTripReport: (state) => {
+      state.tripReport = null;
+      state.error = null;
+    },
+
+    setTripReportLoading: (state, action: PayloadAction<boolean>) => {
+      state.isLoading = action.payload;
+    },
+
+    setTripReportError: (state, action: PayloadAction<string | null>) => {
+      state.error = action.payload;
+    },
+  },
 });
 
-export const { } = triptraxSlice.actions;
+export const {
+  setTripReport,
+  clearTripReport,
+  setTripReportLoading,
+  setTripReportError,
+} = triptraxSlice.actions;
+
 export const triptraxReducer = triptraxSlice.reducer;
+
+/* -------------------------------------------------------------------------- */
+/*                            TRIP WIZARD REDUCER                             */
+/* -------------------------------------------------------------------------- */
 
 export const initialTripWizardState: TripWizardState = {
   step: 1,

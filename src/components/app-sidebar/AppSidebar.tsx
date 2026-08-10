@@ -149,29 +149,42 @@ export const AppSidebar = () => {
 
         {/* Plus - Go Further Membership Card (Only shown when role is USER) */}
         {role === IRole.USER && (
-          <div className="mt-auto pt-6 px-1 group-data-[collapsible=icon]:hidden">
-            <div className="p-4 rounded-xl bg-[#1E1E22] border border-neutral-800/80 shadow-md relative overflow-hidden">
-              <div className="flex items-center justify-between mb-2">
-                <span className="text-sm font-semibold text-white">Plus &ndash; Go Further</span>
-                <span className="text-[10px] font-bold uppercase px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+          <div className="mt-auto px-1 pt-6 group-data-[collapsible=icon]:hidden">
+            <div className="relative overflow-hidden rounded-xl border border-neutral-800/80 bg-[#1E1E22] p-4 shadow-md">
+              <div className="mb-2 flex items-center justify-between gap-2">
+                <span className="text-sm font-semibold text-white">
+                  Plus &ndash; Go Further
+                </span>
+
+                <span className="rounded border border-emerald-500/30 bg-emerald-500/20 px-2 py-0.5 text-[10px] font-bold uppercase text-emerald-400">
                   Active
                 </span>
               </div>
-              <div className="flex items-center justify-between text-xs text-neutral-400 mb-1.5 font-medium">
-                <span>1/2 Credits</span>
-                <span>50%</span>
+
+              <div className="mb-2 flex items-center justify-between text-xs font-medium">
+                <span className="text-neutral-400">
+                  Trip Package Usage
+                </span>
+
+                <div className="flex items-baseline">
+                  <span className="text-sm font-semibold text-white">
+                    1
+                  </span>
+
+                  <span className="text-[10px] text-neutral-500">
+                    /2 used
+                  </span>
+                </div>
               </div>
-              {/* Progress Bar */}
-              <div className="w-full bg-neutral-800 h-2 rounded-full overflow-hidden mb-3">
-                <div
-                  className="bg-[#FACC15] h-full rounded-full transition-all duration-500"
-                  style={{ width: "50%" }}
-                />
+
+              {/* Segmented Progress */}
+              <div className="mb-4 flex h-4 w-full items-center overflow-hidden">
+                {Array.from({ length: 55 }).map((_, index) => (
+                  <span key={index} className={`h-5 w-1 shrink-0 border-r border-[#1E1E22] ${index < 28 ? "bg-[#FACC15]" : "bg-neutral-700"}`} />
+                ))}
               </div>
-              <Link
-                href="/user/membership"
-                className="w-full bg-[#FACC15] hover:bg-[#eab308] text-black font-semibold text-xs py-2.5 px-3 rounded-lg text-center transition-colors block shadow-sm"
-              >
+
+              <Link href="/user/membership" className="block w-full rounded-lg bg-[#FACC15] px-3 py-2.5 text-center text-xs font-semibold text-black shadow-sm transition-colors hover:bg-[#eab308]">
                 Manage Membership
               </Link>
             </div>

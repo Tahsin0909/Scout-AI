@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { recentTrips } from "../data/userRecentTrip.data";
 import { TripStatusVariant } from "../triptrax.interface";
+import Link from "next/link";
 
 
 const getStatusClasses = (variant: TripStatusVariant) => {
@@ -56,9 +57,11 @@ const AllUserTrips = () => {
                                     {trip.actionText}
                                 </Button>
                             ) : (
-                                <Button variant="ghost" className="w-full rounded-xl px-4 font-medium hover:bg-amber-50 hover:text-amber-700 dark:hover:bg-amber-500/10 dark:hover:text-amber-400 sm:w-auto">
-                                    {trip.actionText}
-                                    <ArrowRight className="ml-2 h-4 w-4" />
+                                <Button variant="ghost" className="w-full rounded-xl px-4 font-medium hover:bg-amber-50 hover:text-amber-700 dark:hover:bg-amber-500/10 dark:hover:text-amber-400 sm:w-auto" asChild>
+                                    <Link href={`/travel-trips/${trip.id}`}>
+                                        {trip.actionText}
+                                        <ArrowRight className="ml-2 h-4 w-4" />
+                                    </Link>
                                 </Button>
                             )}
                         </div>
