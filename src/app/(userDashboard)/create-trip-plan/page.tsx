@@ -1,8 +1,9 @@
+import TripWizard from "@/features/triptrax/components/createNewTrip/TripWizard";
 
 const page = () => {
     return (
         <div>
-            Create Plan
+            <TripWizard />
         </div>
     );
 };
