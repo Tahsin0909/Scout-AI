@@ -67,8 +67,8 @@ export interface TripPreferences {
 }
 
 export interface RiskTolerance {
-  exposure: RiskLevel;
-  remoteness: RiskLevel;
+  exposure: RiskLevel | null;
+  remoteness: RiskLevel | null;
 }
 
 export interface WaterDetails {
