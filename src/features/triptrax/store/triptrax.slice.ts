@@ -55,7 +55,7 @@ export const initialTripWizardState: TripWizardState = {
   },
 
   water: {
-    requirement: "less-than-1",
+    requirement: null,
   },
 
   submitted: false,

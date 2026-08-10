@@ -72,7 +72,7 @@ export interface RiskTolerance {
 }
 
 export interface WaterDetails {
-  requirement: WaterRequirement;
+  requirement: WaterRequirement | null;
 }
 
 export interface TripWizardState {

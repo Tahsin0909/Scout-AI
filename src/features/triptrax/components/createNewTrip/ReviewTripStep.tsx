@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { TripStepProps } from "../../triptrax.interface";
+import UserMonthlyUsage from "@/features/scoutai/components/UserMonthlyUsage";
 
 
 const ReviewTripStep = ({ state, dispatch }: TripStepProps) => {
@@ -105,25 +106,7 @@ const ReviewTripStep = ({ state, dispatch }: TripStepProps) => {
                     </CardContent>
                 </Card>
 
-                <Card>
-                    <CardContent className="p-5">
-                        <h2 className="mb-5 font-semibold">Monthly Usage</h2>
-
-                        <p className="text-xs text-muted-foreground">
-                            Trip Package Usage
-                        </p>
-
-                        <p className="mt-2 text-sm">1/3 used</p>
-
-                        <div className="mt-3 h-2 overflow-hidden rounded-full bg-muted">
-                            <div className="h-full w-1/3 bg-foreground" />
-                        </div>
-
-                        <p className="mt-3 text-xs text-muted-foreground">
-                            Resets in 12 days
-                        </p>
-                    </CardContent>
-                </Card>
+                <UserMonthlyUsage />
 
                 <Card>
                     <CardContent className="p-5">
