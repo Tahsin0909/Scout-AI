@@ -14,6 +14,7 @@ export type Article = {
     publishedAt: string;
     readTime: number;
     content: string;
+    views: number;
 };
 
 const articleTitles = [
@@ -77,4 +78,5 @@ export const articles: Article[] = articleTitles.map((title, index) => ({
     Every journey is different, but a clear route, reliable equipment, and a
     thoughtful backup plan can make the experience safer and more enjoyable.
   `,
+    views: 20
 }));
