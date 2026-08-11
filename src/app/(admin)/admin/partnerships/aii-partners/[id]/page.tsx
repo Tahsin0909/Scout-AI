@@ -1,9 +1,9 @@
-import React from 'react';
+import AdminPartnerDetails from '@/features/admin/components/AdminPartnerDetails';
 
 const page = () => {
     return (
         <div>
-            Partner Details
+            <AdminPartnerDetails />
         </div>
     );
 };
