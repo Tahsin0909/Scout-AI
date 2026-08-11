@@ -44,9 +44,9 @@ export const ALL_MENU_ITEMS: Record<string, SidebarMenuItem> = {
   },
 
   adminContentManagement: {
-    title: "Content Management",
+    title: "Article Management",
     icon: BookOpenText,
-    url: "/admin/content",
+    url: "/admin/article",
   },
 
   adminPartnerShip: {

@@ -1,8 +1,9 @@
+import AddArticle from "@/features/articles/components/AddArticle";
 
 const page = () => {
     return (
         <div>
-            Add Blog
+            <AddArticle />
         </div>
     );
 };

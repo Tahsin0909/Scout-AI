@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
 import { Button } from "@/components/ui/button";
@@ -88,11 +89,11 @@ const Header = () => {
                 className="h-4 mr-4 ml-2 data-[orientation=vertical]:self-center max-lg:hidden"
               />
 
-              <div className="sm:flex hidden items-center">
+              {/* <div className="sm:flex hidden items-center">
                 <span className="text-base font-semibold text-foreground tracking-wide">
                   {pageTitle}
                 </span>
-              </div>
+              </div> */}
             </div>
 
             <div className="flex sm:gap-1 gap-0 items-center">

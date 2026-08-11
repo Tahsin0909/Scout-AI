@@ -54,7 +54,8 @@ export default function ContentManagement() {
       header: "Source",
       cell: ({ row }) => (
         <a target="_blank" rel="noopener noreferrer" title="Open source" className="inline-flex h-8 w-8 items-center justify-center rounded-md border border-border/40 bg-muted/40 text-muted-foreground transition-colors hover:bg-blue-50 hover:text-blue-600 dark:hover:bg-blue-500/10 dark:hover:text-blue-400">
-          <Link href={`/articles/${row.id}`}>
+          {/* TODO: need to remove +1  */}
+          <Link href={`/articles/${Number(row.id) + 1}`}>
             <ExternalLink className="h-3.5 w-3.5" />
           </Link>
         </a>
@@ -70,7 +71,7 @@ export default function ContentManagement() {
         return (
           <div className="flex items-center justify-end gap-1.5">
             <Button type="button" variant="ghost" size="icon" title="Edit Content" onClick={() => console.log("Edit content:", content)} className="h-8 w-8 rounded-md border border-border/40 bg-muted/40 text-muted-foreground hover:bg-amber-50 hover:text-amber-600 dark:hover:bg-amber-500/10 dark:hover:text-amber-400">
-              <Link href={`/admin/content/${row.id}`}>
+              <Link href={`/admin/article/${Number(row.id) + 1}`}>
                 <Edit3 className="h-3.5 w-3.5" />
               </Link>
             </Button>
@@ -109,7 +110,7 @@ export default function ContentManagement() {
             csvFileName="content.csv"
             renderActions={() => (
               <Button type="button" variant="primary" size="sm" onClick={() => console.log("Create new content")}>
-                <Link href={`/admin/content/add`} className="flex items-center gap-1">
+                <Link href={`/admin/article/add`} className="flex items-center gap-1">
                   <Plus className="h-4 w-4" />
                   Create Content
                 </Link>
