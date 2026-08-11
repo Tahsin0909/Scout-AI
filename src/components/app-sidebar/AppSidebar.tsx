@@ -194,7 +194,7 @@ export const AppSidebar = () => {
 
       {/* User */}
       <SidebarFooter className="md:px-5 px-1">
-        <AppUser />
+        <AppUser role={role} />
       </SidebarFooter>
     </Sidebar>
   );
