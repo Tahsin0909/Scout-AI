@@ -3,6 +3,7 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { userReducer } from "@/features/user/store/user.slice";
 import { baseApi } from "@/redux/api/baseApi";
+import { notificationReducer } from "@/features/notification/store/notification.slice";
 import { scoutaiReducer } from "@/features/scoutai/store/scoutai.slice";
 import { triptraxReducer } from "@/features/triptrax/store/triptrax.slice";
 import { resourceReducer } from "@/features/resource/store/resource.slice";
@@ -55,6 +56,7 @@ const persistConfig = {
 };
 
 const appReducer = combineReducers({
+  notification: notificationReducer,
   scoutai: scoutaiReducer,
   triptrax: triptraxReducer,
   resource: resourceReducer,

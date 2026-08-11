@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 import { PanelLeft } from 'lucide-react';
 import { Logo } from "../logo/Logo";
 import LightDark from "../switcher/Switcher";
-import Notifications from "./notifications";
+import Notifications from "../../features/notification/components/notifications";
 import { usePathname } from "next/navigation";
 
 const Header = () => {
