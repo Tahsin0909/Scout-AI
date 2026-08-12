@@ -10,9 +10,9 @@ export default function Layout({
     children: React.ReactNode;
 }>) {
     return (
-        <div className="min-h-screen flex flex-col bg-[#111111]">
+        <div className="">
             <Navbar />
-            <main className="flex-grow relative flex flex-col">
+            <main className="">
                 {children}
             </main>
             <Footer />
