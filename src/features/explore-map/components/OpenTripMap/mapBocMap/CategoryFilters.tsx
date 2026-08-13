@@ -1,7 +1,9 @@
 "use client";
 
-import { CATEGORIES } from "@/data/categories";
-import { CategoryId } from "@/types/explore";
+import { CATEGORIES } from "./data/categories";
+import { CategoryId } from "./types/explore";
+
+
 
 const DOT_CLASS: Record<string, string> = {
   forest: "bg-forest",
@@ -24,11 +26,10 @@ export function CategoryFilters({ active, onToggle, onClear }: Props) {
       <button
         type="button"
         onClick={onClear}
-        className={`rounded-full border px-3.5 py-1.5 text-xs font-medium transition ${
-          allActive
+        className={`rounded-full border px-3.5 py-1.5 text-xs font-medium transition ${allActive
             ? "border-trail bg-trail/15 text-trail"
             : "border-hairline text-muted hover:border-ink/30 hover:text-ink"
-        }`}
+          }`}
       >
         All
       </button>
@@ -41,11 +42,10 @@ export function CategoryFilters({ active, onToggle, onClear }: Props) {
             onClick={() => onToggle(cat.id)}
             aria-pressed={isActive}
             title={cat.description}
-            className={`flex items-center gap-1.5 rounded-full border px-3.5 py-1.5 text-xs font-medium transition ${
-              isActive
+            className={`flex items-center gap-1.5 rounded-full border px-3.5 py-1.5 text-xs font-medium transition ${isActive
                 ? "border-trail bg-trail/15 text-trail"
                 : "border-hairline text-muted hover:border-ink/30 hover:text-ink"
-            }`}
+              }`}
           >
             <span className={`h-1.5 w-1.5 rounded-full ${DOT_CLASS[cat.color]}`} />
             {cat.label}

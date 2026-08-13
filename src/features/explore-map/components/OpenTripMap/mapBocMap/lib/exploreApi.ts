@@ -1,4 +1,3 @@
-import { MOCK_LOCATIONS } from "@/data/mockLocations";
 import {
   CategoryId,
   ExploreLocation,
@@ -6,7 +5,8 @@ import {
   LocationQuery,
   RouteQuery,
   RouteResult,
-} from "@/types/explore";
+} from "../types/explore";
+import { MOCK_LOCATIONS } from "../data/mockLocations";
 
 /**
  * Explore API layer.

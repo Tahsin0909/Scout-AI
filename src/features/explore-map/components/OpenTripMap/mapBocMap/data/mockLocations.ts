@@ -1,4 +1,4 @@
-import { ExploreLocation } from "@/types/explore";
+import { ExploreLocation } from "../types/explore";
 
 /**
  * Mock location dataset.

@@ -1,4 +1,4 @@
-import { Category } from "@/types/explore";
+import { Category } from "../types/explore";
 
 export const CATEGORIES: Category[] = [
   {

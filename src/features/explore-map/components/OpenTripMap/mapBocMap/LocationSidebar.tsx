@@ -4,7 +4,7 @@ import { Search, Compass, Route, Loader2, X } from "lucide-react";
 import { CategoryFilters } from "./CategoryFilters";
 import { LocationCard } from "./LocationCard";
 import { RouteSearchPanel } from "./RouteSearchPanel";
-import { AsyncState, CategoryId, ExploreLocation, RouteResult } from "@/types/explore";
+import { AsyncState, CategoryId, ExploreLocation, RouteResult } from "./types/explore";
 
 export type ExploreMode = "browse" | "route";
 
@@ -75,9 +75,8 @@ export function LocationSidebar({
         <button
           type="button"
           onClick={() => onModeChange("browse")}
-          className={`relative flex flex-1 items-center justify-center gap-1.5 py-3 text-sm font-medium transition ${
-            mode === "browse" ? "text-ink" : "text-muted hover:text-ink"
-          }`}
+          className={`relative flex flex-1 items-center justify-center gap-1.5 py-3 text-sm font-medium transition ${mode === "browse" ? "text-ink" : "text-muted hover:text-ink"
+            }`}
         >
           <Compass className="h-3.5 w-3.5" />
           Browse
@@ -88,9 +87,8 @@ export function LocationSidebar({
         <button
           type="button"
           onClick={() => onModeChange("route")}
-          className={`relative flex flex-1 items-center justify-center gap-1.5 py-3 text-sm font-medium transition ${
-            mode === "route" ? "text-ink" : "text-muted hover:text-ink"
-          }`}
+          className={`relative flex flex-1 items-center justify-center gap-1.5 py-3 text-sm font-medium transition ${mode === "route" ? "text-ink" : "text-muted hover:text-ink"
+            }`}
         >
           <Route className="h-3.5 w-3.5" />
           Plan a route

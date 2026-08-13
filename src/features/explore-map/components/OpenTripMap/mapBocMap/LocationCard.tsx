@@ -1,8 +1,9 @@
 "use client";
 
 import { Star, MapPin } from "lucide-react";
-import { CATEGORIES } from "@/data/categories";
-import { ExploreLocation } from "@/types/explore";
+import { ExploreLocation } from "./types/explore";
+import { CATEGORIES } from "./data/categories";
+
 
 const DOT_CLASS: Record<string, string> = {
   forest: "bg-forest",
@@ -24,11 +25,10 @@ export function LocationCard({ location, isSelected, onSelect }: Props) {
     <button
       type="button"
       onClick={() => onSelect(location.id)}
-      className={`group flex w-full gap-3 rounded-xl2 border p-2.5 text-left transition ${
-        isSelected
+      className={`group flex w-full gap-3 rounded-xl2 border p-2.5 text-left transition ${isSelected
           ? "border-trail/60 bg-panel-2"
           : "border-transparent hover:border-hairline hover:bg-panel-2/60"
-      }`}
+        }`}
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
