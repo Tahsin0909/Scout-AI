@@ -2,143 +2,155 @@ import {
     ChevronDown,
     ChevronUp,
     Loader2,
-    MapPin
+    MapPin,
 } from "lucide-react";
-import { useState } from "react";
-import { TravelPlace, TravelPlaceDetails } from "../../explore-map.interface";
+
+import {
+    TravelPlace,
+    TravelPlaceDetails,
+} from "../../explore-map.interface";
+
 import { TravelPlaceDetailsContent } from "./TravelPlaceDetailsContent";
+
+export interface TravelPlaceCardProps {
+    place: TravelPlace;
+    expandedId: string;
+    details: TravelPlaceDetails | null;
+    detailsLoading: boolean;
+    detailsError: string;
+    onToggleDetails: (place: TravelPlace) => void;
+}
 
 export function TravelPlaceCard({
     place,
-}: {
-    place: TravelPlace;
-}) {
-    const [expanded, setExpanded] = useState(false);
-    const [details, setDetails] = useState<TravelPlaceDetails | null>(null);
-    const [detailsLoading, setDetailsLoading] = useState(false);
-    const [detailsError, setDetailsError] = useState("");
-
-    const toggleDetails = async () => {
-        if (expanded) {
-            setExpanded(false);
-            return;
-        }
-
-        setExpanded(true);
-
-        if (details) {
-            return;
-        }
-
-        try {
-            setDetailsLoading(true);
-            setDetailsError("");
-
-            const response = await fetch(`/api/travel-places/${place.xid}`);
-            const data = await response.json();
-
-            if (!response.ok) {
-                throw new Error(data.message || "Failed to load place details.");
-            }
-
-            setDetails(data.place);
-        } catch (error) {
-            setDetailsError(error instanceof Error ? error.message : "Failed to load details.");
-        } finally {
-            setDetailsLoading(false);
-        }
-    };
-
+    expandedId,
+    details,
+    detailsLoading,
+    detailsError,
+    onToggleDetails,
+}: TravelPlaceCardProps) {
     return (
-        <article className="group overflow-hidden rounded-[26px] border border-zinc-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-zinc-200/70">
-            <div className="p-5">
-                <div className="mb-5 flex items-start justify-between gap-4">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-50 to-teal-50">
-                        <MapPin className="h-5 w-5 text-emerald-600" />
+        <article className="overflow-hidden rounded-xl border border-border bg-card transition-colors hover:bg-muted/30">
+            <div className="p-3">
+                <div className="flex items-start gap-3">
+                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-muted">
+                        <MapPin className="h-4 w-4 text-primary" />
                     </div>
 
-                    {place.dist !== undefined && (
-                        <span className="rounded-full border border-zinc-200 bg-zinc-50 px-3 py-1.5 text-xs font-semibold text-zinc-600">
-                            {formatDistance(place.dist)}
-                        </span>
-                    )}
-                </div>
+                    <div className="min-w-0 flex-1">
+                        <div className="flex items-start justify-between gap-2">
+                            <h3 className="line-clamp-2 text-sm font-semibold leading-5 text-foreground">
+                                {place.name || "Unnamed Place"}
+                            </h3>
 
-                <h3 className="line-clamp-2 text-xl font-bold tracking-tight text-zinc-950">
-                    {place.name || "Unnamed Place"}
-                </h3>
+                            {place.dist !== undefined && (
+                                <span className="shrink-0 rounded-md bg-muted px-2 py-1 text-[10px] font-medium text-muted-foreground">
+                                    {formatDistance(place.dist)}
+                                </span>
+                            )}
+                        </div>
 
-                <p className="mt-2 line-clamp-2 text-sm leading-6 text-zinc-500">
-                    {formatKinds(place.kinds)}
-                </p>
+                        <p className="mt-1 line-clamp-1 text-[11px] leading-4 text-muted-foreground">
+                            {formatKinds(place.kinds)}
+                        </p>
 
-                <div className="mt-5 flex items-center justify-between">
-                    {place.rate !== undefined ? (
-                        <span className="rounded-lg bg-amber-50 px-2.5 py-1 text-xs font-semibold text-amber-700">
-                            Popularity {place.rate}
-                        </span>
-                    ) : (
-                        <span />
-                    )}
+                        <div className="mt-3 flex items-center justify-between gap-2">
+                            {place.rate !== undefined ? (
+                                <span className="rounded-md border border-border bg-background px-2 py-1 text-[10px] font-medium text-muted-foreground">
+                                    Popularity {place.rate}
+                                </span>
+                            ) : (
+                                <span />
+                            )}
 
-                    <button onClick={toggleDetails} className="flex items-center gap-1.5 text-sm font-semibold text-zinc-800 transition hover:text-emerald-600">
-                        {expanded ? "Hide details" : "View details"}
-                        {expanded ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
-                    </button>
+                            <button
+                                type="button"
+                                onClick={() =>
+                                    onToggleDetails(place)
+                                }
+                                className="flex items-center gap-1 text-[11px] font-medium text-muted-foreground transition-colors hover:text-foreground"
+                            >
+                                {expandedId == place.xid
+                                    ? "Hide"
+                                    : "Details"}
+
+                                {expandedId == place.xid ? (
+                                    <ChevronUp className="h-3.5 w-3.5" />
+                                ) : (
+                                    <ChevronDown className="h-3.5 w-3.5" />
+                                )}
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            {expanded && (
-                <div className="border-t border-zinc-100 bg-zinc-50/70">
+            {expandedId == place.xid && (
+                <div className="border-t border-border bg-muted/20">
                     {detailsLoading && (
-                        <div className="flex h-52 items-center justify-center">
-                            <Loader2 className="h-6 w-6 animate-spin text-emerald-600" />
+                        <div className="flex h-24 items-center justify-center">
+                            <Loader2 className="h-4 w-4 animate-spin text-muted-foreground" />
                         </div>
                     )}
 
                     {detailsError && (
-                        <div className="p-5">
-                            <div className="rounded-xl border border-red-100 bg-red-50 px-4 py-3 text-sm text-red-600">
+                        <div className="p-3">
+                            <div className="rounded-lg border border-destructive/20 bg-destructive/5 px-3 py-2 text-[11px] text-destructive">
                                 {detailsError}
                             </div>
                         </div>
                     )}
 
-                    {!detailsLoading && !detailsError && details && (
-                        <TravelPlaceDetailsContent details={details} fallbackPlace={place} />
-                    )}
+                    {!detailsLoading &&
+                        !detailsError &&
+                        details && (
+                            <TravelPlaceDetailsContent
+                                details={details}
+                                fallbackPlace={place}
+                            />
+                        )}
                 </div>
             )}
         </article>
     );
 }
 
-function formatDistance(distance?: number) {
+function formatDistance(
+    distance?: number
+) {
     if (distance === undefined) {
         return "";
     }
 
     if (distance < 1000) {
-        return `${Math.round(distance)} m away`;
+        return `${Math.round(
+            distance
+        )} m`;
     }
 
-    return `${(distance / 1000).toFixed(1)} km away`;
+    return `${(
+        distance / 1000
+    ).toFixed(1)} km`;
 }
 
-
-
-function formatKinds(kinds?: string) {
+function formatKinds(
+    kinds?: string
+) {
     if (!kinds) {
         return "Travel place";
     }
 
     return kinds
         .split(",")
-        .slice(0, 3)
+        .slice(0, 2)
         .map((kind) =>
             kind
                 .replaceAll("_", " ")
-                .replace(/\b\w/g, (character) => character.toUpperCase())
+                .replace(
+                    /\b\w/g,
+                    (character) =>
+                        character.toUpperCase()
+                )
         )
         .join(" • ");
 }

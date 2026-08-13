@@ -46,8 +46,8 @@ export interface TravelPlaceDetails {
   image: string | null;
   description: string | null;
   wikipedia: string | null;
-  lat: number | null;
-  lng: number | null;
+  lat: number;
+  lng: number;
   address: {
     road?: string | null;
     houseNumber?: string | null;
