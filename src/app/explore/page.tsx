@@ -2,7 +2,7 @@ import ExploreMapWithOpenTrip from "@/features/explore-map/components/OpenTripMa
 
 const page = () => {
   return (
-    <div className="min-h-[60vh] flex items-center justify-center">
+    <div className="bg-black flex items-center justify-center">
       <ExploreMapWithOpenTrip />
     </div>
   );

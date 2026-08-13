@@ -77,13 +77,13 @@ export default function TravelPlacesClient({
     return (
         <main className="">
             <section className="">
-                <div className="overflow-hidden rounded-[32px] p-2 shadow-xl shadow-zinc-200/60 backdrop-blur-xl">
+                <div className="overflow-hidden rounded-[32px] p-2 shadow-xl shadow-zinc-200/60">
                     <div>
-                        <h1 className="font-bold tracking-tight">
+                        <h1 className="font-bold tracking-tight text-white">
                             Find your next place to explore.
                         </h1>
 
-                        <p className="mt-5">
+                        <p className="mt-5 text-white">
                             Search a city or country, or use your current location to discover interesting places nearby.
                         </p>
                     </div>
@@ -111,7 +111,7 @@ export default function TravelPlacesClient({
                 </div>
 
                 {selectedLocation && (
-                    <div className=" mt-4 flex items-center justify-between">
+                    <div className=" mt-4 flex items-center justify-between text-white">
                         <div className="flex items-center gap-3">
                             <div className="flex items-center justify-center">
                                 <Navigation className="h-4 w-4 " />

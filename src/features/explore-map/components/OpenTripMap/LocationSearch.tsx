@@ -48,9 +48,7 @@ export function LocationSearch({
                 types: "place,country",
             });
 
-            const response = await fetch(
-                `https://api.mapbox.com/search/geocode/v6/forward?${params.toString()}`
-            );
+            const response = await fetch(`https://api.mapbox.com/search/geocode/v6/forward?${params.toString()}`);
 
             if (!response.ok) {
                 throw new Error("Location search failed.");
@@ -68,9 +66,7 @@ export function LocationSearch({
                         "Unknown location";
 
                     return {
-                        id:
-                            feature.properties.mapbox_id ||
-                            feature.id,
+                        id: feature.properties.mapbox_id || feature.id,
                         name,
                         fullName:
                             feature.properties.full_address ||
@@ -82,9 +78,7 @@ export function LocationSearch({
                                 .join(", "),
                         latitude,
                         longitude,
-                        type:
-                            feature.properties.feature_type ||
-                            "place",
+                        type: feature.properties.feature_type || "place",
                     };
                 }
             );
@@ -102,9 +96,7 @@ export function LocationSearch({
         }
     };
 
-    const handleSelect = (
-        location: LocationResult
-    ) => {
+    const handleSelect = (location: LocationResult) => {
         setQuery(location.fullName);
         setOpen(false);
 
@@ -121,29 +113,27 @@ export function LocationSearch({
     return (
         <div className="relative w-full">
             <div className="group relative">
-                <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground transition-colors group-focus-within:text-foreground" />
+                <Search className="pointer-events-none absolute z-10 left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-white transition-colors group-focus-within:text-yellow-400" />
 
                 <input
                     value={query}
-                    onChange={(event) =>
-                        setQuery(event.target.value)
-                    }
+                    onChange={(event) => setQuery(event.target.value)}
                     onFocus={() => {
                         if (results.length > 0) {
                             setOpen(true);
                         }
                     }}
                     placeholder="Search city or country"
-                    className="h-10 w-full rounded-lg border border-border bg-background pl-9 pr-9 text-sm text-foreground outline-none transition placeholder:text-muted-foreground focus:border-foreground/30 focus:ring-2 focus:ring-foreground/5"
+                    className="h-10 w-full rounded-xl border border-white/10 bg-black/25 pl-9 pr-9 text-sm text-white outline-none backdrop-blur-md transition placeholder:text-white/35 hover:border-white/20 focus:border-yellow-400/40 focus:bg-black/35 focus:ring-2 focus:ring-yellow-400/10"
                 />
 
                 {loading ? (
-                    <Loader2 className="absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 animate-spin text-muted-foreground" />
+                    <Loader2 className="absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 animate-spin text-white/45" />
                 ) : query ? (
                     <button
                         type="button"
                         onClick={clearSearch}
-                        className="absolute right-2 top-1/2 flex h-6 w-6 -translate-y-1/2 items-center justify-center rounded-md text-muted-foreground transition hover:bg-muted hover:text-foreground"
+                        className="absolute right-2 top-1/2 flex h-6 w-6 -translate-y-1/2 items-center justify-center rounded-md text-white/40 transition hover:bg-white/10 hover:text-white"
                     >
                         <X className="h-3.5 w-3.5" />
                     </button>
@@ -151,9 +141,9 @@ export function LocationSearch({
             </div>
 
             {open && (
-                <div className="absolute left-0 right-0 top-[calc(100%+6px)] z-50 max-h-64 overflow-y-auto rounded-xl border border-border bg-popover p-1.5 text-popover-foreground shadow-xl">
+                <div className="absolute left-0 right-0 top-[calc(100%+6px)] z-50 max-h-64 overflow-y-auto rounded-xl border border-white/10 bg-black/70 p-1.5 text-white shadow-2xl shadow-black/40 backdrop-blur-xl">
                     {searchError ? (
-                        <div className="px-3 py-4 text-center text-xs text-destructive">
+                        <div className="px-3 py-4 text-center text-xs text-red-300">
                             {searchError}
                         </div>
                     ) : results.length > 0 ? (
@@ -161,27 +151,25 @@ export function LocationSearch({
                             <button
                                 key={location.id}
                                 type="button"
-                                onClick={() =>
-                                    handleSelect(location)
-                                }
-                                className="flex w-full h-full items-center gap-2.5 rounded-lg px-2.5 py-2 text-left transition hover:bg-muted"
+                                onClick={() => handleSelect(location)}
+                                className="flex w-full items-center gap-2.5 rounded-lg px-2.5 py-2 text-left transition hover:bg-white/10"
                             >
-                                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-muted">
-                                    <MapPin className="h-3.5 w-3.5 text-muted-foreground" />
+                                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-white/5">
+                                    <MapPin className="h-3.5 w-3.5 text-yellow-400" />
                                 </div>
 
                                 <div className="min-w-0 flex-1">
                                     <div className="flex items-center gap-2">
-                                        <p className="truncate text-sm font-medium text-foreground">
+                                        <p className="truncate text-sm font-medium text-white">
                                             {location.name}
                                         </p>
 
-                                        <span className="shrink-0 rounded bg-muted px-1.5 py-0.5 text-[9px] font-medium uppercase tracking-wide text-muted-foreground">
+                                        <span className="shrink-0 rounded-md border border-white/10 bg-white/5 px-1.5 py-0.5 text-[9px] font-medium uppercase tracking-wide text-white/40">
                                             {location.type}
                                         </span>
                                     </div>
 
-                                    <p className="mt-0.5 truncate text-[11px] text-muted-foreground">
+                                    <p className="mt-0.5 truncate text-[11px] text-white/45">
                                         {location.fullName}
                                     </p>
                                 </div>
@@ -189,9 +177,11 @@ export function LocationSearch({
                         ))
                     ) : (
                         <div className="px-3 py-4 text-center">
-                            <MapPin className="mx-auto h-4 w-4 text-muted-foreground" />
+                            <div className="mx-auto flex h-8 w-8 items-center justify-center rounded-lg border border-white/10 bg-white/5">
+                                <MapPin className="h-3.5 w-3.5 text-white/40" />
+                            </div>
 
-                            <p className="mt-1.5 text-xs text-muted-foreground">
+                            <p className="mt-2 text-xs text-white/45">
                                 No location found
                             </p>
                         </div>

@@ -6,12 +6,11 @@ import "mapbox-gl/dist/mapbox-gl.css";
 import Map, {
     Layer,
     Marker,
-    NavigationControl,
     Popup,
-    Source,
+    Source
 } from "react-map-gl";
 
-import type { LayerProps } from "react-map-gl";
+import type { LayerProps, MapRef } from "react-map-gl";
 
 import {
     ExternalLink,
@@ -29,10 +28,10 @@ import {
 import {
     DEFAULT_VIEW,
     hasMapboxToken,
-    MAP_STYLE,
-    MAPBOX_TOKEN,
+    MAPBOX_TOKEN
 } from "./lib/mapbox";
 
+import { RefObject } from "react";
 import { MapTokenNotice } from "./MapTokenNotice";
 
 const routeLineLayer: LayerProps = {
@@ -56,12 +55,18 @@ interface Props {
         travelPlace: TravelPlace | null
     ) => Promise<void>;
     placesDetails: TravelPlaceDetails | null;
+    mapStyle: string;
+    mapRef: RefObject<MapRef | null>;
+    is3D: boolean;
 }
 
 export function ExploreOpenTripMap({
     travelPlace,
     placesDetails,
     onToggleDetails,
+    mapStyle,
+    mapRef,
+    is3D
 }: Props) {
     const routeGeoJSON =
         travelPlace &&
@@ -90,6 +95,36 @@ export function ExploreOpenTripMap({
             }
             : null;
 
+    const enable3D = () => {
+        if (!is3D) return;
+
+        const map =
+            mapRef.current?.getMap();
+
+        if (!map) return;
+
+        if (
+            !map.getSource(
+                "triptrax-terrain"
+            )
+        ) {
+            map.addSource(
+                "triptrax-terrain",
+                {
+                    type: "raster-dem",
+                    url: "mapbox://mapbox.mapbox-terrain-dem-v1",
+                    tileSize: 512,
+                    maxzoom: 14,
+                }
+            );
+        }
+
+        map.setTerrain({
+            source: "triptrax-terrain",
+            exaggeration: 1.35,
+        });
+    };
+
     if (!hasMapboxToken()) {
         return <MapTokenNotice />;
     }
@@ -97,28 +132,15 @@ export function ExploreOpenTripMap({
     return (
         <div className="relative h-full w-full overflow-hidden bg-background">
             <Map
-                mapboxAccessToken={
-                    MAPBOX_TOKEN
-                }
-                initialViewState={
-                    DEFAULT_VIEW
-                }
-                mapStyle={MAP_STYLE}
-                projection={{
-                    name: "globe",
-                }}
-                style={{
-                    width: "100%",
-                    height: "100%",
-                }}
+                ref={mapRef}
+                mapboxAccessToken={MAPBOX_TOKEN}
+                initialViewState={DEFAULT_VIEW}
+                mapStyle={mapStyle}
+                projection={{ name: "globe" }}
+                onLoad={enable3D}
+                style={{ width: "100%", height: "100%" }}
                 reuseMaps
             >
-                <NavigationControl
-                    position="top-right"
-                    showCompass={false}
-                    visualizePitch
-                />
-
                 {routeGeoJSON && (
                     <Source
                         id="route"

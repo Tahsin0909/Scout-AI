@@ -2,8 +2,9 @@
 
 import { useEffect, useRef, useState } from "react";
 import { Navigation, Search, Loader2 } from "lucide-react";
-import { geocodePlace } from "@/lib/exploreApi";
-import { GeocodeResult } from "@/types/explore";
+import { GeocodeResult } from "./types/explore";
+import { geocodePlace } from "./lib/exploreApi";
+
 
 interface PlaceFieldProps {
   label: string;
