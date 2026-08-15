@@ -4,8 +4,7 @@ import {
   Bell,
   ChevronsUpDown,
   LogOut,
-  Settings,
-  UserCircle,
+  UserCircle
 } from "lucide-react";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -26,8 +25,9 @@ import {
 } from "@/components/ui/sidebar";
 import { useAuth } from "@/features/auth/hooks/useAuth";
 import Link from "next/link";
+import { IRole } from "@/features/user/user.interface";
 
-export const AppUser = () => {
+export const AppUser = ({ role }: { role: IRole }) => {
   const { isMobile } = useSidebar();
   const { handleLogout, profile } = useAuth();
 
@@ -84,24 +84,36 @@ export const AppUser = () => {
               </div>
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuGroup>
-              <DropdownMenuItem asChild>
-                <Link href="/profile">
-                  <UserCircle className="!text-inherit" />
-                  Profile
-                </Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem asChild>
-                <Link href="/profile/settings">
-                  <Settings className="!text-inherit" />
-                  Settings
-                </Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <Bell className="!text-inherit" />
-                Notifications
-              </DropdownMenuItem>
-            </DropdownMenuGroup>
+            {
+              role === IRole.USER ? <DropdownMenuGroup>
+                <DropdownMenuItem asChild>
+                  <Link href="/profile">
+                    <UserCircle className="!text-inherit" />
+                    Profile
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link href="/notification">
+                    <Bell className="!text-inherit" />
+                    Notifications
+                  </Link>
+                </DropdownMenuItem>
+              </DropdownMenuGroup> : <DropdownMenuGroup>
+                <DropdownMenuItem asChild>
+                  <Link href="/admin/profile">
+                    <UserCircle className="!text-inherit" />
+                    Profile
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <Link href="/admin/notification">
+                    <Bell className="!text-inherit" />
+                    Notifications
+                  </Link>
+                </DropdownMenuItem>
+              </DropdownMenuGroup>
+            }
+
             <DropdownMenuSeparator />
             <DropdownMenuItem onClick={handleLogout}>
               <LogOut className="!text-inherit" />

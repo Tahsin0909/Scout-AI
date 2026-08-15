@@ -22,9 +22,9 @@ type FoundationItem = {
 
 const foundationItems: FoundationItem[] = [
     {
-        title: 'Safety First, Always',
+        title: 'Package',
         description:
-            'Every dossier we produce prioritizes your safety. Emergency contacts, evacuation routes, risk assessments, and real-time weather integration aren’t features — they’re requirements.',
+            "Every dossier we produce prioritizes your safety. Emergency contacts, evacuation routes, risk assessments, and real-time weather integration aren't features — they're requirements.",
         icon: ShieldCheck,
         colSpan: 'lg:col-span-6',
     },
@@ -36,14 +36,14 @@ const foundationItems: FoundationItem[] = [
         colSpan: 'lg:col-span-5',
     },
     {
-        title: 'Humans in the Loop',
+        title: 'Human-in-the-Loop',
         description:
-            'AI gets you 90% of the way there. The last 10% — the local knowledge, the judgment calls, the things you can’t know from data — that’s what our expert reviewers provide.',
+            "AI gets you 90% of the way there. The last 10% — the local knowledge, the judgment calls, the things you can't know from data — that's what our expert reviewers provide.",
         icon: UserCog,
         colSpan: 'lg:col-span-5',
     },
     {
-        title: 'Leave It Better',
+        title: 'Package incorporates',
         description:
             'We believe in responsible outdoor recreation. Every dossier includes Leave No Trace principles, permit guidance, and conservation notes relevant to your destination.',
         icon: Leaf,
@@ -59,7 +59,7 @@ const foundationItems: FoundationItem[] = [
     {
         title: 'No Trip Left Behind',
         description:
-            'Whether you’re taking your first camping trip or your 200th overland expedition, you deserve a dossier that matches your ambition. We serve every skill level with equal rigor.',
+            "Whether you're on your first hike or your 200th overland expedition, you deserve a plan and package that matches your ambition. We serve every skill level with equal passion and attention to detail. No compromises. No adventurer left behind.",
         icon: Award,
         colSpan: 'lg:col-span-6',
     },
@@ -83,8 +83,7 @@ export default function Foundation() {
                     </h2>
 
                     <p className="mx-auto max-w-2xl text-base text-muted-foreground sm:text-lg">
-                        Our values ensure every journey is planned with care,
-                        precision, and respect for the places we explore.
+                        Our values ensure every journey is planned with care, precision, and respect for the places we explore.
                     </p>
                 </div>
 
@@ -156,13 +155,13 @@ export default function Foundation() {
                 </div>
 
                 {/* CTA */}
-                <div className="mx-auto mt-12 w-fit text-center md:mt-16">
+                {/* <div className="mx-auto mt-12 w-fit text-center md:mt-16">
                     <Button asChild variant="primary">
                         <Link href="/register">
                             View Packaging
                         </Link>
                     </Button>
-                </div>
+                </div> */}
             </div>
         </section>
     )

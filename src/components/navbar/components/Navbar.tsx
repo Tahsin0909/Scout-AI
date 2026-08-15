@@ -18,9 +18,7 @@ export const Navbar = () => {
       <div className="container">
         <div className="flex items-center justify-between gap-2">
           <div>
-            <Link href="/">
-              <Logo />
-            </Link>
+            <Logo forceWhite />
           </div>
           <div>
             <DesktopMenu />

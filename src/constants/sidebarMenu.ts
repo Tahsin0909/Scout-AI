@@ -44,33 +44,43 @@ export const ALL_MENU_ITEMS: Record<string, SidebarMenuItem> = {
   },
 
   adminContentManagement: {
-    title: "Content Management",
+    title: "Article Management",
     icon: BookOpenText,
-    url: "/admin/content",
+    url: "/admin/article",
   },
 
   adminPartnerShip: {
     title: "Partnerships",
     icon: Handshake,
     url: "/admin/partnerships",
+    items: [
+      {
+        title: "All Partners",
+        url: "/admin/partnerships/aii-partners"
+      },
+      {
+        title: "Resource",
+        url: "/admin/partnerships/resources"
+      },
+    ]
   },
 
   userOverview: {
     title: "Overview",
     icon: LayoutDashboard,
-    url: "/dashboard",
+    url: "/user-overview",
   },
 
   userTips: {
-    title: "Travel Tips",
+    title: "Travel Trips",
     icon: Lightbulb,
-    url: "/dashboard/tips",
+    url: "/travel-trips",
   },
 
   userMembership: {
     title: "Membership",
     icon: WalletCards,
-    url: "/dashboard/membership",
+    url: "/membership",
   },
 };
 

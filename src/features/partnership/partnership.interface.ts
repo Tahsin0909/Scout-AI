@@ -56,7 +56,7 @@ export type PartnerApplicationState = {
 };
 
 export type IPartnership = {
-  id: string
+  id: string;
 };
 
 export interface IReferral {
@@ -67,3 +67,101 @@ export interface IReferral {
   membership: string;
   commission: number;
 }
+
+/* -------------------------------------------------------------------------- */
+/*                         PARTNER DETAILS / PERFORMANCE                       */
+/* -------------------------------------------------------------------------- */
+
+export type PartnerStatus =
+  | "active"
+  | "inactive"
+  | "suspended";
+
+export type PartnerTier =
+  | "Member"
+  | "Plus"
+  | "Prime"
+  | "Elite";
+
+export interface IPartnerDetails {
+  id: string;
+
+  fullName: string;
+  email: string;
+  phone: string;
+  location: string;
+
+  avatar: string;
+
+  status: PartnerStatus;
+  tier: PartnerTier;
+
+  joinedAt: string;
+
+  totalRevenue: number;
+  totalReferrals: number;
+
+  socialAccounts: SocialAccount[];
+}
+
+/* -------------------------------------------------------------------------- */
+/*                              REFERRAL CHART                                 */
+/* -------------------------------------------------------------------------- */
+
+export interface IReferralChartData {
+  label: string;
+  value: number;
+  isCurrent?: boolean;
+  tooltip?: string;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                           CONVERSION METRICS                                */
+/* -------------------------------------------------------------------------- */
+
+export type ConversionMetricType =
+  | "click-through"
+  | "lead-to-sale"
+  | "retention";
+
+export interface IConversionMetric {
+  type: ConversionMetricType;
+  label: string;
+  percentage: number;
+  value: number;
+  color: string;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                              PARTNER CONTENT                                */
+/* -------------------------------------------------------------------------- */
+
+export type PartnerContentStatus =
+  | "active"
+  | "inactive";
+
+export interface IPartnerContent {
+  id: string;
+  platform: SocialPlatform;
+  postLink: string;
+  status: PartnerContentStatus;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                          PARTNER DETAILS PAGE                               */
+/* -------------------------------------------------------------------------- */
+
+export interface IPartnerPerformance {
+  referralFlow: IReferralChartData[];
+  conversionMetrics: IConversionMetric[];
+}
+
+export interface IPartnerDetailsData {
+  partner: IPartnerDetails;
+  performance: IPartnerPerformance;
+  content: IPartnerContent[];
+}
+
+export type PartnerDetailsTab =
+  | "performance"
+  | "content";

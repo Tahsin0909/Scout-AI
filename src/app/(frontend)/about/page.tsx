@@ -8,7 +8,7 @@ import TestimonialsSection from "@/components/testimonials/TestimonialsSection";
 const page = () => {
     return (
         <div>
-            <SectionHeader backgroundImage="./articlesheader.jpg" metrics={400} metricsSubtitle="Beta Dossiers Delivered" subtitle="Apex Adventure Lab " description="Adventure, down to a science. Every expedition begins with a plan. Let's build yours together." title="About Us" />
+            <SectionHeader backgroundImage="./articlesheader.jpg" metrics={400} metricsSubtitle="Beta Dossiers Delivered" subtitle="TripTrax " description="Adventure, down to a science. Every expedition begins with a plan. Plan. Track. Go" title="About Us" />
             <MissionSection />
             <CompanyTimelineSection />
             <Foundation />

@@ -2,10 +2,8 @@ import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 import ArticleCard from "./ArticleCard";
-import {
-    articles,
-    type ArticleCategory,
-} from "./articles-data";
+import { ArticleCategory, articles } from "./data/articles-data";
+
 
 type SimilarArticlesProps = {
     currentArticleId: number | string;

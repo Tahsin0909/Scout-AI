@@ -52,13 +52,17 @@ export const ALL_NAVBAR_MENU_ITEMS: Record<string, IMenu> = {
     label: "Profile",
     href: "/partners-account",
   },
+  userDashboard: {
+    label: "Dashboard",
+    href: "/user-overview",
+  },
   userAccount: {
     label: "Profile",
     href: "/my-profile",
   },
   adminDashboard: {
     label: "Dashboard",
-    href: "/admin",
+    href: "/admin-overview",
   },
 };
 
@@ -81,6 +85,7 @@ export const AUTHENTICATED_MOBILE_ITEMS: Record<string, IMenu> = {
   myAccount: {
     label: "My Account",
     children: [
+      { label: "Dashboard", href: "/user-overview" },
       { label: "Profile", href: "/profile" },
       { label: "Billing", href: "/payment/manage" },
       { label: "Settings", href: "/settings" },
@@ -102,13 +107,13 @@ export const PUBLIC_NAVBAR_ITEMS: string[] = ["memberships", "explore", "article
 
 // Role-based menu configuration
 export const ROLE_NAVBAR_MENU_CONFIG: Record<IRole, string[]> = {
-  [IRole.ADMIN]: ["memberships", "articles", "about", "contact", "explore"],
+  [IRole.ADMIN]: ["adminDashboard", "memberships", "articles", "about", "contact", "explore", "partnership"],
   [IRole.PARTNER]: ["Home", "partnership", "partnerDashboard", "partnerReferral", "partnerEarnings", "partnerContent"],
-  [IRole.USER]: ["memberships", "articles", "about", "contact", "explore", "partnership"],
+  [IRole.USER]: ["userDashboard", "memberships", "articles", "about", "contact", "explore", "partnership"],
 };
 
 export const ACCOUNT_MENU_CONFIG: Record<IRole, string[]> = {
   [IRole.ADMIN]: ["adminDashboard"],
-  [IRole.PARTNER]: ["partnerAccount"],
-  [IRole.USER]: ["userAccount"],
+  [IRole.PARTNER]: ["partnerDashboard", "partnerAccount"],
+  [IRole.USER]: ["userDashboard", "userAccount"],
 };

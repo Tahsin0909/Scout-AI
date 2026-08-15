@@ -21,9 +21,9 @@ type Step = {
 const steps: Step[] = [
     {
         number: '01',
-        title: 'Choose Your Plan',
+        title: 'Choose Your Mode',
         description:
-            'Pick your travel mode and package type. Single purchase or membership — your call.',
+            'Pick your travel mode to get started. This activates the correct modules and ensures your package is tailored to how you choose to go.',
         icon: FileText,
         iconClassName:
             'bg-[#FF916F] text-white shadow-[#ff916f]/30',
@@ -31,9 +31,9 @@ const steps: Step[] = [
     },
     {
         number: '02',
-        title: 'Complete the Intake',
+        title: 'Complete the Intake Form',
         description:
-            'Our smart form adapts to your mode. Destination, dates, experience, vehicle, priorities.',
+            'Our smart form adapts to your input. Destinations, dates, experience levels, vehicle type, priorities - all taken into account.',
         icon: Sparkles,
         iconClassName:
             'bg-[#A45EF8] text-white shadow-[#a45ef8]/30',
@@ -43,7 +43,7 @@ const steps: Step[] = [
         number: '03',
         title: 'Scout AI Clarifies',
         description:
-            'Scout asks a few targeted questions. The more context you give, the sharper your dossier.',
+            'Scout asks a few targeted questions. The more context you give, the sharper your trip package will be.',
         icon: Star,
         iconClassName:
             'bg-[#68C8F6] text-white shadow-[#68c8f6]/30',
@@ -53,7 +53,7 @@ const steps: Step[] = [
         number: '04',
         title: 'Expert Delivery',
         description:
-            'A human adventure expert reviews and approves. Your PDF lands in your dashboard within 48 hours.',
+            'One of our expert Route Analysts reviews and approves your package. Your download land in your Dashboard in ~48 hours.',
         icon: Download,
         iconClassName:
             'bg-[#FF646D] text-white shadow-[#ff646d]/30',
@@ -99,7 +99,7 @@ export default function HowItWorksSection() {
             <div className="container mx-auto w-full">
                 {/* Header */}
                 <div className="mx-auto mb-12 max-w-3xl text-center md:mb-16">
-                    <div
+                    {/* <div
                         className="
                             mx-auto mb-4 w-fit rounded-full
                             bg-white/[0.08] px-3 py-1
@@ -109,7 +109,7 @@ export default function HowItWorksSection() {
                         "
                     >
                         How It Works
-                    </div>
+                    </div> */}
 
                     <h2
                         className="
@@ -117,9 +117,9 @@ export default function HowItWorksSection() {
                             text-white sm:text-4xl lg:text-5xl
                         "
                     >
-                        From Idea To
+                        Go From Idea To
                         <br />
-                        Dossier In{' '}
+                        Polished Package In{' '} <br />
                         <span className="italic text-[#97B900]">
                             48 Hours
                         </span>
@@ -131,8 +131,9 @@ export default function HowItWorksSection() {
                             text-gray-400 sm:text-lg
                         "
                     >
-                        Every plan is AI-built and human-reviewed before it
-                        reaches you. Here&apos;s exactly how.
+                        {/* Every plan is AI-built and human-reviewed before it
+                        reaches you. Here&apos;s exactly how. */}
+                        Every plan is built with AI precision and reviewed with human expertise. Here's how it works.
                     </p>
                 </div>
 

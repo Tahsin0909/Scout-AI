@@ -7,10 +7,8 @@ import { Pagination } from "@/components/pagination/Pagination";
 import { ArticlesIcon } from "@/utils/icons";
 
 import ArticleCard from "./ArticleCard";
-import {
-  articles,
-  type ArticleCategory,
-} from "./articles-data";
+import { ArticleCategory, articles } from "./data/articles-data";
+
 
 type CategoryFilter = "All" | ArticleCategory;
 type SortOption = "newest" | "oldest" | "title";

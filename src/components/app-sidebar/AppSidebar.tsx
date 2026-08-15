@@ -21,6 +21,8 @@ import {
   SidebarMenuSubItem,
 } from "@/components/ui/sidebar";
 import { useSidebarMenu } from "@/hooks/useSidebarMenu";
+import { useAuth } from "@/features/auth/hooks/useAuth";
+import { IRole } from "@/features/user/user.interface";
 import { cn } from "@/lib/utils"; // <- shadcn utility
 import { ChevronDown, ChevronRight } from "lucide-react";
 import Link from "next/link";
@@ -32,6 +34,8 @@ export const AppSidebar = () => {
   const [openItems, setOpenItems] = useState<string[]>(["Analytics"]);
   const pathname = usePathname();
   const sidebarMenu = useSidebarMenu();
+  const { getUserRole } = useAuth();
+  const role = getUserRole() || IRole.USER;
 
   const toggleItem = (title: string) => {
     setOpenItems((prev) =>
@@ -49,7 +53,7 @@ export const AppSidebar = () => {
       </SidebarHeader>
 
       {/* Sidebar Menu */}
-      <SidebarContent className="md:px-5 px-2">
+      <SidebarContent className="md:px-5 px-2 flex flex-col justify-between h-full">
         <SidebarGroup className="p-0">
           <SidebarGroupContent>
             <SidebarMenu>
@@ -71,7 +75,7 @@ export const AppSidebar = () => {
                             className={cn(
                               "[&>svg:first-child]:size-5 md:p-3 p-2",
                               isParentActive
-                                ? "bg-primary-100 text-primary"
+                                ? "bg-primary-100 text-black"
                                 : "text-muted-foreground hover:bg-muted"
                             )}
                             asChild
@@ -142,11 +146,55 @@ export const AppSidebar = () => {
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
+
+        {/* Plus - Go Further Membership Card (Only shown when role is USER) */}
+        {role === IRole.USER && (
+          <div className="mt-auto px-1 pt-6 group-data-[collapsible=icon]:hidden">
+            <div className="relative overflow-hidden rounded-xl border border-neutral-800/80 bg-[#1E1E22] p-4 shadow-md">
+              <div className="mb-2 flex items-center justify-between gap-2">
+                <span className="text-sm font-semibold text-white">
+                  Plus &ndash; Go Further
+                </span>
+
+                <span className="rounded border border-emerald-500/30 bg-emerald-500/20 px-2 py-0.5 text-[10px] font-bold uppercase text-emerald-400">
+                  Active
+                </span>
+              </div>
+
+              <div className="mb-2 flex items-center justify-between text-xs font-medium">
+                <span className="text-neutral-400">
+                  Trip Package Usage
+                </span>
+
+                <div className="flex items-baseline">
+                  <span className="text-sm font-semibold text-white">
+                    1
+                  </span>
+
+                  <span className="text-[10px] text-neutral-500">
+                    /2 used
+                  </span>
+                </div>
+              </div>
+
+              {/* Segmented Progress */}
+              <div className="mb-4 flex h-4 w-full items-center overflow-hidden">
+                {Array.from({ length: 55 }).map((_, index) => (
+                  <span key={index} className={`h-5 w-1 shrink-0 border-r border-[#1E1E22] ${index < 28 ? "bg-[#FACC15]" : "bg-neutral-700"}`} />
+                ))}
+              </div>
+
+              <Link href="/user/membership" className="block w-full rounded-lg bg-[#FACC15] px-3 py-2.5 text-center text-xs font-semibold text-black shadow-sm transition-colors hover:bg-[#eab308]">
+                Manage Membership
+              </Link>
+            </div>
+          </div>
+        )}
       </SidebarContent>
 
       {/* User */}
       <SidebarFooter className="md:px-5 px-1">
-        <AppUser />
+        <AppUser role={role} />
       </SidebarFooter>
     </Sidebar>
   );

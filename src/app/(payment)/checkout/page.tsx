@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 import {
     getPlanById,
     type BillingType,
-} from "@/components/pricing/data/pricing";
+} from "@/features/payment/components/pricing/data/pricing";
 import CheckoutClient from "@/features/payment/components/CheckoutClient";
 
 export const metadata: Metadata = {

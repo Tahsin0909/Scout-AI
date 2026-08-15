@@ -2,8 +2,8 @@
 
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
+import { Article } from "./data/articles-data";
 
-import type { Article } from "./articles-data";
 
 type ArticleCardProps = {
     article: Article;

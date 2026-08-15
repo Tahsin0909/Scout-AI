@@ -3,24 +3,18 @@
 import { DataTable } from "@/components/data-table/DataTable";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { PartnerResource } from "@/features/resource/components/Resource";
 import { ColumnDef } from "@tanstack/react-table";
 import {
     AtSign,
     CalendarDays,
     ChevronDown,
-    Download,
-    FileText,
-    ImageIcon,
     Instagram,
-    LayoutGrid,
-    Library,
     PackageOpen,
-    PlayCircle,
     Send,
-    UploadCloud,
-    Video
+    UploadCloud
 } from "lucide-react";
-import { ChangeEvent, FormEvent, useMemo, useRef, useState } from "react";
+import { ChangeEvent, FormEvent, useRef, useState } from "react";
 
 type SubmissionStatus = "Pending" | "Approved" | "Rejected";
 type SocialPlatform = "Instagram" | "TikTok" | "Threads";
@@ -33,16 +27,7 @@ interface IContentSubmission {
     status: SubmissionStatus;
 }
 
-type ResourceCategory = "Assets" | "Templates" | "Training";
 
-interface IPartnerResource {
-    id: number;
-    title: string;
-    description: string;
-    category: ResourceCategory;
-    actionLabel: string;
-    icon: React.ReactNode;
-}
 
 const submissionHistory: IContentSubmission[] = [
     {
@@ -68,44 +53,7 @@ const submissionHistory: IContentSubmission[] = [
     },
 ];
 
-const partnerResources: IPartnerResource[] = [
-    {
-        id: 1,
-        title: "Brand Assets Pack v2.0",
-        description:
-            "Latest high-resolution logos, icons, and color guides for the Winter 2024 season.",
-        category: "Assets",
-        actionLabel: "Download Assets",
-        icon: <ImageIcon className="h-5 w-5" />,
-    },
-    {
-        id: 2,
-        title: "Elite Partner Training",
-        description:
-            "Exclusive video tutorial on maximizing conversion for technical gear reviews.",
-        category: "Training",
-        actionLabel: "Watch Module",
-        icon: <Video className="h-5 w-5" />,
-    },
-    {
-        id: 3,
-        title: "Campaign Brief: Everest '24",
-        description:
-            "Guidelines, required hashtags, and messaging for the upcoming expedition.",
-        category: "Assets",
-        actionLabel: "Download PDF",
-        icon: <FileText className="h-5 w-5" />,
-    },
-    {
-        id: 4,
-        title: "Story Templates Kit",
-        description:
-            "Custom-designed Instagram story frames and overlays for gear unboxing.",
-        category: "Templates",
-        actionLabel: "Get Templates",
-        icon: <LayoutGrid className="h-5 w-5" />,
-    },
-];
+
 
 const formatDate = (date: string) => {
     const parsedDate = new Date(date);
@@ -152,26 +100,12 @@ const getStatusStyle = (status: SubmissionStatus) => {
 };
 
 const PartnerContent = () => {
-    const [activeCategory, setActiveCategory] = useState<
-        "All" | ResourceCategory
-    >("All");
-
     const [postUrl, setPostUrl] = useState("");
     const [platform, setPlatform] = useState<SocialPlatform>("Instagram");
     const [notes, setNotes] = useState("");
     const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
     const fileInputRef = useRef<HTMLInputElement>(null);
-
-    const filteredResources = useMemo(() => {
-        if (activeCategory === "All") {
-            return partnerResources;
-        }
-
-        return partnerResources.filter(
-            (resource) => resource.category === activeCategory,
-        );
-    }, [activeCategory]);
 
     const columns: ColumnDef<IContentSubmission>[] = [
         {
@@ -421,76 +355,7 @@ const PartnerContent = () => {
                     </form>
 
                     {/* Resource library */}
-                    <div className="min-w-0">
-                        <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                            <div className="flex items-center gap-2">
-                                <Library className="h-4 w-4" />
-
-                                <h2 className="text-sm font-medium">
-                                    Resource Library
-                                </h2>
-                            </div>
-
-                            <div className="flex max-w-full gap-2 overflow-x-auto pb-1">
-                                {(
-                                    [
-                                        "All",
-                                        "Assets",
-                                        "Templates",
-                                        "Training",
-                                    ] as const
-                                ).map((category) => (
-                                    <button
-                                        key={category}
-                                        type="button"
-                                        onClick={() =>
-                                            setActiveCategory(category)
-                                        }
-                                        className={`shrink-0 rounded-full px-4 py-1.5 text-xs transition-colors ${activeCategory === category
-                                            ? "bg-[#FFD43B] font-medium text-black"
-                                            : "bg-card text-muted-foreground hover:text-foreground"
-                                            }`}
-                                    >
-                                        {category}
-                                    </button>
-                                ))}
-                            </div>
-                        </div>
-
-                        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                            {filteredResources.map((resource) => (
-                                <article
-                                    key={resource.id}
-                                    className="flex min-h-[190px] flex-col rounded-xl border border-border/60 bg-card p-5"
-                                >
-                                    <div className="flex h-10 w-10 items-center justify-center rounded-md bg-muted">
-                                        {resource.icon}
-                                    </div>
-
-                                    <h3 className="mt-4 text-sm font-medium">
-                                        {resource.title}
-                                    </h3>
-
-                                    <p className="mt-2 line-clamp-3 text-xs leading-5 text-muted-foreground">
-                                        {resource.description}
-                                    </p>
-
-                                    <button
-                                        type="button"
-                                        className="mt-auto flex items-center gap-2 pt-4 text-left text-xs font-medium text-yellow-400 transition-colors hover:text-yellow-300"
-                                    >
-                                        {resource.category === "Training" ? (
-                                            <PlayCircle className="h-4 w-4" />
-                                        ) : (
-                                            <Download className="h-4 w-4" />
-                                        )}
-
-                                        {resource.actionLabel}
-                                    </button>
-                                </article>
-                            ))}
-                        </div>
-                    </div>
+                    <PartnerResource />
                 </section>
 
                 {/* Submission history */}

@@ -1,11 +1,11 @@
-import UnderConstruction from '@/components/others-state/underConstruction';
+import ExploreMapWithOpenTrip from "@/features/explore-map/components/OpenTripMap/ExploreMapWithOpenTrip";
 
 const page = () => {
-    return (
-        <div>
-            <UnderConstruction name='Explore' />
-        </div>
-    );
+  return (
+    <div className="bg-black flex items-center justify-center">
+      <ExploreMapWithOpenTrip />
+    </div>
+  );
 };
 
 export default page;

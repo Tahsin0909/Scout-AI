@@ -1,28 +1,28 @@
 const timeline = [
     {
         year: '2023',
-        title: 'The Idea',
+        title: 'Safety',
         description:
-            'Marcus returns from a poorly planned overland trip in Baja and starts sketching the first version of what would become Apex Adventure Lab.',
+            'We prioritize the safety of both people and the outdoors, ensuring parks, trails, and campgrounds can be enjoyed for generations to come.',
     },
     {
         year: '2024',
-        title: 'Building the Engine',
+        title: 'Service',
         description:
-            'Jordan joins as lead AI engineer. The first version of Scout AI is built, along with the module system and intake form architecture.',
+            'We deliver exceptional service to every user — no matter who they are, where they come from, or how much they spend.',
     },
     {
         year: '2025',
-        title: 'Beta Testing',
+        title: 'Spirit',
         description:
-            'Dani and Priya join the team. 200 beta users test the platform across 400+ dossiers. The human review layer is formalized. Stripe integration goes live.',
+            'We champion the spirit of adventure. Spending time outside is one of the most direct paths to a healthier, happier life, and should be encouraged whenever possible.',
     },
-    {
-        year: '2026',
-        title: 'Public Launch',
-        description:
-            'Apex Adventure Lab opens to the public with four travel modes, four membership tiers, and a growing library of modules. The expedition begins.',
-    },
+    // {
+    //     year: '2026',
+    //     title: 'Public Launch',
+    //     description:
+    //         'Apex Adventure Lab opens to the public with four travel modes, four membership tiers, and a growing library of modules. The expedition begins.',
+    // },
 ]
 
 export default function CompanyTimelineSection() {
@@ -49,9 +49,9 @@ export default function CompanyTimelineSection() {
                             sm:text-4xl lg:text-5xl
                         "
                     >
-                        The Trip That{' '}
+                        TripTrax {" "}
                         <span className="italic text-[#97B900]">
-                            Started It All
+                            Core Values
                         </span>
                     </h2>
                 </div>

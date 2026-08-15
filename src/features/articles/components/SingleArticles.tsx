@@ -4,10 +4,10 @@ import ArticleAffiliation from '@/features/affiliation/components/ArticleAffilia
 import { ArticlesIcon } from '@/utils/icons'
 import Link from 'next/link'
 import ArticleContent from './ArticleContent'
-import { articlesData } from './data/articlesData'
 import SingleArticlesHeader from './SingleArticlesHeader'
 import { advertisements } from '@/features/affiliation/components/data/articles-add'
 import SimilarArticles from './SimilarArticles'
+import { articles } from './data/articles-data'
 
 type SingleArticlesProps = {
     id: string
@@ -16,7 +16,7 @@ type SingleArticlesProps = {
 const SingleArticles = ({
     id,
 }: SingleArticlesProps) => {
-    const article = articlesData.find(
+    const article = articles.find(
         articleItem =>
             articleItem.id === Number(id),
     )
@@ -40,7 +40,7 @@ const SingleArticles = ({
         publishedAt,
         readTime,
         views,
-        backgroundImage,
+        image,
         content,
     } = article
 
@@ -52,7 +52,7 @@ const SingleArticles = ({
                 publishedAt={publishedAt}
                 readTime={readTime}
                 views={views}
-                backgroundImage={backgroundImage}
+                backgroundImage={image}
             />
 
             <section className="bg-background px-4 py-14 sm:px-6 sm:py-16 lg:px-8 lg:py-20">

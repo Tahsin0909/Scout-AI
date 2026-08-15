@@ -1,6 +1,6 @@
 import FAQSection from '@/components/faq/FaqSection';
-import MembershipComparisonSection from '@/components/pricing/MembershipComparisonSection';
-import PricingPage from '@/components/pricing/PricingPage';
+import MembershipComparisonSection from '@/features/payment/components/pricing/MembershipComparisonSection';
+import PricingPage from '@/features/payment/components/pricing/PricingPage';
 
 type RegisterPageProps = {
     searchParams: Promise<{
