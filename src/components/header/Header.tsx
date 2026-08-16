@@ -88,7 +88,6 @@ const Header = () => {
               <Separator
                 orientation="vertical"
                 className="h-4 mr-4 ml-2 data-[orientation=vertical]:self-center max-lg:hidden"
-                className="h-4 mr-4 ml-2 data-[orientation=vertical]:self-center max-lg:hidden"
               />
 
               {/* <div className="sm:flex hidden items-center">

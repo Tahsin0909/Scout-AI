@@ -4,11 +4,9 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { ChevronDown } from 'lucide-react'
 import { useState } from 'react'
 
-import { Button } from '@/components/ui/button'
 
 
 import { accordionContentVariants, accordionVariants, chevronVariants, transitions } from '@/lib/animation'
-import Link from 'next/link'
 import { faqs } from './data'
 
 export default function FAQSection() {
@@ -27,7 +25,7 @@ export default function FAQSection() {
                 {/* <p className="mb-4 text-sm font-medium text-muted-foreground uppercase tracking-wide border w-fit mx-auto px-3 py-1 rounded-full bg-white/5 ">
                     Common Questions
                 </p> */}
-                </p> */}
+                {/* </p> */}
 
                 <h2 className="mb-4 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
                     Frequently{' '}

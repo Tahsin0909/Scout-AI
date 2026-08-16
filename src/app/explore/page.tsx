@@ -1,9 +1,9 @@
-import UnderConstruction from '@/components/others-state/underConstruction';
+import ExploreMapWithOpenTrip from '@/features/explore-map/components/OpenTripMap/ExploreMapWithOpenTrip';
 
 const page = () => {
   return (
     <div>
-      <UnderConstruction name='Explore' />
+      <ExploreMapWithOpenTrip />
     </div>
   );
 };
