@@ -1,9 +1,9 @@
-import ExploreMapWithOpenTrip from "@/features/explore-map/components/OpenTripMap/ExploreMapWithOpenTrip";
+import UnderConstruction from '@/components/others-state/underConstruction';
 
 const page = () => {
   return (
-    <div className="bg-black flex items-center justify-center">
-      <ExploreMapWithOpenTrip />
+    <div>
+      <UnderConstruction name='Explore' />
     </div>
   );
 };

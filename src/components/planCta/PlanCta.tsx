@@ -36,6 +36,8 @@ const PlanCta = () => {
                 >
                     {/* Your next expedition starts here. */}
                     Choose Your Adventure
+                    {/* Your next expedition starts here. */}
+                    Choose Your Adventure
                 </h3>
 
                 <p
@@ -54,6 +56,8 @@ const PlanCta = () => {
                         asChild
                     >
                         <Link href="/plan">
+                            {/* Plan Your Trip */}
+                            Explore
                             {/* Plan Your Trip */}
                             Explore
                         </Link>

@@ -179,7 +179,7 @@ export const Footer = () => {
       <div className="container mx-auto px-4 max-w-[1200px]">
         {/* Main Footer Content Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-10 pb-12">
-          
+
           {/* Brand & Info Column (Left) */}
           <div className="lg:col-span-4 space-y-4">
             <div className="inline-block">
@@ -243,7 +243,7 @@ export const Footer = () => {
             <p className="text-zinc-400 text-sm font-normal">
               Sign up for our newsletter.
             </p>
-            
+
             {/* Newsletter Input Box */}
             <form onSubmit={handleSubscribe} className="w-full">
               <div className="flex items-center bg-[#282828] border border-zinc-700/50 rounded-xl p-1 focus-within:border-zinc-500 transition-all w-full max-w-[420px]">

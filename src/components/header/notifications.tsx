@@ -98,8 +98,10 @@ const Notifications = ({ className }: { className?: string }) => {
 
           {/* Footer Button */}
           <div className="pt-5 px-6">
-            <Button className="w-full" render={<Link href="#" />}>
-              See All Notifications
+            <Button className="w-full" asChild>
+              <Link href="#">
+                See All Notifications
+              </Link>
             </Button>
           </div>
         </DropdownMenuContent>
