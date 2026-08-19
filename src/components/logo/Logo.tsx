@@ -6,13 +6,13 @@ export const Logo = ({ className, forceWhite = false }: { className?: string; fo
   if (forceWhite) {
     return (
       <Link href="/" className="inline-block cursor-pointer">
-        <div className="">
+        <div>
           <Image
             src="/scoutAiLogoWhite.png"
-            width={228}
-            height={51}
+            width={80}
+            height={80}
             loading="eager"
-            className={cn("xl:w-[215px] md:w-[177px] xs:w-[152px] w-[127px] h-auto lg:h-[69px] object-contain", className)}
+            className={cn("w-[50px] h-[50px] xs:w-[55px] xs:h-[55px] sm:w-[60px] sm:h-[60px] md:w-[65px] md:h-[65px] lg:w-[75px] lg:h-[75px] xl:w-[80px] xl:h-[80px] object-contain", className)}
             alt={`${process.env.NEXT_PUBLIC_APP_NAME}`}
           />
         </div>
@@ -22,22 +22,22 @@ export const Logo = ({ className, forceWhite = false }: { className?: string; fo
 
   return (
     <Link href="/" className="inline-block cursor-pointer">
-      <div className="">
+      <div>
         <Image
           src="/scoutAiLogo.png"
-          width={228}
-          height={51}
+          width={80}
+          height={80}
           loading="eager"
-          className={cn("xl:w-[215px] md:w-[177px] xs:w-[152px] w-[127px] h-auto lg:h-[69px] object-contain dark:hidden", className)}
+          className={cn("w-[50px] h-[50px] xs:w-[55px] xs:h-[55px] sm:w-[60px] sm:h-[60px] md:w-[65px] md:h-[65px] lg:w-[75px] lg:h-[75px] xl:w-[80px] xl:h-[80px] object-contain dark:hidden", className)}
           alt={`${process.env.NEXT_PUBLIC_APP_NAME}`}
         />
 
         <Image
           src="/scoutAiLogoWhite.png"
-          width={228}
-          height={51}
+          width={80}
+          height={80}
           loading="eager"
-          className={cn("xl:w-[215px] md:w-[177px] xs:w-[152px] w-[127px] h-auto lg:h-[69px] object-contain hidden dark:block", className)}
+          className={cn("w-[50px] h-[50px] xs:w-[55px] xs:h-[55px] sm:w-[60px] sm:h-[60px] md:w-[65px] md:h-[65px] lg:w-[75px] lg:h-[75px] xl:w-[80px] xl:h-[80px] object-contain hidden dark:block", className)}
           alt={`${process.env.NEXT_PUBLIC_APP_NAME}`}
         />
       </div>
