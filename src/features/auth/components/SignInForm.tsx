@@ -290,7 +290,7 @@ export default function SignInForm() {
           sm:mt-20
         "
             >
-                New to TripTrax?{" "}
+                New to Scout Ai?{" "}
                 <Link
                     href="/register"
                     className="

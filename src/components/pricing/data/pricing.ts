@@ -237,7 +237,7 @@ export const pricingPlansApiResponse: PricingPlansApiResponse = {
                 "In-depth Architect analysis of each trip with available personalized recommendations and top-tier quality control.",
                 "20-question post-delivery Trip Q&A session with Scout.",
                 "Annual subscriptions receive 5 handcrafted Architect oversight trips per year.",
-                "Annual subscriptions receive a free one-time Apex Adventure Lab swag bag.",
+                "Annual subscriptions receive a free one-time Scout AI swag bag.",
                 "Apex Elite account badge.",
                 "20% off all merchandise.",
                 "Custom Apex Elite package design.",

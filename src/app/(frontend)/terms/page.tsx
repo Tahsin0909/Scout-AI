@@ -70,7 +70,7 @@ export default function TermsPage() {
                                 sm:text-lg
                             "
                         >
-                            These Terms & Conditions ("Terms") govern access to and use of the TripTrax, LLC ("TripTrax," "we," "our," or "us") website, intelligent master forms, AI-powered trip planning tools, digital products, physical merchandise, and related services ("Services"). By accessing or using the Services, you agree to be bound by these Terms. If you do not agree, do not use the Services.
+                            These Terms & Conditions ("Terms") govern access to and use of the Scout Ai, LLC ("Scout Ai," "we," "our," or "us") website, intelligent master forms, AI-powered trip planning tools, digital products, physical merchandise, and related services ("Services"). By accessing or using the Services, you agree to be bound by these Terms. If you do not agree, do not use the Services.
                         </p>
 
                         <div
@@ -212,7 +212,7 @@ export default function TermsPage() {
                             number="3."
                             title="Services Provided"
                         >
-                            <p className="font-semibold text-foreground">TripTrax provides:</p>
+                            <p className="font-semibold text-foreground">Scout Ai provides:</p>
                             <PolicyList
                                 items={[
                                     "AI powered trip packages",
@@ -225,7 +225,7 @@ export default function TermsPage() {
                             />
 
                             <p className="mt-4">
-                                These Services are informational and not a substitute for professional outdoor guidance, emergency planning, or real time navigation tools. TripTrax does not provide emergency services or real-time operational monitoring.
+                                These Services are informational and not a substitute for professional outdoor guidance, emergency planning, or real time navigation tools. Scout Ai does not provide emergency services or real-time operational monitoring.
                             </p>
                         </PolicySection>
 
@@ -254,7 +254,7 @@ export default function TermsPage() {
                                 ]}
                             />
                             <p className="mt-3">
-                                TripTrax is not responsible for decisions made based on AI generated content.
+                                Scout Ai is not responsible for decisions made based on AI generated content.
                             </p>
                         </PolicySection>
 
@@ -333,14 +333,14 @@ export default function TermsPage() {
                                 ]}
                             />
                             <p className="mt-3">
-                                Physical goods are manufactured and delivered to the shipping address you provide. Estimated shipping times and costs are displayed at checkout. Delivery estimates are not guaranteed. TripTrax is not responsible for delays caused by carriers, customs, or external factors outside our control. While we make reasonable efforts to display accurate product descriptions, colors, and images, actual colors may vary due to screen differences.
+                                Physical goods are manufactured and delivered to the shipping address you provide. Estimated shipping times and costs are displayed at checkout. Delivery estimates are not guaranteed. Scout Ai is not responsible for delays caused by carriers, customs, or external factors outside our control. While we make reasonable efforts to display accurate product descriptions, colors, and images, actual colors may vary due to screen differences.
                             </p>
 
                             <h3 className="mt-5 font-semibold text-foreground">
                                 7.3 Subscription Plans
                             </h3>
                             <p>
-                                TripTrax offers monthly and annual subscriptions for our membership tiers. Details and pricing are available on our website.
+                                Scout Ai offers monthly and annual subscriptions for our membership tiers. Details and pricing are available on our website.
                             </p>
 
                             <h3 className="mt-5 font-semibold text-foreground">
@@ -361,7 +361,7 @@ export default function TermsPage() {
                                 7.6 Payment Processing
                             </h3>
                             <p>
-                                Payments are processed by third party providers. TripTrax does not store full credit card numbers.
+                                Payments are processed by third party providers. Scout Ai does not store full credit card numbers.
                             </p>
                         </PolicySection>
 
@@ -372,7 +372,7 @@ export default function TermsPage() {
                             title="Affiliate Links"
                         >
                             <p>
-                                TripTrax participates in affiliate marketing programs. Some links in your packages or on the website may generate commissions for TripTrax at no additional cost to you. Affiliate relationships do not influence package content or recommendations.
+                                Scout Ai participates in affiliate marketing programs. Some links in your packages or on the website may generate commissions for Scout Ai at no additional cost to you. Affiliate relationships do not influence package content or recommendations.
                             </p>
                         </PolicySection>
 
@@ -395,7 +395,7 @@ export default function TermsPage() {
                                 ]}
                             />
                             <p className="mt-4">
-                                TripTrax is not responsible for the availability, accuracy, or policies of third party services.
+                                Scout Ai is not responsible for the availability, accuracy, or policies of third party services.
                             </p>
                         </PolicySection>
 
@@ -409,21 +409,21 @@ export default function TermsPage() {
                                 10.1 Ownership
                             </h3>
                             <p>
-                                All content, branding, logos, software, and materials provided through the Services are owned by TripTrax or its licensors.
+                                All content, branding, logos, software, and materials provided through the Services are owned by Scout Ai or its licensors.
                             </p>
 
                             <h3 className="mt-4 font-semibold text-foreground">
-                                10.2 License for TripTrax Consumer-Series Subscribers
+                                10.2 License for Scout Ai Consumer-Series Subscribers
                             </h3>
                             <p>
-                                For all TripTrax Core, Plus, Prime, and Elite subscribers, we grant you a limited, non exclusive, non transferable license to use the Services for personal, non commercial purposes. Commercial use of our Services is strictly prohibited without TripTrax's prior written consent.
+                                For all Scout Ai Core, Plus, Prime, and Elite subscribers, we grant you a limited, non exclusive, non transferable license to use the Services for personal, non commercial purposes. Commercial use of our Services is strictly prohibited without Scout Ai's prior written consent.
                             </p>
 
                             <h3 className="mt-4 font-semibold text-foreground">
-                                10.3 License for TripTrax Pro-Series Subscribers
+                                10.3 License for Scout Ai Pro-Series Subscribers
                             </h3>
                             <p>
-                                For all TripTrax Pro-series subscribers, we grant you a limited, non exclusive, non transferable license to use the Services for organizational, operational, and mission support purposes within the subscriber's team, agency, or organization. This license permits internal use only and does not allow resale, redistribution, sublicensing, or use of the Services outside the subscriber's organization. All organizational use is subject to the subscriber's active Pro-series membership, and TripTrax reserves the right to revoke access for misuse, unauthorized sharing, or use beyond the scope of this license.
+                                For all Scout Ai Pro-series subscribers, we grant you a limited, non exclusive, non transferable license to use the Services for organizational, operational, and mission support purposes within the subscriber's team, agency, or organization. This license permits internal use only and does not allow resale, redistribution, sublicensing, or use of the Services outside the subscriber's organization. All organizational use is subject to the subscriber's active Pro-series membership, and Scout Ai reserves the right to revoke access for misuse, unauthorized sharing, or use beyond the scope of this license.
                             </p>
 
                             <h3 className="mt-4 font-semibold text-foreground">
@@ -446,7 +446,7 @@ export default function TermsPage() {
                             <PolicyList
                                 items={[
                                     "You retain ownership",
-                                    "You grant TripTrax a license to use the content to provide and improve the Services",
+                                    "You grant Scout Ai a license to use the content to provide and improve the Services",
                                     "You represent that you have the rights to submit the content",
                                 ]}
                             />
@@ -464,7 +464,7 @@ export default function TermsPage() {
                             <p className="font-semibold text-foreground">
                                 The Services are provided "as is" and "as available."
                             </p>
-                            <p>TripTrax makes no warranties, express or implied, including:</p>
+                            <p>Scout Ai makes no warranties, express or implied, including:</p>
                             <PolicyList
                                 items={[
                                     "Accuracy of AI generated content",
@@ -479,35 +479,35 @@ export default function TermsPage() {
                                 12.2 Outdoor Activity Risks
                             </h3>
                             <p>
-                                Outdoor activities involve inherent risks, including but not limited to injury, illness, wildlife encounters, environmental hazards, equipment failure, and unpredictable weather conditions. TripTrax does not guarantee the safety, suitability, status, condition, or accuracy of any recommended route, trail, campsite, or location. You acknowledge that all outdoor decisions require personal judgment, proper preparation, and adherence to local regulations, land use rules, and safety advisories. You assume full responsibility for your actions and agree that TripTrax is not liable for any injuries, accidents, losses, or damages arising from your participation in outdoor activities.
+                                Outdoor activities involve inherent risks, including but not limited to injury, illness, wildlife encounters, environmental hazards, equipment failure, and unpredictable weather conditions. Scout Ai does not guarantee the safety, suitability, status, condition, or accuracy of any recommended route, trail, campsite, or location. You acknowledge that all outdoor decisions require personal judgment, proper preparation, and adherence to local regulations, land use rules, and safety advisories. You assume full responsibility for your actions and agree that Scout Ai is not liable for any injuries, accidents, losses, or damages arising from your participation in outdoor activities.
                             </p>
 
                             <h3 className="mt-5 font-semibold text-foreground">
                                 12.3 Mission Brief Accuracy
                             </h3>
                             <p>
-                                Mission briefs, operational summaries, hazard assessments, and other mission support materials generated through TripTrax Pro series tools may contain inaccuracies, omissions, outdated information, or incomplete data. These materials are informational only and are not a substitute for official SAR protocols, certified training, or real time field verification. You agree that all mission critical decisions must be based on verified information, agency procedures, and the judgment of qualified personnel. TripTrax is not responsible for operational outcomes or any damages arising from reliance on mission support materials.
+                                Mission briefs, operational summaries, hazard assessments, and other mission support materials generated through Scout Ai Pro series tools may contain inaccuracies, omissions, outdated information, or incomplete data. These materials are informational only and are not a substitute for official SAR protocols, certified training, or real time field verification. You agree that all mission critical decisions must be based on verified information, agency procedures, and the judgment of qualified personnel. Scout Ai is not responsible for operational outcomes or any damages arising from reliance on mission support materials.
                             </p>
 
                             <h3 className="mt-5 font-semibold text-foreground">
                                 12.4 SAR Operational Use
                             </h3>
                             <p>
-                                TripTrax Pro series tools, including mission support features, are designed to assist Search and Rescue (SAR) teams with planning, coordination, and information management. These tools are informational only and are not a substitute for certified SAR training, official Incident Command System (ICS) procedures, or real time operational decision making. TripTrax does not provide emergency services, dispatch capabilities, or guaranteed mission critical data. All SAR operations must follow established agency protocols, ICS guidelines, and the direction of qualified personnel. TripTrax is not responsible for operational outcomes, mission decisions, or any damages arising from reliance on Pro series features.
+                                Scout Ai Pro series tools, including mission support features, are designed to assist Search and Rescue (SAR) teams with planning, coordination, and information management. These tools are informational only and are not a substitute for certified SAR training, official Incident Command System (ICS) procedures, or real time operational decision making. Scout Ai does not provide emergency services, dispatch capabilities, or guaranteed mission critical data. All SAR operations must follow established agency protocols, ICS guidelines, and the direction of qualified personnel. Scout Ai is not responsible for operational outcomes, mission decisions, or any damages arising from reliance on Pro series features.
                             </p>
 
                             <h3 className="mt-5 font-semibold text-foreground">
                                 12.5 Weather & Environmental Data
                             </h3>
                             <p>
-                                Weather forecasts, environmental insights, hazard summaries, and related data provided through the Services are sourced from third party providers and may be delayed, inaccurate, or incomplete. Environmental conditions can change rapidly and without warning. TripTrax does not guarantee the accuracy, timeliness, or completeness of any weather or environmental information. You agree to verify all critical conditions independently and acknowledge that TripTrax is not liable for injuries, losses, or damages resulting from reliance on weather or environmental data.
+                                Weather forecasts, environmental insights, hazard summaries, and related data provided through the Services are sourced from third party providers and may be delayed, inaccurate, or incomplete. Environmental conditions can change rapidly and without warning. Scout Ai does not guarantee the accuracy, timeliness, or completeness of any weather or environmental information. You agree to verify all critical conditions independently and acknowledge that Scout Ai is not liable for injuries, losses, or damages resulting from reliance on weather or environmental data.
                             </p>
 
                             <h3 className="mt-5 font-semibold text-foreground">
                                 12.6 No Emergency Guarantees
                             </h3>
                             <p>
-                                TripTrax does not provide real time emergency monitoring, emergency response, or life safety guarantees. TripTrax does not track users, monitor field conditions, or communicate with emergency services on your behalf. All information provided—whether AI generated, human enhanced, or sourced from third party data—is subject to delay, inaccuracy, or incompleteness. You agree that TripTrax is not liable for any harm, injury, or loss resulting from delayed information, unavailable data, or reliance on the Services during an emergency. In all emergency situations, you must contact local authorities or appropriate rescue services immediately.
+                                Scout Ai does not provide real time emergency monitoring, emergency response, or life safety guarantees. Scout Ai does not track users, monitor field conditions, or communicate with emergency services on your behalf. All information provided—whether AI generated, human enhanced, or sourced from third party data—is subject to delay, inaccuracy, or incompleteness. You agree that Scout Ai is not liable for any harm, injury, or loss resulting from delayed information, unavailable data, or reliance on the Services during an emergency. In all emergency situations, you must contact local authorities or appropriate rescue services immediately.
                             </p>
                         </PolicySection>
 
@@ -522,13 +522,13 @@ export default function TermsPage() {
                             </p>
                             <PolicyList
                                 items={[
-                                    "TripTrax is not liable for any indirect, incidental, consequential, or punitive damages",
-                                    "TripTrax is not liable for injuries, accidents, losses, or damages arising from outdoor activities",
-                                    "TripTrax's total liability will not exceed the amount you paid in the past 12 months",
+                                    "Scout Ai is not liable for any indirect, incidental, consequential, or punitive damages",
+                                    "Scout Ai is not liable for injuries, accidents, losses, or damages arising from outdoor activities",
+                                    "Scout Ai's total liability will not exceed the amount you paid in the past 12 months",
                                 ]}
                             />
                             <p className="mt-4">
-                                Some jurisdictions do not allow the exclusion of certain warranties or limitations of liability. In such jurisdictions, TripTrax's liability is limited to the maximum extent permitted by law. You agree to use the Services at your own risk.
+                                Some jurisdictions do not allow the exclusion of certain warranties or limitations of liability. In such jurisdictions, Scout Ai's liability is limited to the maximum extent permitted by law. You agree to use the Services at your own risk.
                             </p>
                         </PolicySection>
 
@@ -539,7 +539,7 @@ export default function TermsPage() {
                             title="Indemnification"
                         >
                             <p className="font-semibold text-foreground">
-                                You agree to indemnify and hold harmless TripTrax from any claims, damages, losses, or expenses arising from:
+                                You agree to indemnify and hold harmless Scout Ai from any claims, damages, losses, or expenses arising from:
                             </p>
                             <PolicyList
                                 items={[
@@ -557,7 +557,7 @@ export default function TermsPage() {
                             title="Termination"
                         >
                             <p className="font-semibold text-foreground">
-                                TripTrax may suspend or terminate your account if:
+                                Scout Ai may suspend or terminate your account if:
                             </p>
                             <PolicyList
                                 items={[
@@ -609,8 +609,8 @@ export default function TermsPage() {
                                     bg-card p-5 text-sm sm:text-base
                                 "
                             >
-                                <p className="font-semibold text-foreground">TripTrax Support</p>
-                                <p className="mt-1 text-muted-foreground">support@triptraxusa.com</p>
+                                <p className="font-semibold text-foreground">Scout Ai Support</p>
+                                <p className="mt-1 text-muted-foreground">support@Scout Aiusa.com</p>
                             </div>
                         </PolicySection>
                     </article>

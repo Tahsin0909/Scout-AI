@@ -1,6 +1,6 @@
-# Apex Adventure Lab
+# Scout AI
 
-Apex Adventure Lab is a full-featured adventure travel and expedition-planning frontend built with **Next.js 16**, **React 19**, **TypeScript**, **Redux Toolkit / RTK Query**, **Tailwind CSS 4**, and **Stripe**.
+Scout AI is a full-featured adventure travel and expedition-planning frontend built with **Next.js 16**, **React 19**, **TypeScript**, **Redux Toolkit / RTK Query**, **Tailwind CSS 4**, and **Stripe**.
 
 The application combines public adventure content, membership subscriptions, trip-planning workflows, interactive travel maps, user and partner dashboards, article/resource management, and an administrative back office in a single Next.js App Router project.
 
@@ -293,7 +293,7 @@ src/features/example/
 | Route | Purpose |
 |---|---|
 | `/` | Landing page |
-| `/about` | About Apex Adventure Lab |
+| `/about` | About Scout AI |
 | `/contact` | Contact page |
 | `/memberships` | Membership plans |
 | `/articles` | Article listing |
@@ -439,7 +439,7 @@ The current codebase references the following environment variables.
 Create `.env.local`:
 
 ```env
-NEXT_PUBLIC_APP_NAME="Apex Adventure Lab"
+NEXT_PUBLIC_APP_NAME="Scout AI"
 NEXT_PUBLIC_APP_URL="http://localhost:3053"
 NEXT_PUBLIC_API_URL="https://your-backend-api.example.com"
 
@@ -1149,4 +1149,4 @@ No license file is included in the supplied codebase. Add an appropriate license
 
 ---
 
-Built for **Apex Adventure Lab**.
+Built for **Scout AI**.

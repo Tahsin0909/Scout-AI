@@ -9,9 +9,9 @@ import AuthPageLayout from "@/features/auth/components/AuthPageLayout";
 import RegisterForm from "@/features/auth/components/RegisterForm";
 
 export const metadata: Metadata = {
-    title: "Create Account | TripTrax",
+    title: "Create Account | Scout Ai",
     description:
-        "Create your TripTrax account and start planning.",
+        "Create your Scout Ai account and start planning.",
 };
 
 type RegisterPageProps = {

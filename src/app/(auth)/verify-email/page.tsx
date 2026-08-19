@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 
 
 export const metadata: Metadata = {
-    title: "Verify Email | TripTrax",
+    title: "Verify Email | Scout Ai",
     description: "Verify your email address to continue.",
 };
 

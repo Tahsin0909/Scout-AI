@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 
 "use client"
 
@@ -44,7 +45,7 @@ export default function MissionSection() {
                         "
                     >
                         <p>
-                            TripTrax is a platform built for a purpose. Initially conceived as a personal project by an active-duty U.S. servicemember who has spent over a decade balancing a demanding military lifestyle with a passion for the outdoors, it has since evolved into the world's first Al- powered, expert-verified adventure planning platform.
+                            Scout Ai is a platform built for a purpose. Initially conceived as a personal project by an active-duty U.S. servicemember who has spent over a decade balancing a demanding military lifestyle with a passion for the outdoors, it has since evolved into the world's first Al- powered, expert-verified adventure planning platform.
                         </p>
 
                         <p>

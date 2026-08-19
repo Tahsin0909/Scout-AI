@@ -8,7 +8,7 @@ import {
 import CheckoutClient from "@/features/payment/components/CheckoutClient";
 
 export const metadata: Metadata = {
-    title: "Secure Checkout | Apex Adventure Lab",
+    title: "Secure Checkout | Scout AI",
     description:
         "Review your membership and securely complete your payment.",
 };

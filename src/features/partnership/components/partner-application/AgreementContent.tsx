@@ -27,7 +27,7 @@ export function AgreementContent() {
                     </li>
 
                     <li>
-                        Represent TripTrax professionally
+                        Represent Scout Ai professionally
                         and transparently.
                     </li>
 
@@ -63,7 +63,7 @@ export function AgreementContent() {
                 </h3>
 
                 <p className="mt-2">
-                    TripTrax may review partner accounts,
+                    Scout Ai may review partner accounts,
                     audience quality, promotional
                     activity and compliance before or
                     after approval.
@@ -79,7 +79,7 @@ export function AgreementContent() {
                     Access may be suspended or terminated
                     for fraud, inaccurate information,
                     policy violations or misuse of the
-                    TripTrax brand.
+                    Scout Ai brand.
                 </p>
             </div>
         </div>

@@ -81,8 +81,8 @@ export default function AgreementPolicyPage() {
                             This Privacy Policy
                             (&ldquo;Policy&rdquo;) explains
                             how your data is handled when
-                            you use the TripTrax LLC
-                            (&ldquo;TripTrax,&rdquo;
+                            you use the Scout Ai LLC
+                            (&ldquo;Scout Ai,&rdquo;
                             &ldquo;TT,&rdquo; &ldquo;we,&rdquo;
                             &ldquo;our,&rdquo; or
                             &ldquo;us&rdquo;) website,
@@ -234,7 +234,7 @@ export default function AgreementPolicyPage() {
                                         items={[
                                             "Account information, including your name, email address, and password.",
                                             "Trip intake data, including dates, locations, preferences, goals, group details, medical considerations, and risk tolerance.",
-                                            "Payment information processed by third-party processors. TripTrax does not store complete card numbers.",
+                                            "Payment information processed by third-party processors. Scout Ai does not store complete card numbers.",
                                             "Communications, including emails, support messages, and feedback.",
                                             "Uploaded content, including photos, notes, and files.",
                                         ]}
@@ -413,7 +413,7 @@ export default function AgreementPolicyPage() {
 
                             <PolicySubsection title="1.7 Children’s Privacy">
                                 <p>
-                                    TripTrax does not knowingly
+                                    Scout Ai does not knowingly
                                     collect personal
                                     information from children
                                     under 13. If such
@@ -454,7 +454,7 @@ export default function AgreementPolicyPage() {
                             title="Cookies Policy"
                         >
                             <p>
-                                TripTrax uses cookies and
+                                Scout Ai uses cookies and
                                 similar technologies to
                                 improve your experience and
                                 analyze usage.
@@ -502,7 +502,7 @@ export default function AgreementPolicyPage() {
                             title="Data Processing Policy"
                         >
                             <p>
-                                TripTrax processes personal
+                                Scout Ai processes personal
                                 data under the following legal
                                 bases:
                             </p>
@@ -562,7 +562,7 @@ export default function AgreementPolicyPage() {
                             title="Affiliate Links & Sponsored Recommendations"
                         >
                             <p>
-                                TripTrax participates in
+                                Scout Ai participates in
                                 affiliate marketing programs.
                                 Certain links within our
                                 Services may be affiliate
@@ -578,7 +578,7 @@ export default function AgreementPolicyPage() {
                                     items={[
                                         "Affiliate partners may place cookies on your device.",
                                         "These cookies are controlled by the affiliate partner.",
-                                        "TripTrax does not receive or store your payment information.",
+                                        "Scout Ai does not receive or store your payment information.",
                                         "We may receive anonymized or aggregated data, such as link clicks and purchase confirmations.",
                                     ]}
                                 />
@@ -588,7 +588,7 @@ export default function AgreementPolicyPage() {
                                 <p>
                                     Affiliate partnerships help
                                     support the operation and
-                                    development of TripTrax. We
+                                    development of Scout Ai. We
                                     only recommend products or
                                     services we believe may be
                                     genuinely useful for
@@ -653,12 +653,12 @@ export default function AgreementPolicyPage() {
                                 "
                             >
                                 <p className="font-semibold text-foreground">
-                                    TripTrax Support
+                                    Scout Ai Support
                                 </p>
 
                                 <p className="mt-1">
                                     Email:
-                                    support@triptraxusa.com
+                                    support@Scout Aiusa.com
                                 </p>
                             </div>
                         </PolicySection>

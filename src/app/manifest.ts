@@ -2,9 +2,9 @@ import type { MetadataRoute } from 'next'
 
 export default function manifest(): MetadataRoute.Manifest {
     return {
-        name: 'TripTrax',
-        short_name: 'TripTrax',
-        description: 'Plan, organize, and manage your outdoor adventures and expeditions with TripTrax.',
+        name: 'Scout Ai',
+        short_name: 'Scout Ai',
+        description: 'Plan, organize, and manage your outdoor adventures and expeditions with Scout Ai.',
         start_url: '/',
         scope: '/',
         display: 'standalone',

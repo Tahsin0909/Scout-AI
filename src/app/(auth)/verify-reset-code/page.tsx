@@ -6,7 +6,7 @@ import { redirect } from "next/navigation";
 
 
 export const metadata: Metadata = {
-    title: "Verify Reset Code | TripTrax",
+    title: "Verify Reset Code | Scout Ai",
     description:
         "Verify your password reset code.",
 };

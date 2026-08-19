@@ -32,7 +32,7 @@ export default function PartnerHero() {
                             <br />
 
                             <span className="sm:whitespace-nowrap">
-                                a TripTrax{' '}
+                                a Scout Ai{' '}
                                 <span className="italic text-[#C8F500]">
                                     Partner
                                 </span>

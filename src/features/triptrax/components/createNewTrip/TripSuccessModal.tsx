@@ -37,7 +37,7 @@ const TripSuccessModal = ({
 
                     <p className="mt-3 text-sm leading-5 text-muted-foreground">
                         Your request has been received and is now waiting for review by the
-                        Apex Adventure Lab team.
+                        Scout AI team.
                     </p>
                 </div>
 
