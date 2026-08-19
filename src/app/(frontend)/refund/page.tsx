@@ -62,8 +62,8 @@ export default function RefundPolicyPage() {
                 sm:text-lg
               "
                         >
-                            This Refund Policy outlines the circumstances under which Apex
-                            Adventure Lab may issue refunds, credits, replacements, or
+                            This Refund Policy outlines the circumstances under which Scout AI
+                            issue refunds, credits, replacements, or
                             subscription cancellations. Please review these terms carefully
                             before purchasing a membership, service, digital product, or
                             merchandise.
