@@ -308,7 +308,7 @@ export const Footer = () => {
       {/* Large Brand Background Watermark */}
       <div className="w-full overflow-hidden select-none pointer-events-none mt-2">
         <h1 className="text-center text-zinc-600/25 font-extrabold text-[12vw] leading-none tracking-widest lowercase">
-          apexadvlab
+          Trip Trax
         </h1>
       </div>
     </footer>

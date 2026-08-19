@@ -82,7 +82,6 @@ const Header = () => {
                 onClick={toggleSidebar}
               >
                 <PanelLeft size={21} />
-                <PanelLeft size={21} />
               </Button>
 
               <Separator
