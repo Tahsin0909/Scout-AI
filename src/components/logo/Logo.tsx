@@ -8,14 +8,11 @@ export const Logo = ({ className, forceWhite = false }: { className?: string; fo
       <Link href="/" className="inline-block cursor-pointer">
         <div className="">
           <Image
-            src="/apexLogo.png"
-            width={180}
-            height={40}
+            src="/scoutAiLogoWhite.png"
+            width={228}
+            height={51}
             loading="eager"
-            className={cn(
-              "xl:w-[170px] md:w-[140px] xs:w-[120px] w-[100px] h-auto lg:h-[55px] object-contain",
-              className
-            )}
+            className={cn("xl:w-[215px] md:w-[177px] xs:w-[152px] w-[127px] h-auto lg:h-[69px] object-contain", className)}
             alt={`${process.env.NEXT_PUBLIC_APP_NAME}`}
           />
         </div>
@@ -27,25 +24,20 @@ export const Logo = ({ className, forceWhite = false }: { className?: string; fo
     <Link href="/" className="inline-block cursor-pointer">
       <div className="">
         <Image
-          src="/apexLogo.png"
-          width={180}
-          height={40}
+          src="/scoutAiLogo.png"
+          width={228}
+          height={51}
           loading="eager"
-          className={cn(
-            "xl:w-[170px] md:w-[140px] xs:w-[120px] w-[100px] h-auto lg:h-[55px] object-contain dark:hidden invert",
-            className
-          )}
+          className={cn("xl:w-[215px] md:w-[177px] xs:w-[152px] w-[127px] h-auto lg:h-[69px] object-contain dark:hidden", className)}
           alt={`${process.env.NEXT_PUBLIC_APP_NAME}`}
         />
+
         <Image
-          src="/apexLogo.png"
-          width={180}
-          height={40}
+          src="/scoutAiLogoWhite.png"
+          width={228}
+          height={51}
           loading="eager"
-          className={cn(
-            "xl:w-[170px] md:w-[140px] xs:w-[120px] w-[100px] h-auto lg:h-[55px] object-contain not-dark:hidden",
-            className
-          )}
+          className={cn("xl:w-[215px] md:w-[177px] xs:w-[152px] w-[127px] h-auto lg:h-[69px] object-contain hidden dark:block", className)}
           alt={`${process.env.NEXT_PUBLIC_APP_NAME}`}
         />
       </div>

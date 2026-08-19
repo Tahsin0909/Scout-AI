@@ -14,13 +14,13 @@ export default function manifest(): MetadataRoute.Manifest {
         categories: ['travel', 'navigation', 'lifestyle'],
         icons: [
             {
-                src: '/apexLogo-192.png',
+                src: '/scoutAiLogoWhite-192.png',
                 sizes: '192x192',
                 type: 'image/png',
                 purpose: 'any',
             },
             {
-                src: '/apexLogo-512.png',
+                src: '/scoutAiLogoWhite-512.png',
                 sizes: '512x512',
                 type: 'image/png',
                 purpose: 'any',

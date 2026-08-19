@@ -76,12 +76,11 @@ const Header = () => {
               </div>
 
               <Button
-                variant="ghost"
+                variant="link"
                 size="icon"
-                className="p-2 hover:bg-primary/5 rounded-full transition cursor-pointer"
+                // className="p-2 hover:bg-primary/5 rounded-full transition cursor-pointer"
                 onClick={toggleSidebar}
               >
-                <PanelLeft size={21} />
                 <PanelLeft size={21} />
               </Button>
 
