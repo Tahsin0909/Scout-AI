@@ -3,7 +3,6 @@
 import { Logo } from "@/components/logo/Logo";
 import LightDark from "@/components/switcher/Switcher";
 import { useAuth } from "@/features/auth/hooks/useAuth";
-import Link from "next/link";
 import { Account } from "./Account";
 import { DesktopMenu } from "./DesktopMenu";
 import { GetStarted } from "./GetStarted";
