@@ -17,13 +17,13 @@ export default function manifest(): MetadataRoute.Manifest {
                 src: '/scoutAiLogoWhite-192.png',
                 sizes: '192x192',
                 type: 'image/png',
-                purpose: 'any',
+                purpose: 'maskable',
             },
             {
-                src: '/scoutAiLogoWhite-512.png',
-                sizes: '512x512',
+                src: '/scoutAiLogoWhite-192.png',
+                sizes: '192x192',
                 type: 'image/png',
-                purpose: 'any',
+                purpose: 'monochrome',
             },
         ],
     }
