@@ -340,7 +340,7 @@ export function ApplicationSuccess({
                         >
                             <div className="space-y-3">
                                 <SubmittedConfirmation
-                                    label="TripTrax Partner Agreement accepted"
+                                    label="Scout Ai Partner Agreement accepted"
                                     confirmed={
                                         application
                                             .agreements
@@ -420,7 +420,7 @@ export function ApplicationSuccess({
                                     text-muted-foreground
                                 "
                             >
-                                The TripTrax partnership
+                                The Scout Ai partnership
                                 team is reviewing your
                                 profile, social presence
                                 and application responses.

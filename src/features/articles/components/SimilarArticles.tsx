@@ -68,7 +68,7 @@ const SimilarArticles = ({
                 text-muted-foreground sm:text-base
               "
                         >
-                            More insights from the Apex Adventure Lab experts.
+                            More insights from the Scout AI experts.
                         </p>
                     </div>
 

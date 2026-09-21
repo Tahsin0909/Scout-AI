@@ -186,8 +186,8 @@ export default function TestimonialsSection() {
                 </h2>
                 <p className="mx-auto max-w-2xl text-base text-muted-foreground sm:text-lg">
                     {/* See what reviewers, explorers, and outdoor professionals
-                    are saying about Apex Adventure Lab */}
-                    See what reviewers are saying about TripTrax.
+                    are saying about Scout AI */}
+                    See what reviewers are saying about Scout Ai.
                 </p>
             </div>
 

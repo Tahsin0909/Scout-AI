@@ -6,16 +6,13 @@ export const Logo = ({ className, forceWhite = false }: { className?: string; fo
   if (forceWhite) {
     return (
       <Link href="/" className="inline-block cursor-pointer">
-        <div className="">
+        <div>
           <Image
-            src="/apexLogo.png"
-            width={180}
-            height={40}
+            src="/scoutAiLogoWhite.png"
+            width={80}
+            height={80}
             loading="eager"
-            className={cn(
-              "xl:w-[170px] md:w-[140px] xs:w-[120px] w-[100px] h-auto lg:h-[55px] object-contain",
-              className
-            )}
+            className={cn("w-[50px] h-[50px] xs:w-[55px] xs:h-[55px] sm:w-[60px] sm:h-[60px] md:w-[65px] md:h-[65px] lg:w-[75px] lg:h-[75px] xl:w-[80px] xl:h-[80px] object-contain", className)}
             alt={`${process.env.NEXT_PUBLIC_APP_NAME}`}
           />
         </div>
@@ -25,27 +22,22 @@ export const Logo = ({ className, forceWhite = false }: { className?: string; fo
 
   return (
     <Link href="/" className="inline-block cursor-pointer">
-      <div className="">
+      <div>
         <Image
-          src="/apexLogo.png"
-          width={180}
-          height={40}
+          src="/scoutAiLogo.png"
+          width={80}
+          height={80}
           loading="eager"
-          className={cn(
-            "xl:w-[170px] md:w-[140px] xs:w-[120px] w-[100px] h-auto lg:h-[55px] object-contain dark:hidden invert",
-            className
-          )}
+          className={cn("w-[50px] h-[50px] xs:w-[55px] xs:h-[55px] sm:w-[60px] sm:h-[60px] md:w-[65px] md:h-[65px] lg:w-[75px] lg:h-[75px] xl:w-[80px] xl:h-[80px] object-contain dark:hidden", className)}
           alt={`${process.env.NEXT_PUBLIC_APP_NAME}`}
         />
+
         <Image
-          src="/apexLogo.png"
-          width={180}
-          height={40}
+          src="/scoutAiLogoWhite.png"
+          width={80}
+          height={80}
           loading="eager"
-          className={cn(
-            "xl:w-[170px] md:w-[140px] xs:w-[120px] w-[100px] h-auto lg:h-[55px] object-contain not-dark:hidden",
-            className
-          )}
+          className={cn("w-[50px] h-[50px] xs:w-[55px] xs:h-[55px] sm:w-[60px] sm:h-[60px] md:w-[65px] md:h-[65px] lg:w-[75px] lg:h-[75px] xl:w-[80px] xl:h-[80px] object-contain hidden dark:block", className)}
           alt={`${process.env.NEXT_PUBLIC_APP_NAME}`}
         />
       </div>

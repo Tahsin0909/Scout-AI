@@ -31,8 +31,8 @@ const LightDark = () => {
   return (
     <Button
       type="button"
-      variant="ghost"
-      className="h-10 w-10 cursor-pointer rounded-full hover:bg-primary/5"
+      variant="default"
+      className="h-10 w-10 cursor-pointer rounded-full "
       onClick={toggleMode}
       aria-label={`Switch to ${resolvedTheme === "light" ? "dark" : "light"
         } mode`}

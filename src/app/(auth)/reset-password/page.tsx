@@ -6,9 +6,9 @@ import { redirect } from "next/navigation";
 
 
 export const metadata: Metadata = {
-    title: "Create New Password | TripTrax",
+    title: "Create New Password | Scout Ai",
     description:
-        "Create a new password for your TripTrax account.",
+        "Create a new password for your Scout Ai account.",
 };
 
 type ResetPasswordPageProps = {

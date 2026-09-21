@@ -182,7 +182,7 @@ export default function PartnerApplicationWizard() {
                             sm:text-4xl
                         "
                     >
-                        Become A TripTrax Partner
+                        Become A Scout Ai Partner
                     </h1>
 
                     <p

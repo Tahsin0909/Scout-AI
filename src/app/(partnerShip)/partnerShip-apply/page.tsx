@@ -4,9 +4,9 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
     title:
-        "Become a Partner | TripTrax",
+        "Become a Partner | Scout Ai",
     description:
-        "Apply to become a TripTrax partner.",
+        "Apply to become a Scout Ai partner.",
 };
 
 export default function PartnerApplicationPage() {

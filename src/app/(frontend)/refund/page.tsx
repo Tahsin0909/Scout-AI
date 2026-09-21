@@ -62,8 +62,8 @@ export default function RefundPolicyPage() {
                 sm:text-lg
               "
                         >
-                            This Refund Policy outlines the circumstances under which Apex
-                            Adventure Lab may issue refunds, credits, replacements, or
+                            This Refund Policy outlines the circumstances under which Scout AI
+                            issue refunds, credits, replacements, or
                             subscription cancellations. Please review these terms carefully
                             before purchasing a membership, service, digital product, or
                             merchandise.
@@ -167,7 +167,7 @@ export default function RefundPolicyPage() {
                             title="General Policy"
                         >
                             <p>
-                                All purchases made through Apex Adventure Lab are subject to
+                                All purchases made through Scout AI are subject to
                                 this Refund Policy. Refund eligibility depends on the type of
                                 product or service purchased, the amount of work already
                                 completed, and the timing of the request.
@@ -318,7 +318,7 @@ export default function RefundPolicyPage() {
                             title="Right of Refusal or Refund Replacement"
                         >
                             <p>
-                                Where appropriate, Apex Adventure Lab may offer a service
+                                Where appropriate, Scout AI may offer a service
                                 correction, replacement, account credit, revised dossier, or
                                 other reasonable remedy instead of a cash refund.
                             </p>
@@ -364,7 +364,7 @@ export default function RefundPolicyPage() {
                 "
                             >
                                 <p className="font-semibold text-foreground">
-                                    Apex Adventure Lab Support
+                                    Scout AI Support
                                 </p>
 
                                 <p className="mt-1">

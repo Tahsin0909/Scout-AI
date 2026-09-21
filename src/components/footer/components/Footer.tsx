@@ -91,7 +91,7 @@
 //           <div className="flex sm:flex-row flex-col items-center justify-between lg:mt-12 mt-14">
 //             <div>
 //               <p className="text-white text-sm">
-//                 &copy; {new Date().getFullYear()} Apex Adventure Lab. All rights reserved.
+//                 &copy; {new Date().getFullYear()} Scout AI. All rights reserved.
 //               </p>
 //             </div>
 //             <div>
@@ -289,7 +289,7 @@ export const Footer = () => {
         {/* Bottom Bar Divider & Copyright */}
         <div className="border-t border-zinc-800/90 pt-6 pb-4">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs sm:text-sm text-zinc-400">
-            <p>© {new Date().getFullYear()} TripTrax LLC. All rights reserved</p>
+            <p>© {new Date().getFullYear()} Scout Ai LLC. All rights reserved</p>
             <div className="flex items-center gap-6">
               {policyLinks.map((link, idx) => (
                 <Link
@@ -308,7 +308,7 @@ export const Footer = () => {
       {/* Large Brand Background Watermark */}
       <div className="w-full overflow-hidden select-none pointer-events-none mt-2">
         <h1 className="text-center text-zinc-600/25 font-extrabold text-[12vw] leading-none tracking-widest lowercase">
-          Trip Trax
+          Scout Ai
         </h1>
       </div>
     </footer>

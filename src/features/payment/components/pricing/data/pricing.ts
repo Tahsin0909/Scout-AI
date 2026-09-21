@@ -71,7 +71,7 @@ export const pricingPlansApiResponse: PricingPlansApiResponse = {
             name: "Core",
             tagline: "It Starts Here",
             description:
-                "Welcome to TripTrax. We believe in uncompromising quality regardless of membership tier, so we start you off with access to Scout—our AI adventure engine—plus all the essential tools you need to get out and go. Core keeps it light and fast so you can go further.",
+                "Welcome to Scout Ai. We believe in uncompromising quality regardless of membership tier, so we start you off with access to Scout—our AI adventure engine—plus all the essential tools you need to get out and go. Core keeps it light and fast so you can go further.",
 
             buttonVariant: "outline",
 

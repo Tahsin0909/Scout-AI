@@ -60,9 +60,9 @@ export default function PrivacyPolicyPage() {
                 sm:text-lg
               "
                         >
-                            This Privacy Policy explains how TripTrax collects, uses, stores,
+                            This Privacy Policy explains how Scout Ai collects, uses, stores,
                             and protects your information when you use our website, services,
-                            and trip-planning tools. By using TripTrax, you agree to the
+                            and trip-planning tools. By using Scout Ai, you agree to the
                             practices described in this policy.
                         </p>
 
@@ -171,7 +171,7 @@ export default function PrivacyPolicyPage() {
                                 items={[
                                     "Account information, including your name, email address, and password.",
                                     "Trip intake data, including dates, locations, preferences, goals, group details, medical considerations, and risk tolerance.",
-                                    "Payment information processed by third-party payment providers. TripTrax does not store full card numbers.",
+                                    "Payment information processed by third-party payment providers. Scout Ai does not store full card numbers.",
                                     "Communications, including emails, support messages, and feedback.",
                                     "Uploaded content, including photos, notes, and files.",
                                 ]}
@@ -312,7 +312,7 @@ export default function PrivacyPolicyPage() {
                             </p>
 
                             <p>
-                                TripTrax does not knowingly collect personal information from
+                                Scout Ai does not knowingly collect personal information from
                                 children under 13. If such information is discovered, it will be
                                 deleted promptly. If you believe a child under 13 has provided us
                                 with personal information, please contact us immediately.
@@ -335,7 +335,7 @@ export default function PrivacyPolicyPage() {
                             title="Cookies Policy"
                         >
                             <p>
-                                TripTrax uses cookies and similar technologies to improve your
+                                Scout Ai uses cookies and similar technologies to improve your
                                 experience and analyze usage.
                             </p>
 
@@ -371,7 +371,7 @@ export default function PrivacyPolicyPage() {
                             title="Data Processing Policy"
                         >
                             <p>
-                                TripTrax processes personal data under the following legal bases:
+                                Scout Ai processes personal data under the following legal bases:
                             </p>
 
                             <h3 className="mt-5 font-semibold text-foreground">
@@ -420,7 +420,7 @@ export default function PrivacyPolicyPage() {
                             title="Affiliate Links & Sponsored Recommendations"
                         >
                             <p>
-                                TripTrax participates in affiliate marketing programs. Certain
+                                Scout Ai participates in affiliate marketing programs. Certain
                                 links within our Services may be affiliate links, and we may earn
                                 a commission if you click those links or make a purchase through
                                 them. Affiliate links do not increase your cost.
@@ -430,14 +430,14 @@ export default function PrivacyPolicyPage() {
                                 items={[
                                     "Affiliate partners may place cookies on your device.",
                                     "These cookies are controlled by the affiliate partner.",
-                                    "TripTrax does not receive or store your payment information.",
+                                    "Scout Ai does not receive or store your payment information.",
                                     "We may receive anonymized or aggregated data, such as link clicks and purchase confirmations.",
                                 ]}
                             />
 
                             <p>
                                 Affiliate partnerships help support the operation and development
-                                of TripTrax. We only recommend products or services we believe may
+                                of Scout Ai. We only recommend products or services we believe may
                                 be genuinely useful for outdoor travel and trip planning.
                             </p>
 
@@ -483,10 +483,10 @@ export default function PrivacyPolicyPage() {
                 "
                             >
                                 <p className="font-semibold text-foreground">
-                                    TripTrax Support
+                                    Scout Ai Support
                                 </p>
 
-                                <p className="mt-1">support@triptraxusa.com</p>
+                                <p className="mt-1">support@Scout Aiusa.com</p>
                             </div>
                         </PolicySection>
                     </article>

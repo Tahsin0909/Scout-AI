@@ -1,22 +1,21 @@
 "use client";
 
-import React from "react";
-import { Check } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import React from "react";
 
 interface FeatureListProps {
   features: string[];
 }
 
 const CircleCheckIcon = () => (
-  <svg 
-    xmlns="http://www.w3.org/2000/svg" 
-    viewBox="0 0 24 24" 
-    fill="none" 
-    stroke="currentColor" 
-    strokeWidth="1.5" 
-    strokeLinecap="round" 
-    strokeLinejoin="round" 
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
     className="w-4.5 h-4.5 text-zinc-400 shrink-0 mt-0.5 opacity-80"
   >
     <circle cx="12" cy="12" r="10" />
@@ -86,7 +85,7 @@ export default function Subscriptions() {
       title: "Core",
       price: "$9.99",
       badge: "It Starts Here",
-      description: "Welcome to TripTrax. We believe in uncompromising quality regardless of membership tier, so we start you off with access to Scout—our AI adventure engine—plus all the essential tools you need to get out and go. Core keeps it light and fast so you can go further.",
+      description: "Welcome to Scout Ai. We believe in uncompromising quality regardless of membership tier, so we start you off with access to Scout—our AI adventure engine—plus all the essential tools you need to get out and go. Core keeps it light and fast so you can go further.",
       features: [
         "Access to Scout AI.",
         "Generate 2 trip packages per month",
@@ -121,7 +120,7 @@ export default function Subscriptions() {
 
   return (
     <div className="w-full bg-[#111111] text-zinc-100 min-h-screen p-6 md:p-8 space-y-8 font-sans">
-      
+
       {/* Page Header */}
       <div className="space-y-2">
         <h1 className="text-3xl md:text-4xl font-semibold tracking-tight text-white">
@@ -135,21 +134,20 @@ export default function Subscriptions() {
       {/* Subscription Plans Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl">
         {plans.map((plan, idx) => (
-          <Card 
-            key={idx} 
-            className={`border rounded-2xl overflow-hidden shadow-lg transition-all relative ${
-              plan.isHighlighted 
-                ? "border-[#FFD23F]/40" 
+          <Card
+            key={idx}
+            className={`border rounded-2xl overflow-hidden shadow-lg transition-all relative ${plan.isHighlighted
+                ? "border-[#FFD23F]/40"
                 : "border-[#262626]"
-            }`}
+              }`}
             style={{
-              background: plan.isHighlighted 
-                ? "radial-gradient(circle at top right, rgba(255, 210, 63, 0.18) 0%, rgba(255, 210, 63, 0.02) 60%, transparent 100%), #181818" 
+              background: plan.isHighlighted
+                ? "radial-gradient(circle at top right, rgba(255, 210, 63, 0.18) 0%, rgba(255, 210, 63, 0.02) 60%, transparent 100%), #181818"
                 : "#181818"
             }}
           >
             <CardContent className="p-6 md:p-8 space-y-6 flex flex-col justify-between h-full">
-              
+
               {/* Card Top section */}
               <div className="space-y-4">
                 <div className="space-y-1">
@@ -174,7 +172,7 @@ export default function Subscriptions() {
               <FeatureList features={plan.features} />
 
               {/* Edit Plan Button */}
-              <button 
+              <button
                 className="w-full py-2.5 rounded-xl text-sm font-semibold border border-[#FFD23F] text-[#FFD23F] bg-transparent hover:bg-[#FFD23F] hover:text-black transition-all cursor-pointer"
               >
                 Edit

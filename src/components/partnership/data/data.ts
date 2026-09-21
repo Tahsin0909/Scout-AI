@@ -104,7 +104,7 @@ export const partnerTiers: PartnerTier[] = [
             "Early Access To New Features",
             "Co-Branding Authorization",
             "Priority Brand Promotion And Gear Partnerships",
-            "Featured Placement On TripTrax's Platforms",
+            "Featured Placement On Scout Ai's Platforms",
             "Priority Support",
         ],
         buttonLabel: "Apply for Ambassador",

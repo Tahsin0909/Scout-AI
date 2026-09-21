@@ -30,7 +30,7 @@ export function AboutYouStep() {
 
             <TextareaCard
                 title="Why do you want to join?"
-                description="Tell us about your motivation for partnering with TripTrax and how you envision our mutual growth in the luxury expedition market."
+                description="Tell us about your motivation for partnering with Scout Ai and how you envision our mutual growth in the luxury expedition market."
                 placeholder="Describe your passion for professional expeditions..."
                 value={about.motivation}
                 maxLength={1000}

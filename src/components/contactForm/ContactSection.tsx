@@ -1,9 +1,8 @@
+/* eslint-disable react/no-unescaped-entities */
 import {
     AtSign,
     Building2,
-    Clock3,
-    Phone,
-    type LucideIcon,
+    type LucideIcon
 } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
@@ -27,7 +26,7 @@ const contactItems: ContactItem[] = [
     // },
     {
         title: 'Email',
-        value: 'contact@triptraxusa.com',
+        value: 'contact@Scout Aiusa.com',
         icon: AtSign,
     },
     // {

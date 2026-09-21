@@ -21,7 +21,7 @@ export const faqs = [
             'We include a revision period after delivery. Simply notify us of any issues and we\'ll make corrections at no additional cost within the first 30 days.',
     },
     {
-        question: 'Do I need a membership to use TripTrax?',
+        question: 'Do I need a membership to use Scout Ai?',
         answer:
             'No membership is required. You can purchase individual packages as needed, or opt for our annual membership for unlimited access and additional benefits.',
     },

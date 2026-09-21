@@ -1127,7 +1127,7 @@ function CheckoutForm({
                                 >
                                     Terms &amp; Conditions
                                 </Link>{" "}
-                                and authorize TripTrax to charge your account on a recurring basis.
+                                and authorize Scout Ai to charge your account on a recurring basis.
                             </p>
 
                             {/* Error Message */}

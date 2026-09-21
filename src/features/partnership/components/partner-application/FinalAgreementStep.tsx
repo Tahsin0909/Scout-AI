@@ -15,7 +15,7 @@ export function FinalAgreementStep() {
 
     return (
         <div>
-            <StepCard title="TripTrax Partner Agreement">
+            <StepCard title="Scout Ai Partner Agreement">
                 <div
                     className="
                         max-h-[500px]
@@ -48,7 +48,7 @@ export function FinalAgreementStep() {
                             }),
                         )
                     }
-                    title="I have read and agree to the TripTrax Partner Agreement"
+                    title="I have read and agree to the Scout Ai Partner Agreement"
                     description="This includes safety protocols and commission structures."
                 />
 

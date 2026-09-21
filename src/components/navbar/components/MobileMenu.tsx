@@ -67,7 +67,7 @@ export const MobileMenu = () => {
           <SheetTitle>
             <div>
               <Link href="/">
-                <Logo />
+                <Logo forceWhite />
               </Link>
             </div>
           </SheetTitle>
@@ -138,7 +138,7 @@ export const MobileMenu = () => {
                   {profile?.firstName?.slice(0, 2).toUpperCase()}
                 </AvatarFallback>
               </Avatar>
-              <div className="flex flex-col">
+              <div className="flex flex-col text-white">
                 <span>
                   {profile?.firstName} {profile?.lastName}
                 </span>

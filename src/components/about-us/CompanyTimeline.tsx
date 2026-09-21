@@ -21,7 +21,7 @@ const timeline = [
     //     year: '2026',
     //     title: 'Public Launch',
     //     description:
-    //         'Apex Adventure Lab opens to the public with four travel modes, four membership tiers, and a growing library of modules. The expedition begins.',
+    //         'Scout AI opens to the public with four travel modes, four membership tiers, and a growing library of modules. The expedition begins.',
     // },
 ]
 
@@ -49,7 +49,7 @@ export default function CompanyTimelineSection() {
                             sm:text-4xl lg:text-5xl
                         "
                     >
-                        TripTrax {" "}
+                        Scout Ai {" "}
                         <span className="italic text-[#97B900]">
                             Core Values
                         </span>

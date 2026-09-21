@@ -25,7 +25,7 @@ const PartnerCTA = () => {
                 tracking-[-0.02em] md:text-[40px]
             "
                 >
-                    Ready to Partner with TripTrax?
+                    Ready to Partner with Scout Ai?
                 </h3>
 
                 <p
@@ -34,7 +34,7 @@ const PartnerCTA = () => {
                 text-[#a8a8a8]
             "
                 >
-                    Start inspiring adventures, grow your audience, and earn rewards with the TripTrax Partner Program.
+                    Start inspiring adventures, grow your audience, and earn rewards with the Scout Ai Partner Program.
                 </p>
 
                 <div className="flex w-full flex-col justify-center gap-[13px] sm:flex-row">
